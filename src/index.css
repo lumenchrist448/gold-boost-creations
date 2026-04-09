@@ -45,7 +45,7 @@ body {
   color: #f5f2eb;
   margin: 0;
   overflow-x: hidden;
-  padding-top: 44px;
+  padding-top: 36px;
 }
 
 h1, h2, h3, h4, h5, h6, .font-syne {
@@ -233,7 +233,7 @@ body::before {
 
 /* Mobile body padding */
 body {
-  padding-top: 56px;
+  padding-top: 36px;
 }
 
 /* ============ TABLET (481px – 900px) ============ */
@@ -278,7 +278,7 @@ body {
     min-height: 44px;
   }
   body {
-    padding-top: 44px;
+    padding-top: 36px;
   }
 }
 
