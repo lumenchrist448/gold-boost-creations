@@ -310,6 +310,113 @@ const WhoIsItFor = () => (
   </section>
 );
 
+const bonusCards = [
+  { icon: "📋", title: "Pack 50 Prompts Prêts à Copier", desc: "50 prompts ChatGPT et Claude testés et validés pour fiches produits, descriptions, relances clients et pages de vente — adaptés au marché africain. Copie, colle, publie.", value: "Valeur : 5 000 FCFA", valueMuted: true },
+  { icon: "🎨", title: "20 Templates Canva AI Modifiables", desc: "20 gabarits d'affiches publicitaires prêts à l'emploi sur Canva. Change les couleurs, le texte, ton logo — en 5 minutes tu as une affiche pro pour ta promo.", value: "Valeur : 8 000 FCFA", valueMuted: true },
+  { icon: "💬", title: "Accès au Groupe WhatsApp Privé", desc: "Rejoins la communauté d'apprenants actifs. Partage tes créations, pose tes questions, reçois des retours directs de Rosine. Un réseau de e-commerçants africains qui avancent.", value: "Valeur : Inestimable", valueMuted: false },
+];
+
+const BonusSection = () => (
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container text-center">
+      <Badge>Bonus offerts</Badge>
+      <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-4">
+        Tu ne paies pas que la formation. Tu reçois <span className="text-gold">tout ça en plus.</span>
+      </h2>
+      <p className="text-[#7a7468] text-[0.95rem] max-w-[560px] mx-auto mb-12">
+        Ces bonus sont inclus dans ton accès. Aucun paiement supplémentaire.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {bonusCards.map((b, i) => (
+          <div key={i} className="reveal relative rounded-lg p-8 text-left transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.06)]"
+            style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)")}
+            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.25)")}>
+            <span className="absolute top-0 right-0 font-syne text-[0.6rem] font-bold tracking-[0.15em] px-2.5 py-1 rounded-tr-lg rounded-bl"
+              style={{ background: "#c9a84c", color: "#0a0a0f" }}>OFFERT</span>
+            <span className="text-3xl mb-4 block">{b.icon}</span>
+            <h3 className="font-syne font-bold text-paper text-base mb-3">{b.title}</h3>
+            <p className="text-[#a09a8e] text-sm leading-relaxed mb-4">{b.desc}</p>
+            <p className={`text-[0.8rem] ${b.valueMuted ? "text-[#7a7468] line-through" : "text-[#c9a84c] font-semibold"}`}>{b.value}</p>
+          </div>
+        ))}
+      </div>
+      {/* Bloc valeur totale */}
+      <div className="mt-8 mx-auto max-w-[480px] rounded-lg p-7 text-center"
+        style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02))", border: "1px solid rgba(201,168,76,0.3)" }}>
+        <p className="font-syne text-[0.8rem] text-[#7a7468] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
+        <p className="font-syne font-extrabold text-[2rem] text-[#7a7468] line-through mb-1">32 900 FCFA</p>
+        <p className="font-syne font-extrabold text-[1.4rem] text-[#c9a84c] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
+        <p className="text-[0.78rem] text-[#7a7468]">Soit 70% de remise sur la valeur réelle</p>
+      </div>
+    </div>
+  </section>
+);
+
+const RosinePhoto = () => {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <div className="relative mx-auto md:mx-0 w-full max-w-[240px] md:max-w-[280px] shrink-0"
+      style={{ height: "clamp(260px, 30vw, 320px)" }}>
+      <div className="w-full h-full rounded-xl overflow-hidden"
+        style={{ border: "2px solid rgba(201,168,76,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
+        {imgError ? (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-3"
+            style={{ background: "linear-gradient(135deg, #1a1a2e, #111118)" }}>
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.3)" strokeWidth="1.5">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span className="text-[#7a7468] text-[0.8rem]">[ Votre photo ici ]</span>
+          </div>
+        ) : (
+          <img src="/images/rosine-photo.jpg" alt="Rosine — Expert IA"
+            className="w-full h-full object-cover object-top" onError={() => setImgError(true)} />
+        )}
+      </div>
+      <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-syne font-bold text-[0.65rem] md:text-[0.72rem] px-4 md:px-5 py-2 rounded-full"
+        style={{ background: "#c9a84c", color: "#0a0a0f" }}>✓ Certifiée Expert IA</span>
+    </div>
+  );
+};
+
+const rosineCredits = [
+  "+200 e-commerçants africains formés à l'IA",
+  "Spécialiste HeyGen, Canva AI, ChatGPT appliqués au e-commerce",
+  "Créatrice de contenu faceless avec +X abonnés sur TikTok",
+  "Basée à Abidjan — je connais les réalités du marché africain",
+];
+
+const RosineSection = () => (
+  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(201,168,76,0.03) 50%, transparent)" }}>
+    <div className="max-w-4xl mx-auto page-container">
+      <Badge>Ta formatrice</Badge>
+      <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-12">
+        Rosine, <span className="text-gold">Expert IA</span> pour e-commerçants africains
+      </h2>
+      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <RosinePhoto />
+        <div className="flex-1 mt-6 md:mt-0">
+          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9] mb-6">
+            Je suis Rosine, créatrice de contenu IA et formatrice spécialisée dans l'e-commerce africain. J'ai aidé plus de 200 entrepreneurs à transformer leur boutique en ligne grâce à l'intelligence artificielle — sans agence, sans budget fou.
+          </p>
+          <div className="flex flex-col gap-3.5 mb-8">
+            {rosineCredits.map((c, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[#c9a84c] text-[0.75rem] font-bold">✓</span>
+                <span className="text-[0.85rem] md:text-[0.9rem] text-[#a09a8e]">{c}</span>
+              </div>
+            ))}
+          </div>
+          <blockquote className="text-[1rem] text-paper italic leading-[1.8] p-5 rounded-r-lg"
+            style={{ borderLeft: "3px solid #c9a84c", background: "rgba(201,168,76,0.04)" }}>
+            "Mon objectif : que chaque e-commerçant africain ait accès aux mêmes outils que les grandes marques — sans les mêmes budgets."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 const videos = [
   { src: "/videos/video-1.mp4", label: "Vidéo produit IA · Module 01", sub: "Créé avec HeyGen + CapCut" },
   { src: "/videos/video-2.mp4", label: "Affiche animée pub · Module 02", sub: "Créé avec Canva AI + Runway" },
@@ -461,6 +568,17 @@ const Pricing = () => (
             9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
+          {/* Guarantee Block */}
+          <div className="flex items-start gap-4 rounded-lg p-5 mb-6"
+            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5" className="w-10 h-10 shrink-0">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <div>
+              <p className="font-syne font-bold text-[0.9rem] text-paper mb-1.5">Garantie 7 jours satisfait ou remboursé</p>
+              <p className="text-[0.82rem] text-[#a09a8e] leading-[1.7]">Tu appliques les méthodes. Si dans les 7 jours tu n'es pas satisfait, je te rembourse intégralement. Sans question posée.</p>
+            </div>
+          </div>
           <a href="LIEN_PAIEMENT" className="btn-gold block w-full text-center py-4 mb-8"><span>Je veux accéder maintenant →</span></a>
           <ul className="space-y-3 mb-8">
             {pricingItems.map((item, i) => (
@@ -557,6 +675,8 @@ const BlueprintPage = () => {
       <Problem />
       <Modules />
       <WhoIsItFor />
+      <BonusSection />
+      <RosineSection />
       <VideoSection />
       <AffichesSection />
       <Testimonials />
