@@ -14,26 +14,6 @@ const PromoBanner = () => (
   </div>
 );
 
-const BannerImage = () => {
-  const [imgError, setImgError] = useState(false);
-  return (
-    <div className="banner-image w-full overflow-hidden" style={{ background: "#111118" }}>
-      {imgError ? (
-        <div className="flex items-center justify-center font-syne text-gold"
-          style={{ background: "linear-gradient(135deg, #111118, #1a1a2e)", borderBottom: "2px solid rgba(201,168,76,0.4)", height: "100%" }}>
-          [ Votre affiche publicitaire ici ]
-        </div>
-      ) : (
-        <img
-          src="/images/banniere-pub.jpg"
-          alt="Blue Print IA Academy"
-          className="w-full h-full object-cover object-top block"
-          onError={() => setImgError(true)}
-        />
-      )}
-    </div>
-  );
-};
 
 const StickyBar = () => {
   const [show, setShow] = useState(false);
@@ -60,28 +40,148 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const HeroBannerImage = () => {
+  const [imgError, setImgError] = useState(false);
+  return imgError ? (
+    <div className="w-full flex items-center justify-center font-syne text-[#c9a84c] rounded-xl mb-8"
+      style={{ background: "linear-gradient(135deg, #111118, #1a1a2e)", border: "2px dashed rgba(201,168,76,0.3)", height: "220px", maxHeight: "420px" }}>
+      [ Affiche pub ici ]
+    </div>
+  ) : (
+    <img
+      src="/images/banniere-pub.jpg"
+      alt="Blue Print IA Academy"
+      className="w-full object-cover object-top block rounded-xl mb-8"
+      style={{ maxHeight: "420px", border: "1px solid rgba(201,168,76,0.2)" }}
+      onError={() => setImgError(true)}
+    />
+  );
+};
+
+const CountdownTimer = () => {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [expired, setExpired] = useState(false);
+
+  useEffect(() => {
+    let deadline = localStorage.getItem("blueprint_deadline");
+    if (!deadline) {
+      const d = new Date();
+      d.setDate(d.getDate() + 7);
+      deadline = d.toISOString();
+      localStorage.setItem("blueprint_deadline", deadline);
+    }
+    const target = new Date(deadline).getTime();
+
+    const update = () => {
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) { setExpired(true); return; }
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000) / 60000),
+        seconds: Math.floor((diff % 60000) / 1000),
+      });
+    };
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (expired) return <p className="font-syne text-[#c9a84c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
+
+  const blocks = [
+    { value: timeLeft.days, label: "Jours" },
+    { value: timeLeft.hours, label: "Heures" },
+    { value: timeLeft.minutes, label: "Minutes" },
+    { value: timeLeft.seconds, label: "Secondes" },
+  ];
+
+  return (
+    <div className="mb-8">
+      <p className="font-syne text-[0.85rem] font-semibold text-[#f5f2eb] text-center tracking-[0.05em] mb-4">L'offre se termine dans</p>
+      <div className="flex items-center justify-center gap-2 sm:gap-3">
+        {blocks.map((b, i) => (
+          <div key={i} className="flex items-center gap-2 sm:gap-3">
+            <div className="flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16"
+              style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
+              <span className="font-syne font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#f5f2eb]">{String(b.value).padStart(2, "0")}</span>
+              <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
+            </div>
+            {i < 3 && <span className="font-extrabold text-[#c9a84c] text-lg">:</span>}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const paymentBadges = [
+  { label: "WAVE", bg: "rgba(0,100,255,0.15)", border: "rgba(0,100,255,0.3)" },
+  { label: "ORANGE", bg: "rgba(255,140,0,0.15)", border: "rgba(255,140,0,0.3)" },
+  { label: "MTN", bg: "rgba(255,200,0,0.15)", border: "rgba(255,200,0,0.3)" },
+  { label: "MOOV", bg: "rgba(0,180,100,0.15)", border: "rgba(0,180,100,0.3)" },
+  { label: "VISA", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)" },
+  { label: "MASTERCARD", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)" },
+  { label: "PAYPAL", bg: "rgba(0,80,200,0.1)", border: "rgba(0,80,200,0.2)" },
+  { label: "CARTE", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.1)" },
+];
+
 const Hero = () => (
-  <section className="relative min-h-screen flex items-center section-padding">
+  <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16">
     <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
       style={{ background: "radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08), transparent 60%)" }} />
-    <div className="page-container relative">
-      <div className="fade-up" style={{ animationDelay: "0.2s" }}>
-        <Badge>Blue Print IA Academy</Badge>
-      </div>
-      <h1 className="fade-up font-syne font-extrabold leading-[1.1] mb-6 hero-title">
+    <div className="page-container relative max-w-2xl mx-auto">
+      {/* Title */}
+      <h1 className="fade-up font-syne font-extrabold leading-[1.15] mb-4 text-[#f5f2eb]"
+        style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}>
         Crée des visuels, vidéos et fiches produits{" "}
-        <span className="text-gold">pro avec l'IA</span> — sans agence, sans budget fou
+        <span className="text-[#c9a84c]">pro avec l'IA</span> — sans agence, sans budget fou
       </h1>
-      <p className="fade-up text-[#a09a8e] text-lg max-w-[560px] mb-8" style={{ animationDelay: "0.6s" }}>
-        La formation complète pour les e-commerçants africains qui veulent utiliser l'intelligence artificielle pour booster leurs ventes — vidéos, affiches pub, fiches produits, pages produits clés en main.
-      </p>
-      <div className="fade-up hero-cta-group flex flex-wrap items-center gap-4 mb-3" style={{ animationDelay: "0.8s" }}>
-        <a href="#pricing" className="btn-gold"><span>Accéder à la formation →</span></a>
-        <span className="font-syne font-extrabold text-gold text-xl">9 900 FCFA</span>
+
+      {/* Badge Formation */}
+      <div className="fade-up flex items-center gap-2 mb-6" style={{ animationDelay: "0.2s" }}>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a7468" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/>
+        </svg>
+        <span className="text-[#7a7468] text-[0.9rem]">Formation</span>
       </div>
-      <p className="fade-up text-[#7a7468] text-[0.78rem]" style={{ animationDelay: "0.8s" }}>
-        ✓ Accès immédiat · Wave & Orange Money acceptés
-      </p>
+
+      {/* Banner Image */}
+      <div className="fade-up" style={{ animationDelay: "0.4s" }}>
+        <HeroBannerImage />
+      </div>
+
+      {/* Prix */}
+      <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
+        <span className="font-syne text-[1.1rem] sm:text-[1.4rem] text-[#7a7468] line-through">15 200 FCFA</span>
+        <span className="font-syne font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#c9a84c]">9 900 FCFA</span>
+      </div>
+      <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
+
+      {/* Countdown */}
+      <div className="fade-up" style={{ animationDelay: "0.7s" }}>
+        <CountdownTimer />
+      </div>
+
+      {/* CTA Button */}
+      <a href="#pricing" className="fade-up block w-full text-center font-syne font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
+        style={{ background: "#c9a84c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#e8cc7e")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#c9a84c")}>
+        Rejoindre la formation →
+      </a>
+      <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
+
+      {/* Payment Badges */}
+      <div className="flex flex-wrap justify-center gap-2">
+        {paymentBadges.map((b, i) => (
+          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-syne font-bold text-[0.55rem] text-[#f5f2eb]"
+            style={{ background: b.bg, border: `1px solid ${b.border}` }}>
+            {b.label}
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );
@@ -451,7 +551,6 @@ const BlueprintPage = () => {
   return (
     <>
       <PromoBanner />
-      <BannerImage />
       <StickyBar />
       <Hero />
       <ProofBar />
