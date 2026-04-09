@@ -45,6 +45,7 @@ body {
   color: #f5f2eb;
   margin: 0;
   overflow-x: hidden;
+  padding-top: 44px;
 }
 
 h1, h2, h3, h4, h5, h6, .font-syne {
@@ -60,6 +61,12 @@ body::before {
   pointer-events: none;
   opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Shimmer animation for promo banner */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 /* Reveal animation */
@@ -166,6 +173,141 @@ body::before {
 }
 .module-card:hover {
   background: #0f0f18;
+}
+
+/* Page container & section padding defaults */
+.page-container {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.section-padding {
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+/* Hero title */
+.hero-title {
+  font-size: clamp(1.8rem, 7vw, 2.4rem);
+  animation-delay: 0.4s;
+}
+
+/* Hero CTA group */
+.hero-cta-group {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Pricing card */
+.pricing-card {
+  max-width: 480px;
+  padding: 36px 24px;
+}
+.pricing-price {
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+/* FAQ question */
+.faq-question {
+  font-size: 0.88rem;
+}
+
+/* Final CTA button */
+.final-cta-btn {
+  width: 100%;
+}
+
+/* Banner image */
+.banner-image {
+  max-height: 220px;
+}
+
+/* Promo banner mobile */
+.promo-banner {
+  font-size: 0.68rem;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+  min-height: 56px;
+}
+
+/* Mobile body padding */
+body {
+  padding-top: 56px;
+}
+
+/* ============ TABLET (481px – 900px) ============ */
+@media (min-width: 481px) {
+  .page-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .section-padding {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  .hero-cta-group {
+    flex-direction: row;
+    align-items: center;
+  }
+  .pricing-card {
+    max-width: 440px;
+    padding: 48px 40px;
+  }
+  .pricing-price {
+    font-size: 3rem;
+  }
+  .faq-question {
+    font-size: 0.92rem;
+  }
+  .final-cta-btn {
+    width: auto;
+  }
+  .banner-image {
+    max-height: 360px;
+  }
+  .promo-banner {
+    font-size: 0.75rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    text-align: center;
+    min-height: 44px;
+  }
+  body {
+    padding-top: 44px;
+  }
+}
+
+/* ============ DESKTOP (≥901px) ============ */
+@media (min-width: 901px) {
+  .page-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .hero-title {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+  }
+  .pricing-card {
+    max-width: 480px;
+    padding: 56px 48px;
+  }
+  .pricing-price {
+    font-size: 3.5rem;
+  }
+  .faq-question {
+    font-size: 0.875rem;
+  }
+  .banner-image {
+    max-height: 520px;
+  }
 }
 
 @layer base {
