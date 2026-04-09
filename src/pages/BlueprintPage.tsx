@@ -37,7 +37,7 @@ const StickyBar = () => {
       style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-syne text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
-        <a href="#pricing" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
+        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
       </div>
     </div>
   );
@@ -175,7 +175,7 @@ const Hero = () => (
       </div>
 
       {/* CTA Button */}
-      <a href="#pricing" className="fade-up block w-full text-center font-syne font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up block w-full text-center font-syne font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
         style={{ background: "#c9a84c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#e8cc7e")}
         onMouseLeave={e => (e.currentTarget.style.background = "#c9a84c")}>
@@ -589,7 +589,7 @@ const Pricing = () => (
               <p className="text-[0.82rem] text-[#a09a8e] leading-[1.7]">Tu appliques les méthodes. Si dans les 7 jours tu n'es pas satisfait, je te rembourse intégralement. Sans question posée.</p>
             </div>
           </div>
-          <a href="LIEN_PAIEMENT" className="btn-gold block w-full text-center py-4 mb-8"><span>Je veux accéder maintenant →</span></a>
+          <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-8"><span>Je veux accéder maintenant →</span></a>
           <ul className="space-y-3 mb-8">
             {pricingItems.map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-paper/80 text-sm">
@@ -654,7 +654,7 @@ const FinalCTA = () => (
       <p className="text-[#7a7468] max-w-[480px] mx-auto mb-8">
         Pour 9 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 4 modules complets qui vont transformer ta façon de vendre en ligne.
       </p>
-      <a href="#pricing" className="btn-gold inline-block mb-4 final-cta-btn"><span>Accéder à Blue Print IA Academy →</span></a>
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Accéder à Blue Print IA Academy →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
     </div>
   </section>
