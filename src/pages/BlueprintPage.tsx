@@ -568,6 +568,17 @@ const Pricing = () => (
             9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
+          {/* Guarantee Block */}
+          <div className="flex items-start gap-4 rounded-lg p-5 mb-6"
+            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5" className="w-10 h-10 shrink-0">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <div>
+              <p className="font-syne font-bold text-[0.9rem] text-paper mb-1.5">Garantie 7 jours satisfait ou remboursé</p>
+              <p className="text-[0.82rem] text-[#a09a8e] leading-[1.7]">Tu appliques les méthodes. Si dans les 7 jours tu n'es pas satisfait, je te rembourse intégralement. Sans question posée.</p>
+            </div>
+          </div>
           <a href="LIEN_PAIEMENT" className="btn-gold block w-full text-center py-4 mb-8"><span>Je veux accéder maintenant →</span></a>
           <ul className="space-y-3 mb-8">
             {pricingItems.map((item, i) => (
@@ -664,6 +675,8 @@ const BlueprintPage = () => {
       <Problem />
       <Modules />
       <WhoIsItFor />
+      <BonusSection />
+      <RosineSection />
       <VideoSection />
       <AffichesSection />
       <Testimonials />
