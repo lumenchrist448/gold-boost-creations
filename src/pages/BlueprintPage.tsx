@@ -1,16 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 
 const PromoBanner = () => (
-  <div className="promo-banner fixed top-0 left-0 right-0 z-[200] flex items-center justify-center flex-wrap gap-3 px-4 py-2 font-syne font-bold text-ink"
-    style={{ background: "linear-gradient(90deg, #7a6230, #c9a84c, #7a6230)", backgroundSize: "200% 100%", animation: "shimmer 3s linear infinite", minHeight: "44px" }}>
-    <span>🔥 OFFRE LIMITÉE — <span className="font-extrabold">35% DE RÉDUCTION</span></span>
-    <span>|</span>
-    <span>Prix normal : <span style={{ textDecoration: "line-through", opacity: 0.6 }}>15 200 FCFA</span></span>
-    <span>→</span>
-    <span className="font-extrabold" style={{ background: "rgba(0,0,0,0.15)", padding: "2px 8px", borderRadius: "2px" }}>9 900 FCFA</span>
-    <span>aujourd'hui</span>
-    <span>|</span>
-    <span>⏳ Expire bientôt</span>
+  <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-syne font-bold"
+    style={{
+      background: "linear-gradient(90deg, #7a6230, #c9a84c, #7a6230)",
+      backgroundSize: "200% 100%",
+      animation: "shimmer 3s linear infinite",
+      height: "36px",
+      minHeight: "36px",
+      maxHeight: "36px",
+      overflow: "hidden",
+      flexWrap: "nowrap",
+      color: "#0a0a0f",
+      fontSize: "clamp(0.58rem, 1.5vw, 0.72rem)",
+    }}>
+    <span style={{ whiteSpace: "nowrap" }}>🔥 -35%</span>
+    <span style={{ whiteSpace: "nowrap" }}>|</span>
+    <span style={{ whiteSpace: "nowrap", textDecoration: "line-through", opacity: 0.6 }}>15 200 FCFA</span>
+    <span style={{ whiteSpace: "nowrap" }}>→</span>
+    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>9 900 FCFA</span>
+    <span style={{ whiteSpace: "nowrap" }}>|</span>
+    <span style={{ whiteSpace: "nowrap" }}>⏳ Expire bientôt</span>
   </div>
 );
 
