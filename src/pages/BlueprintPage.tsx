@@ -1,5 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 
+const PromoBanner = () => (
+  <div className="promo-banner fixed top-0 left-0 right-0 z-[200] flex items-center justify-center flex-wrap gap-3 px-4 py-2 font-syne font-bold text-ink"
+    style={{ background: "linear-gradient(90deg, #7a6230, #c9a84c, #7a6230)", backgroundSize: "200% 100%", animation: "shimmer 3s linear infinite", minHeight: "44px" }}>
+    <span>🔥 OFFRE LIMITÉE — <span className="font-extrabold">35% DE RÉDUCTION</span></span>
+    <span>|</span>
+    <span>Prix normal : <span style={{ textDecoration: "line-through", opacity: 0.6 }}>15 200 FCFA</span></span>
+    <span>→</span>
+    <span className="font-extrabold" style={{ background: "rgba(0,0,0,0.15)", padding: "2px 8px", borderRadius: "2px" }}>9 900 FCFA</span>
+    <span>aujourd'hui</span>
+    <span>|</span>
+    <span>⏳ Expire bientôt</span>
+  </div>
+);
+
+const BannerImage = () => {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <div className="banner-image w-full overflow-hidden" style={{ background: "#111118" }}>
+      {imgError ? (
+        <div className="flex items-center justify-center font-syne text-gold"
+          style={{ background: "linear-gradient(135deg, #111118, #1a1a2e)", borderBottom: "2px solid rgba(201,168,76,0.4)", height: "100%" }}>
+          [ Votre affiche publicitaire ici ]
+        </div>
+      ) : (
+        <img
+          src="/images/banniere-pub.jpg"
+          alt="Blue Print IA Academy"
+          className="w-full h-full object-cover object-top block"
+          onError={() => setImgError(true)}
+        />
+      )}
+    </div>
+  );
+};
+
 const StickyBar = () => {
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -12,7 +47,7 @@ const StickyBar = () => {
       style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-syne text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
-        <a href="#pricing" className="btn-gold"><span>J'accède maintenant</span></a>
+        <a href="#pricing" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
       </div>
     </div>
   );
@@ -26,21 +61,21 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Hero = () => (
-  <section className="relative min-h-screen flex items-center" style={{ padding: "100px 0 60px" }}>
+  <section className="relative min-h-screen flex items-center section-padding">
     <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
       style={{ background: "radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08), transparent 60%)" }} />
-    <div className="max-w-3xl mx-auto px-4 relative">
+    <div className="page-container relative">
       <div className="fade-up" style={{ animationDelay: "0.2s" }}>
         <Badge>Blue Print IA Academy</Badge>
       </div>
-      <h1 className="fade-up font-syne font-extrabold leading-[1.1] mb-6" style={{ animationDelay: "0.4s", fontSize: "clamp(2.4rem, 6vw, 4rem)" }}>
+      <h1 className="fade-up font-syne font-extrabold leading-[1.1] mb-6 hero-title">
         Crée des visuels, vidéos et fiches produits{" "}
         <span className="text-gold">pro avec l'IA</span> — sans agence, sans budget fou
       </h1>
       <p className="fade-up text-[#a09a8e] text-lg max-w-[560px] mb-8" style={{ animationDelay: "0.6s" }}>
         La formation complète pour les e-commerçants africains qui veulent utiliser l'intelligence artificielle pour booster leurs ventes — vidéos, affiches pub, fiches produits, pages produits clés en main.
       </p>
-      <div className="fade-up flex flex-wrap items-center gap-4 mb-3" style={{ animationDelay: "0.8s" }}>
+      <div className="fade-up hero-cta-group flex flex-wrap items-center gap-4 mb-3" style={{ animationDelay: "0.8s" }}>
         <a href="#pricing" className="btn-gold"><span>Accéder à la formation →</span></a>
         <span className="font-syne font-extrabold text-gold text-xl">9 900 FCFA</span>
       </div>
@@ -60,7 +95,7 @@ const proofItems = [
 
 const ProofBar = () => (
   <section className="py-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-    <div className="max-w-5xl mx-auto px-4 flex flex-wrap justify-center gap-8">
+    <div className="page-container flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-8">
       {proofItems.map((item, i) => (
         <div key={i} className="reveal flex items-center gap-2 text-sm text-[#7a7468]">
           <span className="text-gold text-lg">{item.icon}</span>
@@ -80,8 +115,8 @@ const problems = [
 ];
 
 const Problem = () => (
-  <section className="py-20 md:py-24" style={{ background: "linear-gradient(180deg, transparent, rgba(201,168,76,0.03) 50%, transparent)" }}>
-    <div className="max-w-2xl mx-auto px-4 text-center">
+  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(201,168,76,0.03) 50%, transparent)" }}>
+    <div className="max-w-2xl mx-auto page-container text-center">
       <Badge>Le vrai problème</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <p className="reveal text-[1.3rem] text-[#c8c2b8] max-w-[600px] mx-auto mb-10">
@@ -90,7 +125,7 @@ const Problem = () => (
         — ça prend un temps fou ou ça coûte une fortune à sous-traiter.
       </p>
     </div>
-    <div className="max-w-2xl mx-auto px-4 space-y-3">
+    <div className="max-w-2xl mx-auto page-container space-y-3">
       {problems.map((p, i) => (
         <div key={i} className="reveal flex items-start gap-3 p-5 rounded"
           style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)", transition: "border-color 0.3s" }}
@@ -112,8 +147,8 @@ const modules = [
 ];
 
 const Modules = () => (
-  <section className="py-20 md:py-24">
-    <div className="max-w-4xl mx-auto px-4">
+  <section className="section-padding">
+    <div className="max-w-4xl mx-auto page-container">
       <Badge>Ce que tu vas maîtriser</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-10">
         4 modules. <span className="text-gold">Des résultats concrets.</span>
@@ -147,8 +182,8 @@ const noItems = [
 ];
 
 const WhoIsItFor = () => (
-  <section className="py-20 md:py-24">
-    <div className="max-w-4xl mx-auto px-4">
+  <section className="section-padding">
+    <div className="max-w-4xl mx-auto page-container">
       <Badge>Pour qui ?</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-10">
         Cette formation est <span className="text-gold">faite pour toi</span>
@@ -182,20 +217,20 @@ const videos = [
 ];
 
 const VideoSection = () => (
-  <section className="py-20 md:py-24">
-    <div className="max-w-5xl mx-auto px-4">
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
       <Badge>La formation en action</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
         Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
       </h2>
       <p className="text-[#7a7468] mb-10">Des vidéos produits 100% générées avec les outils enseignés dans la formation.</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
             style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
-            <div style={{ aspectRatio: "9/16" }}>
+            <div className="video-aspect" style={{ aspectRatio: "9/16" }}>
               <video controls preload="metadata" className="w-full h-full object-cover">
                 <source src={v.src} type="video/mp4" />
               </video>
@@ -212,14 +247,14 @@ const VideoSection = () => (
 );
 
 const AffichesSection = () => (
-  <section className="py-20 md:py-24">
-    <div className="max-w-5xl mx-auto px-4">
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
       <Badge>Résultats visuels</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
         Des affiches pub <span className="text-gold">créées en 5 minutes</span>
       </h2>
       <p className="text-[#7a7468] mb-10">Toutes ces affiches ont été générées avec les outils du Module 02 — sans graphiste, sans agence.</p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div key={n} className="reveal overflow-hidden rounded transition-transform duration-300 hover:scale-[1.02]"
             style={{ aspectRatio: "4/5", border: "1px solid rgba(255,255,255,0.06)" }}>
@@ -240,8 +275,8 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <section className="py-20 md:py-24">
-    <div className="max-w-4xl mx-auto px-4">
+  <section className="section-padding">
+    <div className="max-w-4xl mx-auto page-container">
       <Badge>Ils témoignent</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-10">
         Ce qu'ils disent après <span className="text-gold">la formation</span>
@@ -272,8 +307,8 @@ const Testimonials = () => (
 );
 
 const PreuvesSection = () => (
-  <section className="py-20 md:py-24">
-    <div className="max-w-5xl mx-auto px-4">
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
       <Badge>Ils l'ont fait</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
         <span className="text-gold">Preuves réelles</span> de résultats
@@ -309,20 +344,20 @@ const pricingItems = [
 ];
 
 const Pricing = () => (
-  <section id="pricing" className="py-20 md:py-24">
-    <div className="max-w-2xl mx-auto px-4">
+  <section id="pricing" className="section-padding">
+    <div className="max-w-2xl mx-auto page-container">
       <div className="text-center mb-10">
         <Badge>Tarif</Badge>
         <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper">
           Un seul investissement. <span className="text-gold">Des résultats durables.</span>
         </h2>
       </div>
-      <div className="reveal relative max-w-[480px] mx-auto rounded p-12 md:p-14"
+      <div className="reveal relative pricing-card mx-auto rounded"
         style={{ border: "1px solid rgba(201,168,76,0.25)", background: "linear-gradient(135deg, rgba(201,168,76,0.04), transparent)" }}>
         <div className="absolute inset-0 rounded pointer-events-none" style={{ boxShadow: "0 0 40px rgba(201,168,76,0.05)" }} />
         <div className="relative">
           <p className="font-syne text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Blue Print IA Academy — Accès complet</p>
-          <p className="font-syne font-extrabold text-paper mb-1" style={{ fontSize: "3.5rem", lineHeight: 1 }}>
+          <p className="font-syne font-extrabold text-paper mb-1 pricing-price">
             9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
@@ -357,15 +392,15 @@ const faqData = [
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <section className="py-20 md:py-24">
-      <div className="max-w-[620px] mx-auto px-4">
+    <section className="section-padding">
+      <div className="max-w-[620px] mx-auto page-container">
         <Badge>FAQ</Badge>
         <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-10">Questions fréquentes</h2>
         {faqData.map((item, i) => (
           <div key={i} className={`faq-item ${openIndex === i ? "open" : ""}`}
             style={{ borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "24px 0" }}>
             <button onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="w-full flex items-center justify-between text-left text-paper font-syne font-semibold text-sm">
+              className="w-full flex items-center justify-between text-left text-paper font-syne font-semibold text-sm faq-question">
               {item.q}
               <span className="faq-icon text-gold text-xl ml-4 shrink-0">+</span>
             </button>
@@ -380,9 +415,9 @@ const FAQ = () => {
 };
 
 const FinalCTA = () => (
-  <section className="py-20 md:py-24 text-center relative">
+  <section className="section-padding text-center relative">
     <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(201,168,76,0.06), transparent 60%)" }} />
-    <div className="max-w-xl mx-auto px-4 relative">
+    <div className="max-w-xl mx-auto page-container relative">
       <Badge>Dernière chance</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
@@ -391,7 +426,7 @@ const FinalCTA = () => (
       <p className="text-[#7a7468] max-w-[480px] mx-auto mb-8">
         Pour 9 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 4 modules complets qui vont transformer ta façon de vendre en ligne.
       </p>
-      <a href="#pricing" className="btn-gold inline-block mb-4"><span>Accéder à Blue Print IA Academy →</span></a>
+      <a href="#pricing" className="btn-gold inline-block mb-4 final-cta-btn"><span>Accéder à Blue Print IA Academy →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
     </div>
   </section>
@@ -415,6 +450,8 @@ const BlueprintPage = () => {
 
   return (
     <>
+      <PromoBanner />
+      <BannerImage />
       <StickyBar />
       <Hero />
       <ProofBar />
