@@ -434,7 +434,21 @@ const videos = [
   { src: "/videos/video_2.mp4", label: "Affiche animée pub · Module 02", sub: "Créé avec Canva AI + Runway" },
   { src: "/videos/video_3.mp4", label: "Présentation page produit · Module 04", sub: "Créé avec les templates fournis" },
 ];
-...
+
+const VideoSection = () => (
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
+      <Badge>La formation en action</Badge>
+      <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
+        Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
+      </h2>
+      <p className="text-[#7a7468] mb-10">Des vidéos produits 100% générées avec les outils enseignés dans la formation.</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
+        {videos.map((v, i) => (
+          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
+            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
+            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
               <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
                 <source src={v.src} type="video/mp4" />
