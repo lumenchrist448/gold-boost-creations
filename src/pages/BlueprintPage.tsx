@@ -571,11 +571,11 @@ const PreuvesCASection = () => (
         Zéro publicité Facebook. Zéro visage à la caméra.<br />
         Juste l'IA et les méthodes que j'enseigne dans Blue Print IA Academy.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ gap: 20 }}>
-        {caCards.map((c, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {caCards.slice(0, 2).map((c, i) => (
           <div
             key={i}
-            className={`reveal overflow-hidden transition-all duration-300 hover:-translate-y-1${i === 2 ? " sm:col-span-2 sm:max-w-[340px] sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
+            className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
             style={{
               background: "#111118",
               border: "1px solid rgba(201,168,76,0.2)",
@@ -594,11 +594,37 @@ const PreuvesCASection = () => (
               <img src={c.img} alt={c.label} className="w-full h-auto block" />
             </div>
             <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
-              <p className="font-syne font-bold" style={{ fontSize: "0.82rem", color: "#f5f2eb" }}>{c.label}</p>
-              <p style={{ fontSize: "0.72rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
+              <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{c.label}</p>
+              <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
             </div>
           </div>
         ))}
+      </div>
+      <div className="flex justify-center mt-5">
+        <div
+          className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
+          style={{
+            background: "#111118",
+            border: "1px solid rgba(201,168,76,0.2)",
+            borderRadius: 10,
+          }}
+          onMouseEnter={e => {
+            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.5)";
+            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(201,168,76,0.07)";
+          }}
+          onMouseLeave={e => {
+            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.2)";
+            (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+          }}
+        >
+          <div style={{ width: "100%", background: "#0a0a0f" }}>
+            <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
+          </div>
+          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
+            <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{caCards[2].label}</p>
+            <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{caCards[2].sub}</p>
+          </div>
+        </div>
       </div>
       <div style={{ maxWidth: 560, margin: "40px auto 0", textAlign: "center" }}>
         <div style={{ width: 40, height: 1, background: "#c9a84c", margin: "0 auto 16px" }} />
