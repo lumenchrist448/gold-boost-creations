@@ -536,10 +536,10 @@ const PreuvesSection = () => (
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div key={n} className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
-            style={{ aspectRatio: "9/16", background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
-            <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-full object-cover object-top" />
+            <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
           </div>
         ))}
       </div>
