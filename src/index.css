@@ -183,8 +183,8 @@ body::before {
 .btn-gold {
   position: relative;
   overflow: hidden;
-  background: #c9a84c;
-  color: #0a0a0f;
+  background: var(--hex-gold);
+  color: var(--hex-bg);
   font-family: 'Syne', sans-serif;
   text-transform: uppercase;
   font-size: 0.78rem;
@@ -202,7 +202,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: #e8cc7e;
+  background: var(--hex-gold-hover);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -226,14 +226,14 @@ body::before {
   top: 0;
   width: 3px;
   height: 0;
-  background: #c9a84c;
+  background: var(--hex-gold);
   transition: height 0.3s ease;
 }
 .module-card:hover::before {
   height: 100%;
 }
 .module-card:hover {
-  background: #0f0f18;
+  background: var(--hex-card-hover);
 }
 
 /* Page container & section padding defaults */
