@@ -32,6 +32,66 @@
     --card-foreground: 38 28% 94%;
     --popover: 240 22% 8%;
     --popover-foreground: 38 28% 94%;
+
+    /* Theme-aware hex tokens */
+    --hex-bg: #0a0a0f;
+    --hex-fg: #f5f2eb;
+    --hex-card: #111118;
+    --hex-card-hover: #0f0f18;
+    --hex-muted: #7a7468;
+    --hex-gold: #c9a84c;
+    --hex-gold-hover: #e8cc7e;
+    --hex-border-subtle: rgba(255,255,255,0.05);
+    --hex-border-gold: rgba(201,168,76,0.2);
+    --hex-border-gold-hover: rgba(201,168,76,0.5);
+    --hex-shadow-gold: rgba(201,168,76,0.07);
+    --hex-card-footer: rgba(201,168,76,0.03);
+    --hex-glass: rgba(10,10,15,0.95);
+  }
+
+  .light {
+    --ink: 38 28% 94%;
+    --paper: 240 10% 12%;
+    --gold: 43 52% 42%;
+    --gold-light: 43 55% 50%;
+    --gold-dim: 38 30% 35%;
+    --muted: 33 8% 55%;
+    --border-gold: 43 52% 42%;
+    --card: 40 20% 96%;
+
+    --background: 40 20% 97%;
+    --foreground: 240 20% 12%;
+    --primary: 43 52% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 15% 92%;
+    --secondary-foreground: 240 20% 12%;
+    --muted-foreground: 33 8% 45%;
+    --accent: 43 52% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 15% 82%;
+    --input: 40 15% 92%;
+    --ring: 43 52% 42%;
+    --card: 40 20% 96%;
+    --card-foreground: 240 20% 12%;
+    --popover: 40 20% 96%;
+    --popover-foreground: 240 20% 12%;
+
+    /* Theme-aware hex tokens — light */
+    --hex-bg: #f7f5f0;
+    --hex-fg: #1a1a2e;
+    --hex-card: #ffffff;
+    --hex-card-hover: #f5f3ee;
+    --hex-muted: #6b6560;
+    --hex-gold: #9a7d30;
+    --hex-gold-hover: #b8942e;
+    --hex-border-subtle: rgba(0,0,0,0.06);
+    --hex-border-gold: rgba(154,125,48,0.25);
+    --hex-border-gold-hover: rgba(154,125,48,0.5);
+    --hex-shadow-gold: rgba(154,125,48,0.1);
+    --hex-card-footer: rgba(154,125,48,0.05);
+    --hex-glass: rgba(247,245,240,0.95);
   }
 }
 
@@ -41,11 +101,12 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: #0a0a0f;
-  color: #f5f2eb;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
   margin: 0;
   overflow-x: hidden;
   padding-top: 36px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6, .font-syne {
@@ -122,8 +183,8 @@ body::before {
 .btn-gold {
   position: relative;
   overflow: hidden;
-  background: #c9a84c;
-  color: #0a0a0f;
+  background: var(--hex-gold);
+  color: var(--hex-bg);
   font-family: 'Syne', sans-serif;
   text-transform: uppercase;
   font-size: 0.78rem;
@@ -141,7 +202,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: #e8cc7e;
+  background: var(--hex-gold-hover);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
@@ -165,14 +226,14 @@ body::before {
   top: 0;
   width: 3px;
   height: 0;
-  background: #c9a84c;
+  background: var(--hex-gold);
   transition: height 0.3s ease;
 }
 .module-card:hover::before {
   height: 100%;
 }
 .module-card:hover {
-  background: #0f0f18;
+  background: var(--hex-card-hover);
 }
 
 /* Page container & section padding defaults */
