@@ -1,4 +1,39 @@
 import { useEffect, useRef, useState } from "react";
+import { Sun, Moon } from "lucide-react";
+
+const ThemeToggle = () => {
+  const [isLight, setIsLight] = useState(() => document.documentElement.classList.contains("light"));
+
+  const toggle = () => {
+    const next = !isLight;
+    setIsLight(next);
+    document.documentElement.classList.toggle("light", next);
+    localStorage.setItem("theme", next ? "light" : "dark");
+  };
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") {
+      setIsLight(true);
+      document.documentElement.classList.add("light");
+    }
+  }, []);
+
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Basculer le thème"
+      className="fixed top-[44px] right-4 z-[201] flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300"
+      style={{
+        background: isLight ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.08)",
+        border: `1px solid ${isLight ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)"}`,
+        backdropFilter: "blur(8px)",
+      }}
+    >
+      {isLight ? <Moon size={16} className="text-[#2d2d2d]" /> : <Sun size={16} className="text-[#f5f2eb]" />}
+    </button>
+  );
+};
 
 const PromoBanner = () => (
   <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-syne font-bold"
