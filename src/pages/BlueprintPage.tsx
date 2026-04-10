@@ -423,9 +423,9 @@ const RosineSection = () => (
 );
 
 const videos = [
-  { src: "/videos/video_1.mp4", label: "Vidéo produit IA · Module 01", sub: "Créé avec HeyGen + CapCut" },
-  { src: "/videos/video_2.mp4", label: "Affiche animée pub · Module 02", sub: "Créé avec Canva AI + Runway" },
-  { src: "/videos/video_3.mp4", label: "Présentation page produit · Module 04", sub: "Créé avec les templates fournis" },
+  { src: "/videos/video_1.mp4", label: "Exemple de vidéo générée avec l'IA", sub: "" },
+  { src: "/videos/video_2.mp4", label: "Exemple de vidéo générée avec l'IA", sub: "" },
+  { src: "/videos/video_3.mp4", label: "Exemple de vidéo générée avec l'IA", sub: "" },
 ];
 
 const VideoSection = () => (
