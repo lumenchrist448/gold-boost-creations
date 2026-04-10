@@ -552,6 +552,66 @@ const PreuvesSection = () => (
   </section>
 );
 
+const caCards = [
+  { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en pub" },
+  { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100% organique · Contenu IA" },
+  { img: "/images/ca-3.jpg", label: "Statistiques sans publicité payante", sub: "Méthode Blue Print IA Academy" },
+];
+
+const PreuvesCASection = () => (
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
+      <Badge>Preuve concrète</Badge>
+      <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
+        Ce que l'IA m'a permis de générer{" "}
+        <span className="text-gold">sans pub payante et sans montrer mon visage</span>
+      </h2>
+      <p style={{ color: "#7a7468", fontSize: "0.9rem", textAlign: "center", maxWidth: 540, margin: "0 auto 48px" }}>
+        Captures d'écran réelles de mes tableaux de bord.<br />
+        Zéro publicité Facebook. Zéro visage à la caméra.<br />
+        Juste l'IA et les méthodes que j'enseigne dans Blue Print IA Academy.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ gap: 20 }}>
+        {caCards.map((c, i) => (
+          <div
+            key={i}
+            className={`reveal overflow-hidden transition-all duration-300 hover:-translate-y-1${i === 2 ? " sm:col-span-2 sm:max-w-[340px] sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
+            style={{
+              background: "#111118",
+              border: "1px solid rgba(201,168,76,0.2)",
+              borderRadius: 10,
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.5)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(201,168,76,0.07)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.2)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+            }}
+          >
+            <div style={{ aspectRatio: "9/16", width: "100%", background: "#0a0a0f" }}>
+              <img src={c.img} alt={c.label} className="w-full h-full object-cover object-top" />
+            </div>
+            <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
+              <p className="font-syne font-bold" style={{ fontSize: "0.82rem", color: "#f5f2eb" }}>{c.label}</p>
+              <p style={{ fontSize: "0.72rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ maxWidth: 560, margin: "40px auto 0", textAlign: "center" }}>
+        <div style={{ width: 40, height: 1, background: "#c9a84c", margin: "0 auto 16px" }} />
+        <p style={{ fontSize: "0.82rem", color: "#7a7468", lineHeight: 1.8 }}>
+          Ces captures sont issues de mes propres tableaux de bord.<br />
+          Les résultats varient selon l'effort et la régularité.<br />
+          Ce que j'enseigne, je le pratique.
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
 const pricingItems = [
   "Module 1 — Création vidéos produits IA",
   "Module 2 — Affiches publicitaires IA",
@@ -693,6 +753,7 @@ const BlueprintPage = () => {
       <AffichesSection />
       <Testimonials />
       <PreuvesSection />
+      <PreuvesCASection />
       <Pricing />
       <FAQ />
       <FinalCTA />
