@@ -46,7 +46,7 @@ const PromoBanner = () => (
       maxHeight: "36px",
       overflow: "hidden",
       flexWrap: "nowrap",
-      color: "#0a0a0f",
+      color: "var(--hex-bg)",
       fontSize: "clamp(0.58rem, 1.5vw, 0.72rem)",
     }}>
     <span style={{ whiteSpace: "nowrap" }}>🔥 -35%</span>
@@ -71,7 +71,7 @@ const StickyBar = () => {
   }, []);
   return (
     <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
-      style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
+      style={{ background: "var(--hex-glass)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-syne text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
@@ -94,7 +94,7 @@ const HeroBannerImage = () => (
     src={heroBannerImg}
     alt="Blue Print IA Academy"
     className="w-full object-cover object-center block rounded-xl mb-8"
-    style={{ border: "1px solid rgba(201,168,76,0.2)" }}
+    style={{ border: "1px solid var(--hex-border-gold)" }}
   />
 );
 
@@ -144,7 +144,7 @@ const CountdownTimer = () => {
         {blocks.map((b, i) => (
           <div key={i} className="flex items-center gap-2 sm:gap-3">
             <div className="flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16"
-              style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
+              style={{ background: "var(--hex-card)", border: "1px solid rgba(201,168,76,0.25)" }}>
               <span className="font-syne font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#f5f2eb]">{String(b.value).padStart(2, "0")}</span>
               <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
             </div>
@@ -206,7 +206,7 @@ const Hero = () => (
 
       {/* CTA Button */}
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up block w-full text-center font-syne font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
-        style={{ background: "#c9a84c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
+        style={{ background: "#c9a84c", color: "var(--hex-bg)", animationDelay: "0.8s", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#e8cc7e")}
         onMouseLeave={e => (e.currentTarget.style.background = "#c9a84c")}>
         Rejoindre la formation →
@@ -369,11 +369,11 @@ const BonusSection = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {bonusCards.map((b, i) => (
           <div key={i} className="reveal relative rounded-lg p-8 text-left transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.06)]"
-            style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}
+            style={{ background: "var(--hex-card)", border: "1px solid rgba(201,168,76,0.25)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.25)")}>
             <span className="absolute top-0 right-0 font-syne text-[0.6rem] font-bold tracking-[0.15em] px-2.5 py-1 rounded-tr-lg rounded-bl"
-              style={{ background: "#c9a84c", color: "#0a0a0f" }}>OFFERT</span>
+              style={{ background: "#c9a84c", color: "var(--hex-bg)" }}>OFFERT</span>
             <span className="text-3xl mb-4 block">{b.icon}</span>
             <h3 className="font-syne font-bold text-paper text-base mb-3">{b.title}</h3>
             <p className="text-[#a09a8e] text-sm leading-relaxed mb-4">{b.desc}</p>
@@ -414,7 +414,7 @@ const RosinePhoto = () => {
         )}
       </div>
       <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-syne font-bold text-[0.65rem] md:text-[0.72rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#c9a84c", color: "#0a0a0f" }}>✓ Certifiée Expert IA</span>
+        style={{ background: "#c9a84c", color: "var(--hex-bg)" }}>✓ Certifiée Expert IA</span>
     </div>
   );
 };
@@ -474,7 +474,7 @@ const VideoSection = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
-            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "var(--hex-card)", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
@@ -530,7 +530,7 @@ const Testimonials = () => (
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {testimonials.map((t, i) => (
-          <div key={i} className="reveal relative rounded p-8" style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
+          <div key={i} className="reveal relative rounded p-8" style={{ background: "var(--hex-card)", border: "1px solid rgba(201,168,76,0.25)" }}>
             <span className="absolute top-4 left-6 font-syne text-[5rem] leading-none text-gold/15 select-none">"</span>
             <div className="relative">
               <div className="flex text-gold text-sm mb-3">★★★★★</div>
@@ -564,7 +564,7 @@ const PreuvesSection = () => (
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div key={n} className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
-            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "var(--hex-card)", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
@@ -605,8 +605,8 @@ const PreuvesCASection = () => (
             key={i}
             className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
             style={{
-              background: "#111118",
-              border: "1px solid rgba(201,168,76,0.2)",
+              background: "var(--hex-card)",
+              border: "1px solid var(--hex-border-gold)",
               borderRadius: 10,
             }}
             onMouseEnter={e => {
@@ -618,11 +618,11 @@ const PreuvesCASection = () => (
               (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
             }}
           >
-            <div style={{ width: "100%", background: "#0a0a0f" }}>
+            <div style={{ width: "100%", background: "var(--hex-bg)" }}>
               <img src={c.img} alt={c.label} className="w-full h-auto block" />
             </div>
-            <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
-              <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{c.label}</p>
+            <div style={{ padding: "16px 20px", borderTop: "1px solid var(--hex-border-subtle)", background: "var(--hex-card-footer)" }}>
+              <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "var(--hex-fg)" }}>{c.label}</p>
               <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
             </div>
           </div>
@@ -632,8 +632,8 @@ const PreuvesCASection = () => (
         <div
           className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
           style={{
-            background: "#111118",
-            border: "1px solid rgba(201,168,76,0.2)",
+            background: "var(--hex-card)",
+            border: "1px solid var(--hex-border-gold)",
             borderRadius: 10,
           }}
           onMouseEnter={e => {
@@ -645,11 +645,11 @@ const PreuvesCASection = () => (
             (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
           }}
         >
-          <div style={{ width: "100%", background: "#0a0a0f" }}>
+          <div style={{ width: "100%", background: "var(--hex-bg)" }}>
             <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
           </div>
-          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
-            <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{caCards[2].label}</p>
+          <div style={{ padding: "16px 20px", borderTop: "1px solid var(--hex-border-subtle)", background: "var(--hex-card-footer)" }}>
+            <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "var(--hex-fg)" }}>{caCards[2].label}</p>
             <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{caCards[2].sub}</p>
           </div>
         </div>
@@ -696,7 +696,7 @@ const Pricing = () => (
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           {/* Guarantee Block */}
           <div className="flex items-start gap-4 rounded-lg p-5 mb-6"
-            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)" }}>
+            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid var(--hex-border-gold)" }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5" className="w-10 h-10 shrink-0">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
