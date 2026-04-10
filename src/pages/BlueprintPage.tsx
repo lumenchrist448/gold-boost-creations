@@ -794,6 +794,7 @@ const BlueprintPage = () => {
 
   return (
     <>
+      <ThemeToggle />
       <PromoBanner />
       <StickyBar />
       <Hero />
