@@ -590,8 +590,8 @@ const PreuvesCASection = () => (
               (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
             }}
           >
-            <div style={{ aspectRatio: "9/16", width: "100%", background: "#0a0a0f" }}>
-              <img src={c.img} alt={c.label} className="w-full h-full object-cover object-top" />
+            <div style={{ width: "100%", background: "#0a0a0f" }}>
+              <img src={c.img} alt={c.label} className="w-full h-auto block" />
             </div>
             <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
               <p className="font-syne font-bold" style={{ fontSize: "0.82rem", color: "#f5f2eb" }}>{c.label}</p>
