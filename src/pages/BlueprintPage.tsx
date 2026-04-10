@@ -473,11 +473,11 @@ const AffichesSection = () => (
         Des affiches pub <span className="text-gold">créées en 5 minutes</span>
       </h2>
       <p className="text-[#7a7468] mb-10">Toutes ces affiches ont été générées avec les outils du Module 02 — sans graphiste, sans agence.</p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
-          <div key={n} className="reveal overflow-hidden rounded transition-transform duration-300 hover:scale-[1.02]"
-            style={{ aspectRatio: "4/5", border: "1px solid rgba(255,255,255,0.06)" }}>
-            <img src={`/images/affiche-${n}.jpg`} alt={`Affiche publicitaire IA ${n}`} className="w-full h-full object-cover" />
+          <div key={n} className="reveal overflow-hidden rounded-lg bg-[#111118] transition-transform duration-300 hover:scale-[1.02]"
+            style={{ border: "1px solid rgba(201,168,76,0.15)" }}>
+            <img src={`/images/affiche-${n}.jpg`} alt={`Affiche publicitaire IA ${n}`} className="w-full h-auto block" />
           </div>
         ))}
       </div>
