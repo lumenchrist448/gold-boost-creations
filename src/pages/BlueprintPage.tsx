@@ -402,7 +402,7 @@ const RosinePhoto = () => {
         style={{ border: "2px solid rgba(201,168,76,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
         {imgError ? (
           <div className="w-full h-full flex flex-col items-center justify-center gap-3"
-            style={{ background: "linear-gradient(135deg, #1a1a2e, #111118)" }}>
+            style={{ background: "linear-gradient(135deg, var(--hex-card), var(--hex-bg))" }}>
             <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.3)" strokeWidth="1.5">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
             </svg>
