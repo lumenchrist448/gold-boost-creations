@@ -1,39 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Sun, Moon } from "lucide-react";
-
-const ThemeToggle = () => {
-  const [isLight, setIsLight] = useState(() => document.documentElement.classList.contains("light"));
-
-  const toggle = () => {
-    const next = !isLight;
-    setIsLight(next);
-    document.documentElement.classList.toggle("light", next);
-    localStorage.setItem("theme", next ? "light" : "dark");
-  };
-
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved === "light") {
-      setIsLight(true);
-      document.documentElement.classList.add("light");
-    }
-  }, []);
-
-  return (
-    <button
-      onClick={toggle}
-      aria-label="Basculer le thème"
-      className="fixed top-[44px] right-4 z-[201] flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300"
-      style={{
-        background: isLight ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.08)",
-        border: `1px solid ${isLight ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)"}`,
-        backdropFilter: "blur(8px)",
-      }}
-    >
-      {isLight ? <Moon size={16} className="text-[#2d2d2d]" /> : <Sun size={16} className="text-[var(--hex-fg)]" />}
-    </button>
-  );
-};
 
 const PromoBanner = () => (
   <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-syne font-bold"
@@ -46,7 +11,7 @@ const PromoBanner = () => (
       maxHeight: "36px",
       overflow: "hidden",
       flexWrap: "nowrap",
-      color: "var(--hex-bg)",
+      color: "#0a0a0f",
       fontSize: "clamp(0.58rem, 1.5vw, 0.72rem)",
     }}>
     <span style={{ whiteSpace: "nowrap" }}>🔥 -35%</span>
@@ -71,7 +36,7 @@ const StickyBar = () => {
   }, []);
   return (
     <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
-      style={{ background: "var(--hex-glass)", backdropFilter: "blur(12px)", borderTop: "1px solid var(--hex-border-gold)" }}>
+      style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-syne text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
@@ -94,7 +59,7 @@ const HeroBannerImage = () => (
     src={heroBannerImg}
     alt="Blue Print IA Academy"
     className="w-full object-cover object-center block rounded-xl mb-8"
-    style={{ border: "1px solid var(--hex-border-gold)" }}
+    style={{ border: "1px solid rgba(201,168,76,0.2)" }}
   />
 );
 
@@ -128,7 +93,7 @@ const CountdownTimer = () => {
     return () => clearInterval(id);
   }, []);
 
-  if (expired) return <p className="font-syne text-[var(--hex-gold)] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
+  if (expired) return <p className="font-syne text-[#c9a84c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
 
   const blocks = [
     { value: timeLeft.days, label: "Jours" },
@@ -139,16 +104,16 @@ const CountdownTimer = () => {
 
   return (
     <div className="mb-8">
-      <p className="font-syne text-[0.85rem] font-semibold text-[var(--hex-fg)] text-center tracking-[0.05em] mb-4">L'offre se termine dans</p>
+      <p className="font-syne text-[0.85rem] font-semibold text-[#f5f2eb] text-center tracking-[0.05em] mb-4">L'offre se termine dans</p>
       <div className="flex items-center justify-center gap-2 sm:gap-3">
         {blocks.map((b, i) => (
           <div key={i} className="flex items-center gap-2 sm:gap-3">
             <div className="flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16"
-              style={{ background: "var(--hex-card)", border: "1px solid var(--hex-border-gold)" }}>
-              <span className="font-syne font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[var(--hex-fg)]">{String(b.value).padStart(2, "0")}</span>
-              <span className="text-[0.58rem] text-[var(--hex-muted)] uppercase tracking-[0.1em]">{b.label}</span>
+              style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
+              <span className="font-syne font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#f5f2eb]">{String(b.value).padStart(2, "0")}</span>
+              <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
             </div>
-            {i < 3 && <span className="font-extrabold text-[var(--hex-gold)] text-lg">:</span>}
+            {i < 3 && <span className="font-extrabold text-[#c9a84c] text-lg">:</span>}
           </div>
         ))}
       </div>
@@ -173,18 +138,18 @@ const Hero = () => (
       style={{ background: "radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08), transparent 60%)" }} />
     <div className="page-container relative max-w-2xl mx-auto">
       {/* Title */}
-      <h1 className="fade-up font-syne font-extrabold leading-[1.15] mb-4 text-[var(--hex-fg)]"
+      <h1 className="fade-up font-syne font-extrabold leading-[1.15] mb-4 text-[#f5f2eb]"
         style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}>
         Crée des visuels, vidéos et fiches produits{" "}
-        <span className="text-[var(--hex-gold)]">pro avec l'IA</span> — sans agence, sans budget fou
+        <span className="text-[#c9a84c]">pro avec l'IA</span> — sans agence, sans budget fou
       </h1>
 
       {/* Badge Formation */}
       <div className="fade-up flex items-center gap-2 mb-6" style={{ animationDelay: "0.2s" }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--hex-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a7468" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/>
         </svg>
-        <span className="text-[var(--hex-muted)] text-[0.9rem]">Formation</span>
+        <span className="text-[#7a7468] text-[0.9rem]">Formation</span>
       </div>
 
       {/* Banner Image */}
@@ -194,10 +159,10 @@ const Hero = () => (
 
       {/* Prix */}
       <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
-        <span className="font-syne text-[1.1rem] sm:text-[1.4rem] text-[var(--hex-muted)] line-through">15 200 FCFA</span>
-        <span className="font-syne font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[var(--hex-gold)]">9 900 FCFA</span>
+        <span className="font-syne text-[1.1rem] sm:text-[1.4rem] text-[#7a7468] line-through">15 200 FCFA</span>
+        <span className="font-syne font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#c9a84c]">9 900 FCFA</span>
       </div>
-      <p className="text-[var(--hex-muted)] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
+      <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
 
       {/* Countdown */}
       <div className="fade-up" style={{ animationDelay: "0.7s" }}>
@@ -206,17 +171,17 @@ const Hero = () => (
 
       {/* CTA Button */}
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up block w-full text-center font-syne font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
-        style={{ background: "var(--hex-gold)", color: "var(--hex-bg)", animationDelay: "0.8s", border: "none" }}
-        onMouseEnter={e => (e.currentTarget.style.background = "var(--hex-gold-hover)")}
-        onMouseLeave={e => (e.currentTarget.style.background = "var(--hex-gold)")}>
+        style={{ background: "#c9a84c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#e8cc7e")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#c9a84c")}>
         Rejoindre la formation →
       </a>
-      <p className="text-[var(--hex-muted)] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
+      <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
 
       {/* Payment Badges */}
       <div className="flex flex-wrap justify-center gap-2">
         {paymentBadges.map((b, i) => (
-          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-syne font-bold text-[0.55rem] text-[var(--hex-fg)]"
+          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-syne font-bold text-[0.55rem] text-[#f5f2eb]"
             style={{ background: b.bg, border: `1px solid ${b.border}` }}>
             {b.label}
           </div>
@@ -237,7 +202,7 @@ const ProofBar = () => (
   <section className="py-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
     <div className="page-container flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-8">
       {proofItems.map((item, i) => (
-        <div key={i} className="reveal flex items-center gap-2 text-sm text-[var(--hex-muted)]">
+        <div key={i} className="reveal flex items-center gap-2 text-sm text-[#7a7468]">
           <span className="text-gold text-lg">{item.icon}</span>
           <span>{item.text}</span>
         </div>
@@ -293,7 +258,7 @@ const Modules = () => (
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-10">
         4 modules. <span className="text-gold">Des résultats concrets.</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px] rounded overflow-hidden" style={{ background: "rgba(201,168,76,0.1)", border: "1px solid var(--hex-border-gold)" }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px] rounded overflow-hidden" style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
         {modules.map((m, i) => (
           <div key={i} className="module-card reveal bg-ink p-8 md:p-9">
             <span className="font-syne text-gold text-sm tracking-wider mb-1 block">Module {m.num}</span>
@@ -329,7 +294,7 @@ const WhoIsItFor = () => (
         Cette formation est <span className="text-gold">faite pour toi</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="reveal rounded p-8" style={{ border: "1px solid var(--hex-border-gold)", background: "rgba(201,168,76,0.04)" }}>
+        <div className="reveal rounded p-8" style={{ border: "1px solid rgba(201,168,76,0.25)", background: "rgba(201,168,76,0.04)" }}>
           <h3 className="font-syne text-gold uppercase text-sm tracking-wider mb-4">✓ C'est pour toi si...</h3>
           <ul className="space-y-3">
             {yesItems.map((item, i) => (
@@ -337,11 +302,11 @@ const WhoIsItFor = () => (
             ))}
           </ul>
         </div>
-        <div className="reveal rounded p-8" style={{ border: "1px solid var(--hex-border-subtle)" }}>
-          <h3 className="font-syne text-[var(--hex-muted)] uppercase text-sm tracking-wider mb-4">✕ Ce n'est pas pour toi si...</h3>
+        <div className="reveal rounded p-8" style={{ border: "1px solid rgba(255,255,255,0.05)" }}>
+          <h3 className="font-syne text-[#7a7468] uppercase text-sm tracking-wider mb-4">✕ Ce n'est pas pour toi si...</h3>
           <ul className="space-y-3">
             {noItems.map((item, i) => (
-              <li key={i} className="flex items-start gap-2 text-paper/60 text-sm"><span className="text-[var(--hex-muted)] shrink-0">✕</span>{item}</li>
+              <li key={i} className="flex items-start gap-2 text-paper/60 text-sm"><span className="text-[#7a7468] shrink-0">✕</span>{item}</li>
             ))}
           </ul>
         </div>
@@ -363,31 +328,31 @@ const BonusSection = () => (
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-4">
         Tu ne paies pas que la formation. Tu reçois <span className="text-gold">tout ça en plus.</span>
       </h2>
-      <p className="text-[var(--hex-muted)] text-[0.95rem] max-w-[560px] mx-auto mb-12">
+      <p className="text-[#7a7468] text-[0.95rem] max-w-[560px] mx-auto mb-12">
         Ces bonus sont inclus dans ton accès. Aucun paiement supplémentaire.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {bonusCards.map((b, i) => (
           <div key={i} className="reveal relative rounded-lg p-8 text-left transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.06)]"
-            style={{ background: "var(--hex-card)", border: "1px solid var(--hex-border-gold)" }}
+            style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.25)")}>
             <span className="absolute top-0 right-0 font-syne text-[0.6rem] font-bold tracking-[0.15em] px-2.5 py-1 rounded-tr-lg rounded-bl"
-              style={{ background: "var(--hex-gold)", color: "var(--hex-bg)" }}>OFFERT</span>
+              style={{ background: "#c9a84c", color: "#0a0a0f" }}>OFFERT</span>
             <span className="text-3xl mb-4 block">{b.icon}</span>
             <h3 className="font-syne font-bold text-paper text-base mb-3">{b.title}</h3>
             <p className="text-[#a09a8e] text-sm leading-relaxed mb-4">{b.desc}</p>
-            <p className={`text-[0.8rem] ${b.valueMuted ? "text-[var(--hex-muted)] line-through" : "text-[var(--hex-gold)] font-semibold"}`}>{b.value}</p>
+            <p className={`text-[0.8rem] ${b.valueMuted ? "text-[#7a7468] line-through" : "text-[#c9a84c] font-semibold"}`}>{b.value}</p>
           </div>
         ))}
       </div>
       {/* Bloc valeur totale */}
       <div className="mt-8 mx-auto max-w-[480px] rounded-lg p-7 text-center"
         style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02))", border: "1px solid rgba(201,168,76,0.3)" }}>
-        <p className="font-syne text-[0.8rem] text-[var(--hex-muted)] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
-        <p className="font-syne font-extrabold text-[2rem] text-[var(--hex-muted)] line-through mb-1">32 900 FCFA</p>
-        <p className="font-syne font-extrabold text-[1.4rem] text-[var(--hex-gold)] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
-        <p className="text-[0.78rem] text-[var(--hex-muted)]">Soit 70% de remise sur la valeur réelle</p>
+        <p className="font-syne text-[0.8rem] text-[#7a7468] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
+        <p className="font-syne font-extrabold text-[2rem] text-[#7a7468] line-through mb-1">32 900 FCFA</p>
+        <p className="font-syne font-extrabold text-[1.4rem] text-[#c9a84c] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
+        <p className="text-[0.78rem] text-[#7a7468]">Soit 70% de remise sur la valeur réelle</p>
       </div>
     </div>
   </section>
@@ -402,11 +367,11 @@ const RosinePhoto = () => {
         style={{ border: "2px solid rgba(201,168,76,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
         {imgError ? (
           <div className="w-full h-full flex flex-col items-center justify-center gap-3"
-            style={{ background: "linear-gradient(135deg, var(--hex-card), var(--hex-bg))" }}>
+            style={{ background: "linear-gradient(135deg, #1a1a2e, #111118)" }}>
             <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.3)" strokeWidth="1.5">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
             </svg>
-            <span className="text-[var(--hex-muted)] text-[0.8rem]">[ Votre photo ici ]</span>
+            <span className="text-[#7a7468] text-[0.8rem]">[ Votre photo ici ]</span>
           </div>
         ) : (
           <img src="/images/rosine-photo.jpg" alt="Rosine — Expert IA"
@@ -414,7 +379,7 @@ const RosinePhoto = () => {
         )}
       </div>
       <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-syne font-bold text-[0.65rem] md:text-[0.72rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "var(--hex-gold)", color: "var(--hex-bg)" }}>✓ Certifiée Expert IA</span>
+        style={{ background: "#c9a84c", color: "#0a0a0f" }}>✓ Certifiée Expert IA</span>
     </div>
   );
 };
@@ -442,7 +407,7 @@ const RosineSection = () => (
           <div className="flex flex-col gap-3.5 mb-8">
             {rosineCredits.map((c, i) => (
               <div key={i} className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[var(--hex-gold)] text-[0.75rem] font-bold">✓</span>
+                <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[#c9a84c] text-[0.75rem] font-bold">✓</span>
                 <span className="text-[0.85rem] md:text-[0.9rem] text-[#a09a8e]">{c}</span>
               </div>
             ))}
@@ -470,11 +435,11 @@ const VideoSection = () => (
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
         Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
       </h2>
-      <p className="text-[var(--hex-muted)] mb-10">Des vidéos produits 100% générées avec les outils enseignés dans la formation.</p>
+      <p className="text-[#7a7468] mb-10">Des vidéos produits 100% générées avec les outils enseignés dans la formation.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
-            style={{ background: "var(--hex-card)", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
@@ -484,7 +449,7 @@ const VideoSection = () => (
             </div>
             <div className="p-4">
               <p className="font-syne text-paper text-sm">{v.label}</p>
-              <p className="text-[var(--hex-muted)] text-xs">{v.sub}</p>
+              <p className="text-[#7a7468] text-xs">{v.sub}</p>
             </div>
           </div>
         ))}
@@ -500,16 +465,16 @@ const AffichesSection = () => (
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
         Des affiches pub <span className="text-gold">créées en 5 minutes</span>
       </h2>
-      <p className="text-[var(--hex-muted)] mb-10">Toutes ces affiches ont été générées avec les outils du Module 02 — sans graphiste, sans agence.</p>
+      <p className="text-[#7a7468] mb-10">Toutes ces affiches ont été générées avec les outils du Module 02 — sans graphiste, sans agence.</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
-          <div key={n} className="reveal overflow-hidden rounded-lg bg-[var(--hex-card)] transition-transform duration-300 hover:scale-[1.02]"
+          <div key={n} className="reveal overflow-hidden rounded-lg bg-[#111118] transition-transform duration-300 hover:scale-[1.02]"
             style={{ border: "1px solid rgba(201,168,76,0.15)" }}>
             <img src={`/images/affiche-${n}.jpg`} alt={`Affiche publicitaire IA ${n}`} className="w-full h-auto block" />
           </div>
         ))}
       </div>
-      <p className="text-center text-[0.78rem] text-[var(--hex-muted)] mt-5">💡 Tu apprendras à créer exactement ce type de visuels dans le Module 02</p>
+      <p className="text-center text-[0.78rem] text-[#7a7468] mt-5">💡 Tu apprendras à créer exactement ce type de visuels dans le Module 02</p>
     </div>
   </section>
 );
@@ -530,7 +495,7 @@ const Testimonials = () => (
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {testimonials.map((t, i) => (
-          <div key={i} className="reveal relative rounded p-8" style={{ background: "var(--hex-card)", border: "1px solid var(--hex-border-gold)" }}>
+          <div key={i} className="reveal relative rounded p-8" style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
             <span className="absolute top-4 left-6 font-syne text-[5rem] leading-none text-gold/15 select-none">"</span>
             <div className="relative">
               <div className="flex text-gold text-sm mb-3">★★★★★</div>
@@ -542,7 +507,7 @@ const Testimonials = () => (
                 </div>
                 <div>
                   <p className="font-syne text-paper text-sm font-semibold">{t.name}</p>
-                  <p className="text-[var(--hex-muted)] text-xs">{t.role}</p>
+                  <p className="text-[#7a7468] text-xs">{t.role}</p>
                 </div>
               </div>
             </div>
@@ -560,11 +525,11 @@ const PreuvesSection = () => (
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-2">
         <span className="text-gold">Preuves réelles</span> de résultats
       </h2>
-      <p className="text-[var(--hex-muted)] mb-10">Des captures d'écran envoyées par des apprenants après avoir appliqué les modules. Non retouchées.</p>
+      <p className="text-[#7a7468] mb-10">Des captures d'écran envoyées par des apprenants après avoir appliqué les modules. Non retouchées.</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div key={n} className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
-            style={{ background: "var(--hex-card)", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
@@ -572,7 +537,7 @@ const PreuvesSection = () => (
         ))}
       </div>
       <div className="flex justify-center mt-6">
-        <span className="text-[0.75rem] text-[var(--hex-muted)] px-5 py-2.5 rounded-sm" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+        <span className="text-[0.75rem] text-[#7a7468] px-5 py-2.5 rounded-sm" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
           🔒 Captures partagées avec accord des apprenants · Résultats non garantis et variables selon l'effort
         </span>
       </div>
@@ -605,8 +570,8 @@ const PreuvesCASection = () => (
             key={i}
             className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
             style={{
-              background: "var(--hex-card)",
-              border: "1px solid var(--hex-border-gold)",
+              background: "#111118",
+              border: "1px solid rgba(201,168,76,0.2)",
               borderRadius: 10,
             }}
             onMouseEnter={e => {
@@ -618,11 +583,11 @@ const PreuvesCASection = () => (
               (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
             }}
           >
-            <div style={{ width: "100%", background: "var(--hex-bg)" }}>
+            <div style={{ width: "100%", background: "#0a0a0f" }}>
               <img src={c.img} alt={c.label} className="w-full h-auto block" />
             </div>
-            <div style={{ padding: "16px 20px", borderTop: "1px solid var(--hex-border-subtle)", background: "var(--hex-card-footer)" }}>
-              <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "var(--hex-fg)" }}>{c.label}</p>
+            <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
+              <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{c.label}</p>
               <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
             </div>
           </div>
@@ -632,8 +597,8 @@ const PreuvesCASection = () => (
         <div
           className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
           style={{
-            background: "var(--hex-card)",
-            border: "1px solid var(--hex-border-gold)",
+            background: "#111118",
+            border: "1px solid rgba(201,168,76,0.2)",
             borderRadius: 10,
           }}
           onMouseEnter={e => {
@@ -645,17 +610,17 @@ const PreuvesCASection = () => (
             (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
           }}
         >
-          <div style={{ width: "100%", background: "var(--hex-bg)" }}>
+          <div style={{ width: "100%", background: "#0a0a0f" }}>
             <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
           </div>
-          <div style={{ padding: "16px 20px", borderTop: "1px solid var(--hex-border-subtle)", background: "var(--hex-card-footer)" }}>
-            <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "var(--hex-fg)" }}>{caCards[2].label}</p>
+          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
+            <p className="font-syne font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{caCards[2].label}</p>
             <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{caCards[2].sub}</p>
           </div>
         </div>
       </div>
       <div style={{ maxWidth: 560, margin: "40px auto 0", textAlign: "center" }}>
-        <div style={{ width: 40, height: 1, background: "var(--hex-gold)", margin: "0 auto 16px" }} />
+        <div style={{ width: 40, height: 1, background: "#c9a84c", margin: "0 auto 16px" }} />
         <p style={{ fontSize: "0.82rem", color: "#7a7468", lineHeight: 1.8 }}>
           Ces captures sont issues de mes propres tableaux de bord.<br />
           Les résultats varient selon l'effort et la régularité.<br />
@@ -686,17 +651,17 @@ const Pricing = () => (
         </h2>
       </div>
       <div className="reveal relative pricing-card mx-auto rounded"
-        style={{ border: "1px solid var(--hex-border-gold)", background: "linear-gradient(135deg, rgba(201,168,76,0.04), transparent)" }}>
+        style={{ border: "1px solid rgba(201,168,76,0.25)", background: "linear-gradient(135deg, rgba(201,168,76,0.04), transparent)" }}>
         <div className="absolute inset-0 rounded pointer-events-none" style={{ boxShadow: "0 0 40px rgba(201,168,76,0.05)" }} />
         <div className="relative">
           <p className="font-syne text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Blue Print IA Academy — Accès complet</p>
           <p className="font-syne font-extrabold text-paper mb-1 pricing-price">
-            9 900 <span className="text-[var(--hex-muted)] text-xl">FCFA</span>
+            9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
-          <p className="text-[var(--hex-muted)] text-sm mb-8">Paiement unique · Accès à vie</p>
+          <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           {/* Guarantee Block */}
           <div className="flex items-start gap-4 rounded-lg p-5 mb-6"
-            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid var(--hex-border-gold)" }}>
+            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)" }}>
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5" className="w-10 h-10 shrink-0">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
@@ -716,7 +681,7 @@ const Pricing = () => (
           </ul>
           <div className="flex flex-wrap gap-2 justify-center">
             {["Wave", "Orange Money", "MTN Money"].map(m => (
-              <span key={m} className="text-xs px-3 py-1.5 rounded-full text-[var(--hex-muted)]" style={{ background: "rgba(255,255,255,0.05)" }}>{m}</span>
+              <span key={m} className="text-xs px-3 py-1.5 rounded-full text-[#7a7468]" style={{ background: "rgba(255,255,255,0.05)" }}>{m}</span>
             ))}
           </div>
         </div>
@@ -767,11 +732,11 @@ const FinalCTA = () => (
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
         L'IA ne va pas attendre que tu sois prêt. <span className="text-gold">Tes concurrents, eux, avancent.</span>
       </h2>
-      <p className="text-[var(--hex-muted)] max-w-[480px] mx-auto mb-8">
+      <p className="text-[#7a7468] max-w-[480px] mx-auto mb-8">
         Pour 9 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 4 modules complets qui vont transformer ta façon de vendre en ligne.
       </p>
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Accéder à Blue Print IA Academy →</span></a>
-      <p className="text-[var(--hex-muted)] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
+      <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
     </div>
   </section>
 );
@@ -794,7 +759,6 @@ const BlueprintPage = () => {
 
   return (
     <>
-      <ThemeToggle />
       <PromoBanner />
       <StickyBar />
       <Hero />
