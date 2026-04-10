@@ -430,9 +430,9 @@ const RosineSection = () => (
 );
 
 const videos = [
-  { src: "/videos/video-1.mp4", label: "Vidéo produit IA · Module 01", sub: "Créé avec HeyGen + CapCut" },
-  { src: "/videos/video-2.mp4", label: "Affiche animée pub · Module 02", sub: "Créé avec Canva AI + Runway" },
-  { src: "/videos/video-3.mp4", label: "Présentation page produit · Module 04", sub: "Créé avec les templates fournis" },
+  { src: "/videos/video_1.mp4", label: "Vidéo produit IA · Module 01", sub: "Créé avec HeyGen + CapCut" },
+  { src: "/videos/video_2.mp4", label: "Affiche animée pub · Module 02", sub: "Créé avec Canva AI + Runway" },
+  { src: "/videos/video_3.mp4", label: "Présentation page produit · Module 04", sub: "Créé avec les templates fournis" },
 ];
 
 const VideoSection = () => (
@@ -449,8 +449,8 @@ const VideoSection = () => (
             style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
-            <div className="video-aspect" style={{ aspectRatio: "9/16" }}>
-              <video controls preload="metadata" className="w-full h-full object-cover">
+            <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
+              <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
                 <source src={v.src} type="video/mp4" />
               </video>
             </div>
