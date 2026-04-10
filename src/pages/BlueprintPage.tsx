@@ -52,23 +52,16 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-const HeroBannerImage = () => {
-  const [imgError, setImgError] = useState(false);
-  return imgError ? (
-    <div className="w-full flex items-center justify-center font-syne text-[#c9a84c] rounded-xl mb-8"
-      style={{ background: "linear-gradient(135deg, #111118, #1a1a2e)", border: "2px dashed rgba(201,168,76,0.3)", height: "220px", maxHeight: "420px" }}>
-      [ Affiche pub ici ]
-    </div>
-  ) : (
-    <img
-      src="/images/banniere-pub.jpg"
-      alt="Blue Print IA Academy"
-      className="w-full object-cover object-top block rounded-xl mb-8"
-      style={{ maxHeight: "420px", border: "1px solid rgba(201,168,76,0.2)" }}
-      onError={() => setImgError(true)}
-    />
-  );
-};
+import heroBannerImg from "@/assets/hero-banner.png";
+
+const HeroBannerImage = () => (
+  <img
+    src={heroBannerImg}
+    alt="Blue Print IA Academy"
+    className="w-full object-cover object-center block rounded-xl mb-8"
+    style={{ border: "1px solid rgba(201,168,76,0.2)" }}
+  />
+);
 
 const CountdownTimer = () => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
