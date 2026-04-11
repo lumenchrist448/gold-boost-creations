@@ -150,10 +150,6 @@ const Hero = () => (
         <span className="text-[#7a7468] text-[0.9rem]">Formation</span>
       </div>
 
-      {/* Banner Image */}
-      <div className="fade-up" style={{ animationDelay: "0.4s" }}>
-        <HeroBannerImage />
-      </div>
 
       {/* Prix */}
       <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
