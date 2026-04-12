@@ -309,9 +309,8 @@ const WhoIsItFor = () => (
 );
 
 const bonusCards = [
-  { icon: "📋", title: "Pack 50 Prompts Prêts à Copier", desc: "50 prompts ChatGPT et Claude testés et validés pour fiches produits, descriptions, relances clients et pages de vente — adaptés au marché africain. Copie, colle, publie.", value: "Valeur : 5 000 FCFA", valueMuted: true },
-  { icon: "🎨", title: "20 Templates Canva AI Modifiables", desc: "20 gabarits d'affiches publicitaires prêts à l'emploi sur Canva. Change les couleurs, le texte, ton logo — en 5 minutes tu as une affiche pro pour ta promo.", value: "Valeur : 8 000 FCFA", valueMuted: true },
-  { icon: "💬", title: "Accès au Groupe WhatsApp Privé", desc: "Rejoins la communauté d'apprenants actifs. Partage tes créations, pose tes questions, reçois des retours directs de Rosine. Un réseau de e-commerçants africains qui avancent.", value: "Valeur : Inestimable", valueMuted: false },
+  { icon: "📱", title: "Suivi Création Compte TikTok Monétisé", desc: "Je t'accompagne pas à pas pour créer et configurer ton compte TikTok éligible à la monétisation en France et aux USA. Paramètres, stratégie de lancement, optimisation du profil — tu ne pars pas seul.", value: "Valeur : 15 000 FCFA" },
+  { icon: "🤖", title: "Suivi Création de Contenu IA pour Acquérir des Prospects Qualifiés", desc: "Je te guide dans la création de ton contenu faceless avec ton IA personnalisé — scripts, visuels, rythme de publication — pour attirer des prospects qualifiés directement dans ta niche.", value: "Valeur : 20 000 FCFA" },
 ];
 
 const BonusSection = () => (
@@ -324,7 +323,7 @@ const BonusSection = () => (
       <p className="text-[#7a7468] text-[0.95rem] max-w-[560px] mx-auto mb-12">
         Ces bonus sont inclus dans ton accès. Aucun paiement supplémentaire.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
         {bonusCards.map((b, i) => (
           <div key={i} className="reveal relative rounded-lg p-8 text-left transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.06)]"
             style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}
@@ -335,7 +334,7 @@ const BonusSection = () => (
             <span className="text-3xl mb-4 block">{b.icon}</span>
             <h3 className="font-syne font-bold text-paper text-base mb-3">{b.title}</h3>
             <p className="text-[#a09a8e] text-sm leading-relaxed mb-4">{b.desc}</p>
-            <p className={`text-[0.8rem] ${b.valueMuted ? "text-[#7a7468] line-through" : "text-[#c9a84c] font-semibold"}`}>{b.value}</p>
+            <p className="text-[0.8rem] text-[#7a7468] line-through">{b.value}</p>
           </div>
         ))}
       </div>
@@ -343,7 +342,9 @@ const BonusSection = () => (
       <div className="mt-8 mx-auto max-w-[480px] rounded-lg p-7 text-center"
         style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02))", border: "1px solid rgba(201,168,76,0.3)" }}>
         <p className="font-syne text-[0.8rem] text-[#7a7468] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
+        <p className="font-syne text-lg text-[#7a7468] line-through mb-1">68 900 FCFA</p>
         <p className="font-syne font-extrabold text-[1.4rem] text-[#c9a84c] mb-2">→ Ton prix aujourd'hui : 14 900 FCFA</p>
+        <p className="text-[#a09a8e] text-sm">Soit +64% de remise sur la valeur réelle</p>
       </div>
     </div>
   </section>
