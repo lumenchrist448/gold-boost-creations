@@ -186,7 +186,7 @@ const Hero = () => (
 
 const proofItems = [
   { icon: "👥", text: "+200 e-commerçants formés" },
-  { icon: "⭐", text: "4 modules pratiques complets" },
+  { icon: "⭐", text: "3 modules pratiques complets" },
   { icon: "🕐", text: "Accès à vie · Mises à jour incluses" },
   { icon: "💳", text: "Wave · Orange Money · MTN Money" },
 ];
@@ -238,20 +238,19 @@ const Problem = () => (
 );
 
 const modules = [
-  { num: "01", title: "Création de vidéos produits avec l'IA", tag: "HeyGen · CapCut · Runway", desc: "Génère des vidéos produits professionnelles sans caméra, sans monteur. De l'avatar IA au voiceover, jusqu'au rendu final prêt à publier." },
+  { num: "01", title: "Création de vidéos produits avec l'IA", tag: "HeyGen · Runway · Avatar IA", desc: "Génère des vidéos produits professionnelles sans caméra, sans monteur. De l'avatar IA au rendu final prêt à publier — ton produit se présente tout seul." },
   { num: "02", title: "Affiches publicitaires qui vendent", tag: "Canva AI · Adobe Firefly · DALL-E", desc: "Crée des visuels pub percutants pour Facebook, TikTok et Instagram avec l'IA. Fini le graphiste à chaque promo." },
-  { num: "03", title: "Fiches produits ultra-convaincantes", tag: "ChatGPT · Claude · Prompts inclus", desc: "Rédige en quelques minutes des descriptions qui rassurent, séduisent et poussent à l'achat. Avec les bons prompts adaptés à l'Afrique." },
-  { num: "04", title: "Page produit complète et convertissante", tag: "Structure · Copywriting · Templates", desc: "Structure ta page produit comme un pro du e-commerce : hiérarchie visuelle, copywriting, preuves sociales et CTA optimisés." },
+  { num: "03", title: "Création de contenu avec ton avatar IA hyper réaliste", tag: "Clonage vocal · Avatar ultra réaliste · Faceless", desc: "Crée ton double numérique avec ta voix et ton style. Il parle à ta place, publie à ta place, construit ta présence en ligne pendant que tu vis ta vie. Sans jamais te montrer." },
 ];
 
 const Modules = () => (
   <section className="section-padding">
-    <div className="max-w-4xl mx-auto page-container">
+    <div className="max-w-5xl mx-auto page-container">
       <Badge>Ce que tu vas maîtriser</Badge>
       <h2 className="font-syne font-bold text-3xl md:text-4xl text-paper mb-10">
-        4 modules. <span className="text-gold">Des résultats concrets.</span>
+        3 modules. <span className="text-gold">Des résultats concrets.</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-[2px] rounded overflow-hidden" style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px] rounded overflow-hidden" style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
         {modules.map((m, i) => (
           <div key={i} className="module-card reveal bg-ink p-8 md:p-9">
             <span className="font-syne text-gold text-sm tracking-wider mb-1 block">Module {m.num}</span>
@@ -624,13 +623,14 @@ const PreuvesCASection = () => (
 );
 
 const pricingItems = [
-  "Module 1 — Création vidéos produits IA",
+  "Module 1 — Création de vidéos produits IA",
   "Module 2 — Affiches publicitaires IA",
-  "Module 3 — Fiches produits ultra-convaincantes",
-  "Module 4 — Page produit complète et convertissante",
+  "Module 3 — Avatar IA hyper réaliste + clonage vocal",
   "Tous les prompts utilisés dans la formation",
   "Accès à vie + mises à jour gratuites",
   "Support communauté WhatsApp",
+  "Bonus 1 — Suivi création compte TikTok monétisé",
+  "Bonus 2 — Suivi création de contenu IA pour prospects qualifiés",
 ];
 
 const Pricing = () => (
@@ -725,7 +725,7 @@ const FinalCTA = () => (
         L'IA ne va pas attendre que tu sois prêt. <span className="text-gold">Tes concurrents, eux, avancent.</span>
       </h2>
       <p className="text-[#7a7468] max-w-[480px] mx-auto mb-8">
-        Pour 9 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 4 modules complets qui vont transformer ta façon de vendre en ligne.
+        Pour 9 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 3 modules complets qui vont transformer ta façon de vendre en ligne.
       </p>
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Accéder à Blue Print IA Academy →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
