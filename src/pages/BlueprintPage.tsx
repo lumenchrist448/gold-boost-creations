@@ -222,7 +222,6 @@ const Problem = () => (
         <span className="text-paper font-medium">les vidéos, les visuels, la régularité</span>{" "}
         — ça t'épuise ou ça coûte une fortune à sous-traiter.
       </p>
-      </p>
     </div>
     <div className="max-w-2xl mx-auto page-container space-y-3">
       {problems.map((p, i) => (
