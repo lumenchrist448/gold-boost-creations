@@ -138,8 +138,8 @@ const Hero = () => (
       {/* Title */}
       <h1 className="fade-up font-syne font-extrabold leading-[1.15] mb-4 text-[#f5f2eb]"
         style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}>
-        Crée des visuels, vidéos et fiches produits{" "}
-        <span className="text-[#c9a84c]">pro avec l'IA</span> — sans agence, sans budget fou
+        Crée du contenu et vends tes produits{" "}
+        <span className="text-[#c9a84c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
       </h1>
 
       {/* Badge Formation */}
