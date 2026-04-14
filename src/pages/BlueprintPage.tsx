@@ -16,7 +16,7 @@ const PromoBanner = () => (
     }}>
     <span style={{ whiteSpace: "nowrap" }}>🔥 OFFRE SPÉCIALE</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>14 900 FCFA</span>
+    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>9 900 FCFA</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>⏳ Expire bientôt</span>
   </div>
@@ -36,7 +36,7 @@ const StickyBar = () => {
     <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
       style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span className="font-syne text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">14 900 FCFA</span></span>
+        <span className="font-syne text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
       </div>
     </div>
@@ -153,7 +153,7 @@ const Hero = () => (
 
       {/* Prix */}
       <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
-        <span className="font-syne font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#c9a84c]">14 900 FCFA</span>
+        <span className="font-syne font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#c9a84c]">9 900 FCFA</span>
       </div>
       <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
 
@@ -343,7 +343,7 @@ const BonusSection = () => (
         style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02))", border: "1px solid rgba(201,168,76,0.3)" }}>
         <p className="font-syne text-[0.8rem] text-[#7a7468] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
         <p className="font-syne text-lg text-[#7a7468] line-through mb-1">68 900 FCFA</p>
-        <p className="font-syne font-extrabold text-[1.4rem] text-[#c9a84c] mb-2">→ Ton prix aujourd'hui : 14 900 FCFA</p>
+        <p className="font-syne font-extrabold text-[1.4rem] text-[#c9a84c] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
         <p className="text-[#a09a8e] text-sm">Soit +64% de remise sur la valeur réelle</p>
       </div>
     </div>
@@ -648,7 +648,7 @@ const Pricing = () => (
         <div className="relative">
           <p className="font-syne text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Blue Print IA Academy — Accès complet</p>
           <p className="font-syne font-extrabold text-paper mb-1 pricing-price">
-            14 900 <span className="text-[#7a7468] text-xl">FCFA</span>
+            9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           {/* Guarantee Block */}
@@ -725,7 +725,7 @@ const FinalCTA = () => (
         L'IA ne va pas attendre que tu sois prêt. <span className="text-gold">Tes concurrents, eux, avancent.</span>
       </h2>
       <p className="text-[#7a7468] max-w-[480px] mx-auto mb-8">
-        Pour 14 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 4 modules complets qui vont transformer ta façon de vendre en ligne.
+        Pour 9 900 FCFA — soit moins qu'une affiche sous-traitée — tu accèdes à 4 modules complets qui vont transformer ta façon de vendre en ligne.
       </p>
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Accéder à Blue Print IA Academy →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
