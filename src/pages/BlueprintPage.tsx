@@ -185,7 +185,7 @@ const Hero = () => (
 );
 
 const proofItems = [
-  { icon: "👥", text: "+200 e-commerçants formés" },
+  { icon: "👥", text: "+200 créateurs et e-commerçants formés" },
   { icon: "⭐", text: "3 modules pratiques complets" },
   { icon: "🕐", text: "Accès à vie · Mises à jour incluses" },
   { icon: "💳", text: "Wave · Orange Money · MTN Money" },
@@ -205,11 +205,11 @@ const ProofBar = () => (
 );
 
 const problems = [
-  "Tu passes des heures à rédiger des fiches produits qui ne convertissent pas",
-  "Tes visuels publicitaires manquent de pro et tu ne peux pas payer un graphiste chaque fois",
-  "Tu ne sais pas créer des vidéos produits attractives sans apparaître à la caméra",
-  "Ta page produit ne donne pas envie d'acheter — tu perds des ventes chaque jour",
-  "Les agences demandent 50 000 FCFA+ pour ce que l'IA peut faire en 10 minutes",
+  "Tu passes des heures à créer du contenu qui ne décolle pas",
+  "Tu veux te lancer mais la caméra te bloque depuis des mois",
+  "Tes visuels publicitaires manquent de pro et tu ne peux pas payer un graphiste à chaque promo",
+  "Tu n'as pas de présence régulière en ligne — tu perds des opportunités chaque jour",
+  "Les agences demandent 150 000 FCFA+ par mois pour ce que l'IA peut faire en 10 minutes",
 ];
 
 const Problem = () => (
@@ -218,9 +218,9 @@ const Problem = () => (
       <Badge>Le vrai problème</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <p className="reveal text-[1.3rem] text-[#c8c2b8] max-w-[600px] mx-auto mb-10">
-        Tu as une boutique en ligne, des produits qui méritent d'être vus. Mais{" "}
-        <span className="text-paper font-medium">les visuels, les vidéos, les descriptions</span>{" "}
-        — ça prend un temps fou ou ça coûte une fortune à sous-traiter.
+        Tu veux créer du contenu ou vendre tes produits en ligne. Mais{" "}
+        <span className="text-paper font-medium">les vidéos, les visuels, la régularité</span>{" "}
+        — ça t'épuise ou ça coûte une fortune à sous-traiter.
       </p>
     </div>
     <div className="max-w-2xl mx-auto page-container space-y-3">
@@ -265,17 +265,17 @@ const Modules = () => (
 );
 
 const yesItems = [
+  "Tu veux créer du contenu sans jamais te filmer",
   "Tu vends des produits en ligne en Afrique francophone",
-  "Tu veux des visuels pro sans dépenser 50 000 FCFA+ par mois",
+  "Tu veux une présence régulière sans t'épuiser",
   "Tu es débutant avec l'IA mais motivé à apprendre",
-  "Tu veux aller vite et avoir des résultats dès la semaine 1",
-  "Tu veux rester compétitif face aux grandes boutiques",
+  "Tu veux construire quelque chose qui travaille pour toi pendant que tu vis ta vie",
 ];
 const noItems = [
   "Tu cherches une formation théorique sans pratique",
-  "Tu n'as aucun produit ou boutique en ligne",
+  "Tu n'as aucun produit, service ou idée de contenu",
   "Tu veux des résultats sans faire aucun effort",
-  "Tu n'es pas prêt à investir 10 min par jour",
+  "Tu n'es pas prêt à investir 15 minutes par jour",
 ];
 
 const WhoIsItFor = () => (
@@ -393,7 +393,7 @@ const RosineSection = () => (
         <RosinePhoto />
         <div className="flex-1 mt-6 md:mt-0">
           <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9] mb-6">
-            Je suis Rosine, créatrice de contenu IA et formatrice spécialisée dans l'e-commerce africain. J'ai aidé plus de 200 entrepreneurs à transformer leur boutique en ligne grâce à l'intelligence artificielle — sans agence, sans budget fou.
+            Je suis Rosine, créatrice de contenu IA et formatrice spécialisée dans l'e-commerce africain. J'ai aidé plus de 200 créateurs de contenu et e-commerçants africains à construire leur présence en ligne et booster leurs ventes grâce à l'IA — sans agence, sans caméra, sans budget fou.
           </p>
           <div className="flex flex-col gap-3.5 mb-8">
             {rosineCredits.map((c, i) => (
