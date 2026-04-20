@@ -49,6 +49,27 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const SectionCTA = ({ label }: { label: string }) => (
+  <div className="flex justify-center mt-10">
+    <a
+      href={CHECKOUT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block font-poppins font-bold text-[0.85rem] sm:text-[0.95rem] uppercase tracking-[0.06em] py-[14px] px-8 rounded-full transition-transform duration-300 hover:-translate-y-0.5"
+      style={{
+        background: "#e8b85c",
+        color: "#0a0a0f",
+        boxShadow: "0 8px 24px rgba(232,184,92,0.25), 0 0 0 1px rgba(232,184,92,0.4)",
+        border: "none",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
+      onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}
+    >
+      {label} →
+    </a>
+  </div>
+);
+
 import heroBannerImg from "@/assets/hero-banner.png";
 
 const HeroBannerImage = () => (
@@ -174,8 +195,8 @@ const Hero = () => (
       </div>
 
       {/* CTA Button — pill style Wilson */}
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
-        style={{ background: "#e8b85c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
+        style={{ background: "#e8b85c", color: "#0a0a0f", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
         onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}>
         Rejoindre la formation →
@@ -244,6 +265,7 @@ const Problem = () => (
           <span className="text-paper/80">{p}</span>
         </div>
       ))}
+      <SectionCTA label="Je règle ces problèmes maintenant" />
     </div>
   </section>
 );
@@ -276,6 +298,7 @@ const Modules = () => (
           </div>
         ))}
       </div>
+      <SectionCTA label="Je veux maîtriser ces 3 modules" />
     </div>
   </section>
 );
@@ -319,6 +342,7 @@ const WhoIsItFor = () => (
           </ul>
         </div>
       </div>
+      <SectionCTA label="Oui, c'est pour moi — je m'inscris" />
     </div>
   </section>
 );
@@ -359,6 +383,7 @@ const BonusSection = () => (
         <p className="font-poppins font-extrabold text-[1.4rem] text-[#e8b85c] mb-2">→ Ton prix aujourd'hui : 5 500 FCFA</p>
         <p className="text-[#a09a8e] text-sm">Soit +92% de remise sur la valeur réelle</p>
       </div>
+      <SectionCTA label="Je veux mes bonus offerts" />
     </div>
   </section>
 );
@@ -423,6 +448,7 @@ const RosineSection = () => (
           </blockquote>
         </div>
       </div>
+      <SectionCTA label="Je rejoins la formation de Rosine" />
     </div>
   </section>
 );
@@ -459,6 +485,7 @@ const VideoSection = () => (
           </div>
         ))}
       </div>
+      <SectionCTA label="Je crée mes vidéos IA dès maintenant" />
     </div>
   </section>
 );
@@ -480,6 +507,7 @@ const AffichesSection = () => (
         ))}
       </div>
       <p className="text-center text-[0.78rem] text-[#7a7468] mt-5">💡 Tu apprendras à créer exactement ce type de visuels dans le Module 02</p>
+      <SectionCTA label="Je crée mes affiches en 5 minutes" />
     </div>
   </section>
 );
@@ -519,6 +547,7 @@ const Testimonials = () => (
           </div>
         ))}
       </div>
+      <SectionCTA label="Je veux les mêmes résultats" />
     </div>
   </section>
 );
@@ -546,10 +575,10 @@ const PreuvesSection = () => (
           🔒 Captures partagées avec accord des apprenants · Résultats non garantis et variables selon l'effort
         </span>
       </div>
+      <SectionCTA label="Je copie cette méthode" />
     </div>
   </section>
 );
-
 const caCards = [
   { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en pub" },
   { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100% organique · Contenu IA" },
@@ -662,7 +691,7 @@ const Pricing = () => (
         <div className="relative">
           <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Blue Print IA Academy — Accès complet</p>
           <p className="font-poppins font-extrabold text-paper mb-1 pricing-price">
-            9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
+            5 500 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           {/* Guarantee Block */}
