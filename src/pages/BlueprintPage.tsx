@@ -336,14 +336,12 @@ const BonusSection = () => (
       <p className="text-[#7a7468] text-[0.95rem] max-w-[560px] mx-auto mb-12">
         Ces bonus sont inclus dans ton accès. Aucun paiement supplémentaire.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
         {bonusCards.map((b, i) => (
-          <div key={i} className="reveal relative rounded-lg p-8 text-left transition-all duration-300 hover:shadow-[0_0_24px_rgba(232,184,92,0.06)]"
-            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.5)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.25)")}>
-            <span className="absolute top-0 right-0 font-poppins text-[0.6rem] font-bold tracking-[0.15em] px-2.5 py-1 rounded-tr-lg rounded-bl"
-              style={{ background: "#e8b85c", color: "#0a0a0f" }}>OFFERT</span>
+          <div key={i} className="glow-card reveal relative rounded-2xl p-8 text-left"
+            style={{ background: "linear-gradient(180deg, #14141c 0%, #0d0d14 100%)", border: "1px solid rgba(232,184,92,0.25)" }}>
+            <span className="absolute -top-3 right-4 font-poppins text-[0.6rem] font-bold tracking-[0.15em] px-3 py-1 rounded-full"
+              style={{ background: "#e8b85c", color: "#0a0a0f", boxShadow: "0 4px 12px rgba(232,184,92,0.4)" }}>OFFERT</span>
             <span className="text-3xl mb-4 block">{b.icon}</span>
             <h3 className="font-poppins font-bold text-paper text-base mb-3">{b.title}</h3>
             <p className="text-[#a09a8e] text-sm leading-relaxed mb-4">{b.desc}</p>
@@ -352,8 +350,8 @@ const BonusSection = () => (
         ))}
       </div>
       {/* Bloc valeur totale */}
-      <div className="mt-8 mx-auto max-w-[480px] rounded-lg p-7 text-center"
-        style={{ background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))", border: "1px solid rgba(232,184,92,0.3)" }}>
+      <div className="mt-10 mx-auto max-w-[480px] rounded-2xl p-7 text-center"
+        style={{ background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))", border: "1px solid rgba(232,184,92,0.35)", boxShadow: "0 8px 32px rgba(232,184,92,0.08)" }}>
         <p className="font-poppins text-[0.8rem] text-[#7a7468] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
         <p className="font-poppins text-lg text-[#7a7468] line-through mb-1">68 900 FCFA</p>
         <p className="font-poppins font-extrabold text-[1.4rem] text-[#e8b85c] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
