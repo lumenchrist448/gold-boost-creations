@@ -485,6 +485,7 @@ const VideoSection = () => (
           </div>
         ))}
       </div>
+      <SectionCTA label="Je crée mes vidéos IA dès maintenant" />
     </div>
   </section>
 );
