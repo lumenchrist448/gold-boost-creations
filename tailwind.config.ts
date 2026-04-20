@@ -19,10 +19,10 @@ export default {
       },
       colors: {
         ink: "#0a0a0f",
-        paper: "#f5f2eb",
+        paper: "#fafafa",
         gold: {
-          DEFAULT: "#c9a84c",
-          light: "#e8cc7e",
+          DEFAULT: "#e8b85c",
+          light: "#f5d488",
           dim: "#7a6230",
         },
         muted: {
@@ -33,21 +33,21 @@ export default {
           DEFAULT: "#111118",
           foreground: "#f5f2eb",
         },
-        border: "rgba(201,168,76,0.25)",
+        border: "rgba(232,184,92,0.25)",
         input: "#111118",
-        ring: "#c9a84c",
+        ring: "#e8b85c",
         background: "#0a0a0f",
-        foreground: "#f5f2eb",
+        foreground: "#fafafa",
         primary: {
-          DEFAULT: "#c9a84c",
+          DEFAULT: "#e8b85c",
           foreground: "#0a0a0f",
         },
         secondary: {
           DEFAULT: "#111118",
-          foreground: "#f5f2eb",
+          foreground: "#fafafa",
         },
         accent: {
-          DEFAULT: "#c9a84c",
+          DEFAULT: "#e8b85c",
           foreground: "#0a0a0f",
         },
         destructive: {
