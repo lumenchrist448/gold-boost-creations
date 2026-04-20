@@ -265,6 +265,7 @@ const Problem = () => (
           <span className="text-paper/80">{p}</span>
         </div>
       ))}
+      <SectionCTA label="Je règle ces problèmes maintenant" />
     </div>
   </section>
 );
