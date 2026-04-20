@@ -383,6 +383,7 @@ const BonusSection = () => (
         <p className="font-poppins font-extrabold text-[1.4rem] text-[#e8b85c] mb-2">→ Ton prix aujourd'hui : 5 500 FCFA</p>
         <p className="text-[#a09a8e] text-sm">Soit +92% de remise sur la valeur réelle</p>
       </div>
+      <SectionCTA label="Je veux mes bonus offerts" />
     </div>
   </section>
 );
