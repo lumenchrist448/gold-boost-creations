@@ -298,6 +298,7 @@ const Modules = () => (
           </div>
         ))}
       </div>
+      <SectionCTA label="Je veux maîtriser ces 3 modules" />
     </div>
   </section>
 );
