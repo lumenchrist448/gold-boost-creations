@@ -448,6 +448,7 @@ const RosineSection = () => (
           </blockquote>
         </div>
       </div>
+      <SectionCTA label="Je rejoins la formation de Rosine" />
     </div>
   </section>
 );
