@@ -44,9 +44,8 @@ const StickyBar = () => {
 };
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-center gap-3 mb-6">
-    <span className="w-8 h-px bg-gold inline-block" />
-    <span className="font-poppins text-gold uppercase text-[11px] tracking-[0.2em]">{children}</span>
+  <div className="flex justify-center mb-6">
+    <span className="pill-badge">{children}</span>
   </div>
 );
 
@@ -138,19 +137,22 @@ const paymentBadges = [
 ];
 
 const Hero = () => (
-  <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16">
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-      style={{ background: "radial-gradient(circle at 80% 20%, rgba(232,184,92,0.08), transparent 60%)" }} />
+  <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16 overflow-hidden">
+    {/* Halo radial doré Wilson-style */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
+      style={{ background: "radial-gradient(ellipse at center, rgba(232,184,92,0.18), rgba(232,184,92,0.06) 35%, transparent 70%)" }} />
+    <div className="absolute top-20 right-10 w-[500px] h-[500px] pointer-events-none"
+      style={{ background: "radial-gradient(circle, rgba(232,184,92,0.1), transparent 60%)" }} />
     <div className="page-container relative max-w-2xl mx-auto">
       {/* Title */}
-      <h1 className="fade-up font-poppins font-extrabold leading-[1.15] mb-4 text-[#fafafa]"
-        style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}>
+      <h1 className="fade-up font-poppins font-extrabold leading-[1.1] mb-4 text-[#fafafa] text-center"
+        style={{ fontSize: "clamp(1.8rem, 5.5vw, 3.4rem)" }}>
         Crée du contenu et vends tes produits{" "}
         <span className="text-[#e8b85c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
       </h1>
 
       {/* Badge Formation */}
-      <div className="fade-up flex items-center gap-2 mb-6" style={{ animationDelay: "0.2s" }}>
+      <div className="fade-up flex items-center justify-center gap-2 mb-6" style={{ animationDelay: "0.2s" }}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a7468" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/>
         </svg>
@@ -169,8 +171,8 @@ const Hero = () => (
         <CountdownTimer />
       </div>
 
-      {/* CTA Button */}
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
+      {/* CTA Button — pill style Wilson */}
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
         style={{ background: "#e8b85c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
         onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}>
