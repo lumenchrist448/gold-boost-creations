@@ -575,10 +575,10 @@ const PreuvesSection = () => (
           🔒 Captures partagées avec accord des apprenants · Résultats non garantis et variables selon l'effort
         </span>
       </div>
+      <SectionCTA label="Je copie cette méthode" />
     </div>
   </section>
 );
-
 const caCards = [
   { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en pub" },
   { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100% organique · Contenu IA" },
