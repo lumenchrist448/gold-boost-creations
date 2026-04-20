@@ -48,8 +48,8 @@ body {
   padding-top: 36px;
 }
 
-h1, h2, h3, h4, h5, h6, .font-syne {
-  font-family: 'Syne', sans-serif;
+h1, h2, h3, h4, h5, h6, .font-poppins {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Noise overlay */
