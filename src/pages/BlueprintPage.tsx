@@ -72,11 +72,11 @@ const CountdownTimer = () => {
       deadline = d.toISOString();
       localStorage.setItem("blueprint_deadline", deadline);
     }
-    // Extension unique : +3 jours ajoutés à la deadline existante
-    if (!localStorage.getItem("blueprint_deadline_ext_v1")) {
-      const extended = new Date(new Date(deadline).getTime() + 3 * 86400000).toISOString();
+    // Extension unique : +14 jours ajoutés à la deadline existante
+    if (!localStorage.getItem("blueprint_deadline_ext_v2")) {
+      const extended = new Date(new Date(deadline).getTime() + 14 * 86400000).toISOString();
       localStorage.setItem("blueprint_deadline", extended);
-      localStorage.setItem("blueprint_deadline_ext_v1", "1");
+      localStorage.setItem("blueprint_deadline_ext_v2", "1");
       deadline = extended;
     }
     const target = new Date(deadline).getTime();
