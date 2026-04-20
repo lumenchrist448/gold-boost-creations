@@ -174,8 +174,8 @@ const Hero = () => (
       </div>
 
       {/* CTA Button — pill style Wilson */}
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
-        style={{ background: "#e8b85c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
+        style={{ background: "#e8b85c", color: "#0a0a0f", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
         onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}>
         Rejoindre la formation →
