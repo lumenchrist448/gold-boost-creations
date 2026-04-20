@@ -253,18 +253,23 @@ const modules = [
 ];
 
 const Modules = () => (
-  <section className="section-padding">
-    <div className="max-w-5xl mx-auto page-container">
-      <Badge>Ce que tu vas maîtriser</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-10">
-        3 modules. <span className="text-gold">Des résultats concrets.</span>
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px] rounded overflow-hidden" style={{ background: "rgba(232,184,92,0.1)", border: "1px solid rgba(232,184,92,0.25)" }}>
+  <section className="section-padding relative">
+    <div className="absolute inset-0 pointer-events-none"
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,184,92,0.06), transparent 60%)" }} />
+    <div className="max-w-6xl mx-auto page-container relative">
+      <div className="text-center">
+        <Badge>Ce que tu vas maîtriser</Badge>
+        <h2 className="font-poppins font-bold text-3xl md:text-5xl text-paper mb-12 max-w-3xl mx-auto leading-[1.15]">
+          3 modules. <span className="text-gold">Des résultats concrets.</span>
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {modules.map((m, i) => (
-          <div key={i} className="module-card reveal bg-ink p-8 md:p-9">
-            <span className="font-poppins text-gold text-sm tracking-wider mb-1 block">Module {m.num}</span>
-            <h3 className="font-poppins font-bold text-paper text-lg mb-2">{m.title}</h3>
-            <span className="inline-block text-[0.7rem] text-gold/70 border border-gold/20 rounded-sm px-2 py-0.5 mb-3 font-poppins">{m.tag}</span>
+          <div key={i} className="glow-card reveal p-8 md:p-9 rounded-2xl"
+            style={{ background: "linear-gradient(180deg, #14141c 0%, #0d0d14 100%)", border: "1px solid rgba(232,184,92,0.18)" }}>
+            <span className="big-num">{m.num}</span>
+            <h3 className="font-poppins font-bold text-paper text-xl mb-3 leading-tight">{m.title}</h3>
+            <span className="inline-block text-[0.7rem] text-gold/80 border border-gold/30 rounded-full px-3 py-1 mb-4 font-poppins font-medium">{m.tag}</span>
             <p className="text-[#a09a8e] text-sm leading-relaxed">{m.desc}</p>
           </div>
         ))}
