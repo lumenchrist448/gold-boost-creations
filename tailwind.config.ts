@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["DM Sans", "sans-serif"],
-        syne: ["Syne", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         ink: "#0a0a0f",
