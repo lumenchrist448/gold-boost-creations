@@ -143,21 +143,23 @@ const Hero = () => (
       style={{ background: "radial-gradient(ellipse at center, rgba(232,184,92,0.18), rgba(232,184,92,0.06) 35%, transparent 70%)" }} />
     <div className="absolute top-20 right-10 w-[500px] h-[500px] pointer-events-none"
       style={{ background: "radial-gradient(circle, rgba(232,184,92,0.1), transparent 60%)" }} />
-    <div className="page-container relative max-w-2xl mx-auto">
+    <div className="page-container relative max-w-3xl mx-auto">
+      {/* Pill badge top */}
+      <div className="fade-up flex justify-center mb-6">
+        <span className="pill-badge">Formation IA · Édition 2026</span>
+      </div>
+
       {/* Title */}
-      <h1 className="fade-up font-poppins font-extrabold leading-[1.1] mb-4 text-[#fafafa] text-center"
-        style={{ fontSize: "clamp(1.8rem, 5.5vw, 3.4rem)" }}>
+      <h1 className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
+        style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}>
         Crée du contenu et vends tes produits{" "}
         <span className="text-[#e8b85c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
       </h1>
 
-      {/* Badge Formation */}
-      <div className="fade-up flex items-center justify-center gap-2 mb-6" style={{ animationDelay: "0.2s" }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a7468" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/>
-        </svg>
-        <span className="text-[#7a7468] text-[0.9rem]">Formation</span>
-      </div>
+      {/* Subtitle */}
+      <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
+        Une formation pratique pour comprendre comment créer, vendre et vivre de tes produits digitaux depuis l'Afrique.
+      </p>
 
 
       {/* Prix */}
