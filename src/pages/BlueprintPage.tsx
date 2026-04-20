@@ -547,6 +547,7 @@ const Testimonials = () => (
           </div>
         ))}
       </div>
+      <SectionCTA label="Je veux les mêmes résultats" />
     </div>
   </section>
 );
