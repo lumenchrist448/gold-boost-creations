@@ -49,6 +49,27 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
+const SectionCTA = ({ label }: { label: string }) => (
+  <div className="flex justify-center mt-10">
+    <a
+      href={CHECKOUT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block font-poppins font-bold text-[0.85rem] sm:text-[0.95rem] uppercase tracking-[0.06em] py-[14px] px-8 rounded-full transition-transform duration-300 hover:-translate-y-0.5"
+      style={{
+        background: "#e8b85c",
+        color: "#0a0a0f",
+        boxShadow: "0 8px 24px rgba(232,184,92,0.25), 0 0 0 1px rgba(232,184,92,0.4)",
+        border: "none",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
+      onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}
+    >
+      {label} →
+    </a>
+  </div>
+);
+
 import heroBannerImg from "@/assets/hero-banner.png";
 
 const HeroBannerImage = () => (
