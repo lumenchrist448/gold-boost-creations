@@ -342,6 +342,7 @@ const WhoIsItFor = () => (
           </ul>
         </div>
       </div>
+      <SectionCTA label="Oui, c'est pour moi — je m'inscris" />
     </div>
   </section>
 );
