@@ -691,7 +691,7 @@ const Pricing = () => (
         <div className="relative">
           <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Blue Print IA Academy — Accès complet</p>
           <p className="font-poppins font-extrabold text-paper mb-1 pricing-price">
-            9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
+            5 500 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           {/* Guarantee Block */}
