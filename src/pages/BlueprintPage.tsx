@@ -507,6 +507,7 @@ const AffichesSection = () => (
         ))}
       </div>
       <p className="text-center text-[0.78rem] text-[#7a7468] mt-5">💡 Tu apprendras à créer exactement ce type de visuels dans le Module 02</p>
+      <SectionCTA label="Je crée mes affiches en 5 minutes" />
     </div>
   </section>
 );
