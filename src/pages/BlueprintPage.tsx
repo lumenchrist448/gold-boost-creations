@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 const PromoBanner = () => (
   <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
     style={{
-      background: "linear-gradient(90deg, #7a6230, #c9a84c, #7a6230)",
+      background: "linear-gradient(90deg, #7a6230, #e8b85c, #7a6230)",
       backgroundSize: "200% 100%",
       animation: "shimmer 3s linear infinite",
       height: "36px",
@@ -34,7 +34,7 @@ const StickyBar = () => {
   }, []);
   return (
     <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
-      style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(201,168,76,0.25)" }}>
+      style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(232,184,92,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-poppins text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>J'accède maintenant</span></a>
@@ -44,9 +44,8 @@ const StickyBar = () => {
 };
 
 const Badge = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-center gap-3 mb-6">
-    <span className="w-8 h-px bg-gold inline-block" />
-    <span className="font-poppins text-gold uppercase text-[11px] tracking-[0.2em]">{children}</span>
+  <div className="flex justify-center mb-6">
+    <span className="pill-badge">{children}</span>
   </div>
 );
 
@@ -57,7 +56,7 @@ const HeroBannerImage = () => (
     src={heroBannerImg}
     alt="Blue Print IA Academy"
     className="w-full object-cover object-center block rounded-xl mb-8"
-    style={{ border: "1px solid rgba(201,168,76,0.2)" }}
+    style={{ border: "1px solid rgba(232,184,92,0.2)" }}
   />
 );
 
@@ -98,7 +97,7 @@ const CountdownTimer = () => {
     return () => clearInterval(id);
   }, []);
 
-  if (expired) return <p className="font-poppins text-[#c9a84c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
+  if (expired) return <p className="font-poppins text-[#e8b85c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
 
   const blocks = [
     { value: timeLeft.days, label: "Jours" },
@@ -109,16 +108,16 @@ const CountdownTimer = () => {
 
   return (
     <div className="mb-8">
-      <p className="font-poppins text-[0.85rem] font-semibold text-[#f5f2eb] text-center tracking-[0.05em] mb-4">L'offre se termine dans</p>
+      <p className="font-poppins text-[0.85rem] font-semibold text-[#fafafa] text-center tracking-[0.05em] mb-4">L'offre se termine dans</p>
       <div className="flex items-center justify-center gap-2 sm:gap-3">
         {blocks.map((b, i) => (
           <div key={i} className="flex items-center gap-2 sm:gap-3">
             <div className="flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16"
-              style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
-              <span className="font-poppins font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#f5f2eb]">{String(b.value).padStart(2, "0")}</span>
+              style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
+              <span className="font-poppins font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#fafafa]">{String(b.value).padStart(2, "0")}</span>
               <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
             </div>
-            {i < 3 && <span className="font-extrabold text-[#c9a84c] text-lg">:</span>}
+            {i < 3 && <span className="font-extrabold text-[#e8b85c] text-lg">:</span>}
           </div>
         ))}
       </div>
@@ -138,29 +137,34 @@ const paymentBadges = [
 ];
 
 const Hero = () => (
-  <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16">
-    <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-      style={{ background: "radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08), transparent 60%)" }} />
-    <div className="page-container relative max-w-2xl mx-auto">
+  <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16 overflow-hidden">
+    {/* Halo radial doré Wilson-style */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
+      style={{ background: "radial-gradient(ellipse at center, rgba(232,184,92,0.18), rgba(232,184,92,0.06) 35%, transparent 70%)" }} />
+    <div className="absolute top-20 right-10 w-[500px] h-[500px] pointer-events-none"
+      style={{ background: "radial-gradient(circle, rgba(232,184,92,0.1), transparent 60%)" }} />
+    <div className="page-container relative max-w-3xl mx-auto">
+      {/* Pill badge top */}
+      <div className="fade-up flex justify-center mb-6">
+        <span className="pill-badge">Formation IA · Édition 2026</span>
+      </div>
+
       {/* Title */}
-      <h1 className="fade-up font-poppins font-extrabold leading-[1.15] mb-4 text-[#f5f2eb]"
-        style={{ fontSize: "clamp(1.5rem, 5vw, 3rem)" }}>
+      <h1 className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
+        style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}>
         Crée du contenu et vends tes produits{" "}
-        <span className="text-[#c9a84c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
+        <span className="text-[#e8b85c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
       </h1>
 
-      {/* Badge Formation */}
-      <div className="fade-up flex items-center gap-2 mb-6" style={{ animationDelay: "0.2s" }}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7a7468" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/>
-        </svg>
-        <span className="text-[#7a7468] text-[0.9rem]">Formation</span>
-      </div>
+      {/* Subtitle */}
+      <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
+        Une formation pratique pour comprendre comment créer, vendre et vivre de tes produits digitaux depuis l'Afrique.
+      </p>
 
 
       {/* Prix */}
       <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
-        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#c9a84c]">9 900 FCFA</span>
+        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#e8b85c]">9 900 FCFA</span>
       </div>
       <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
 
@@ -169,11 +173,11 @@ const Hero = () => (
         <CountdownTimer />
       </div>
 
-      {/* CTA Button */}
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.05em] py-4 sm:py-[18px] px-6 rounded-lg mb-3 transition-colors duration-200 cursor-pointer"
-        style={{ background: "#c9a84c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
-        onMouseEnter={e => (e.currentTarget.style.background = "#e8cc7e")}
-        onMouseLeave={e => (e.currentTarget.style.background = "#c9a84c")}>
+      {/* CTA Button — pill style Wilson */}
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="fade-up cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+        style={{ background: "#e8b85c", color: "#0a0a0f", animationDelay: "0.8s", border: "none" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}>
         Rejoindre la formation →
       </a>
       <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
@@ -181,7 +185,7 @@ const Hero = () => (
       {/* Payment Badges */}
       <div className="flex flex-wrap justify-center gap-2">
         {paymentBadges.map((b, i) => (
-          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-poppins font-bold text-[0.55rem] text-[#f5f2eb]"
+          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-poppins font-bold text-[0.55rem] text-[#fafafa]"
             style={{ background: b.bg, border: `1px solid ${b.border}` }}>
             {b.label}
           </div>
@@ -220,7 +224,7 @@ const problems = [
 ];
 
 const Problem = () => (
-  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(201,168,76,0.03) 50%, transparent)" }}>
+  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}>
     <div className="max-w-2xl mx-auto page-container text-center">
       <Badge>Le vrai problème</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
@@ -234,7 +238,7 @@ const Problem = () => (
       {problems.map((p, i) => (
         <div key={i} className="reveal flex items-start gap-3 p-5 rounded"
           style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)", transition: "border-color 0.3s" }}
-          onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.2)")}
+          onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.2)")}
           onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
           <span className="text-red-500 font-bold shrink-0">✕</span>
           <span className="text-paper/80">{p}</span>
@@ -251,18 +255,23 @@ const modules = [
 ];
 
 const Modules = () => (
-  <section className="section-padding">
-    <div className="max-w-5xl mx-auto page-container">
-      <Badge>Ce que tu vas maîtriser</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-10">
-        3 modules. <span className="text-gold">Des résultats concrets.</span>
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px] rounded overflow-hidden" style={{ background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.25)" }}>
+  <section className="section-padding relative">
+    <div className="absolute inset-0 pointer-events-none"
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,184,92,0.06), transparent 60%)" }} />
+    <div className="max-w-6xl mx-auto page-container relative">
+      <div className="text-center">
+        <Badge>Ce que tu vas maîtriser</Badge>
+        <h2 className="font-poppins font-bold text-3xl md:text-5xl text-paper mb-12 max-w-3xl mx-auto leading-[1.15]">
+          3 modules. <span className="text-gold">Des résultats concrets.</span>
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {modules.map((m, i) => (
-          <div key={i} className="module-card reveal bg-ink p-8 md:p-9">
-            <span className="font-poppins text-gold text-sm tracking-wider mb-1 block">Module {m.num}</span>
-            <h3 className="font-poppins font-bold text-paper text-lg mb-2">{m.title}</h3>
-            <span className="inline-block text-[0.7rem] text-gold/70 border border-gold/20 rounded-sm px-2 py-0.5 mb-3 font-poppins">{m.tag}</span>
+          <div key={i} className="glow-card reveal p-8 md:p-9 rounded-2xl"
+            style={{ background: "linear-gradient(180deg, #14141c 0%, #0d0d14 100%)", border: "1px solid rgba(232,184,92,0.18)" }}>
+            <span className="big-num">{m.num}</span>
+            <h3 className="font-poppins font-bold text-paper text-xl mb-3 leading-tight">{m.title}</h3>
+            <span className="inline-block text-[0.7rem] text-gold/80 border border-gold/30 rounded-full px-3 py-1 mb-4 font-poppins font-medium">{m.tag}</span>
             <p className="text-[#a09a8e] text-sm leading-relaxed">{m.desc}</p>
           </div>
         ))}
@@ -293,7 +302,7 @@ const WhoIsItFor = () => (
         Cette formation est <span className="text-gold">faite pour toi</span>
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="reveal rounded p-8" style={{ border: "1px solid rgba(201,168,76,0.25)", background: "rgba(201,168,76,0.04)" }}>
+        <div className="reveal rounded p-8" style={{ border: "1px solid rgba(232,184,92,0.25)", background: "rgba(232,184,92,0.04)" }}>
           <h3 className="font-poppins text-gold uppercase text-sm tracking-wider mb-4">✓ C'est pour toi si...</h3>
           <ul className="space-y-3">
             {yesItems.map((item, i) => (
@@ -329,14 +338,12 @@ const BonusSection = () => (
       <p className="text-[#7a7468] text-[0.95rem] max-w-[560px] mx-auto mb-12">
         Ces bonus sont inclus dans ton accès. Aucun paiement supplémentaire.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
         {bonusCards.map((b, i) => (
-          <div key={i} className="reveal relative rounded-lg p-8 text-left transition-all duration-300 hover:shadow-[0_0_24px_rgba(201,168,76,0.06)]"
-            style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.5)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.25)")}>
-            <span className="absolute top-0 right-0 font-poppins text-[0.6rem] font-bold tracking-[0.15em] px-2.5 py-1 rounded-tr-lg rounded-bl"
-              style={{ background: "#c9a84c", color: "#0a0a0f" }}>OFFERT</span>
+          <div key={i} className="glow-card reveal relative rounded-2xl p-8 text-left"
+            style={{ background: "linear-gradient(180deg, #14141c 0%, #0d0d14 100%)", border: "1px solid rgba(232,184,92,0.25)" }}>
+            <span className="absolute -top-3 right-4 font-poppins text-[0.6rem] font-bold tracking-[0.15em] px-3 py-1 rounded-full"
+              style={{ background: "#e8b85c", color: "#0a0a0f", boxShadow: "0 4px 12px rgba(232,184,92,0.4)" }}>OFFERT</span>
             <span className="text-3xl mb-4 block">{b.icon}</span>
             <h3 className="font-poppins font-bold text-paper text-base mb-3">{b.title}</h3>
             <p className="text-[#a09a8e] text-sm leading-relaxed mb-4">{b.desc}</p>
@@ -345,11 +352,11 @@ const BonusSection = () => (
         ))}
       </div>
       {/* Bloc valeur totale */}
-      <div className="mt-8 mx-auto max-w-[480px] rounded-lg p-7 text-center"
-        style={{ background: "linear-gradient(135deg, rgba(201,168,76,0.06), rgba(201,168,76,0.02))", border: "1px solid rgba(201,168,76,0.3)" }}>
+      <div className="mt-10 mx-auto max-w-[480px] rounded-2xl p-7 text-center"
+        style={{ background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))", border: "1px solid rgba(232,184,92,0.35)", boxShadow: "0 8px 32px rgba(232,184,92,0.08)" }}>
         <p className="font-poppins text-[0.8rem] text-[#7a7468] tracking-[0.1em] uppercase mb-2">Valeur totale de ce que tu reçois</p>
         <p className="font-poppins text-lg text-[#7a7468] line-through mb-1">68 900 FCFA</p>
-        <p className="font-poppins font-extrabold text-[1.4rem] text-[#c9a84c] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
+        <p className="font-poppins font-extrabold text-[1.4rem] text-[#e8b85c] mb-2">→ Ton prix aujourd'hui : 9 900 FCFA</p>
         <p className="text-[#a09a8e] text-sm">Soit +64% de remise sur la valeur réelle</p>
       </div>
     </div>
@@ -362,11 +369,11 @@ const RosinePhoto = () => {
     <div className="relative mx-auto md:mx-0 w-full max-w-[240px] md:max-w-[280px] shrink-0"
       style={{ height: "clamp(260px, 30vw, 320px)" }}>
       <div className="w-full h-full rounded-xl overflow-hidden"
-        style={{ border: "2px solid rgba(201,168,76,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
+        style={{ border: "2px solid rgba(232,184,92,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
         {imgError ? (
           <div className="w-full h-full flex flex-col items-center justify-center gap-3"
             style={{ background: "linear-gradient(135deg, #1a1a2e, #111118)" }}>
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.3)" strokeWidth="1.5">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(232,184,92,0.3)" strokeWidth="1.5">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
             </svg>
             <span className="text-[#7a7468] text-[0.8rem]">[ Votre photo ici ]</span>
@@ -377,7 +384,7 @@ const RosinePhoto = () => {
         )}
       </div>
       <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.65rem] md:text-[0.72rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#c9a84c", color: "#0a0a0f" }}>✓ Certifiée Expert IA</span>
+        style={{ background: "#e8b85c", color: "#0a0a0f" }}>✓ Certifiée Expert IA</span>
     </div>
   );
 };
@@ -390,7 +397,7 @@ const rosineCredits = [
 ];
 
 const RosineSection = () => (
-  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(201,168,76,0.03) 50%, transparent)" }}>
+  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}>
     <div className="max-w-4xl mx-auto page-container">
       <Badge>Ta formatrice</Badge>
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-12">
@@ -405,13 +412,13 @@ const RosineSection = () => (
           <div className="flex flex-col gap-3.5 mb-8">
             {rosineCredits.map((c, i) => (
               <div key={i} className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[#c9a84c] text-[0.75rem] font-bold">✓</span>
+                <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[#e8b85c] text-[0.75rem] font-bold">✓</span>
                 <span className="text-[0.85rem] md:text-[0.9rem] text-[#a09a8e]">{c}</span>
               </div>
             ))}
           </div>
           <blockquote className="text-[1rem] text-paper italic leading-[1.8] p-5 rounded-r-lg"
-            style={{ borderLeft: "3px solid #c9a84c", background: "rgba(201,168,76,0.04)" }}>
+            style={{ borderLeft: "3px solid #e8b85c", background: "rgba(232,184,92,0.04)" }}>
             "Mon objectif : que chaque e-commerçant africain ait accès aux mêmes outils que les grandes marques — sans les mêmes budgets."
           </blockquote>
         </div>
@@ -436,9 +443,9 @@ const VideoSection = () => (
       <p className="text-[#7a7468] mb-10">Des vidéos produits 100% générées avec les outils enseignés dans la formation.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
         {videos.map((v, i) => (
-          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
+          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
             style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.3)")}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.3)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
               <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
@@ -467,7 +474,7 @@ const AffichesSection = () => (
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div key={n} className="reveal overflow-hidden rounded-lg bg-[#111118] transition-transform duration-300 hover:scale-[1.02]"
-            style={{ border: "1px solid rgba(201,168,76,0.15)" }}>
+            style={{ border: "1px solid rgba(232,184,92,0.15)" }}>
             <img src={`/images/affiche-${n}.jpg`} alt={`Affiche publicitaire IA ${n}`} className="w-full h-auto block" />
           </div>
         ))}
@@ -493,14 +500,14 @@ const Testimonials = () => (
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {testimonials.map((t, i) => (
-          <div key={i} className="reveal relative rounded p-8" style={{ background: "#111118", border: "1px solid rgba(201,168,76,0.25)" }}>
+          <div key={i} className="reveal relative rounded p-8" style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
             <span className="absolute top-4 left-6 font-poppins text-[5rem] leading-none text-gold/15 select-none">"</span>
             <div className="relative">
               <div className="flex text-gold text-sm mb-3">★★★★★</div>
               <p className="text-paper/80 text-sm leading-relaxed mb-6">{t.text}</p>
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-ink"
-                  style={{ background: "linear-gradient(135deg, #c9a84c, #e8cc7e)" }}>
+                  style={{ background: "linear-gradient(135deg, #e8b85c, #f5d488)" }}>
                   {t.initials}
                 </div>
                 <div>
@@ -526,9 +533,9 @@ const PreuvesSection = () => (
       <p className="text-[#7a7468] mb-10">Des captures d'écran envoyées par des apprenants après avoir appliqué les modules. Non retouchées.</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
-          <div key={n} className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,168,76,0.08)]"
+          <div key={n} className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
             style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(201,168,76,0.4)")}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.4)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
           </div>
@@ -569,23 +576,23 @@ const PreuvesCASection = () => (
             className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
             style={{
               background: "#111118",
-              border: "1px solid rgba(201,168,76,0.2)",
+              border: "1px solid rgba(232,184,92,0.2)",
               borderRadius: 10,
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.5)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(201,168,76,0.07)";
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)";
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.2)";
+              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)";
               (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
             }}
           >
             <div style={{ width: "100%", background: "#0a0a0f" }}>
               <img src={c.img} alt={c.label} className="w-full h-auto block" />
             </div>
-            <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
-              <p className="font-poppins font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{c.label}</p>
+            <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(232,184,92,0.03)" }}>
+              <p className="font-poppins font-bold" style={{ fontSize: "0.85rem", color: "#fafafa" }}>{c.label}</p>
               <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
             </div>
           </div>
@@ -596,29 +603,29 @@ const PreuvesCASection = () => (
           className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
           style={{
             background: "#111118",
-            border: "1px solid rgba(201,168,76,0.2)",
+            border: "1px solid rgba(232,184,92,0.2)",
             borderRadius: 10,
           }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.5)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(201,168,76,0.07)";
+            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)";
+            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)";
           }}
           onMouseLeave={e => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,168,76,0.2)";
+            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)";
             (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
           }}
         >
           <div style={{ width: "100%", background: "#0a0a0f" }}>
             <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
           </div>
-          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(201,168,76,0.03)" }}>
-            <p className="font-poppins font-bold" style={{ fontSize: "0.85rem", color: "#f5f2eb" }}>{caCards[2].label}</p>
+          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(232,184,92,0.03)" }}>
+            <p className="font-poppins font-bold" style={{ fontSize: "0.85rem", color: "#fafafa" }}>{caCards[2].label}</p>
             <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{caCards[2].sub}</p>
           </div>
         </div>
       </div>
       <div style={{ maxWidth: 560, margin: "40px auto 0", textAlign: "center" }}>
-        <div style={{ width: 40, height: 1, background: "#c9a84c", margin: "0 auto 16px" }} />
+        <div style={{ width: 40, height: 1, background: "#e8b85c", margin: "0 auto 16px" }} />
         <p style={{ fontSize: "0.82rem", color: "#7a7468", lineHeight: 1.8 }}>
           Ces captures sont issues de mes propres tableaux de bord.<br />
           Les résultats varient selon l'effort et la régularité.<br />
@@ -650,8 +657,8 @@ const Pricing = () => (
         </h2>
       </div>
       <div className="reveal relative pricing-card mx-auto rounded"
-        style={{ border: "1px solid rgba(201,168,76,0.25)", background: "linear-gradient(135deg, rgba(201,168,76,0.04), transparent)" }}>
-        <div className="absolute inset-0 rounded pointer-events-none" style={{ boxShadow: "0 0 40px rgba(201,168,76,0.05)" }} />
+        style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.04), transparent)" }}>
+        <div className="absolute inset-0 rounded pointer-events-none" style={{ boxShadow: "0 0 40px rgba(232,184,92,0.05)" }} />
         <div className="relative">
           <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Blue Print IA Academy — Accès complet</p>
           <p className="font-poppins font-extrabold text-paper mb-1 pricing-price">
@@ -660,8 +667,8 @@ const Pricing = () => (
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           {/* Guarantee Block */}
           <div className="flex items-start gap-4 rounded-lg p-5 mb-6"
-            style={{ background: "rgba(201,168,76,0.04)", border: "1px solid rgba(201,168,76,0.2)" }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" strokeWidth="1.5" className="w-10 h-10 shrink-0">
+            style={{ background: "rgba(232,184,92,0.04)", border: "1px solid rgba(232,184,92,0.2)" }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e8b85c" strokeWidth="1.5" className="w-10 h-10 shrink-0">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
             <div>
@@ -724,7 +731,7 @@ const FAQ = () => {
 
 const FinalCTA = () => (
   <section className="section-padding text-center relative">
-    <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(201,168,76,0.06), transparent 60%)" }} />
+    <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(232,184,92,0.06), transparent 60%)" }} />
     <div className="max-w-xl mx-auto page-container relative">
       <Badge>Dernière chance</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
