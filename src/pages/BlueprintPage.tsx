@@ -159,13 +159,13 @@ const Hero = () => (
       {/* Title */}
       <h1 className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
         style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}>
-        Crée du contenu et vends tes produits{" "}
-        <span className="text-[#e8b85c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
+        Crée ton avatar IA réaliste et{" "}
+        <span className="text-[#e8b85c]">vends sans te filmer</span>
       </h1>
 
       {/* Subtitle */}
       <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
-        Une formation pratique pour comprendre comment créer, vendre et vivre de tes produits digitaux depuis l'Afrique.
+        Un accompagnement de 3 semaines pour créer ta présentatrice IA avec ta vraie voix — depuis l'Afrique.
       </p>
 
 
