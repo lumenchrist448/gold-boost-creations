@@ -86,21 +86,8 @@ const CountdownTimer = () => {
   const [expired, setExpired] = useState(false);
 
   useEffect(() => {
-    let deadline = localStorage.getItem("blueprint_deadline");
-    if (!deadline) {
-      const d = new Date();
-      d.setDate(d.getDate() + 10);
-      deadline = d.toISOString();
-      localStorage.setItem("blueprint_deadline", deadline);
-    }
-    // Extension unique : +14 jours ajoutés à la deadline existante
-    if (!localStorage.getItem("blueprint_deadline_ext_v2")) {
-      const extended = new Date(new Date(deadline).getTime() + 14 * 86400000).toISOString();
-      localStorage.setItem("blueprint_deadline", extended);
-      localStorage.setItem("blueprint_deadline_ext_v2", "1");
-      deadline = extended;
-    }
-    const target = new Date(deadline).getTime();
+    // Compte à rebours fixe : 48h, réinitialisé à chaque visite
+    const target = Date.now() + 48 * 3600 * 1000;
 
     const update = () => {
       const now = Date.now();
@@ -121,8 +108,7 @@ const CountdownTimer = () => {
   if (expired) return <p className="font-poppins text-[#e8b85c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
 
   const blocks = [
-    { value: timeLeft.days, label: "Jours" },
-    { value: timeLeft.hours, label: "Heures" },
+    { value: timeLeft.hours + timeLeft.days * 24, label: "Heures" },
     { value: timeLeft.minutes, label: "Minutes" },
     { value: timeLeft.seconds, label: "Secondes" },
   ];
@@ -138,7 +124,7 @@ const CountdownTimer = () => {
               <span className="font-poppins font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#fafafa]">{String(b.value).padStart(2, "0")}</span>
               <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
             </div>
-            {i < 3 && <span className="font-extrabold text-[#e8b85c] text-lg">:</span>}
+            {i < 2 && <span className="font-extrabold text-[#e8b85c] text-lg">:</span>}
           </div>
         ))}
       </div>
@@ -173,13 +159,13 @@ const Hero = () => (
       {/* Title */}
       <h1 className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
         style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}>
-        Crée du contenu et vends tes produits{" "}
-        <span className="text-[#e8b85c]">avec l'IA</span> — sans caméra, sans agence, sans budget fou
+        Crée ton avatar IA réaliste et{" "}
+        <span className="text-[#e8b85c]">vends sans te filmer</span>
       </h1>
 
       {/* Subtitle */}
       <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
-        Une formation pratique pour comprendre comment créer, vendre et vivre de tes produits digitaux depuis l'Afrique.
+        Un accompagnement de 3 semaines pour créer ta présentatrice IA avec ta vraie voix — depuis l'Afrique.
       </p>
 
 
