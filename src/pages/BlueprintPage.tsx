@@ -108,8 +108,7 @@ const CountdownTimer = () => {
   if (expired) return <p className="font-poppins text-[#e8b85c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
 
   const blocks = [
-    { value: timeLeft.days, label: "Jours" },
-    { value: timeLeft.hours, label: "Heures" },
+    { value: timeLeft.hours + timeLeft.days * 24, label: "Heures" },
     { value: timeLeft.minutes, label: "Minutes" },
     { value: timeLeft.seconds, label: "Secondes" },
   ];
