@@ -86,21 +86,8 @@ const CountdownTimer = () => {
   const [expired, setExpired] = useState(false);
 
   useEffect(() => {
-    let deadline = localStorage.getItem("blueprint_deadline");
-    if (!deadline) {
-      const d = new Date();
-      d.setDate(d.getDate() + 10);
-      deadline = d.toISOString();
-      localStorage.setItem("blueprint_deadline", deadline);
-    }
-    // Extension unique : +14 jours ajoutés à la deadline existante
-    if (!localStorage.getItem("blueprint_deadline_ext_v2")) {
-      const extended = new Date(new Date(deadline).getTime() + 14 * 86400000).toISOString();
-      localStorage.setItem("blueprint_deadline", extended);
-      localStorage.setItem("blueprint_deadline_ext_v2", "1");
-      deadline = extended;
-    }
-    const target = new Date(deadline).getTime();
+    // Compte à rebours fixe : 48h, réinitialisé à chaque visite
+    const target = Date.now() + 48 * 3600 * 1000;
 
     const update = () => {
       const now = Date.now();
