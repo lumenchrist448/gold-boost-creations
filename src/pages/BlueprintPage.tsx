@@ -124,7 +124,7 @@ const CountdownTimer = () => {
               <span className="font-poppins font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#fafafa]">{String(b.value).padStart(2, "0")}</span>
               <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
             </div>
-            {i < 3 && <span className="font-extrabold text-[#e8b85c] text-lg">:</span>}
+            {i < 2 && <span className="font-extrabold text-[#e8b85c] text-lg">:</span>}
           </div>
         ))}
       </div>
