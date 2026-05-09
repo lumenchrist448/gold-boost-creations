@@ -16,7 +16,7 @@ const PromoBanner = () => (
     }}>
     <span style={{ whiteSpace: "nowrap" }}>🔥 OFFRE SPÉCIALE</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>9 900 FCFA</span>
+    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>5 500 FCFA</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>⏳ Expire bientôt</span>
   </div>
