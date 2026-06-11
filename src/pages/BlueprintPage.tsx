@@ -624,7 +624,7 @@ const Pricing = () => (
         <div className="relative">
           <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Accès complet · Paiement unique</p>
           <p className="font-poppins font-extrabold text-paper mb-1 pricing-price">
-            7 900 <span className="text-[#7a7468] text-xl">FCFA</span>
+            9 700 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-8"><span>Je commande maintenant →</span></a>
