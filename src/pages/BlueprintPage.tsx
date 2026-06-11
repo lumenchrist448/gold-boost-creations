@@ -231,7 +231,7 @@ const problems = [
 const Problem = () => (
   <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}>
     <div className="max-w-2xl mx-auto page-container text-center">
-      <Badge>Le vrai problème</Badge>
+      <Badge>Le problème</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <h2 className="reveal font-poppins font-bold text-[1.5rem] sm:text-[1.8rem] text-[#c8c2b8] max-w-[600px] mx-auto mb-10 leading-tight">
         Tu sais que tes clients sont sur TikTok. <span className="text-paper">Mais tu n'oses pas.</span>
