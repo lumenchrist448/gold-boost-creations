@@ -16,7 +16,7 @@ const PromoBanner = () => (
     }}>
     <span style={{ whiteSpace: "nowrap" }}>🔥 OFFRE SPÉCIALE</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>9 700 FCFA</span>
+    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>14 900 FCFA</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>⏳ Expire bientôt</span>
   </div>
@@ -36,7 +36,7 @@ const StickyBar = () => {
     <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
       style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(232,184,92,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span className="font-poppins text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 700 FCFA</span></span>
+        <span className="font-poppins text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">14 900 FCFA</span></span>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>Je crée mon avatar IA</span></a>
       </div>
     </div>
@@ -171,7 +171,7 @@ const Hero = () => (
 
       {/* Prix */}
       <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
-        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#e8b85c]">9 700 FCFA</span>
+        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#e8b85c]">14 900 FCFA</span>
       </div>
       <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
 
@@ -624,7 +624,7 @@ const Pricing = () => (
         <div className="relative">
           <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Accès complet · Paiement unique</p>
           <p className="font-poppins font-extrabold text-paper mb-1 pricing-price">
-            9 700 <span className="text-[#7a7468] text-xl">FCFA</span>
+            14 900 <span className="text-[#7a7468] text-xl">FCFA</span>
           </p>
           <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
           <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-8"><span>Je commande maintenant →</span></a>
@@ -690,7 +690,7 @@ const FinalCTA = () => (
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
         Tu n'as plus besoin de te montrer pour vendre. <span className="text-gold">Ton avatar IA s'en charge.</span>
       </h2>
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — 9 700 FCFA →</span></a>
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — 14 900 FCFA →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
     </div>
   </section>
