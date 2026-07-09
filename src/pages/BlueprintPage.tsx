@@ -87,7 +87,7 @@ const CountdownTimer = () => {
 
   useEffect(() => {
     // Compte à rebours fixe : 48h, réinitialisé à chaque visite
-    const target = Date.now() + 48 * 3600 * 1000;
+    const target = Date.now() + 24 * 3600 * 1000;
 
     const update = () => {
       const now = Date.now();
