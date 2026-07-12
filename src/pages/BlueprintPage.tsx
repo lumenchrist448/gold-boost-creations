@@ -22,7 +22,7 @@ const PromoBanner = () => (
   </div>
 );
 
-const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.store/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
+const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
 
 
 const StickyBar = () => {
