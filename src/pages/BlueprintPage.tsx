@@ -1,4 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
+const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
+const PRICE = "62 900 FCFA";
 
 const PromoBanner = () => (
   <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
@@ -12,18 +16,15 @@ const PromoBanner = () => (
       overflow: "hidden",
       flexWrap: "nowrap",
       color: "#0a0a0f",
-      fontSize: "clamp(0.58rem, 1.5vw, 0.72rem)",
+      fontSize: "clamp(0.55rem, 1.5vw, 0.72rem)",
     }}>
-    <span style={{ whiteSpace: "nowrap" }}>🔥 OFFRE SPÉCIALE</span>
+    <span style={{ whiteSpace: "nowrap" }}>🔥 SEULEMENT 5 PLACES PAR SEMAINE</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>9 900 FCFA</span>
+    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>{PRICE}</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span style={{ whiteSpace: "nowrap" }}>⏳ Expire bientôt</span>
+    <span style={{ whiteSpace: "nowrap" }}>Paiement unique · Accès à vie</span>
   </div>
 );
-
-const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
-
 
 const StickyBar = () => {
   const [show, setShow] = useState(false);
@@ -36,8 +37,8 @@ const StickyBar = () => {
     <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
       style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(232,184,92,0.25)" }}>
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span className="font-poppins text-paper text-sm">Blue Print IA Academy — <span className="text-gold font-bold">9 900 FCFA</span></span>
-        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>Je crée mon avatar IA</span></a>
+        <span className="font-poppins text-paper text-sm">{PROGRAM_NAME} — <span className="text-gold font-bold">{PRICE}</span></span>
+        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>REJOINDRE LE PROGRAMME →</span></a>
       </div>
     </div>
   );
@@ -49,7 +50,7 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-const SectionCTA = ({ label }: { label: string }) => (
+const SectionCTA = ({ label = "REJOINDRE LE PROGRAMME" }: { label?: string }) => (
   <div className="flex justify-center mt-10">
     <a
       href={CHECKOUT_URL}
@@ -70,67 +71,20 @@ const SectionCTA = ({ label }: { label: string }) => (
   </div>
 );
 
-import heroBannerImg from "@/assets/hero-banner.png";
-
-const HeroBannerImage = () => (
-  <img
-    src={heroBannerImg}
-    alt="Blue Print IA Academy"
-    className="w-full object-cover object-center block rounded-xl mb-8"
-    style={{ border: "1px solid rgba(232,184,92,0.2)" }}
-  />
-);
-
-const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const [expired, setExpired] = useState(false);
-
-  useEffect(() => {
-    // Compte à rebours fixe : 48h, réinitialisé à chaque visite
-    const target = Date.now() + 24 * 3600 * 1000;
-
-    const update = () => {
-      const now = Date.now();
-      const diff = target - now;
-      if (diff <= 0) { setExpired(true); return; }
-      setTimeLeft({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-      });
-    };
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  if (expired) return <p className="font-poppins text-[#e8b85c] text-center text-lg font-bold mb-8">⏰ Offre expirée</p>;
-
-  const blocks = [
-    { value: timeLeft.hours + timeLeft.days * 24, label: "Heures" },
-    { value: timeLeft.minutes, label: "Minutes" },
-    { value: timeLeft.seconds, label: "Secondes" },
-  ];
-
-  return (
-    <div className="mb-8">
-      <p className="font-poppins text-[0.85rem] font-semibold text-[#fafafa] text-center tracking-[0.05em] mb-4">L'offre se termine dans</p>
-      <div className="flex items-center justify-center gap-2 sm:gap-3">
-        {blocks.map((b, i) => (
-          <div key={i} className="flex items-center gap-2 sm:gap-3">
-            <div className="flex flex-col items-center justify-center rounded-lg w-14 h-14 sm:w-16 sm:h-16"
-              style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
-              <span className="font-poppins font-extrabold text-[1.3rem] sm:text-[1.6rem] text-[#fafafa]">{String(b.value).padStart(2, "0")}</span>
-              <span className="text-[0.58rem] text-[#7a7468] uppercase tracking-[0.1em]">{b.label}</span>
-            </div>
-            {i < 2 && <span className="font-extrabold text-[#e8b85c] text-lg">:</span>}
-          </div>
-        ))}
-      </div>
+const ScarcityBar = () => (
+  <div className="mb-8 flex justify-center">
+    <div className="flex items-center gap-3 px-5 py-3 rounded-full"
+      style={{ background: "rgba(232,184,92,0.06)", border: "1px solid rgba(232,184,92,0.3)" }}>
+      <span className="relative flex h-2.5 w-2.5">
+        <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#e8b85c" }} />
+        <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#e8b85c" }} />
+      </span>
+      <span className="font-poppins text-[0.78rem] sm:text-[0.85rem] text-[#e8b85c] font-semibold">
+        Seulement 5 nouvelles élèves par semaine — pour un suivi personnel de chacune
+      </span>
     </div>
-  );
-};
+  </div>
+);
 
 const paymentBadges = [
   { label: "WAVE", bg: "rgba(0,100,255,0.15)", border: "rgba(0,100,255,0.3)" },
@@ -145,51 +99,42 @@ const paymentBadges = [
 
 const Hero = () => (
   <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16 overflow-hidden">
-    {/* Halo radial doré Wilson-style */}
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
       style={{ background: "radial-gradient(ellipse at center, rgba(232,184,92,0.18), rgba(232,184,92,0.06) 35%, transparent 70%)" }} />
     <div className="absolute top-20 right-10 w-[500px] h-[500px] pointer-events-none"
       style={{ background: "radial-gradient(circle, rgba(232,184,92,0.1), transparent 60%)" }} />
     <div className="page-container relative max-w-3xl mx-auto">
-      {/* Pill badge top */}
       <div className="fade-up flex justify-center mb-6">
-        <span className="pill-badge">Formation IA · Édition 2026</span>
+        <span className="pill-badge">Programme · Édition 2026</span>
       </div>
 
-      {/* Title */}
       <h1 className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
         style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}>
-        Bientôt, tu vendras tous les jours sur TikTok…{" "}
-        <span className="text-[#e8b85c]">sans jamais montrer ton visage ni ta voix.</span>
+        14 Jours pour{" "}
+        <span className="text-[#e8b85c]">Vendre Sans Te Montrer</span>
       </h1>
 
-      {/* Subtitle */}
-      <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
-        Ton avatar IA et ta voix clonée créent ton contenu à ta place. Toi, tu attires des clients et tu vends tes produits — sans caméra, sans honte, sans perdre de temps.
+      <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-2xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
+        Crée ton vendeur IA qui vend tes produits à ta place — la méthode qui m'a permis de générer plus de 3 500 000 FCFA et 700 commandes, sans dépenser 1 F en publicité. Prêt en 14 jours, sans montrer ton visage et sans aucune compétence technique.
       </p>
 
-
-      {/* Prix */}
       <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
-        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#e8b85c]">9 900 FCFA</span>
+        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#e8b85c]">{PRICE}</span>
       </div>
       <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
 
-      {/* Countdown */}
       <div className="fade-up" style={{ animationDelay: "0.7s" }}>
-        <CountdownTimer />
+        <ScarcityBar />
       </div>
 
-      {/* CTA Button — pill style Wilson */}
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
         style={{ background: "#e8b85c", color: "#0a0a0f", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
         onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}>
-        Je crée mon avatar IA →
+        REJOINDRE LE PROGRAMME →
       </a>
       <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
 
-      {/* Payment Badges */}
       <div className="flex flex-wrap justify-center gap-2">
         {paymentBadges.map((b, i) => (
           <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-poppins font-bold text-[0.55rem] text-[#fafafa]"
@@ -202,30 +147,11 @@ const Hero = () => (
   </section>
 );
 
-const proofItems = [
-  { icon: "👥", text: "+200 créateurs et e-commerçants formés" },
-  { icon: "⭐", text: "3 modules pratiques complets" },
-  { icon: "🕐", text: "Accès à vie · Mises à jour incluses" },
-  { icon: "💳", text: "Wave · Orange Money · MTN Money" },
-];
-
-const ProofBar = () => (
-  <section className="py-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-    <div className="page-container flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-8">
-      {proofItems.map((item, i) => (
-        <div key={i} className="reveal flex items-center gap-2 text-sm text-[#7a7468]">
-          <span className="text-gold text-lg">{item.icon}</span>
-          <span>{item.text}</span>
-        </div>
-      ))}
-    </div>
-  </section>
-);
-
 const problems = [
-  "La peur du regard des autres : « et si on se moque de moi ? »",
-  "La honte de te filmer, d'entendre ta propre voix.",
-  "Le manque de temps, de matériel, de confiance.",
+  "La honte de te voir et de t'entendre à l'écran — et la peur que ta famille ou tes amis se moquent.",
+  "Tu as déjà tout essayé : tourner, recommencer, tout effacer. Et au final, tu ne publies jamais.",
+  "Tu regardes d'autres femmes réussir en ligne et tu te demandes : pourquoi pas moi ?",
+  "Tu as peut-être déjà payé pour une formation qui n'a rien changé. Tu as peur que ça recommence.",
 ];
 
 const Problem = () => (
@@ -234,7 +160,7 @@ const Problem = () => (
       <Badge>Le problème</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <h2 className="reveal font-poppins font-bold text-[1.5rem] sm:text-[1.8rem] text-[#c8c2b8] max-w-[600px] mx-auto mb-10 leading-tight">
-        Tu sais que tes clients sont sur TikTok. <span className="text-paper">Mais tu n'oses pas.</span>
+        Tu sais que tu devrais vendre en vidéo. <span className="text-paper">Mais tu n'oses pas.</span>
       </h2>
     </div>
     <div className="max-w-2xl mx-auto page-container space-y-3">
@@ -250,10 +176,10 @@ const Problem = () => (
       <div className="reveal p-5 rounded text-center"
         style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))" }}>
         <p className="text-[#c8c2b8] italic text-sm">
-          Alors tu attends. Et chaque jour qui passe, ce sont des clients que tu laisses à tes concurrents.
+          Pendant ce temps, tes concurrentes publient, et tes clientes vont chez elles.
         </p>
       </div>
-      <SectionCTA label="Je crée mon avatar IA" />
+      <SectionCTA />
     </div>
   </section>
 );
@@ -266,21 +192,21 @@ const Transformation = () => (
       <Badge>Le déclic</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-6 leading-[1.15]">
-        Imagine maintenant <span className="text-gold">l'inverse…</span>
+        Et si tu n'avais plus jamais besoin de <span className="text-gold">te filmer ?</span>
       </h2>
       <p className="text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-2xl mx-auto leading-relaxed">
-        Ton contenu tourne chaque jour. Tes clients affluent. Et personne ne sait que ce n'est pas toi devant la caméra — parce que c'est ton avatar IA qui parle, avec ta voix. C'est exactement ce que tu vas savoir faire.
+        Le problème n'a jamais été toi. Personne ne t'a montré comment créer un vendeur IA qui te ressemble vraiment — qui parle comme toi, bouge comme toi, et vend à ta place, pendant que tu gardes ta tranquillité et ta dignité intactes.
       </p>
     </div>
   </section>
 );
 
 const benefits = [
-  "Tu publies chaque jour, sans jamais te filmer",
-  "Tu attires des clients même pendant que tu dors",
-  "Tu te lances enfin, libéré(e) de la honte et du regard des autres",
-  "Tu vends tes produits, services et formations en toute confiance",
-  "Tu deviens l'entrepreneur moderne que tu rêvais d'être",
+  "Tu publies chaque jour, sans jamais montrer ton visage",
+  "Tu n'as plus à justifier ton activité à ton entourage — tout reste discret et professionnel",
+  "Tu vends même pendant que tu dors, sans dépenser en publicité",
+  "Tu arrêtes de comparer ta situation à celle des autres — tu avances enfin",
+  "Tu deviens la version de toi-même que tu voulais devenir depuis longtemps",
 ];
 
 const Benefits = () => (
@@ -303,25 +229,10 @@ const Benefits = () => (
       <div className="reveal p-6 rounded-xl text-center"
         style={{ border: "1px solid rgba(232,184,92,0.35)", background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))", boxShadow: "0 8px 32px rgba(232,184,92,0.08)" }}>
         <p className="text-[#c8c2b8] text-sm leading-relaxed">
-          Tu ne ressortiras pas avec une simple formation. Tu ressortiras avec une nouvelle version de toi : prêt(e), confiant(e), et déjà en train de vendre.
+          Tu ne ressortiras pas avec une simple formation. Tu ressortiras avec une nouvelle version de toi : prête, sereine, et déjà en train de vendre.
         </p>
       </div>
-      <SectionCTA label="Je deviens cette version de moi" />
-    </div>
-  </section>
-);
-
-const Guarantee = () => (
-  <section className="section-padding">
-    <div className="max-w-2xl mx-auto page-container text-center">
-      <Badge>Garantie</Badge>
-      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
-      <div className="reveal p-6 rounded-xl"
-        style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))" }}>
-        <p className="text-[#a09a8e] text-[0.95rem] leading-relaxed">
-          Lance-toi sans risque : suis la formation, et si tu n'arrives pas à créer ton premier avatar, on t'accompagne en privé jusqu'à ce que tu y arrives.
-        </p>
-      </div>
+      <SectionCTA />
     </div>
   </section>
 );
@@ -342,21 +253,21 @@ const RosinePhoto = () => {
             <span className="text-[#7a7468] text-[0.8rem]">[ Votre photo ici ]</span>
           </div>
         ) : (
-          <img src="/images/rosine-photo.jpg" alt="Rosine — Expert IA"
+          <img src="/images/rosine-photo.jpg" alt="Rosine — Formatrice"
             className="w-full h-full object-cover object-top" onError={() => setImgError(true)} />
         )}
       </div>
-      <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.65rem] md:text-[0.72rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#e8b85c", color: "#0a0a0f" }}>✓ Certifiée Expert IA</span>
+      <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
+        style={{ background: "#e8b85c", color: "#0a0a0f" }}>✓ 3 500 000+ FCFA générés sans publicité</span>
     </div>
   );
 };
 
 const rosineCredits = [
-  "+200 e-commerçants africains formés à l'IA",
-  "Spécialiste HeyGen, Canva AI, ChatGPT appliqués au e-commerce",
-  "Créatrice de contenu faceless avec +X abonnés sur TikTok",
   "Basée à Abidjan — je connais les réalités du marché africain",
+  "Plus de 200 créateurs et e-commerçants africains accompagnés",
+  "Plus de 6 500 abonnés sur TikTok",
+  "3 500 000+ FCFA générés grâce à mon vendeur IA, sans publicité",
 ];
 
 const RosineSection = () => (
@@ -364,15 +275,24 @@ const RosineSection = () => (
     <div className="max-w-4xl mx-auto page-container">
       <Badge>Ta formatrice</Badge>
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-12">
-        Rosine, <span className="text-gold">Expert IA</span> pour e-commerçants africains
+        Rosine, ton guide pour <span className="text-gold">vendre sans te montrer</span>
       </h2>
       <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
         <RosinePhoto />
-        <div className="flex-1 mt-6 md:mt-0">
-          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9] mb-6">
-            Je suis Rosine, créatrice de contenu IA et formatrice spécialisée dans l'e-commerce africain. J'ai aidé plus de 200 créateurs de contenu et e-commerçants africains à construire leur présence en ligne et booster leurs ventes grâce à l'IA — sans agence, sans caméra, sans budget fou.
+        <div className="flex-1 mt-6 md:mt-0 space-y-4">
+          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
+            Moi aussi, j'ai eu honte de la caméra. Je suis Rosine, créatrice de contenu et formatrice basée à Abidjan. Depuis plusieurs années, j'accompagne des créateurs de contenu et e-commerçants africains — plus de 200 à ce jour — à construire leur présence en ligne, avec plus de 6 500 abonnés sur TikTok.
           </p>
-          <div className="flex flex-col gap-3.5 mb-8">
+          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
+            Mais avant tout ça, j'ai vécu la même honte que toi devant la caméra. Je recommençais mes vidéos 10 fois, je finissais par tout effacer, et mes produits restaient invisibles.
+          </p>
+          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
+            Puis j'ai découvert comment créer un vendeur IA qui me ressemble, parle et bouge comme moi — sans jamais me montrer. En quelques mois, il m'a permis de générer plus de 3 500 000 FCFA et 700 commandes, sans dépenser 1 franc en publicité.
+          </p>
+          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
+            Aujourd'hui, j'ai déjà formé 60 femmes à faire pareil. Et je suis là pour t'apprendre, à toi aussi.
+          </p>
+          <div className="flex flex-col gap-3.5 pt-2">
             {rosineCredits.map((c, i) => (
               <div key={i} className="flex items-start gap-3">
                 <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[#e8b85c] text-[0.75rem] font-bold">✓</span>
@@ -380,21 +300,22 @@ const RosineSection = () => (
               </div>
             ))}
           </div>
-          <blockquote className="text-[1rem] text-paper italic leading-[1.8] p-5 rounded-r-lg"
+          <blockquote className="text-[1rem] text-paper italic leading-[1.8] p-5 rounded-r-lg mt-6"
             style={{ borderLeft: "3px solid #e8b85c", background: "rgba(232,184,92,0.04)" }}>
-            "Mon objectif : que chaque e-commerçant africain ait accès aux mêmes outils que les grandes marques — sans les mêmes budgets."
+            "Mon objectif : que chaque femme qui vend en ligne puisse enfin publier sans honte, et vendre à sa façon."
           </blockquote>
         </div>
       </div>
-      <SectionCTA label="Je rejoins la formation de Rosine" />
+      <SectionCTA />
     </div>
   </section>
 );
 
 const videos = [
-  { src: "/videos/video_1.mp4", label: "Exemple de vidéo générée avec l'IA", sub: "" },
-  { src: "/videos/video_2.mp4", label: "Exemple de vidéo générée avec l'IA", sub: "" },
-  { src: "/videos/video_3.mp4", label: "Exemple de vidéo générée avec l'IA", sub: "" },
+  { src: "/videos/video_1.mp4", label: "Dans un magasin d'habits", placeholder: false },
+  { src: "/videos/video_2.mp4", label: "Dans une voiture", placeholder: false },
+  { src: "/videos/video_3.mp4", label: "En studio", placeholder: false },
+  { src: "", label: "En studio — variante 2", placeholder: true },
 ];
 
 const VideoSection = () => (
@@ -404,48 +325,34 @@ const VideoSection = () => (
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-2">
         Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
       </h2>
-      <p className="text-[#7a7468] mb-10">Des vidéos produits 100% générées avec les outils enseignés dans la formation.</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
+      <p className="text-[#7a7468] mb-10">
+        Ton vendeur IA peut apparaître partout — magasin, voiture, studio — sans que tu aies à t'y déplacer.
+      </p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
             style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.3)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
-              <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
-                <source src={v.src} type="video/mp4" />
-              </video>
+              {v.placeholder ? (
+                <div className="w-full h-full flex flex-col items-center justify-center gap-3" style={{ background: "#000" }}>
+                  <span className="text-[#e8b85c] text-3xl">🎬</span>
+                  <span className="font-poppins text-[#e8b85c] text-[0.8rem] font-semibold uppercase tracking-wider">Vidéo à venir</span>
+                </div>
+              ) : (
+                <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
+                  <source src={v.src} type="video/mp4" />
+                </video>
+              )}
             </div>
             <div className="p-4">
               <p className="font-poppins text-paper text-sm">{v.label}</p>
-              <p className="text-[#7a7468] text-xs">{v.sub}</p>
             </div>
           </div>
         ))}
       </div>
-      <SectionCTA label="Je crée mes vidéos IA dès maintenant" />
-    </div>
-  </section>
-);
-
-const AffichesSection = () => (
-  <section className="section-padding">
-    <div className="max-w-5xl mx-auto page-container">
-      <Badge>Résultats visuels</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-2">
-        Des affiches pub <span className="text-gold">créées en 5 minutes</span>
-      </h2>
-      <p className="text-[#7a7468] mb-10">Toutes ces affiches ont été générées avec les outils du Module 02 — sans graphiste, sans agence.</p>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-        {[1, 2, 3, 4, 5, 6].map(n => (
-          <div key={n} className="reveal overflow-hidden rounded-lg bg-[#111118] transition-transform duration-300 hover:scale-[1.02]"
-            style={{ border: "1px solid rgba(232,184,92,0.15)" }}>
-            <img src={`/images/affiche-${n}.jpg`} alt={`Affiche publicitaire IA ${n}`} className="w-full h-auto block" />
-          </div>
-        ))}
-      </div>
-      <p className="text-center text-[0.78rem] text-[#7a7468] mt-5">💡 Tu apprendras à créer exactement ce type de visuels dans le Module 02</p>
-      <SectionCTA label="Je crée mes affiches en 5 minutes" />
+      <SectionCTA />
     </div>
   </section>
 );
@@ -485,7 +392,7 @@ const Testimonials = () => (
           </div>
         ))}
       </div>
-      <SectionCTA label="Je veux les mêmes résultats" />
+      <SectionCTA />
     </div>
   </section>
 );
@@ -513,14 +420,15 @@ const PreuvesSection = () => (
           🔒 Captures partagées avec accord des apprenants · Résultats non garantis et variables selon l'effort
         </span>
       </div>
-      <SectionCTA label="Je copie cette méthode" />
+      <SectionCTA />
     </div>
   </section>
 );
+
 const caCards = [
   { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en pub" },
   { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100% organique · Contenu IA" },
-  { img: "/images/ca-3.jpg", label: "Statistiques sans publicité payante", sub: "Méthode Blue Print IA Academy" },
+  { img: "/images/ca-3.jpg", label: "Statistiques sans publicité payante", sub: `Méthode enseignée dans ${PROGRAM_NAME}` },
 ];
 
 const PreuvesCASection = () => (
@@ -531,30 +439,17 @@ const PreuvesCASection = () => (
         Ce que l'IA m'a permis de générer{" "}
         <span className="text-gold">sans pub payante et sans montrer mon visage</span>
       </h2>
-      <p style={{ color: "#7a7468", fontSize: "0.9rem", textAlign: "center", maxWidth: 540, margin: "0 auto 48px" }}>
+      <p style={{ color: "#7a7468", fontSize: "0.9rem", textAlign: "center", maxWidth: 560, margin: "0 auto 48px" }}>
         Captures d'écran réelles de mes tableaux de bord.<br />
         Zéro publicité Facebook. Zéro visage à la caméra.<br />
-        Juste l'IA et les méthodes que j'enseigne dans Blue Print IA Academy.
+        Juste l'IA et la méthode enseignée dans <strong style={{ color: "#c8c2b8" }}>{PROGRAM_NAME}</strong>.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {caCards.slice(0, 2).map((c, i) => (
-          <div
-            key={i}
-            className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
-            style={{
-              background: "#111118",
-              border: "1px solid rgba(232,184,92,0.2)",
-              borderRadius: 10,
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)";
-              (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-            }}
-          >
+          <div key={i} className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.2)", borderRadius: 10 }}
+            onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}>
             <div style={{ width: "100%", background: "#0a0a0f" }}>
               <img src={c.img} alt={c.label} className="w-full h-auto block" />
             </div>
@@ -566,22 +461,10 @@ const PreuvesCASection = () => (
         ))}
       </div>
       <div className="flex justify-center mt-5">
-        <div
-          className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
-          style={{
-            background: "#111118",
-            border: "1px solid rgba(232,184,92,0.2)",
-            borderRadius: 10,
-          }}
-          onMouseEnter={e => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)";
-          }}
-          onMouseLeave={e => {
-            (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)";
-            (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-          }}
-        >
+        <div className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
+          style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.2)", borderRadius: 10 }}
+          onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}>
           <div style={{ width: "100%", background: "#0a0a0f" }}>
             <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
           </div>
@@ -603,57 +486,150 @@ const PreuvesCASection = () => (
   </section>
 );
 
-const offerItems = [
-  "La méthode complète en vidéo pour créer ton avatar IA et cloner ta voix — pas à pas, même pour débutant",
-  "BONUS : accompagnement dans un groupe WhatsApp privé — tu n'avances jamais seul(e)",
-  "Accès à vie",
+const valuePacks = [
+  {
+    tag: "PAQUET 1",
+    name: "Le Kit Premier Pas",
+    value: "153 700 FCFA",
+    items: [
+      "Ligne d'Aide Directe",
+      "Guide de Démarrage Express",
+      "Bibliothèque de Décors",
+      "Montage Pas-à-Pas Simplifié",
+      "Planning Rattrapable",
+      "Modèles Prêts à Copier",
+    ],
+  },
+  {
+    tag: "PAQUET 2",
+    name: "Le Bon Choix",
+    value: "89 800 FCFA",
+    items: [
+      "Banque de Scripts",
+      "Planificateur de Contenu",
+      "Pack Audio Mindset & Déclic",
+      "Grille de Lecture des Résultats",
+      "Suivi Personnalisé de Progression",
+    ],
+  },
+  {
+    tag: "PAQUET 3",
+    name: "Le Kit Après la Formation",
+    value: "108 900 FCFA",
+    items: [
+      "Plan Post-Formation",
+      "Banque d'Idées Illimitée",
+      "Tableau de Suivi des Ventes",
+      "Guide d'Évolution de l'Avatar",
+      "Groupe de Suivi Après-Formation",
+    ],
+  },
+];
+
+const bonusPacks = [
+  { tag: "BONUS 1", name: "Le Guide des Erreurs à Éviter", value: "12 800 FCFA" },
+  { tag: "BONUS 2", name: "Le SOS Sans Panique", value: "23 800 FCFA" },
 ];
 
 const Pricing = () => (
   <section id="pricing" className="section-padding">
-    <div className="max-w-2xl mx-auto page-container">
+    <div className="max-w-4xl mx-auto page-container">
       <div className="text-center mb-10">
-        <Badge>L'offre</Badge>
+        <Badge>L'offre complète</Badge>
         <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper">
-          Ton raccourci vers <span className="text-gold">cette transformation</span>
+          Ton programme complet pour <span className="text-gold">vendre sans te montrer</span>
         </h2>
       </div>
-      <div className="reveal relative pricing-card mx-auto rounded"
-        style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.04), transparent)" }}>
-        <div className="absolute inset-0 rounded pointer-events-none" style={{ boxShadow: "0 0 40px rgba(232,184,92,0.05)" }} />
-        <div className="relative">
-          <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-4">Accès complet · Paiement unique</p>
-          <p className="font-poppins font-extrabold text-paper mb-1 pricing-price">
-            9 900 <span className="text-[#7a7468] text-xl">FCFA</span>
-          </p>
-          <p className="text-[#7a7468] text-sm mb-8">Paiement unique · Accès à vie</p>
-          <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-8"><span>Je commande maintenant →</span></a>
-          <ul className="space-y-3 mb-8">
-            {offerItems.map((item, i) => (
-              <li key={i} className="flex items-start gap-3 text-paper/80 text-sm">
-                <span className="w-5 h-5 rounded-full bg-gold/20 text-gold text-xs flex items-center justify-center shrink-0 mt-0.5">✓</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {["Wave", "Orange Money", "MTN Money"].map(m => (
-              <span key={m} className="text-xs px-3 py-1.5 rounded-full text-[#7a7468]" style={{ background: "rgba(255,255,255,0.05)" }}>{m}</span>
-            ))}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+        {valuePacks.map((pack, i) => (
+          <div key={i} className="reveal glow-card rounded-2xl p-6 flex flex-col"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
+            <span className="font-poppins text-[0.65rem] tracking-[0.15em] text-[#e8b85c] font-bold mb-2">{pack.tag}</span>
+            <h3 className="font-poppins font-bold text-paper text-[1.1rem] mb-3">{pack.name}</h3>
+            <p className="text-[#7a7468] text-[0.75rem] mb-4">
+              Valeur : <span className="text-[#e8b85c] font-semibold">{pack.value}</span>
+            </p>
+            <ul className="space-y-2">
+              {pack.items.map((it, j) => (
+                <li key={j} className="flex items-start gap-2 text-paper/85 text-[0.82rem]">
+                  <span className="text-gold shrink-0 mt-0.5">✓</span>
+                  <span>{it}</span>
+                </li>
+              ))}
+            </ul>
           </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+        {bonusPacks.map((b, i) => (
+          <div key={i} className="reveal rounded-2xl p-5 flex items-start gap-4"
+            style={{ background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))", border: "1px solid rgba(232,184,92,0.35)" }}>
+            <span className="text-2xl">🎁</span>
+            <div>
+              <span className="font-poppins text-[0.65rem] tracking-[0.15em] text-[#e8b85c] font-bold">{b.tag}</span>
+              <h4 className="font-poppins font-bold text-paper text-[0.95rem] mb-1">{b.name}</h4>
+              <p className="text-[#7a7468] text-[0.75rem]">
+                Valeur : <span className="text-[#e8b85c] font-semibold">{b.value}</span>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="reveal relative pricing-card mx-auto rounded-2xl text-center"
+        style={{ border: "1px solid rgba(232,184,92,0.4)", background: "linear-gradient(135deg, rgba(232,184,92,0.08), transparent)" }}>
+        <p className="font-poppins text-[#a09a8e] text-[0.85rem] mb-2">Valeur totale</p>
+        <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">389 000 FCFA</p>
+        <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-3">Prix aujourd'hui</p>
+        <p className="font-poppins font-extrabold text-[#e8b85c] mb-1 pricing-price">
+          {PRICE.split(" ")[0]} <span className="text-[#7a7468] text-xl">FCFA</span>
+        </p>
+        <p className="text-[#7a7468] text-sm mb-6">Paiement unique · Accès à vie</p>
+        <p className="text-paper text-[0.95rem] font-semibold mb-8 italic">
+          Tu reçois <span className="text-[#e8b85c]">plus de 6 fois</span> ce que tu payes.
+        </p>
+        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-6"><span>Je me lance — {PRICE} →</span></a>
+        <div className="flex flex-wrap gap-2 justify-center">
+          {["Wave", "Orange Money", "MTN Money"].map(m => (
+            <span key={m} className="text-xs px-3 py-1.5 rounded-full text-[#7a7468]" style={{ background: "rgba(255,255,255,0.05)" }}>{m}</span>
+          ))}
         </div>
       </div>
     </div>
   </section>
 );
 
+const Guarantee = () => (
+  <section className="section-padding">
+    <div className="max-w-2xl mx-auto page-container text-center">
+      <Badge>Garantie</Badge>
+      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
+      <h2 className="font-poppins font-bold text-2xl md:text-3xl text-paper mb-6">
+        La Promesse <span className="text-gold">Zéro Perte</span>
+      </h2>
+      <div className="reveal p-6 rounded-xl text-left"
+        style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))" }}>
+        <p className="text-[#c8c2b8] text-[0.95rem] leading-relaxed">
+          Si tu suis les 3 étapes du programme et que tu n'as pas ton vendeur IA fonctionnel au bout de 14 jours, tu m'envoies un simple message WhatsApp et je te rembourse sous 72h par le même Mobile Money que ton paiement.
+        </p>
+        <p className="text-[#c8c2b8] text-[0.95rem] leading-relaxed mt-3">
+          Pas de question compliquée. Je prends ce risque parce que je sais que ça marche — <span className="text-[#e8b85c] font-semibold">60 femmes l'ont déjà fait avant toi.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
 const faqData = [
-  { q: "Je ne suis pas doué(e) avec la technologie.", a: "Tout est expliqué pas à pas, c'est pensé pour les débutants." },
-  { q: "Est-ce que l'avatar a vraiment l'air réel ?", a: "Oui, et tu en verras des exemples concrets." },
-  { q: "Est-ce légal ?", a: "Oui : tu crées ton propre avatar et tu clones ta propre voix." },
-  { q: "Je n'ai qu'un téléphone, est-ce que ça suffit ?", a: "Oui, un simple smartphone suffit." },
-  { q: "Comment payer ?", a: "Mobile Money, Wave, et autres moyens de paiement disponibles." },
-  { q: "Et si je bloque ?", a: "Le groupe WhatsApp privé répond à toutes tes questions." },
+  { q: "Je ne suis pas douée avec la technologie, est-ce pour moi ?", a: "Oui. Tout est expliqué pas à pas, avec un accompagnement personnel. Le programme est pensé pour les débutantes complètes." },
+  { q: "Est-ce que l'avatar a vraiment l'air réel ?", a: "Oui. Tu verras des exemples concrets dans la section vidéos plus haut — magasin, voiture, studio — tous générés par IA." },
+  { q: "Est-ce légal ?", a: "Oui : tu crées ton propre vendeur IA et tu clones ta propre voix. Tout t'appartient." },
+  { q: "Je n'ai qu'un téléphone, est-ce que ça suffit ?", a: "Oui, un simple smartphone suffit pour suivre tout le programme et créer ton vendeur IA." },
+  { q: "Je peux payer avec Mobile Money ?", a: "Oui : Wave, Orange Money, MTN Money." },
+  { q: "Et si je bloque pendant les 14 jours ?", a: "Tu as la Ligne d'Aide Directe et le groupe de suivi. Tu n'avances jamais seule." },
+  { q: `Combien coûte le programme ?`, a: `${PRICE}, en paiement unique, accès à vie. Plus la garantie Zéro Perte : remboursée sous 72h si tu n'as pas ton vendeur IA au bout de 14 jours en ayant suivi les 3 étapes.` },
 ];
 
 const FAQ = () => {
@@ -685,12 +661,15 @@ const FinalCTA = () => (
   <section className="section-padding text-center relative">
     <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(232,184,92,0.06), transparent 60%)" }} />
     <div className="max-w-xl mx-auto page-container relative">
-      <Badge>Dernière chance</Badge>
+      <Badge>Dernière étape</Badge>
       <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
-        Tu n'as plus besoin de te montrer pour vendre. <span className="text-gold">Ton avatar IA s'en charge.</span>
+        Tu n'as plus besoin de te montrer pour vendre. <span className="text-gold">Ton vendeur IA s'en charge.</span>
       </h2>
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — 9 900 FCFA →</span></a>
+      <p className="text-[#e8b85c] text-[0.9rem] font-semibold mb-6">
+        Seulement 5 nouvelles élèves par semaine, pour un suivi personnel de chacune.
+      </p>
+      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — {PRICE} →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
     </div>
   </section>
@@ -698,7 +677,7 @@ const FinalCTA = () => (
 
 const Footer = () => (
   <footer className="py-8 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-    <p className="text-[#4a4840] text-[0.78rem]">© 2025 Blue Print IA Academy by Rosine — Tous droits réservés</p>
+    <p className="text-[#4a4840] text-[0.78rem]">© 2026 {PROGRAM_NAME} by Rosine — Tous droits réservés</p>
   </footer>
 );
 
