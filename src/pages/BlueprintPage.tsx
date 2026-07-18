@@ -358,10 +358,10 @@ const VideoSection = () => (
 );
 
 const testimonials = [
-  { text: "Avant je payais un graphiste 15 000 FCFA par affiche. Maintenant je crée mes visuels en 5 minutes avec l'IA. Cette formation m'a rentabilisée dès la première semaine.", initials: "AM", name: "Awa M.", role: "Boutique mode — Dakar" },
-  { text: "Mes fiches produits étaient nulles avant. Après le module 3, mon taux de conversion a augmenté. Les clients me disent que la description leur a donné envie d'acheter.", initials: "KD", name: "Kofi D.", role: "E-commerce cosmétiques — Abidjan" },
-  { text: "Je ne savais pas utiliser l'IA du tout. Rosine explique vraiment simplement. J'ai fait ma première vidéo produit en 2 heures. Mes followers ont adoré le rendu.", initials: "FN", name: "Fatou N.", role: "Boutique bijoux — Douala" },
-  { text: "La partie page produit complète m'a vraiment aidé. J'ai refait toutes mes pages en appliquant la méthode et mes ventes ont augmenté ce mois-ci. Je recommande à 100%.", initials: "BS", name: "Brice S.", role: "Drop shipping — Lomé" },
+  { text: "J'avais honte de me filmer depuis toujours. Avec mon vendeur IA, je poste enfin tous les jours et mes clientes ne se doutent de rien. Mes ventes ont doublé en un mois.", initials: "AM", name: "Awa M.", role: "Boutique mode — Dakar" },
+  { text: "Je repoussais mes vidéos depuis des mois par peur du regard des autres. En 14 jours j'ai créé mon vendeur IA et je publie enfin sans stress.", initials: "KD", name: "Khadija D.", role: "Cosmétiques — Abidjan" },
+  { text: "Je ne savais rien faire avec la technologie. Rosine explique vraiment simplement. Ma première vidéo était prête en une après-midi, et personne n'a deviné que ce n'était pas moi qui parlais en direct.", initials: "FN", name: "Fatou N.", role: "Bijoux — Douala" },
+  { text: "Ce qui m'a convaincue, c'est la garantie. Je n'avais rien à perdre. Aujourd'hui je publie 2 vidéos par jour sans jamais me montrer, et mes ventes suivent.", initials: "BS", name: "Bintou S.", role: "Vente en ligne — Lomé" },
 ];
 
 const Testimonials = () => (
