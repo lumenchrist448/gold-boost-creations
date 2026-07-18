@@ -724,8 +724,11 @@ const FinalCTA = () => (
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
         Tu n'as plus besoin de te montrer pour vendre. <span className="text-gold">Ton vendeur IA s'en charge.</span>
       </h2>
-      <p className="text-[#e8b85c] text-[0.9rem] font-semibold mb-6">
+      <p className="text-[#e8b85c] text-[0.9rem] font-semibold mb-2">
         Seulement 5 nouvelles élèves par semaine, pour un suivi personnel de chacune.
+      </p>
+      <p className="italic text-[#c8c2b8] text-[0.85rem] mb-6">
+        Chaque jour d'attente, c'est un jour de ventes en moins.
       </p>
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — {PRICE} →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
