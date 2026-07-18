@@ -201,6 +201,64 @@ const Transformation = () => (
   </section>
 );
 
+const ComparisonVideo = () => (
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
+      <Badge>La preuve en vidéo</Badge>
+      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-3">
+        Avatar générique <span className="text-gold">vs</span> vendeur IA avec ma méthode
+      </h2>
+      <p className="text-[#7a7468] mb-10">
+        Regarde la différence. Ce n'est pas l'outil qui change tout, c'est la méthode.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { src: "/videos/rendu-robotique.mov", type: "video/quicktime", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
+          { src: "/videos/rendu-humain.mp4", type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
+        ].map((v, i) => (
+          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
+            <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
+              <video controls preload="metadata" className="w-full h-full object-contain" style={{ background: "#000" }}>
+                <source src={v.src} type={v.type} />
+              </video>
+            </div>
+            <div className="p-4 flex items-center justify-between gap-3">
+              <p className="font-poppins text-paper text-sm">{v.label}</p>
+              <span className="font-poppins text-[0.7rem] font-semibold px-3 py-1 rounded-full whitespace-nowrap"
+                style={{ background: v.badgeBg, color: v.badgeColor, border: `1px solid ${v.badgeBorder}` }}>
+                {v.badge}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-center italic text-[#c8c2b8] text-[0.95rem] mt-10 max-w-2xl mx-auto">
+        La différence n'est pas l'outil. C'est le montage. Et c'est exactement ce que je t'apprends dans le programme.
+      </p>
+      <SectionCTA />
+    </div>
+  </section>
+);
+
+const UrgencyBlock = () => (
+  <section className="py-10">
+    <div className="max-w-[640px] mx-auto page-container">
+      <div className="reveal text-center px-6 py-10 md:px-10 md:py-12"
+        style={{
+          background: "rgba(232,184,92,0.03)",
+          borderTop: "1px solid rgba(232,184,92,0.15)",
+          borderBottom: "1px solid rgba(232,184,92,0.15)",
+        }}>
+        <div className="text-gold text-3xl mb-4">⏳</div>
+        <p className="italic text-[#c8c2b8] text-[1rem] md:text-[1.1rem] leading-[1.8]">
+          Chaque jour sans ton vendeur IA, c'est un jour de vidéos en moins — et donc de ventes en moins. Dans 14 jours, tu peux déjà avoir ton premier résultat, ou attendre encore un mois de plus à te demander «&nbsp;et si j'essayais&nbsp;?&nbsp;».
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
 const benefits = [
   "Tu publies chaque jour, sans jamais montrer ton visage",
   "Tu n'as plus à justifier ton activité à ton entourage — tout reste discret et professionnel",
@@ -358,10 +416,10 @@ const VideoSection = () => (
 );
 
 const testimonials = [
-  { text: "Avant je payais un graphiste 15 000 FCFA par affiche. Maintenant je crée mes visuels en 5 minutes avec l'IA. Cette formation m'a rentabilisée dès la première semaine.", initials: "AM", name: "Awa M.", role: "Boutique mode — Dakar" },
-  { text: "Mes fiches produits étaient nulles avant. Après le module 3, mon taux de conversion a augmenté. Les clients me disent que la description leur a donné envie d'acheter.", initials: "KD", name: "Kofi D.", role: "E-commerce cosmétiques — Abidjan" },
-  { text: "Je ne savais pas utiliser l'IA du tout. Rosine explique vraiment simplement. J'ai fait ma première vidéo produit en 2 heures. Mes followers ont adoré le rendu.", initials: "FN", name: "Fatou N.", role: "Boutique bijoux — Douala" },
-  { text: "La partie page produit complète m'a vraiment aidé. J'ai refait toutes mes pages en appliquant la méthode et mes ventes ont augmenté ce mois-ci. Je recommande à 100%.", initials: "BS", name: "Brice S.", role: "Drop shipping — Lomé" },
+  { text: "J'avais honte de me filmer depuis toujours. Avec mon vendeur IA, je poste enfin tous les jours et mes clientes ne se doutent de rien. Mes ventes ont doublé en un mois.", initials: "AM", name: "Awa M.", role: "Boutique mode — Dakar" },
+  { text: "Je repoussais mes vidéos depuis des mois par peur du regard des autres. En 14 jours j'ai créé mon vendeur IA et je publie enfin sans stress.", initials: "KD", name: "Khadija D.", role: "Cosmétiques — Abidjan" },
+  { text: "Je ne savais rien faire avec la technologie. Rosine explique vraiment simplement. Ma première vidéo était prête en une après-midi, et personne n'a deviné que ce n'était pas moi qui parlais en direct.", initials: "FN", name: "Fatou N.", role: "Bijoux — Douala" },
+  { text: "Ce qui m'a convaincue, c'est la garantie. Je n'avais rien à perdre. Aujourd'hui je publie 2 vidéos par jour sans jamais me montrer, et mes ventes suivent.", initials: "BS", name: "Bintou S.", role: "Vente en ligne — Lomé" },
 ];
 
 const Testimonials = () => (
@@ -666,8 +724,11 @@ const FinalCTA = () => (
       <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
         Tu n'as plus besoin de te montrer pour vendre. <span className="text-gold">Ton vendeur IA s'en charge.</span>
       </h2>
-      <p className="text-[#e8b85c] text-[0.9rem] font-semibold mb-6">
+      <p className="text-[#e8b85c] text-[0.9rem] font-semibold mb-2">
         Seulement 5 nouvelles élèves par semaine, pour un suivi personnel de chacune.
+      </p>
+      <p className="italic text-[#c8c2b8] text-[0.85rem] mb-6">
+        Chaque jour d'attente, c'est un jour de ventes en moins.
       </p>
       <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — {PRICE} →</span></a>
       <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
@@ -698,12 +759,14 @@ const BlueprintPage = () => {
       <Hero />
       <Problem />
       <Transformation />
+      <ComparisonVideo />
       <Benefits />
       <RosineSection />
       <VideoSection />
       <Testimonials />
       <PreuvesSection />
       <PreuvesCASection />
+      <UrgencyBlock />
       <Pricing />
       <Guarantee />
       <FAQ />
