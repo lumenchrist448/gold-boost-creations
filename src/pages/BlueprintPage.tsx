@@ -201,6 +201,64 @@ const Transformation = () => (
   </section>
 );
 
+const ComparisonVideo = () => (
+  <section className="section-padding">
+    <div className="max-w-5xl mx-auto page-container">
+      <Badge>La preuve en vidéo</Badge>
+      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-3">
+        Avatar générique <span className="text-gold">vs</span> vendeur IA avec ma méthode
+      </h2>
+      <p className="text-[#7a7468] mb-10">
+        Regarde la différence. Ce n'est pas l'outil qui change tout, c'est la méthode.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { src: "/videos/rendu-robotique.mov", type: "video/quicktime", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
+          { src: "/videos/rendu-humain.mp4", type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
+        ].map((v, i) => (
+          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
+            <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
+              <video controls preload="metadata" className="w-full h-full object-contain" style={{ background: "#000" }}>
+                <source src={v.src} type={v.type} />
+              </video>
+            </div>
+            <div className="p-4 flex items-center justify-between gap-3">
+              <p className="font-poppins text-paper text-sm">{v.label}</p>
+              <span className="font-poppins text-[0.7rem] font-semibold px-3 py-1 rounded-full whitespace-nowrap"
+                style={{ background: v.badgeBg, color: v.badgeColor, border: `1px solid ${v.badgeBorder}` }}>
+                {v.badge}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-center italic text-[#c8c2b8] text-[0.95rem] mt-10 max-w-2xl mx-auto">
+        La différence n'est pas l'outil. C'est le montage. Et c'est exactement ce que je t'apprends dans le programme.
+      </p>
+      <SectionCTA />
+    </div>
+  </section>
+);
+
+const UrgencyBlock = () => (
+  <section className="py-10">
+    <div className="max-w-[640px] mx-auto page-container">
+      <div className="reveal text-center px-6 py-10 md:px-10 md:py-12"
+        style={{
+          background: "rgba(232,184,92,0.03)",
+          borderTop: "1px solid rgba(232,184,92,0.15)",
+          borderBottom: "1px solid rgba(232,184,92,0.15)",
+        }}>
+        <div className="text-gold text-3xl mb-4">⏳</div>
+        <p className="italic text-[#c8c2b8] text-[1rem] md:text-[1.1rem] leading-[1.8]">
+          Chaque jour sans ton vendeur IA, c'est un jour de vidéos en moins — et donc de ventes en moins. Dans 14 jours, tu peux déjà avoir ton premier résultat, ou attendre encore un mois de plus à te demander «&nbsp;et si j'essayais&nbsp;?&nbsp;».
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
 const benefits = [
   "Tu publies chaque jour, sans jamais montrer ton visage",
   "Tu n'as plus à justifier ton activité à ton entourage — tout reste discret et professionnel",
