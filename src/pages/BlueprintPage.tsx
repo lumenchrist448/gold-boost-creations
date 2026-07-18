@@ -213,8 +213,8 @@ const ComparisonVideo = () => (
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { src: "/videos/rendu-robotique.mov", type: "video/quicktime", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
-          { src: "/videos/rendu-humain.mp4", type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
+          { src: renduRobotique.url, type: "video/mp4", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
+          { src: renduHumain.url, type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
         ].map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
             style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
