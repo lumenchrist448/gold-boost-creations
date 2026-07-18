@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
+import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 
 const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
 const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
@@ -213,8 +215,8 @@ const ComparisonVideo = () => (
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { src: "/videos/rendu-robotique.mov", type: "video/quicktime", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
-          { src: "/videos/rendu-humain.mp4", type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
+          { src: renduRobotique.url, type: "video/mp4", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
+          { src: renduHumain.url, type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
         ].map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
             style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
@@ -642,7 +644,7 @@ const Pricing = () => (
         <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">389 000 FCFA</p>
         <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-3">Prix aujourd'hui</p>
         <p className="font-poppins font-extrabold text-[#e8b85c] mb-1 pricing-price">
-          {PRICE.split(" ")[0]} <span className="text-[#7a7468] text-xl">FCFA</span>
+          {PRICE.replace(" FCFA", "")} <span className="text-[#7a7468] text-xl">FCFA</span>
         </p>
         <p className="text-[#7a7468] text-sm mb-6">Paiement unique · Accès à vie</p>
         <p className="text-paper text-[0.95rem] font-semibold mb-8 italic">
