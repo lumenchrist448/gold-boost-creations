@@ -642,7 +642,7 @@ const Pricing = () => (
         <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">389 000 FCFA</p>
         <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-3">Prix aujourd'hui</p>
         <p className="font-poppins font-extrabold text-[#e8b85c] mb-1 pricing-price">
-          {PRICE.split(" ")[0]} <span className="text-[#7a7468] text-xl">FCFA</span>
+          {PRICE.replace(" FCFA", "")} <span className="text-[#7a7468] text-xl">FCFA</span>
         </p>
         <p className="text-[#7a7468] text-sm mb-6">Paiement unique · Accès à vie</p>
         <p className="text-paper text-[0.95rem] font-semibold mb-8 italic">
