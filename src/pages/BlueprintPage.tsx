@@ -756,12 +756,14 @@ const BlueprintPage = () => {
       <Hero />
       <Problem />
       <Transformation />
+      <ComparisonVideo />
       <Benefits />
       <RosineSection />
       <VideoSection />
       <Testimonials />
       <PreuvesSection />
       <PreuvesCASection />
+      <UrgencyBlock />
       <Pricing />
       <Guarantee />
       <FAQ />
