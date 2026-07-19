@@ -211,14 +211,7 @@ const Hero = () => (
       </a>
       <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
 
-      <div className="flex flex-wrap justify-center gap-2">
-        {paymentBadges.map((b, i) => (
-          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-poppins font-bold text-[0.55rem] text-[#fafafa]"
-            style={{ background: b.bg, border: `1px solid ${b.border}` }}>
-            {b.label}
-          </div>
-        ))}
-      </div>
+      <PaymentMethodsImage />
     </div>
   </section>
 );
