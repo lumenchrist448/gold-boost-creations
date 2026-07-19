@@ -1,10 +1,72 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 
 const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
 const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
-const PRICE = "62 900 FCFA";
+const PRICE = "24 700 FCFA";
+
+type AutoVideoProps = { src: string; type?: string; poster?: string; className?: string; style?: React.CSSProperties };
+const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVideoProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) v.play().catch(() => {});
+          else v.pause();
+        });
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    if (!v.muted) v.play().catch(() => {});
+    setMuted(v.muted);
+  };
+
+  return (
+    <div className="relative w-full h-full">
+      <video
+        ref={videoRef}
+        className={className}
+        style={style}
+        muted
+        autoPlay
+        loop
+        playsInline
+        preload="metadata"
+        poster={poster}
+      >
+        <source src={src} type={type} />
+      </video>
+      <button
+        type="button"
+        onClick={toggleSound}
+        aria-label={muted ? "Activer le son" : "Couper le son"}
+        className="absolute bottom-2 right-2 font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur transition-opacity hover:opacity-100"
+        style={{
+          background: "rgba(10,10,15,0.72)",
+          color: "#e8b85c",
+          border: "1px solid rgba(232,184,92,0.4)",
+          opacity: 0.85,
+        }}
+      >
+        {muted ? "🔇 Activer le son" : "🔊 Couper le son"}
+      </button>
+    </div>
+  );
+};
 
 const PromoBanner = () => (
   <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
@@ -221,9 +283,8 @@ const ComparisonVideo = () => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
             style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
-              <video controls preload="metadata" className="w-full h-full object-contain" style={{ background: "#000" }}>
-                <source src={v.src} type={v.type} />
-              </video>
+              <AutoVideo src={v.src} type={v.type} className="w-full h-full object-contain" style={{ background: "#000" }} />
+
             </div>
             <div className="p-4 flex items-center justify-between gap-3">
               <p className="font-poppins text-paper text-sm">{v.label}</p>
@@ -372,10 +433,10 @@ const RosineSection = () => (
 );
 
 const videos = [
-  { src: "/videos/video_1.mp4", label: "Dans un magasin d'habits", placeholder: false },
-  { src: "/videos/video_2.mp4", label: "Dans une voiture", placeholder: false },
-  { src: "/videos/video_3.mp4", label: "En studio", placeholder: false },
-  { src: "", label: "En studio — variante 2", placeholder: true },
+  { src: "/videos/magasin.mp4", label: "Dans un magasin d'habits", placeholder: false },
+  { src: "/videos/voiture.mp4", label: "Dans une voiture", placeholder: false },
+  { src: "/videos/studio-1.mp4", label: "En studio (1)", placeholder: true },
+  { src: "/videos/studio-2.mp4", label: "En studio (2)", placeholder: false },
 ];
 
 const VideoSection = () => (
@@ -391,9 +452,7 @@ const VideoSection = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
-            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.3)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
               {v.placeholder ? (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-3" style={{ background: "#000" }}>
@@ -401,9 +460,7 @@ const VideoSection = () => (
                   <span className="font-poppins text-[#e8b85c] text-[0.8rem] font-semibold uppercase tracking-wider">Vidéo à venir</span>
                 </div>
               ) : (
-                <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
-                  <source src={v.src} type="video/mp4" />
-                </video>
+                <AutoVideo src={v.src} className="w-full h-full object-contain rounded" style={{ background: "#000" }} />
               )}
             </div>
             <div className="p-4">
@@ -412,6 +469,7 @@ const VideoSection = () => (
           </div>
         ))}
       </div>
+
       <SectionCTA />
     </div>
   </section>
@@ -550,7 +608,7 @@ const valuePacks = [
   {
     tag: "PAQUET 1",
     name: "Le Kit Premier Pas",
-    value: "153 700 FCFA",
+    value: "25 000 FCFA",
     items: [
       "Ligne d'Aide Directe",
       "Guide de Démarrage Express",
@@ -563,7 +621,7 @@ const valuePacks = [
   {
     tag: "PAQUET 2",
     name: "Le Bon Choix",
-    value: "89 800 FCFA",
+    value: "25 000 FCFA",
     items: [
       "Banque de Scripts",
       "Planificateur de Contenu",
@@ -575,7 +633,7 @@ const valuePacks = [
   {
     tag: "PAQUET 3",
     name: "Le Kit Après la Formation",
-    value: "108 900 FCFA",
+    value: "30 000 FCFA",
     items: [
       "Plan Post-Formation",
       "Banque d'Idées Illimitée",
@@ -641,14 +699,14 @@ const Pricing = () => (
       <div className="reveal relative pricing-card mx-auto rounded-2xl text-center"
         style={{ border: "1px solid rgba(232,184,92,0.4)", background: "linear-gradient(135deg, rgba(232,184,92,0.08), transparent)" }}>
         <p className="font-poppins text-[#a09a8e] text-[0.85rem] mb-2">Valeur totale</p>
-        <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">389 000 FCFA</p>
+        <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">116 600 FCFA</p>
         <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-3">Prix aujourd'hui</p>
         <p className="font-poppins font-extrabold text-[#e8b85c] mb-1 pricing-price">
           {PRICE.replace(" FCFA", "")} <span className="text-[#7a7468] text-xl">FCFA</span>
         </p>
         <p className="text-[#7a7468] text-sm mb-6">Paiement unique · Accès à vie</p>
         <p className="text-paper text-[0.95rem] font-semibold mb-8 italic">
-          Tu reçois <span className="text-[#e8b85c]">plus de 6 fois</span> ce que tu payes.
+          Tu reçois <span className="text-[#e8b85c]">près de 5 fois</span> ce que tu payes.
         </p>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-6"><span>Je me lance — {PRICE} →</span></a>
         <div className="flex flex-wrap gap-2 justify-center">
