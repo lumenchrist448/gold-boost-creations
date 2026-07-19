@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
+import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
 
 const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
 const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
