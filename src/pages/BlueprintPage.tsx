@@ -433,10 +433,10 @@ const RosineSection = () => (
 );
 
 const videos = [
-  { src: "/videos/video_1.mp4", label: "Dans un magasin d'habits", placeholder: false },
-  { src: "/videos/video_2.mp4", label: "Dans une voiture", placeholder: false },
-  { src: "/videos/video_3.mp4", label: "En studio", placeholder: false },
-  { src: "", label: "En studio — variante 2", placeholder: true },
+  { src: "/videos/magasin.mp4", label: "Dans un magasin d'habits", placeholder: false },
+  { src: "/videos/voiture.mp4", label: "Dans une voiture", placeholder: false },
+  { src: "/videos/studio-1.mp4", label: "En studio (1)", placeholder: true },
+  { src: "/videos/studio-2.mp4", label: "En studio (2)", placeholder: false },
 ];
 
 const VideoSection = () => (
@@ -452,9 +452,7 @@ const VideoSection = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
-            style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.3)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
               {v.placeholder ? (
                 <div className="w-full h-full flex flex-col items-center justify-center gap-3" style={{ background: "#000" }}>
@@ -462,9 +460,7 @@ const VideoSection = () => (
                   <span className="font-poppins text-[#e8b85c] text-[0.8rem] font-semibold uppercase tracking-wider">Vidéo à venir</span>
                 </div>
               ) : (
-                <video controls preload="metadata" className="w-full h-full object-contain rounded" style={{ background: "#000" }}>
-                  <source src={v.src} type="video/mp4" />
-                </video>
+                <AutoVideo src={v.src} className="w-full h-full object-contain rounded" style={{ background: "#000" }} />
               )}
             </div>
             <div className="p-4">
@@ -473,6 +469,7 @@ const VideoSection = () => (
           </div>
         ))}
       </div>
+
       <SectionCTA />
     </div>
   </section>
