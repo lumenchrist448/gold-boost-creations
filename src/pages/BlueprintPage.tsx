@@ -608,7 +608,7 @@ const valuePacks = [
   {
     tag: "PAQUET 1",
     name: "Le Kit Premier Pas",
-    value: "153 700 FCFA",
+    value: "25 000 FCFA",
     items: [
       "Ligne d'Aide Directe",
       "Guide de Démarrage Express",
@@ -621,7 +621,7 @@ const valuePacks = [
   {
     tag: "PAQUET 2",
     name: "Le Bon Choix",
-    value: "89 800 FCFA",
+    value: "25 000 FCFA",
     items: [
       "Banque de Scripts",
       "Planificateur de Contenu",
@@ -633,7 +633,7 @@ const valuePacks = [
   {
     tag: "PAQUET 3",
     name: "Le Kit Après la Formation",
-    value: "108 900 FCFA",
+    value: "30 000 FCFA",
     items: [
       "Plan Post-Formation",
       "Banque d'Idées Illimitée",
@@ -699,7 +699,7 @@ const Pricing = () => (
       <div className="reveal relative pricing-card mx-auto rounded-2xl text-center"
         style={{ border: "1px solid rgba(232,184,92,0.4)", background: "linear-gradient(135deg, rgba(232,184,92,0.08), transparent)" }}>
         <p className="font-poppins text-[#a09a8e] text-[0.85rem] mb-2">Valeur totale</p>
-        <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">389 000 FCFA</p>
+        <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">116 600 FCFA</p>
         <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-3">Prix aujourd'hui</p>
         <p className="font-poppins font-extrabold text-[#e8b85c] mb-1 pricing-price">
           {PRICE.replace(" FCFA", "")} <span className="text-[#7a7468] text-xl">FCFA</span>
