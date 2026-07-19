@@ -435,8 +435,7 @@ const RosineSection = () => (
 const videos = [
   { src: "/videos/magasin.mp4", label: "Dans un magasin d'habits", placeholder: false },
   { src: "/videos/voiture.mp4", label: "Dans une voiture", placeholder: false },
-  { src: "/videos/studio-1.mp4", label: "En studio (1)", placeholder: true },
-  { src: "/videos/studio-2.mp4", label: "En studio (2)", placeholder: false },
+  { src: "/videos/studio-2.mp4", label: "En studio", placeholder: false },
 ];
 
 const VideoSection = () => (
@@ -449,7 +448,7 @@ const VideoSection = () => (
       <p className="text-[#7a7468] mb-10">
         Ton vendeur IA peut apparaître partout — magasin, voiture, studio — sans que tu aies à t'y déplacer.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 video-grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
         {videos.map((v, i) => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
             style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
