@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
+import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
 
 const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
 const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
@@ -150,16 +151,27 @@ const ScarcityBar = () => (
   </div>
 );
 
-const paymentBadges = [
-  { label: "WAVE", bg: "rgba(0,100,255,0.15)", border: "rgba(0,100,255,0.3)" },
-  { label: "ORANGE", bg: "rgba(255,140,0,0.15)", border: "rgba(255,140,0,0.3)" },
-  { label: "MTN", bg: "rgba(255,200,0,0.15)", border: "rgba(255,200,0,0.3)" },
-  { label: "MOOV", bg: "rgba(0,180,100,0.15)", border: "rgba(0,180,100,0.3)" },
-  { label: "VISA", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)" },
-  { label: "MASTERCARD", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)" },
-  { label: "PAYPAL", bg: "rgba(0,80,200,0.1)", border: "rgba(0,80,200,0.2)" },
-  { label: "CARTE", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.1)" },
-];
+const PaymentMethodsImage = () => (
+  <div className="fade-up flex justify-center" style={{ animationDelay: "0.8s" }}>
+    <div
+      className="rounded-2xl overflow-hidden"
+      style={{
+        background: "#111118",
+        border: "1px solid rgba(232,184,92,0.25)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+        maxWidth: "520px",
+        width: "100%",
+      }}
+    >
+      <img
+        src={paymentMethods.url}
+        alt="Moyens de paiement sécurisés"
+        className="w-full h-auto block"
+        loading="lazy"
+      />
+    </div>
+  </div>
+);
 
 const Hero = () => (
   <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16 overflow-hidden">
@@ -199,14 +211,7 @@ const Hero = () => (
       </a>
       <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
 
-      <div className="flex flex-wrap justify-center gap-2">
-        {paymentBadges.map((b, i) => (
-          <div key={i} className="flex items-center justify-center rounded-lg w-10 h-7 sm:w-12 sm:h-8 font-poppins font-bold text-[0.55rem] text-[#fafafa]"
-            style={{ background: b.bg, border: `1px solid ${b.border}` }}>
-            {b.label}
-          </div>
-        ))}
-      </div>
+      <PaymentMethodsImage />
     </div>
   </section>
 );
