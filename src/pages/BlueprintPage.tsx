@@ -283,9 +283,8 @@ const ComparisonVideo = () => (
           <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
             style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
-              <video controls preload="metadata" className="w-full h-full object-contain" style={{ background: "#000" }}>
-                <source src={v.src} type={v.type} />
-              </video>
+              <AutoVideo src={v.src} type={v.type} className="w-full h-full object-contain" style={{ background: "#000" }} />
+
             </div>
             <div className="p-4 flex items-center justify-between gap-3">
               <p className="font-poppins text-paper text-sm">{v.label}</p>
