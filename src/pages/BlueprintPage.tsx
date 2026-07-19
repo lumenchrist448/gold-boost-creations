@@ -151,16 +151,27 @@ const ScarcityBar = () => (
   </div>
 );
 
-const paymentBadges = [
-  { label: "WAVE", bg: "rgba(0,100,255,0.15)", border: "rgba(0,100,255,0.3)" },
-  { label: "ORANGE", bg: "rgba(255,140,0,0.15)", border: "rgba(255,140,0,0.3)" },
-  { label: "MTN", bg: "rgba(255,200,0,0.15)", border: "rgba(255,200,0,0.3)" },
-  { label: "MOOV", bg: "rgba(0,180,100,0.15)", border: "rgba(0,180,100,0.3)" },
-  { label: "VISA", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)" },
-  { label: "MASTERCARD", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.15)" },
-  { label: "PAYPAL", bg: "rgba(0,80,200,0.1)", border: "rgba(0,80,200,0.2)" },
-  { label: "CARTE", bg: "rgba(255,255,255,0.05)", border: "rgba(255,255,255,0.1)" },
-];
+const PaymentMethodsImage = () => (
+  <div className="fade-up flex justify-center" style={{ animationDelay: "0.8s" }}>
+    <div
+      className="rounded-2xl overflow-hidden"
+      style={{
+        background: "#111118",
+        border: "1px solid rgba(232,184,92,0.25)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+        maxWidth: "520px",
+        width: "100%",
+      }}
+    >
+      <img
+        src={paymentMethods.url}
+        alt="Moyens de paiement sécurisés"
+        className="w-full h-auto block"
+        loading="lazy"
+      />
+    </div>
+  </div>
+);
 
 const Hero = () => (
   <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16 overflow-hidden">
