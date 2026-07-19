@@ -706,7 +706,7 @@ const Pricing = () => (
         </p>
         <p className="text-[#7a7468] text-sm mb-6">Paiement unique · Accès à vie</p>
         <p className="text-paper text-[0.95rem] font-semibold mb-8 italic">
-          Tu reçois <span className="text-[#e8b85c]">plus de 6 fois</span> ce que tu payes.
+          Tu reçois <span className="text-[#e8b85c]">près de 5 fois</span> ce que tu payes.
         </p>
         <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-6"><span>Je me lance — {PRICE} →</span></a>
         <div className="flex flex-wrap gap-2 justify-center">
