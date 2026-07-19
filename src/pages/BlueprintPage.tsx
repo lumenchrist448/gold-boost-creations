@@ -1,10 +1,72 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 
 const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
 const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
-const PRICE = "62 900 FCFA";
+const PRICE = "24 700 FCFA";
+
+type AutoVideoProps = { src: string; type?: string; poster?: string; className?: string; style?: React.CSSProperties };
+const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVideoProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) v.play().catch(() => {});
+          else v.pause();
+        });
+      },
+      { threshold: 0.35 }
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    if (!v.muted) v.play().catch(() => {});
+    setMuted(v.muted);
+  };
+
+  return (
+    <div className="relative w-full h-full">
+      <video
+        ref={videoRef}
+        className={className}
+        style={style}
+        muted
+        autoPlay
+        loop
+        playsInline
+        preload="metadata"
+        poster={poster}
+      >
+        <source src={src} type={type} />
+      </video>
+      <button
+        type="button"
+        onClick={toggleSound}
+        aria-label={muted ? "Activer le son" : "Couper le son"}
+        className="absolute bottom-2 right-2 font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur transition-opacity hover:opacity-100"
+        style={{
+          background: "rgba(10,10,15,0.72)",
+          color: "#e8b85c",
+          border: "1px solid rgba(232,184,92,0.4)",
+          opacity: 0.85,
+        }}
+      >
+        {muted ? "🔇 Activer le son" : "🔊 Couper le son"}
+      </button>
+    </div>
+  );
+};
 
 const PromoBanner = () => (
   <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
