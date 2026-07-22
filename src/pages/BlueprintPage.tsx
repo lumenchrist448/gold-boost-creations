@@ -3,11 +3,22 @@ import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
 
-const CHECKOUT_URL = "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
-const PROGRAM_NAME = "14 Jours pour Vendre Sans Te Montrer";
-const PRICE = "24 700 FCFA";
+const CHECKOUT_URL =
+  "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
+const PROGRAM_NAME = "Méthode MIRAGE™";
+const PRODUCT_TAGLINE = "Mon Vendeur IA™";
+const PRICE = "14 700 FCFA";
 
-type AutoVideoProps = { src: string; type?: string; poster?: string; className?: string; style?: React.CSSProperties };
+/* ================================================================
+   AUTO VIDEO — autoplay muet, IntersectionObserver, toggle son
+   ================================================================ */
+type AutoVideoProps = {
+  src: string;
+  type?: string;
+  poster?: string;
+  className?: string;
+  style?: React.CSSProperties;
+};
 const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
@@ -69,8 +80,46 @@ const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVi
   );
 };
 
+/* ================================================================
+   UI PRIMITIVES
+   ================================================================ */
+const Badge = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex justify-center mb-6">
+    <span className="pill-badge">{children}</span>
+  </div>
+);
+
+const SectionCTA = ({ label = "Oui, je veux créer mon vendeur IA" }: { label?: string }) => (
+  <div className="flex justify-center mt-12">
+    <a
+      href={CHECKOUT_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block font-poppins font-bold text-[0.82rem] sm:text-[0.9rem] uppercase tracking-[0.06em] py-[15px] px-8 rounded-full transition-transform duration-300 hover:-translate-y-0.5"
+      style={{
+        background: "#e8b85c",
+        color: "#0a0a0f",
+        boxShadow: "0 8px 24px rgba(232,184,92,0.25), 0 0 0 1px rgba(232,184,92,0.4)",
+        border: "none",
+      }}
+      onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
+      onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}
+    >
+      👉 {label}
+    </a>
+  </div>
+);
+
+const SectionDivider = () => (
+  <div className="max-w-[80px] mx-auto my-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(232,184,92,0.5), transparent)" }} />
+);
+
+/* ================================================================
+   PROMO BANNER + STICKY BAR
+   ================================================================ */
 const PromoBanner = () => (
-  <div className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
+  <div
+    className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
     style={{
       background: "linear-gradient(90deg, #7a6230, #e8b85c, #7a6230)",
       backgroundSize: "200% 100%",
@@ -82,10 +131,16 @@ const PromoBanner = () => (
       flexWrap: "nowrap",
       color: "#0a0a0f",
       fontSize: "clamp(0.55rem, 1.5vw, 0.72rem)",
-    }}>
-    <span style={{ whiteSpace: "nowrap" }}>🔥 SEULEMENT 5 PLACES PAR SEMAINE</span>
+    }}
+  >
+    <span style={{ whiteSpace: "nowrap" }}>🔥 5 PLACES / SEMAINE</span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span className="font-extrabold" style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}>{PRICE}</span>
+    <span
+      className="font-extrabold"
+      style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}
+    >
+      {PRICE}
+    </span>
     <span style={{ whiteSpace: "nowrap" }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>Paiement unique · Accès à vie</span>
   </div>
@@ -94,63 +149,39 @@ const PromoBanner = () => (
 const StickyBar = () => {
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 400);
+    const onScroll = () => setShow(window.scrollY > 600);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <div className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
-      style={{ background: "rgba(10,10,15,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(232,184,92,0.25)" }}>
+    <div
+      className={`sticky-bar fixed bottom-0 left-0 right-0 z-[100] ${show ? "show" : ""}`}
+      style={{
+        background: "rgba(10,10,15,0.95)",
+        backdropFilter: "blur(12px)",
+        borderTop: "1px solid rgba(232,184,92,0.25)",
+      }}
+    >
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span className="font-poppins text-paper text-sm">{PROGRAM_NAME} — <span className="text-gold font-bold">{PRICE}</span></span>
-        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold w-full sm:w-auto text-center"><span>REJOINDRE LE PROGRAMME →</span></a>
+        <span className="font-poppins text-paper text-sm">
+          {PRODUCT_TAGLINE} — <span className="text-gold font-bold">{PRICE}</span>
+        </span>
+        <a
+          href={CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold w-full sm:w-auto text-center"
+        >
+          <span>REJOINDRE LE PROGRAMME →</span>
+        </a>
       </div>
     </div>
   );
 };
 
-const Badge = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex justify-center mb-6">
-    <span className="pill-badge">{children}</span>
-  </div>
-);
-
-const SectionCTA = ({ label = "REJOINDRE LE PROGRAMME" }: { label?: string }) => (
-  <div className="flex justify-center mt-10">
-    <a
-      href={CHECKOUT_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block font-poppins font-bold text-[0.85rem] sm:text-[0.95rem] uppercase tracking-[0.06em] py-[14px] px-8 rounded-full transition-transform duration-300 hover:-translate-y-0.5"
-      style={{
-        background: "#e8b85c",
-        color: "#0a0a0f",
-        boxShadow: "0 8px 24px rgba(232,184,92,0.25), 0 0 0 1px rgba(232,184,92,0.4)",
-        border: "none",
-      }}
-      onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
-      onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}
-    >
-      {label} →
-    </a>
-  </div>
-);
-
-const ScarcityBar = () => (
-  <div className="mb-8 flex justify-center">
-    <div className="flex items-center gap-3 px-5 py-3 rounded-full"
-      style={{ background: "rgba(232,184,92,0.06)", border: "1px solid rgba(232,184,92,0.3)" }}>
-      <span className="relative flex h-2.5 w-2.5">
-        <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#e8b85c" }} />
-        <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#e8b85c" }} />
-      </span>
-      <span className="font-poppins text-[0.78rem] sm:text-[0.85rem] text-[#e8b85c] font-semibold">
-        Seulement 5 nouvelles élèves par semaine — pour un suivi personnel de chacune
-      </span>
-    </div>
-  </div>
-);
-
+/* ================================================================
+   HERO
+   ================================================================ */
 const PaymentMethodsImage = () => (
   <div className="fade-up flex justify-center" style={{ animationDelay: "0.8s" }}>
     <div
@@ -163,309 +194,536 @@ const PaymentMethodsImage = () => (
         width: "100%",
       }}
     >
-      <img
-        src={paymentMethods.url}
-        alt="Moyens de paiement sécurisés"
-        className="w-full h-auto block"
-        loading="lazy"
-      />
+      <img src={paymentMethods.url} alt="Moyens de paiement sécurisés" className="w-full h-auto block" loading="lazy" />
     </div>
   </div>
 );
 
 const Hero = () => (
-  <section className="relative pt-[88px] sm:pt-[92px] pb-12 sm:pb-16 overflow-hidden">
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
-      style={{ background: "radial-gradient(ellipse at center, rgba(232,184,92,0.18), rgba(232,184,92,0.06) 35%, transparent 70%)" }} />
-    <div className="absolute top-20 right-10 w-[500px] h-[500px] pointer-events-none"
-      style={{ background: "radial-gradient(circle, rgba(232,184,92,0.1), transparent 60%)" }} />
+  <section className="relative pt-[80px] sm:pt-[92px] pb-14 sm:pb-20 overflow-hidden">
+    <div
+      className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
+      style={{
+        background:
+          "radial-gradient(ellipse at center, rgba(232,184,92,0.18), rgba(232,184,92,0.06) 35%, transparent 70%)",
+      }}
+    />
     <div className="page-container relative max-w-3xl mx-auto">
       <div className="fade-up flex justify-center mb-6">
-        <span className="pill-badge">Programme · Édition 2026</span>
+        <span className="pill-badge">{PRODUCT_TAGLINE} · Édition 2026</span>
       </div>
 
-      <h1 className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
-        style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}>
-        14 Jours pour{" "}
-        <span className="text-[#e8b85c]">Vendre Sans Te Montrer</span>
+      <h1
+        className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#fafafa] text-center"
+        style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}
+      >
+        Arrête de perdre des ventes parce que{" "}
+        <span className="text-[#e8b85c]">tu refuses de te montrer.</span>
       </h1>
 
-      <p className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-2xl mx-auto mb-8" style={{ animationDelay: "0.3s" }}>
-        Crée ton vendeur IA qui vend tes produits à ta place — la méthode qui m'a permis de générer plus de 3 500 000 FCFA et 700 commandes, sans dépenser 1 F en publicité. Prêt en 14 jours, sans montrer ton visage et sans aucune compétence technique.
+      <h2
+        className="fade-up font-poppins font-semibold text-center text-[#e6dfd0] text-[1.05rem] sm:text-[1.25rem] leading-[1.4] max-w-2xl mx-auto mb-6"
+        style={{ animationDelay: "0.2s" }}
+      >
+        Crée ton premier vendeur IA en 14 jours et publie des vidéos qui inspirent confiance, même si tu détestes être devant une caméra.
+      </h2>
+
+      <p
+        className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.02rem] leading-[1.7] max-w-2xl mx-auto mb-8"
+        style={{ animationDelay: "0.3s" }}
+      >
+        Tu apprendras à créer un avatar IA qui parle naturellement, présente tes produits à ta place et publie des vidéos professionnelles pour attirer des clients sur TikTok, Facebook et WhatsApp, sans avoir besoin d'être photogénique, de savoir monter des vidéos ou de payer une agence.
       </p>
 
-      <div className="fade-up flex items-center justify-center gap-4 mb-2" style={{ animationDelay: "0.6s" }}>
-        <span className="font-poppins font-extrabold text-[2.2rem] sm:text-[2.8rem] text-[#e8b85c]">{PRICE}</span>
-      </div>
-      <p className="text-[#7a7468] text-[0.8rem] text-center mb-6">Paiement unique · Accès à vie</p>
+      <p
+        className="fade-up text-center text-[#c8c2b8] text-[0.8rem] uppercase tracking-[0.14em] font-poppins font-semibold mb-8"
+        style={{ animationDelay: "0.4s" }}
+      >
+        Compatible Android et iPhone · Paiement unique · Accès à vie
+      </p>
 
-      <div className="fade-up" style={{ animationDelay: "0.7s" }}>
-        <ScarcityBar />
+      <div
+        className="fade-up flex flex-col items-center justify-center mb-6"
+        style={{ animationDelay: "0.5s" }}
+      >
+        <span className="font-poppins uppercase text-[0.68rem] tracking-[0.18em] text-[#e8b85c] mb-1">
+          Prix de lancement
+        </span>
+        <span className="font-poppins font-extrabold text-[2.4rem] sm:text-[3rem] text-[#e8b85c] leading-none">
+          {PRICE}
+        </span>
       </div>
 
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
+      <a
+        href={CHECKOUT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
         style={{ background: "#e8b85c", color: "#0a0a0f", border: "none" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#f5d488")}
-        onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}>
-        REJOINDRE LE PROGRAMME →
+        onMouseLeave={e => (e.currentTarget.style.background = "#e8b85c")}
+      >
+        👉 OUI, JE VEUX CRÉER MON VENDEUR IA
       </a>
-      <p className="text-[#7a7468] text-[0.78rem] text-center mb-4">Moyens de paiement disponibles</p>
+      <p className="text-[#7a7468] text-[0.78rem] text-center mb-6">
+        ⭐️ Rejoint par 200+ créateurs et e-commerçants africains
+      </p>
 
       <PaymentMethodsImage />
     </div>
   </section>
 );
 
-const problems = [
-  "La honte de te voir et de t'entendre à l'écran — et la peur que ta famille ou tes amis se moquent.",
-  "Tu as déjà tout essayé : tourner, recommencer, tout effacer. Et au final, tu ne publies jamais.",
-  "Tu regardes d'autres femmes réussir en ligne et tu te demandes : pourquoi pas moi ?",
-  "Tu as peut-être déjà payé pour une formation qui n'a rien changé. Tu as peur que ça recommence.",
+/* ================================================================
+   SECTION 2 — PROBLEM (copy verbatim)
+   ================================================================ */
+const problemParagraphs: string[] = [
+  "Tu penses peut-être que ton problème, c'est la caméra.",
+  "En réalité, ce n'est pas ça.",
+  "Ton vrai problème, c'est que chaque fois que tu veux publier une vidéo, tu repousses.",
+];
+
+const painPoints: string[] = [
+  "Tu attends d'avoir une meilleure lumière.",
+  "Tu attends d'avoir le bon téléphone.",
+  "Tu attends de perdre quelques kilos.",
+  "Tu attends de mieux parler.",
+  "Tu attends que personne ne soit à la maison.",
+  "Tu recommences plusieurs prises.",
+  "Tu regardes le résultat.",
+  "Tu trouves que ta voix est bizarre.",
+  "Tu trouves que ton visage n'est pas naturel.",
+  "Tu supprimes tout.",
 ];
 
 const Problem = () => (
-  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}>
-    <div className="max-w-2xl mx-auto page-container text-center">
-      <Badge>Le problème</Badge>
-      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
-      <h2 className="reveal font-poppins font-bold text-[1.5rem] sm:text-[1.8rem] text-[#c8c2b8] max-w-[600px] mx-auto mb-10 leading-tight">
-        Tu sais que tu devrais vendre en vidéo. <span className="text-paper">Mais tu n'oses pas.</span>
-      </h2>
-    </div>
-    <div className="max-w-2xl mx-auto page-container space-y-3">
-      {problems.map((p, i) => (
-        <div key={i} className="reveal flex items-start gap-3 p-5 rounded"
-          style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)", transition: "border-color 0.3s" }}
-          onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.2)")}
-          onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
-          <span className="text-red-500 font-bold shrink-0">✕</span>
-          <span className="text-paper/80">{p}</span>
-        </div>
-      ))}
-      <div className="reveal p-5 rounded text-center"
-        style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))" }}>
-        <p className="text-[#c8c2b8] italic text-sm">
-          Pendant ce temps, tes concurrentes publient, et tes clientes vont chez elles.
+  <section
+    className="section-padding"
+    style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}
+  >
+    <div className="max-w-2xl mx-auto page-container">
+      <Badge>Le vrai problème</Badge>
+
+      <div className="space-y-4 text-center mb-10">
+        {problemParagraphs.map((p, i) => (
+          <p
+            key={i}
+            className={`reveal font-poppins ${
+              i === 0 ? "text-[1.5rem] sm:text-[1.8rem] font-bold text-paper leading-tight" : "text-[#c8c2b8] text-[1rem] sm:text-[1.1rem]"
+            }`}
+          >
+            {p}
+          </p>
+        ))}
+      </div>
+
+      <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-10">
+        {painPoints.map((p, i) => (
+          <div
+            key={i}
+            className="flex items-start gap-3 p-4 rounded"
+            style={{
+              border: "1px solid rgba(255,255,255,0.07)",
+              background: "rgba(255,255,255,0.02)",
+            }}
+          >
+            <span className="text-red-500 font-bold shrink-0 mt-0.5">✕</span>
+            <span className="text-paper/80 text-[0.9rem] leading-snug">{p}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="reveal text-center space-y-4 mb-10">
+        <p className="text-[#c8c2b8] italic">Puis tu te promets :</p>
+        <blockquote
+          className="text-paper text-[1.05rem] font-poppins italic px-6 py-4 mx-auto max-w-md rounded"
+          style={{ borderLeft: "3px solid #e8b85c", background: "rgba(232,184,92,0.05)" }}
+        >
+          « Je publierai demain. »
+        </blockquote>
+        <p className="text-[#a09a8e] text-[0.95rem]">Mais demain devient la semaine prochaine.</p>
+        <p className="text-[#a09a8e] text-[0.95rem]">Puis le mois suivant.</p>
+      </div>
+
+      <div
+        className="reveal p-6 rounded-lg text-center mb-10"
+        style={{
+          border: "1px solid rgba(232,184,92,0.25)",
+          background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))",
+        }}
+      >
+        <p className="text-[#e6dfd0] text-[0.98rem] leading-relaxed">
+          Pendant ce temps, tes concurrents publient tous les jours.
+          <br />
+          Et chaque vidéo qu'ils mettent en ligne attire des personnes qui auraient pu devenir <span className="text-[#e8b85c] font-semibold">TES clients</span>.
         </p>
       </div>
+
+      <div className="reveal space-y-3 text-center">
+        <p className="text-[#c8c2b8] text-[1rem]">Le problème n'est donc pas ton produit.</p>
+        <p className="text-[#c8c2b8] text-[1rem]">Le problème n'est pas ton intelligence.</p>
+        <p className="text-[#c8c2b8] text-[1rem]">Le problème n'est même pas ton manque de motivation.</p>
+        <p className="text-paper font-poppins font-semibold text-[1.1rem] pt-4">
+          Le problème, c'est que tu dépends encore de <span className="text-[#e8b85c]">toi-même</span> pour créer du contenu.
+        </p>
+        <p className="text-[#a09a8e] text-[0.95rem] leading-relaxed max-w-xl mx-auto pt-3">
+          Et tant que tu dépendras de ton humeur, de ta confiance en toi ou de ton courage pour publier, tu publieras toujours moins que ceux qui ont un système.
+        </p>
+      </div>
+    </div>
+  </section>
+);
+
+/* ================================================================
+   SECTION 3 — MIRAGE METHOD
+   ================================================================ */
+const mirageSteps = [
+  {
+    letter: "M",
+    name: "Modéliser",
+    lead: "Créer un avatar crédible qui représente ton activité.",
+    detail: "Pas un personnage de dessin animé. Un véritable vendeur numérique.",
+  },
+  {
+    letter: "I",
+    name: "Incarner",
+    lead: "Lui donner une voix naturelle.",
+    detail: "Des expressions réalistes. Une manière de parler qui inspire confiance.",
+  },
+  {
+    letter: "R",
+    name: "Raconter",
+    lead: "Transformer une simple idée en vidéo qui donne envie d'acheter.",
+    detail: "Même si tu n'as jamais écrit un script de ta vie.",
+  },
+  {
+    letter: "A",
+    name: "Automatiser",
+    lead: "Créer plusieurs vidéos à partir d'un seul produit.",
+    detail: "Sans recommencer tout le travail.",
+  },
+  {
+    letter: "G",
+    name: "Générer",
+    lead: "Publier régulièrement. Attirer des prospects.",
+    detail: "Transformer ton contenu en conversations sur WhatsApp, Messenger ou TikTok.",
+  },
+];
+
+const MirageMethod = () => (
+  <section className="section-padding relative">
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,184,92,0.08), transparent 60%)" }}
+    />
+    <div className="max-w-4xl mx-auto page-container relative">
+      <div className="text-center mb-14">
+        <Badge>La méthode</Badge>
+        <h2 className="font-poppins font-bold text-[2rem] sm:text-[2.6rem] md:text-[3rem] text-paper leading-[1.1] mb-6">
+          Voici la méthode <span className="text-gold">MIRAGE™</span>
+        </h2>
+        <p className="text-[#c8c2b8] text-[1.02rem] leading-[1.7] max-w-xl mx-auto mb-2">
+          Pourquoi ce nom ?
+        </p>
+        <p className="text-[#a09a8e] text-[0.98rem] leading-[1.7] max-w-xl mx-auto">
+          Parce que ton client ne doit pas voir une intelligence artificielle. Il doit voir <span className="text-paper font-semibold">une personne crédible</span>.
+        </p>
+        <p className="text-[#c8c2b8] text-[0.95rem] mt-4">
+          La méthode MIRAGE™ repose sur cinq étapes simples.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {mirageSteps.map((s, i) => (
+          <div
+            key={i}
+            className={`reveal module-card p-6 rounded-lg ${i === 4 ? "md:col-span-2 md:max-w-[calc(50%-10px)] md:mx-auto md:w-full" : ""}`}
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.2)" }}
+          >
+            <div className="flex items-start gap-5">
+              <span className="big-num shrink-0" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", minWidth: "60px" }}>
+                {s.letter}
+              </span>
+              <div>
+                <h3 className="font-poppins font-bold text-paper text-[1.15rem] mb-2">
+                  {s.letter} — {s.name}
+                </h3>
+                <p className="text-paper/85 text-[0.95rem] leading-relaxed mb-2">{s.lead}</p>
+                <p className="text-[#a09a8e] text-[0.88rem] leading-relaxed">{s.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="max-w-2xl mx-auto mt-16 text-center">
+        <h3 className="font-poppins font-bold text-paper text-[1.4rem] mb-6">
+          Pourquoi cette méthode <span className="text-gold">fonctionne ?</span>
+        </h3>
+        <p className="text-[#c8c2b8] text-[1rem] leading-[1.85] mb-4">
+          Parce qu'elle ne te demande pas de devenir créateur de contenu.
+        </p>
+        <p className="text-[#c8c2b8] text-[1rem] leading-[1.85] mb-8">
+          Elle te permet de construire un système qui crée du contenu <span className="text-paper font-semibold">avec toi... ou sans toi</span>.
+        </p>
+        <div className="space-y-2 mb-8">
+          <p className="text-[#a09a8e] text-[0.95rem]">Tu n'as plus besoin d'attendre le bon moment.</p>
+          <p className="text-[#a09a8e] text-[0.95rem]">Tu n'as plus besoin d'attendre d'avoir confiance.</p>
+          <p className="text-[#a09a8e] text-[0.95rem]">Tu n'as plus besoin de trouver le courage de te filmer.</p>
+        </div>
+        <div
+          className="p-6 rounded-xl"
+          style={{
+            border: "1px solid rgba(232,184,92,0.3)",
+            background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))",
+          }}
+        >
+          <p className="text-paper italic text-[1.05rem] leading-relaxed">
+            Ton vendeur IA travaille pendant que toi tu t'occupes de ton activité.
+          </p>
+        </div>
+      </div>
+
       <SectionCTA />
     </div>
   </section>
 );
 
-const Transformation = () => (
-  <section className="section-padding relative">
-    <div className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,184,92,0.06), transparent 60%)" }} />
-    <div className="max-w-3xl mx-auto page-container relative text-center">
-      <Badge>Le déclic</Badge>
-      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-6 leading-[1.15]">
-        Et si tu n'avais plus jamais besoin de <span className="text-gold">te filmer ?</span>
-      </h2>
-      <p className="text-[#a09a8e] text-[0.95rem] sm:text-[1.05rem] max-w-2xl mx-auto leading-relaxed">
-        Le problème n'a jamais été toi. Personne ne t'a montré comment créer un vendeur IA qui te ressemble vraiment — qui parle comme toi, bouge comme toi, et vend à ta place, pendant que tu gardes ta tranquillité et ta dignité intactes.
-      </p>
-    </div>
-  </section>
-);
-
+/* ================================================================
+   COMPARISON VIDEO
+   ================================================================ */
 const ComparisonVideo = () => (
   <section className="section-padding">
-    <div className="max-w-5xl mx-auto page-container">
+    <div className="max-w-5xl mx-auto page-container text-center">
       <Badge>La preuve en vidéo</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-3">
-        Avatar générique <span className="text-gold">vs</span> vendeur IA avec ma méthode
+      <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
+        Avatar générique <span className="text-gold">vs</span> vendeur IA avec la méthode MIRAGE™
       </h2>
-      <p className="text-[#7a7468] mb-10">
+      <p className="text-[#a09a8e] mb-10 text-[0.98rem] max-w-xl mx-auto">
         Regarde la différence. Ce n'est pas l'outil qui change tout, c'est la méthode.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {[
-          { src: renduRobotique.url, type: "video/mp4", label: "Sans la méthode", badge: "✕ Robotique", badgeBg: "rgba(220,80,80,0.15)", badgeColor: "#e57373", badgeBorder: "rgba(220,80,80,0.4)" },
-          { src: renduHumain.url, type: "video/mp4", label: "Avec ma méthode anti-robot", badge: "✓ Naturel", badgeBg: "rgba(232,184,92,0.15)", badgeColor: "#e8b85c", badgeBorder: "rgba(232,184,92,0.5)" },
+          {
+            src: renduRobotique.url,
+            label: "Sans la méthode",
+            sub: "Outil IA par défaut, prompts génériques",
+            badge: "✕ Robotique",
+            badgeBg: "rgba(220,80,80,0.15)",
+            badgeColor: "#e57373",
+            badgeBorder: "rgba(220,80,80,0.4)",
+          },
+          {
+            src: renduHumain.url,
+            label: "Avec la méthode MIRAGE™",
+            sub: "Prompts, réglages et montage enseignés",
+            badge: "✓ Naturel",
+            badgeBg: "rgba(232,184,92,0.15)",
+            badgeColor: "#e8b85c",
+            badgeBorder: "rgba(232,184,92,0.5)",
+          },
         ].map((v, i) => (
-          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300"
-            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
+          <div
+            key={i}
+            className="reveal rounded-md overflow-hidden transition-all duration-300"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}
+          >
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
-              <AutoVideo src={v.src} type={v.type} className="w-full h-full object-contain" style={{ background: "#000" }} />
-
+              <AutoVideo src={v.src} className="w-full h-full object-contain" style={{ background: "#000" }} />
             </div>
-            <div className="p-4 flex items-center justify-between gap-3">
-              <p className="font-poppins text-paper text-sm">{v.label}</p>
-              <span className="font-poppins text-[0.7rem] font-semibold px-3 py-1 rounded-full whitespace-nowrap"
-                style={{ background: v.badgeBg, color: v.badgeColor, border: `1px solid ${v.badgeBorder}` }}>
+            <div className="p-4 flex items-center justify-between gap-3 text-left">
+              <div>
+                <p className="font-poppins text-paper text-[0.95rem] font-semibold">{v.label}</p>
+                <p className="text-[#7a7468] text-[0.75rem] mt-0.5">{v.sub}</p>
+              </div>
+              <span
+                className="font-poppins text-[0.7rem] font-semibold px-3 py-1 rounded-full whitespace-nowrap"
+                style={{ background: v.badgeBg, color: v.badgeColor, border: `1px solid ${v.badgeBorder}` }}
+              >
                 {v.badge}
               </span>
             </div>
           </div>
         ))}
       </div>
-      <p className="text-center italic text-[#c8c2b8] text-[0.95rem] mt-10 max-w-2xl mx-auto">
-        La différence n'est pas l'outil. C'est le montage. Et c'est exactement ce que je t'apprends dans le programme.
+      <p className="italic text-[#c8c2b8] text-[0.95rem] mt-10 max-w-2xl mx-auto">
+        La différence n'est pas l'outil. C'est la méthode. Et c'est exactement ce que tu apprends dans MIRAGE™.
       </p>
-      <SectionCTA />
     </div>
   </section>
 );
 
-const UrgencyBlock = () => (
-  <section className="py-10">
-    <div className="max-w-[640px] mx-auto page-container">
-      <div className="reveal text-center px-6 py-10 md:px-10 md:py-12"
-        style={{
-          background: "rgba(232,184,92,0.03)",
-          borderTop: "1px solid rgba(232,184,92,0.15)",
-          borderBottom: "1px solid rgba(232,184,92,0.15)",
-        }}>
-        <div className="text-gold text-3xl mb-4">⏳</div>
-        <p className="italic text-[#c8c2b8] text-[1rem] md:text-[1.1rem] leading-[1.8]">
-          Chaque jour sans ton vendeur IA, c'est un jour de vidéos en moins — et donc de ventes en moins. Dans 14 jours, tu peux déjà avoir ton premier résultat, ou attendre encore un mois de plus à te demander «&nbsp;et si j'essayais&nbsp;?&nbsp;».
-        </p>
-      </div>
-    </div>
-  </section>
-);
-
-const benefits = [
-  "Tu publies chaque jour, sans jamais montrer ton visage",
-  "Tu n'as plus à justifier ton activité à ton entourage — tout reste discret et professionnel",
-  "Tu vends même pendant que tu dors, sans dépenser en publicité",
-  "Tu arrêtes de comparer ta situation à celle des autres — tu avances enfin",
-  "Tu deviens la version de toi-même que tu voulais devenir depuis longtemps",
-];
-
-const Benefits = () => (
-  <section className="section-padding">
-    <div className="max-w-3xl mx-auto page-container text-center">
-      <Badge>Ce que tu deviens</Badge>
-      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-10 leading-[1.15]">
-        Ce que tu <span className="text-gold">deviens</span>
-      </h2>
-      <div className="max-w-xl mx-auto space-y-4 mb-10 text-left">
-        {benefits.map((b, i) => (
-          <div key={i} className="reveal flex items-start gap-3 p-4 rounded"
-            style={{ border: "1px solid rgba(232,184,92,0.18)", background: "rgba(232,184,92,0.03)" }}>
-            <span className="text-gold font-bold shrink-0 text-lg">✓</span>
-            <span className="text-paper/90 text-sm">{b}</span>
-          </div>
-        ))}
-      </div>
-      <div className="reveal p-6 rounded-xl text-center"
-        style={{ border: "1px solid rgba(232,184,92,0.35)", background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))", boxShadow: "0 8px 32px rgba(232,184,92,0.08)" }}>
-        <p className="text-[#c8c2b8] text-sm leading-relaxed">
-          Tu ne ressortiras pas avec une simple formation. Tu ressortiras avec une nouvelle version de toi : prête, sereine, et déjà en train de vendre.
-        </p>
-      </div>
-      <SectionCTA />
-    </div>
-  </section>
-);
-
+/* ================================================================
+   ROSINE — CREDIBILITY (section 4 début)
+   ================================================================ */
 const RosinePhoto = () => {
   const [imgError, setImgError] = useState(false);
   return (
-    <div className="relative mx-auto md:mx-0 w-full max-w-[240px] md:max-w-[280px] shrink-0"
-      style={{ height: "clamp(260px, 30vw, 320px)" }}>
-      <div className="w-full h-full rounded-xl overflow-hidden"
-        style={{ border: "2px solid rgba(232,184,92,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}>
+    <div
+      className="relative mx-auto md:mx-0 w-full max-w-[260px] md:max-w-[300px] shrink-0"
+      style={{ height: "clamp(280px, 32vw, 360px)" }}
+    >
+      <div
+        className="w-full h-full rounded-xl overflow-hidden"
+        style={{ border: "2px solid rgba(232,184,92,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
+      >
         {imgError ? (
-          <div className="w-full h-full flex flex-col items-center justify-center gap-3"
-            style={{ background: "linear-gradient(135deg, #1a1a2e, #111118)" }}>
+          <div
+            className="w-full h-full flex flex-col items-center justify-center gap-3"
+            style={{ background: "linear-gradient(135deg, #1a1a2e, #111118)" }}
+          >
             <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(232,184,92,0.3)" strokeWidth="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
             </svg>
-            <span className="text-[#7a7468] text-[0.8rem]">[ Votre photo ici ]</span>
+            <span className="text-[#7a7468] text-[0.8rem]">[ Photo Rosine ]</span>
           </div>
         ) : (
-          <img src="/images/rosine-photo.jpg" alt="Rosine — Formatrice"
-            className="w-full h-full object-cover object-top" onError={() => setImgError(true)} />
+          <img
+            src="/images/rosine-photo.jpg"
+            alt="Rosine — Formatrice Méthode MIRAGE™"
+            className="w-full h-full object-cover object-top"
+            onError={() => setImgError(true)}
+          />
         )}
       </div>
-      <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#e8b85c", color: "#0a0a0f" }}>✓ 3 500 000+ FCFA générés sans publicité</span>
+      <span
+        className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
+        style={{ background: "#e8b85c", color: "#0a0a0f" }}
+      >
+        ✓ +3 500 000 FCFA générés · sans publicité
+      </span>
     </div>
   );
 };
 
-const rosineCredits = [
-  "Basée à Abidjan — je connais les réalités du marché africain",
-  "Plus de 200 créateurs et e-commerçants africains accompagnés",
-  "Plus de 6 500 abonnés sur TikTok",
-  "3 500 000+ FCFA générés grâce à mon vendeur IA, sans publicité",
-];
-
-const RosineSection = () => (
-  <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}>
+const CredibilitySection = () => (
+  <section
+    className="section-padding"
+    style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03) 50%, transparent)" }}
+  >
     <div className="max-w-4xl mx-auto page-container">
-      <Badge>Ta formatrice</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-12">
-        Rosine, ton guide pour <span className="text-gold">vendre sans te montrer</span>
-      </h2>
-      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        <RosinePhoto />
-        <div className="flex-1 mt-6 md:mt-0 space-y-4">
-          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
-            Moi aussi, j'ai eu honte de la caméra. Je suis Rosine, créatrice de contenu et formatrice basée à Abidjan. Depuis plusieurs années, j'accompagne des créateurs de contenu et e-commerçants africains — plus de 200 à ce jour — à construire leur présence en ligne, avec plus de 6 500 abonnés sur TikTok.
-          </p>
-          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
-            Mais avant tout ça, j'ai vécu la même honte que toi devant la caméra. Je recommençais mes vidéos 10 fois, je finissais par tout effacer, et mes produits restaient invisibles.
-          </p>
-          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
-            Puis j'ai découvert comment créer un vendeur IA qui me ressemble, parle et bouge comme moi — sans jamais me montrer. En quelques mois, il m'a permis de générer plus de 3 500 000 FCFA et 700 commandes, sans dépenser 1 franc en publicité.
-          </p>
-          <p className="text-[0.95rem] md:text-[1.05rem] text-[#c8c2b8] leading-[1.9]">
-            Aujourd'hui, j'ai déjà formé 60 femmes à faire pareil. Et je suis là pour t'apprendre, à toi aussi.
-          </p>
-          <div className="flex flex-col gap-3.5 pt-2">
-            {rosineCredits.map((c, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded bg-gold/15 flex items-center justify-center shrink-0 mt-0.5 text-[#e8b85c] text-[0.75rem] font-bold">✓</span>
-                <span className="text-[0.85rem] md:text-[0.9rem] text-[#a09a8e]">{c}</span>
-              </div>
-            ))}
-          </div>
-          <blockquote className="text-[1rem] text-paper italic leading-[1.8] p-5 rounded-r-lg mt-6"
-            style={{ borderLeft: "3px solid #e8b85c", background: "rgba(232,184,92,0.04)" }}>
-            "Mon objectif : que chaque femme qui vend en ligne puisse enfin publier sans honte, et vendre à sa façon."
+      <div className="text-center mb-12">
+        <Badge>Je sais ce que tu penses</Badge>
+        <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper leading-tight max-w-2xl mx-auto">
+          Je sais exactement ce que <span className="text-gold">tu es en train de penser.</span>
+        </h2>
+      </div>
+
+      <div className="max-w-2xl mx-auto space-y-5 mb-12">
+        <p className="text-[#c8c2b8]">Tu te dis peut-être :</p>
+        {[
+          "« J'ai déjà acheté une formation qui promettait monts et merveilles. »",
+          "« Les captures d'écran, ça se fabrique. »",
+          "« Les témoignages sont peut-être inventés. »",
+        ].map((q, i) => (
+          <blockquote
+            key={i}
+            className="reveal text-paper italic px-5 py-4 rounded"
+            style={{ borderLeft: "3px solid rgba(232,184,92,0.5)", background: "rgba(232,184,92,0.04)" }}
+          >
+            {q}
           </blockquote>
+        ))}
+        <p className="text-[#c8c2b8] pt-2">Franchement... tu as raison d'être méfiant.</p>
+        <p className="text-[#a09a8e] text-[0.95rem] leading-[1.8]">
+          Aujourd'hui, n'importe qui peut afficher un faux chiffre d'affaires ou acheter de faux commentaires.
+        </p>
+        <p className="text-paper font-poppins font-semibold text-[1.05rem]">
+          Je ne vais donc pas te demander de me croire sur parole.
+        </p>
+        <p className="text-[#c8c2b8]">Je vais simplement te montrer ce que je fais réellement.</p>
+      </div>
+
+      <SectionDivider />
+
+      <div className="mt-14">
+        <h3 className="font-poppins font-bold text-paper text-[1.4rem] sm:text-[1.7rem] text-center mb-10 leading-tight max-w-2xl mx-auto">
+          Avant d'enseigner cette méthode, <span className="text-gold">je l'ai utilisée pour moi-même.</span>
+        </h3>
+
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 mb-12">
+          <RosinePhoto />
+          <div className="flex-1 mt-6 md:mt-0 space-y-4">
+            <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+              Je ne me suis pas réveillée un matin en décidant de vendre une formation sur l'IA.
+            </p>
+            <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+              J'ai commencé parce que j'avais exactement le problème que tu rencontres aujourd'hui.
+            </p>
+            <p className="text-paper text-[1.02rem] font-poppins font-semibold leading-[1.7]">
+              Je voulais vendre davantage... mais je refusais d'être constamment devant une caméra.
+            </p>
+            <p className="text-[#a09a8e] text-[0.95rem] leading-[1.9]">
+              J'ai donc testé des dizaines d'outils. Des dizaines de prompts. Des dizaines de méthodes. La majorité ne fonctionnaient pas.
+            </p>
+          </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto space-y-4 mb-12">
+          <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+            Certaines produisaient des vidéos magnifiques... mais personne ne regardait jusqu'au bout.
+          </p>
+          <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+            D'autres donnaient des vidéos réalistes... mais elles ne faisaient pas vendre.
+          </p>
+          <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+            Il m'a fallu des mois de tests avant de comprendre ce qui faisait réellement la différence.
+          </p>
+
+          <div
+            className="p-6 rounded-lg space-y-2 mt-6"
+            style={{
+              border: "1px solid rgba(232,184,92,0.25)",
+              background: "rgba(232,184,92,0.04)",
+            }}
+          >
+            <p className="text-[#a09a8e] text-[0.9rem]">Ce n'est pas l'outil.</p>
+            <p className="text-paper font-poppins font-semibold text-[1.05rem]">
+              C'est la manière de raconter une histoire.
+            </p>
+            <p className="text-paper text-[0.98rem]">La manière de faire parler un avatar.</p>
+            <p className="text-paper text-[0.98rem]">La manière de construire une vidéo qui donne envie d'envoyer un message.</p>
+            <p className="text-[#e8b85c] font-poppins font-semibold text-[1rem] pt-3">
+              C'est cette méthode que tu vas apprendre.
+            </p>
+          </div>
         </div>
       </div>
-      <SectionCTA />
     </div>
   </section>
 );
 
+/* ================================================================
+   VIDEO SECTION — l'IA en action
+   ================================================================ */
 const videos = [
-  { src: "/videos/magasin.mp4", label: "Dans un magasin d'habits", placeholder: false },
-  { src: "/videos/voiture.mp4", label: "Dans une voiture", placeholder: false },
-  { src: "/videos/studio-2.mp4", label: "En studio", placeholder: false },
+  { src: "/videos/magasin.mp4", label: "Dans un magasin d'habits" },
+  { src: "/videos/voiture.mp4", label: "Dans une voiture" },
+  { src: "/videos/studio-2.mp4", label: "En studio" },
 ];
 
 const VideoSection = () => (
   <section className="section-padding">
     <div className="max-w-5xl mx-auto page-container">
-      <Badge>La formation en action</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-2">
-        Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
-      </h2>
-      <p className="text-[#7a7468] mb-10">
-        Ton vendeur IA peut apparaître partout — magasin, voiture, studio — sans que tu aies à t'y déplacer.
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 video-grid">
+      <div className="text-center mb-10">
+        <Badge>La formation en action</Badge>
+        <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
+          Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
+        </h2>
+        <p className="text-[#a09a8e] max-w-xl mx-auto text-[0.98rem]">
+          Ton vendeur IA peut apparaître partout — magasin, voiture, studio — sans que tu aies à t'y déplacer.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {videos.map((v, i) => (
-          <div key={i} className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
-            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
+          <div
+            key={i}
+            className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}
+          >
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
-              {v.placeholder ? (
-                <div className="w-full h-full flex flex-col items-center justify-center gap-3" style={{ background: "#000" }}>
-                  <span className="text-[#e8b85c] text-3xl">🎬</span>
-                  <span className="font-poppins text-[#e8b85c] text-[0.8rem] font-semibold uppercase tracking-wider">Vidéo à venir</span>
-                </div>
-              ) : (
-                <AutoVideo src={v.src} className="w-full h-full object-contain rounded" style={{ background: "#000" }} />
-              )}
+              <AutoVideo src={v.src} className="w-full h-full object-contain rounded" style={{ background: "#000" }} />
             </div>
             <div className="p-4">
               <p className="font-poppins text-paper text-sm">{v.label}</p>
@@ -473,249 +731,646 @@ const VideoSection = () => (
           </div>
         ))}
       </div>
-
-      <SectionCTA />
     </div>
   </section>
 );
 
-const testimonials = [
-  { text: "J'avais honte de me filmer depuis toujours. Avec mon vendeur IA, je poste enfin tous les jours et mes clientes ne se doutent de rien. Mes ventes ont doublé en un mois.", initials: "AM", name: "Awa M.", role: "Boutique mode — Dakar" },
-  { text: "Je repoussais mes vidéos depuis des mois par peur du regard des autres. En 14 jours j'ai créé mon vendeur IA et je publie enfin sans stress.", initials: "KD", name: "Khadija D.", role: "Cosmétiques — Abidjan" },
-  { text: "Je ne savais rien faire avec la technologie. Rosine explique vraiment simplement. Ma première vidéo était prête en une après-midi, et personne n'a deviné que ce n'était pas moi qui parlais en direct.", initials: "FN", name: "Fatou N.", role: "Bijoux — Douala" },
-  { text: "Ce qui m'a convaincue, c'est la garantie. Je n'avais rien à perdre. Aujourd'hui je publie 2 vidéos par jour sans jamais me montrer, et mes ventes suivent.", initials: "BS", name: "Bintou S.", role: "Vente en ligne — Lomé" },
+/* ================================================================
+   PROOF — Elles l'ont appliquée (Awa/Khadija/Fatou)
+   ================================================================ */
+const students = [
+  {
+    initials: "AW",
+    name: "Awa",
+    activity: "Boutique de vêtements",
+    before: "Une vidéo publiée toutes les deux semaines",
+    after: "Publication quotidienne et plus de conversations WhatsApp",
+    days: "21 jours",
+  },
+  {
+    initials: "KH",
+    name: "Khadija",
+    activity: "Produits cosmétiques",
+    before: "Impossible de se filmer",
+    after: "Son avatar IA publie plusieurs vidéos chaque semaine",
+    days: "Après le programme",
+  },
+  {
+    initials: "FT",
+    name: "Fatou",
+    activity: "Bijoux",
+    before: "Débutante complète",
+    after: "Premier avatar créé le premier week-end. Premières vidéos publiées quelques jours plus tard",
+    days: "Premier week-end",
+  },
 ];
 
-const Testimonials = () => (
+const StudentsProofSection = () => (
   <section className="section-padding">
-    <div className="max-w-4xl mx-auto page-container">
-      <Badge>Ils témoignent</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-10">
-        Ce qu'ils disent après <span className="text-gold">la formation</span>
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {testimonials.map((t, i) => (
-          <div key={i} className="reveal relative rounded p-8" style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
-            <span className="absolute top-4 left-6 font-poppins text-[5rem] leading-none text-gold/15 select-none">"</span>
-            <div className="relative">
-              <div className="flex text-gold text-sm mb-3">★★★★★</div>
-              <p className="text-paper/80 text-sm leading-relaxed mb-6">{t.text}</p>
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-ink"
-                  style={{ background: "linear-gradient(135deg, #e8b85c, #f5d488)" }}>
-                  {t.initials}
-                </div>
-                <div>
-                  <p className="font-poppins text-paper text-sm font-semibold">{t.name}</p>
-                  <p className="text-[#7a7468] text-xs">{t.role}</p>
-                </div>
+    <div className="max-w-5xl mx-auto page-container">
+      <div className="text-center mb-12">
+        <Badge>Des élèves l'ont aussi appliquée</Badge>
+        <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-4 leading-tight">
+          Ce que la méthode a changé pour elles
+        </h2>
+        <p className="text-[#a09a8e] text-[0.95rem] max-w-xl mx-auto">
+          Trois profils réels — pour que tu ne penses pas <em>« oui... mais elles étaient déjà fortes. »</em> La majorité des personnes que j'accompagne commencent exactement comme toi.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+        {students.map((s, i) => (
+          <div
+            key={i}
+            className="reveal glow-card rounded-lg p-6"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div
+                className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-ink font-poppins"
+                style={{ background: "linear-gradient(135deg, #e8b85c, #f5d488)" }}
+              >
+                {s.initials}
               </div>
+              <div>
+                <p className="font-poppins font-bold text-paper text-[1rem]">{s.name}</p>
+                <p className="text-[#7a7468] text-[0.78rem]">{s.activity}</p>
+              </div>
+            </div>
+            <div className="mb-4">
+              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#7a7468] mb-1">Avant</p>
+              <p className="text-[#c8c2b8] text-[0.9rem] leading-snug">{s.before}</p>
+            </div>
+            <div className="mb-4">
+              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#e8b85c] mb-1">Après</p>
+              <p className="text-paper text-[0.92rem] leading-snug">{s.after}</p>
+            </div>
+            <div
+              className="mt-5 pt-3 text-center font-poppins text-[0.72rem] tracking-wider uppercase text-[#e8b85c] font-semibold"
+              style={{ borderTop: "1px solid rgba(232,184,92,0.15)" }}
+            >
+              ⏱ {s.days}
             </div>
           </div>
         ))}
       </div>
-      <SectionCTA />
+
+      <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div
+          className="reveal p-8 rounded-xl text-center"
+          style={{
+            background: "linear-gradient(135deg, rgba(232,184,92,0.1), rgba(232,184,92,0.03))",
+            border: "1px solid rgba(232,184,92,0.35)",
+          }}
+        >
+          <p className="font-poppins uppercase text-[0.68rem] tracking-[0.15em] text-[#e8b85c] mb-3">À ce jour</p>
+          <p className="font-poppins font-extrabold text-[2.8rem] leading-none text-paper mb-2">200+</p>
+          <p className="text-[#c8c2b8] text-[0.92rem] leading-snug">
+            créateurs et e-commerçants africains accompagnés
+          </p>
+        </div>
+        <div
+          className="reveal p-8 rounded-xl"
+          style={{
+            background: "#111118",
+            border: "1px solid rgba(232,184,92,0.2)",
+          }}
+        >
+          <p className="text-[#c8c2b8] text-[0.95rem] leading-[1.8] italic">
+            « Je préfère annoncer un chiffre précis plutôt qu'un énorme chiffre impressionnant. Parce qu'il est <span className="text-[#e8b85c] font-semibold not-italic">vérifiable</span>. »
+          </p>
+          <p className="font-poppins text-paper text-[0.85rem] font-semibold mt-4">— Rosine</p>
+        </div>
+      </div>
     </div>
   </section>
 );
 
+/* ================================================================
+   PROOF — Screenshots (preuves visuelles élèves)
+   ================================================================ */
 const PreuvesSection = () => (
   <section className="section-padding">
     <div className="max-w-5xl mx-auto page-container">
-      <Badge>Ils l'ont fait</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-2">
-        <span className="text-gold">Preuves réelles</span> de résultats
-      </h2>
-      <p className="text-[#7a7468] mb-10">Des captures d'écran envoyées par des apprenants après avoir appliqué les modules. Non retouchées.</p>
+      <div className="text-center mb-10">
+        <Badge>Ils l'ont fait</Badge>
+        <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
+          <span className="text-gold">Captures réelles</span> envoyées par les élèves
+        </h2>
+        <p className="text-[#a09a8e] text-[0.95rem] max-w-xl mx-auto">
+          Non retouchées. Partagées avec leur accord. Contexte : messages WhatsApp, ventes, commandes après application des modules.
+        </p>
+      </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6].map(n => (
-          <div key={n} className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
+          <div
+            key={n}
+            className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,184,92,0.08)]"
             style={{ background: "#111118", border: "1px solid rgba(255,255,255,0.07)" }}
             onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(232,184,92,0.4)")}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}>
+            onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}
+          >
             <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
           </div>
         ))}
       </div>
       <div className="flex justify-center mt-6">
-        <span className="text-[0.75rem] text-[#7a7468] px-5 py-2.5 rounded-sm" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+        <span
+          className="text-[0.75rem] text-[#7a7468] px-5 py-2.5 rounded-sm"
+          style={{ border: "1px solid rgba(255,255,255,0.06)" }}
+        >
           🔒 Captures partagées avec accord des apprenants · Résultats non garantis et variables selon l'effort
         </span>
       </div>
-      <SectionCTA />
     </div>
   </section>
 );
 
+/* ================================================================
+   PROOF — Dashboards Rosine (CA)
+   ================================================================ */
 const caCards = [
-  { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en pub" },
-  { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100% organique · Contenu IA" },
-  { img: "/images/ca-3.jpg", label: "Statistiques sans publicité payante", sub: `Méthode enseignée dans ${PROGRAM_NAME}` },
+  { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en publicité" },
+  { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100 % organique · Contenu IA" },
+  { img: "/images/ca-3.jpg", label: "Statistiques sans publicité payante", sub: "Méthode enseignée dans MIRAGE™" },
 ];
 
 const PreuvesCASection = () => (
   <section className="section-padding">
     <div className="max-w-5xl mx-auto page-container">
-      <Badge>Preuve concrète</Badge>
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-2">
-        Ce que l'IA m'a permis de générer{" "}
-        <span className="text-gold">sans pub payante et sans montrer mon visage</span>
-      </h2>
-      <p style={{ color: "#7a7468", fontSize: "0.9rem", textAlign: "center", maxWidth: 560, margin: "0 auto 48px" }}>
-        Captures d'écran réelles de mes tableaux de bord.<br />
-        Zéro publicité Facebook. Zéro visage à la caméra.<br />
-        Juste l'IA et la méthode enseignée dans <strong style={{ color: "#c8c2b8" }}>{PROGRAM_NAME}</strong>.
-      </p>
+      <div className="text-center mb-10">
+        <Badge>Preuve concrète — mes propres dashboards</Badge>
+        <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
+          Ce que la méthode m'a permis de générer <span className="text-gold">sans publicité et sans me montrer</span>
+        </h2>
+        <p className="text-[#a09a8e] text-[0.92rem] max-w-lg mx-auto">
+          Captures volontairement non masquées. Je préfère que tu vérifies par toi-même plutôt que de me croire aveuglément.
+        </p>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {caCards.slice(0, 2).map((c, i) => (
-          <div key={i} className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
+          <div
+            key={i}
+            className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
             style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.2)", borderRadius: 10 }}
-            onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}>
-            <div style={{ width: "100%", background: "#0a0a0f" }}>
-              <img src={c.img} alt={c.label} className="w-full h-auto block" />
-            </div>
-            <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(232,184,92,0.03)" }}>
-              <p className="font-poppins font-bold" style={{ fontSize: "0.85rem", color: "#fafafa" }}>{c.label}</p>
-              <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
+          >
+            <img src={c.img} alt={c.label} className="w-full h-auto block" />
+            <div
+              style={{
+                padding: "16px 20px",
+                borderTop: "1px solid rgba(255,255,255,0.05)",
+                background: "rgba(232,184,92,0.03)",
+              }}
+            >
+              <p className="font-poppins font-bold" style={{ fontSize: "0.9rem", color: "#fafafa" }}>
+                {c.label}
+              </p>
+              <p style={{ fontSize: "0.78rem", color: "#7a7468", marginTop: 4 }}>{c.sub}</p>
             </div>
           </div>
         ))}
       </div>
       <div className="flex justify-center mt-5">
-        <div className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
+        <div
+          className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
           style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.2)", borderRadius: 10 }}
-          onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.5)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 32px rgba(232,184,92,0.07)"; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(232,184,92,0.2)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}>
-          <div style={{ width: "100%", background: "#0a0a0f" }}>
-            <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
-          </div>
-          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(232,184,92,0.03)" }}>
-            <p className="font-poppins font-bold" style={{ fontSize: "0.85rem", color: "#fafafa" }}>{caCards[2].label}</p>
-            <p style={{ fontSize: "0.75rem", color: "#7a7468", marginTop: 4 }}>{caCards[2].sub}</p>
+        >
+          <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
+          <div
+            style={{
+              padding: "16px 20px",
+              borderTop: "1px solid rgba(255,255,255,0.05)",
+              background: "rgba(232,184,92,0.03)",
+            }}
+          >
+            <p className="font-poppins font-bold" style={{ fontSize: "0.9rem", color: "#fafafa" }}>
+              {caCards[2].label}
+            </p>
+            <p style={{ fontSize: "0.78rem", color: "#7a7468", marginTop: 4 }}>{caCards[2].sub}</p>
           </div>
         </div>
       </div>
-      <div style={{ maxWidth: 560, margin: "40px auto 0", textAlign: "center" }}>
-        <div style={{ width: 40, height: 1, background: "#e8b85c", margin: "0 auto 16px" }} />
-        <p style={{ fontSize: "0.82rem", color: "#7a7468", lineHeight: 1.8 }}>
-          Ces captures sont issues de mes propres tableaux de bord.<br />
-          Les résultats varient selon l'effort et la régularité.<br />
-          Ce que j'enseigne, je le pratique.
-        </p>
+
+      <div className="max-w-2xl mx-auto mt-14 text-center">
+        <SectionDivider />
+        <h3 className="font-poppins font-bold text-paper text-[1.3rem] mt-6 mb-4">
+          Pourquoi cette méthode est <span className="text-gold">différente ?</span>
+        </h3>
+        <div className="space-y-2 text-[#c8c2b8] text-[0.98rem]">
+          <p>Parce que tu n'achètes pas une formation sur ChatGPT.</p>
+          <p>Tu n'achètes pas une formation sur HeyGen.</p>
+          <p>Tu n'achètes pas une formation sur CapCut.</p>
+          <p className="text-paper font-poppins font-semibold pt-3 text-[1.05rem]">
+            Tu apprends un <span className="text-[#e8b85c]">système complet</span>.
+          </p>
+          <p className="text-[#a09a8e] text-[0.92rem] pt-4">
+            Les outils évolueront. Ils changeront. Certains disparaîtront. Mais la méthode restera la même. C'est exactement pour cette raison que les mises à jour de la formation sont incluses.
+          </p>
+        </div>
       </div>
+
+      <SectionCTA />
     </div>
   </section>
 );
 
-const valuePacks = [
+/* ================================================================
+   OBJECTIONS (section 5 — full copy)
+   ================================================================ */
+const objections = [
   {
-    tag: "PAQUET 1",
-    name: "Le Kit Premier Pas",
-    value: "25 000 FCFA",
-    items: [
-      "Ligne d'Aide Directe",
-      "Guide de Démarrage Express",
-      "Bibliothèque de Décors",
-      "Montage Pas-à-Pas Simplifié",
-      "Planning Rattrapable",
-      "Modèles Prêts à Copier",
-    ],
+    q: "C'est quoi exactement un vendeur IA ?",
+    a: (
+      <>
+        <p>Je ne parle pas d'un chatbot. Je ne parle pas non plus d'un simple avatar qui lit un texte avec une voix robotique.</p>
+        <p className="mt-3">Un vendeur IA est un personnage numérique capable de présenter tes produits dans des vidéos qui ressemblent à celles d'un vrai créateur de contenu.</p>
+        <p className="mt-3">Il peut :</p>
+        <ul className="mt-2 space-y-1 list-none">
+          <li>· parler naturellement,</li>
+          <li>· présenter un produit,</li>
+          <li>· apparaître dans différents décors,</li>
+          <li>· publier du contenu qui attire des prospects.</li>
+        </ul>
+        <p className="mt-3">L'objectif n'est pas de remplacer ton entreprise. L'objectif est de remplacer la partie la plus difficile pour beaucoup d'entre nous : <span className="text-paper">être constamment devant une caméra</span>.</p>
+      </>
+    ),
   },
   {
-    tag: "PAQUET 2",
-    name: "Le Bon Choix",
-    value: "25 000 FCFA",
-    items: [
-      "Banque de Scripts",
-      "Planificateur de Contenu",
-      "Pack Audio Mindset & Déclic",
-      "Grille de Lecture des Résultats",
-      "Suivi Personnalisé de Progression",
-    ],
+    q: "Est-ce que je vais vraiment réussir à créer ça ? Je suis nul en informatique.",
+    a: (
+      <>
+        <p>Tu n'as pas besoin d'être bon en informatique. Tu n'as pas besoin de coder. Tu n'as pas besoin de comprendre l'intelligence artificielle.</p>
+        <p className="mt-3">Si tu sais installer une application, envoyer un message WhatsApp, utiliser TikTok, alors tu peux suivre cette méthode.</p>
+        <p className="mt-3">Chaque étape est filmée. Tu vois exactement où cliquer. Tu reproduis simplement ce que je fais.</p>
+      </>
+    ),
   },
   {
-    tag: "PAQUET 3",
-    name: "Le Kit Après la Formation",
-    value: "30 000 FCFA",
-    items: [
-      "Plan Post-Formation",
-      "Banque d'Idées Illimitée",
-      "Tableau de Suivi des Ventes",
-      "Guide d'Évolution de l'Avatar",
-      "Groupe de Suivi Après-Formation",
-    ],
+    q: "Je n'ai qu'un téléphone Android. Est-ce que ça fonctionne ?",
+    a: (
+      <>
+        <p>Oui.</p>
+        <p className="mt-3">Le programme a été conçu pour les réalités du marché africain. Tu peux suivre la majorité des modules directement depuis Android ou iPhone.</p>
+        <p className="mt-3">Certaines manipulations sont plus confortables sur ordinateur, mais elles ne sont pas obligatoires pour commencer.</p>
+      </>
+    ),
+  },
+  {
+    q: "Est-ce que je vais devoir payer plusieurs abonnements tous les mois ?",
+    a: (
+      <>
+        <p>Non.</p>
+        <p className="mt-3">Pour chaque outil, je t'indique :</p>
+        <ul className="mt-2 space-y-1 list-none">
+          <li>· sa version gratuite,</li>
+          <li>· sa version payante,</li>
+          <li>· dans quel cas il est utile de payer,</li>
+          <li>· et surtout quelles alternatives gratuites existent.</li>
+        </ul>
+        <p className="mt-3">Tu peux démarrer avec un budget très faible. Puis évoluer uniquement lorsque ton activité commencera à générer des revenus.</p>
+      </>
+    ),
+  },
+  {
+    q: "Quels logiciels vais-je utiliser exactement ?",
+    a: (
+      <>
+        <p>Tu apprendras à utiliser plusieurs outils modernes comme :</p>
+        <ul className="mt-2 space-y-1 list-none">
+          <li>· ChatGPT,</li>
+          <li>· Google Gemini,</li>
+          <li>· CapCut,</li>
+          <li>· HeyGen ou un équivalent selon les évolutions du marché,</li>
+          <li>· ElevenLabs lorsque cela apporte une vraie valeur.</li>
+        </ul>
+        <p className="mt-3">Mais retiens une chose importante : les outils changent chaque année. La méthode reste la même.</p>
+      </>
+    ),
+  },
+  {
+    q: "Est-ce que cette méthode fonctionne seulement pour les vêtements ?",
+    a: (
+      <>
+        <p>Non. Le vendeur IA peut présenter pratiquement tout ce qui se vend grâce à la vidéo.</p>
+        <p className="mt-3">Par exemple : vêtements, cosmétiques, bijoux, produits digitaux, formations, coaching, immobilier, restaurants, instituts de beauté, artisans, services.</p>
+        <p className="mt-3">Tu adaptes simplement le message. La méthode reste identique.</p>
+      </>
+    ),
+  },
+  {
+    q: "Et si je n'ai même pas encore de produit à vendre ?",
+    a: (
+      <>
+        <p>Tu peux malgré tout suivre la formation.</p>
+        <p className="mt-3">Pourquoi ? Parce que tu apprendras d'abord à créer ton vendeur IA. Ensuite, tu pourras utiliser ce système pour vendre ton futur produit, une prestation, un service, une formation ou un produit physique.</p>
+      </>
+    ),
+  },
+  {
+    q: "Pourquoi la formation coûte seulement 14 700 FCFA ?",
+    a: (
+      <>
+        <p>J'ai volontairement choisi un prix plus accessible.</p>
+        <p className="mt-3">Pourquoi ? Parce que je préfère former davantage d'entrepreneurs africains plutôt que de réserver cette méthode à une minorité.</p>
+      </>
+    ),
+  },
+  {
+    q: "Est-ce que je vais gagner 3 500 000 FCFA comme toi ?",
+    a: (
+      <>
+        <p>Non. Et personne ne peut te le promettre honnêtement.</p>
+        <p className="mt-3">Les 3 500 000 FCFA correspondent à mes propres résultats.</p>
+        <p className="mt-3">Ce que je peux te garantir, c'est que tu apprendras exactement la méthode que j'utilise pour créer mes vidéos et développer mon activité.</p>
+      </>
+    ),
+  },
+  {
+    q: "Et si mes vidéos ressemblent quand même à un robot ?",
+    a: (
+      <>
+        <p>C'est justement ce que la méthode évite. La plupart des personnes utilisent les outils avec leurs réglages par défaut.</p>
+        <p className="mt-3">Dans la méthode MIRAGE™, tu apprends :</p>
+        <ul className="mt-2 space-y-1 list-none">
+          <li>· comment écrire les bons prompts,</li>
+          <li>· comment régler les mouvements,</li>
+          <li>· comment améliorer la voix,</li>
+          <li>· comment monter les vidéos pour obtenir un rendu naturel.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    q: "Et si ma famille découvre mes vidéos ?",
+    a: (
+      <>
+        <p>Tu décides de ce que tu veux montrer.</p>
+        <p className="mt-3">Tu peux créer un vendeur IA qui te ressemble, qui représente uniquement ta marque, ou qui ne te ressemble pas du tout.</p>
+        <p className="mt-3">Tu gardes le contrôle de ton image.</p>
+      </>
+    ),
+  },
+  {
+    q: "Combien de temps faut-il chaque jour ?",
+    a: (
+      <>
+        <p>La majorité des élèves consacrent entre 30 et 60 minutes par jour.</p>
+        <p className="mt-3">L'objectif n'est pas de passer des journées entières devant ton téléphone. L'objectif est de construire progressivement ton système.</p>
+      </>
+    ),
+  },
+  {
+    q: "Pourquoi seulement 5 nouvelles places par semaine ?",
+    a: (
+      <>
+        <p>Parce que chaque nouvel élève reçoit un accompagnement.</p>
+        <p className="mt-3">Je préfère limiter le nombre d'inscriptions plutôt que de vendre des centaines d'accès sans pouvoir assurer un suivi de qualité.</p>
+      </>
+    ),
+  },
+  {
+    q: "Et si je ne suis vraiment pas fait pour ça ?",
+    a: (
+      <>
+        <p>Alors cette formation n'est probablement pas faite pour toi.</p>
+        <p className="mt-3">Mais si tu es arrivé jusqu'ici, c'est probablement parce qu'<span className="text-paper">une partie de toi en a assez de regarder les autres publier pendant que tu repousses encore.</span></p>
+      </>
+    ),
   },
 ];
 
-const bonusPacks = [
-  { tag: "BONUS 1", name: "Le Guide des Erreurs à Éviter", value: "12 800 FCFA" },
-  { tag: "BONUS 2", name: "Le SOS Sans Panique", value: "23 800 FCFA" },
+const Objections = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  return (
+    <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(232,184,92,0.03), transparent)" }}>
+      <div className="max-w-3xl mx-auto page-container">
+        <div className="text-center mb-12">
+          <Badge>Objections traitées</Badge>
+          <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper leading-tight max-w-2xl mx-auto">
+            Avant de continuer, laisse-moi répondre aux questions que la plupart <span className="text-gold">se posent avant de rejoindre.</span>
+          </h2>
+        </div>
+        <div className="space-y-3">
+          {objections.map((o, i) => {
+            const open = openIndex === i;
+            return (
+              <div
+                key={i}
+                className="reveal rounded-lg overflow-hidden transition-all"
+                style={{
+                  background: "#111118",
+                  border: open ? "1px solid rgba(232,184,92,0.4)" : "1px solid rgba(255,255,255,0.06)",
+                }}
+              >
+                <button
+                  onClick={() => setOpenIndex(open ? null : i)}
+                  className="w-full flex items-center justify-between text-left px-5 py-5 font-poppins font-semibold text-paper text-[0.95rem] sm:text-[1rem] leading-snug gap-4"
+                >
+                  <span>« {o.q} »</span>
+                  <span
+                    className="text-gold text-xl shrink-0 transition-transform duration-300"
+                    style={{ transform: open ? "rotate(45deg)" : "rotate(0)" }}
+                  >
+                    +
+                  </span>
+                </button>
+                {open && (
+                  <div className="px-5 pb-6 text-[#c8c2b8] text-[0.93rem] leading-[1.85]">{o.a}</div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <SectionCTA />
+      </div>
+    </section>
+  );
+};
+
+/* ================================================================
+   OFFER — value stack
+   ================================================================ */
+const modules = [
+  { n: "01", name: "Les fondations invisibles", tagline: "Construis une stratégie avant de toucher à un seul outil.", body: "Tu définis ton positionnement, ton client idéal, le style de ton vendeur IA et le type de vidéos qui fonctionnent dans ton secteur.", value: "25 000 FCFA" },
+  { n: "02", name: "Crée un vendeur IA crédible", tagline: "Ton avatar ne doit pas ressembler à un robot.", body: "Tu apprends à créer un personnage numérique qui inspire confiance.", value: "40 000 FCFA" },
+  { n: "03", name: "Donne-lui une voix humaine", tagline: "Une mauvaise voix détruit toute la crédibilité d'une vidéo.", body: "Tu découvres comment produire une voix naturelle.", value: "35 000 FCFA" },
+  { n: "04", name: "Les scripts qui donnent envie d'acheter", tagline: "Tu ne regarderas plus jamais une page blanche.", body: "Tu apprends à créer des hooks, vidéos TikTok, vidéos Facebook, vidéos WhatsApp et vidéos publicitaires.", value: "45 000 FCFA" },
+  { n: "05", name: "Produire une vidéo en moins de 20 minutes", tagline: "Passe d'une idée à une vidéo prête à publier.", body: "Chaque clic, chaque manipulation, chaque réglage est montré.", value: "35 000 FCFA" },
+  { n: "06", name: "Publier pour attirer des prospects", tagline: "Parce qu'une belle vidéo qui ne génère aucun message ne sert à rien.", body: "Tu découvres où publier, à quelle fréquence, quelles vidéos privilégier, et comment transformer une vue en conversation.", value: "40 000 FCFA" },
+  { n: "07", name: "Les erreurs qui coûtent des ventes", tagline: "Évite les pièges qui font abandonner 80 % des débutants.", body: "Tu apprends les erreurs à éviter pour avancer plus vite.", value: "20 000 FCFA" },
 ];
 
-const Pricing = () => (
-  <section id="pricing" className="section-padding">
-    <div className="max-w-4xl mx-auto page-container">
-      <div className="text-center mb-10">
+const bonuses = [
+  { n: "01", name: "Les 100 prompts qui créent les meilleures vidéos IA", value: "30 000 FCFA" },
+  { n: "02", name: "Les 50 scripts TikTok qui fonctionnent déjà", value: "25 000 FCFA" },
+  { n: "03", name: "La bibliothèque de vendeurs IA", value: "35 000 FCFA" },
+  { n: "04", name: "Les outils gratuits que j'utiliserais si je recommençais aujourd'hui", value: "20 000 FCFA" },
+  { n: "05", name: "Les checklists de publication", value: "15 000 FCFA" },
+];
+
+const recap = [
+  { label: "Formation complète", value: "95 000 FCFA" },
+  { label: "Bonus", value: "40 000 FCFA" },
+  { label: "Templates", value: "20 000 FCFA" },
+  { label: "Mises à jour", value: "15 000 FCFA" },
+  { label: "Support", value: "20 000 FCFA" },
+];
+
+const Offer = () => (
+  <section id="offre" className="section-padding relative">
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(232,184,92,0.08), transparent 60%)" }}
+    />
+    <div className="max-w-5xl mx-auto page-container relative">
+      <div className="text-center mb-14">
         <Badge>L'offre complète</Badge>
-        <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper">
-          Ton programme complet pour <span className="text-gold">vendre sans te montrer</span>
+        <h2 className="font-poppins font-bold text-[2rem] sm:text-[2.8rem] text-paper mb-4 leading-tight">
+          Tu n'achètes pas une formation.
         </h2>
+        <p className="text-[#c8c2b8] text-[1.05rem] sm:text-[1.2rem] max-w-2xl mx-auto leading-[1.6]">
+          Tu construis un <span className="text-gold font-semibold">vendeur IA qui pourra travailler pour toi pendant des années</span>.
+        </p>
+        <p className="text-[#a09a8e] text-[0.95rem] mt-6 max-w-2xl mx-auto leading-[1.8]">
+          En rejoignant la <strong className="text-paper">Méthode MIRAGE™</strong>, tu suis un parcours conçu pour t'emmener d'un simple débutant à une personne capable de créer des vidéos professionnelles qui attirent des prospects sans avoir besoin de se filmer.
+        </p>
+        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#e8b85c] mt-8">
+          Voici exactement ce que tu reçois
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
-        {valuePacks.map((pack, i) => (
-          <div key={i} className="reveal glow-card rounded-2xl p-6 flex flex-col"
-            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}>
-            <span className="font-poppins text-[0.65rem] tracking-[0.15em] text-[#e8b85c] font-bold mb-2">{pack.tag}</span>
-            <h3 className="font-poppins font-bold text-paper text-[1.1rem] mb-3">{pack.name}</h3>
-            <p className="text-[#7a7468] text-[0.75rem] mb-4">
-              Valeur : <span className="text-[#e8b85c] font-semibold">{pack.value}</span>
-            </p>
-            <ul className="space-y-2">
-              {pack.items.map((it, j) => (
-                <li key={j} className="flex items-start gap-2 text-paper/85 text-[0.82rem]">
-                  <span className="text-gold shrink-0 mt-0.5">✓</span>
-                  <span>{it}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-        {bonusPacks.map((b, i) => (
-          <div key={i} className="reveal rounded-2xl p-5 flex items-start gap-4"
-            style={{ background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))", border: "1px solid rgba(232,184,92,0.35)" }}>
-            <span className="text-2xl">🎁</span>
-            <div>
-              <span className="font-poppins text-[0.65rem] tracking-[0.15em] text-[#e8b85c] font-bold">{b.tag}</span>
-              <h4 className="font-poppins font-bold text-paper text-[0.95rem] mb-1">{b.name}</h4>
-              <p className="text-[#7a7468] text-[0.75rem]">
-                Valeur : <span className="text-[#e8b85c] font-semibold">{b.value}</span>
-              </p>
+      {/* Modules */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+        {modules.map((m, i) => (
+          <div
+            key={i}
+            className="reveal module-card p-6 rounded-lg"
+            style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.2)" }}
+          >
+            <div className="flex items-start gap-4">
+              <span className="big-num shrink-0" style={{ fontSize: "clamp(2.6rem, 5vw, 3.6rem)", minWidth: "55px" }}>
+                {m.n}
+              </span>
+              <div className="flex-1">
+                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#7a7468] mb-1">
+                  Module {m.n}
+                </p>
+                <h3 className="font-poppins font-bold text-paper text-[1.05rem] mb-1 leading-tight">{m.name}</h3>
+                <p className="text-[#e8b85c] italic text-[0.85rem] mb-3">{m.tagline}</p>
+                <p className="text-[#a09a8e] text-[0.88rem] leading-[1.7]">{m.body}</p>
+                <p className="mt-4 text-[0.78rem] text-[#7a7468]">
+                  Valeur estimée : <span className="text-[#e8b85c] font-semibold">{m.value}</span>
+                </p>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="reveal relative pricing-card mx-auto rounded-2xl text-center"
-        style={{ border: "1px solid rgba(232,184,92,0.4)", background: "linear-gradient(135deg, rgba(232,184,92,0.08), transparent)" }}>
-        <p className="font-poppins text-[#a09a8e] text-[0.85rem] mb-2">Valeur totale</p>
-        <p className="font-poppins text-[#7a7468] text-[1.4rem] line-through mb-4">116 600 FCFA</p>
-        <p className="font-poppins text-gold uppercase text-[0.7rem] tracking-[0.15em] mb-3">Prix aujourd'hui</p>
-        <p className="font-poppins font-extrabold text-[#e8b85c] mb-1 pricing-price">
-          {PRICE.replace(" FCFA", "")} <span className="text-[#7a7468] text-xl">FCFA</span>
+      {/* Bonuses */}
+      <div className="text-center mb-8">
+        <span className="pill-badge">🎁 Les bonus offerts</span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
+        {bonuses.map((b, i) => (
+          <div
+            key={i}
+            className="reveal p-5 rounded-xl"
+            style={{
+              background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))",
+              border: "1px solid rgba(232,184,92,0.3)",
+            }}
+          >
+            <div className="flex items-start gap-3">
+              <span className="text-2xl shrink-0">🎁</span>
+              <div>
+                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#e8b85c] font-bold mb-1">
+                  Bonus {b.n}
+                </p>
+                <h4 className="font-poppins font-semibold text-paper text-[0.95rem] leading-snug mb-2">{b.name}</h4>
+                <p className="text-[0.75rem] text-[#7a7468]">
+                  Valeur : <span className="text-[#e8b85c] font-semibold">{b.value}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Récapitulatif valeur */}
+      <div className="max-w-xl mx-auto mb-8">
+        <div
+          className="rounded-xl overflow-hidden"
+          style={{ border: "1px solid rgba(232,184,92,0.25)", background: "#111118" }}
+        >
+          <div
+            className="px-6 py-4 font-poppins font-bold text-paper text-[0.95rem] uppercase tracking-wider"
+            style={{ background: "rgba(232,184,92,0.06)", borderBottom: "1px solid rgba(232,184,92,0.15)" }}
+          >
+            Récapitulatif de la valeur
+          </div>
+          {recap.map((r, i) => (
+            <div
+              key={i}
+              className="flex justify-between items-center px-6 py-3"
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+            >
+              <span className="text-[#c8c2b8] text-[0.92rem]">{r.label}</span>
+              <span className="font-poppins font-semibold text-paper text-[0.92rem]">{r.value}</span>
+            </div>
+          ))}
+          <div
+            className="flex justify-between items-center px-6 py-5"
+            style={{ background: "linear-gradient(90deg, rgba(232,184,92,0.1), rgba(232,184,92,0.02))" }}
+          >
+            <span className="font-poppins uppercase text-[0.75rem] tracking-[0.14em] text-[#e8b85c] font-bold">
+              Valeur totale
+            </span>
+            <span className="font-poppins font-extrabold text-paper text-[1.4rem]">190 000 FCFA</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Prix final */}
+      <div
+        className="reveal max-w-xl mx-auto rounded-2xl text-center px-6 py-10 sm:px-10"
+        style={{
+          border: "1px solid rgba(232,184,92,0.5)",
+          background: "linear-gradient(135deg, rgba(232,184,92,0.1), rgba(232,184,92,0.02))",
+          boxShadow: "0 20px 60px rgba(232,184,92,0.1)",
+        }}
+      >
+        <div className="space-y-1 mb-6">
+          <p className="text-[#c8c2b8] text-[0.9rem]">Aujourd'hui, tu ne paies pas <span className="line-through text-[#7a7468]">190 000 FCFA</span>.</p>
+          <p className="text-[#c8c2b8] text-[0.9rem]">Tu ne paies pas <span className="line-through text-[#7a7468]">50 000 FCFA</span>.</p>
+          <p className="text-[#c8c2b8] text-[0.9rem]">Tu ne paies même pas <span className="line-through text-[#7a7468]">24 700 FCFA</span>.</p>
+        </div>
+        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#e8b85c] mb-2">
+          Tu investis seulement
         </p>
-        <p className="text-[#7a7468] text-sm mb-6">Paiement unique · Accès à vie</p>
-        <p className="text-paper text-[0.95rem] font-semibold mb-8 italic">
-          Tu reçois <span className="text-[#e8b85c]">près de 5 fois</span> ce que tu payes.
+        <p className="font-poppins font-extrabold text-[#e8b85c] leading-none mb-3" style={{ fontSize: "clamp(3rem, 9vw, 4.5rem)" }}>
+          {PRICE}
         </p>
-        <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold block w-full text-center py-4 mb-6"><span>Je me lance — {PRICE} →</span></a>
+        <p className="text-[#c8c2b8] text-[0.88rem] mb-8">
+          Paiement unique · Accès immédiat · Accès à vie
+        </p>
+        <a
+          href={CHECKOUT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-gold block w-full text-center py-4 mb-5"
+        >
+          <span>👉 OUI, JE VEUX CRÉER MON VENDEUR IA</span>
+        </a>
         <div className="flex flex-wrap gap-2 justify-center">
           {["Wave", "Orange Money", "MTN Money"].map(m => (
-            <span key={m} className="text-xs px-3 py-1.5 rounded-full text-[#7a7468]" style={{ background: "rgba(255,255,255,0.05)" }}>{m}</span>
+            <span
+              key={m}
+              className="text-xs px-3 py-1.5 rounded-full text-[#7a7468]"
+              style={{ background: "rgba(255,255,255,0.05)" }}
+            >
+              {m}
+            </span>
           ))}
         </div>
       </div>
@@ -723,93 +1378,151 @@ const Pricing = () => (
   </section>
 );
 
+/* ================================================================
+   AMPLIFIERS — Rareté / Urgence
+   ================================================================ */
+const Amplifiers = () => (
+  <section className="py-14">
+    <div className="max-w-4xl mx-auto page-container">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div
+          className="reveal p-6 rounded-xl"
+          style={{ background: "#111118", border: "1px solid rgba(232,184,92,0.25)" }}
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#e8b85c" }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#e8b85c" }} />
+            </span>
+            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#e8b85c] font-bold">Rareté</span>
+          </div>
+          <p className="text-paper font-poppins font-semibold text-[1.02rem] mb-2">
+            Seulement 5 nouvelles places par semaine
+          </p>
+          <p className="text-[#a09a8e] text-[0.9rem] leading-relaxed">
+            Nous ouvrons seulement 5 nouvelles places par semaine pour garder un accompagnement de qualité.
+          </p>
+        </div>
+        <div
+          className="reveal p-6 rounded-xl"
+          style={{
+            background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))",
+            border: "1px solid rgba(232,184,92,0.35)",
+          }}
+        >
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[#e8b85c]">⏳</span>
+            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#e8b85c] font-bold">Urgence</span>
+          </div>
+          <p className="text-paper font-poppins font-semibold text-[1.02rem] mb-2">
+            Fermeture dimanche à 23h59
+          </p>
+          <p className="text-[#a09a8e] text-[0.9rem] leading-relaxed">
+            Les inscriptions de la semaine en cours ferment dimanche à 23h59 ou dès que les places sont remplies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ================================================================
+   GUARANTEE — 7 jours
+   ================================================================ */
 const Guarantee = () => (
   <section className="section-padding">
     <div className="max-w-2xl mx-auto page-container text-center">
       <Badge>Garantie</Badge>
-      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
-      <h2 className="font-poppins font-bold text-2xl md:text-3xl text-paper mb-6">
-        La Promesse <span className="text-gold">Zéro Perte</span>
+      <h2 className="font-poppins font-bold text-[1.6rem] sm:text-[2.2rem] text-paper mb-8 leading-tight">
+        Garantie <span className="text-gold">« Teste Sans Risque »</span> de 7 jours
       </h2>
-      <div className="reveal p-6 rounded-xl text-left"
-        style={{ border: "1px solid rgba(232,184,92,0.25)", background: "linear-gradient(135deg, rgba(232,184,92,0.06), rgba(232,184,92,0.02))" }}>
-        <p className="text-[#c8c2b8] text-[0.95rem] leading-relaxed">
-          Si tu suis les 3 étapes du programme et que tu n'as pas ton vendeur IA fonctionnel au bout de 14 jours, tu m'envoies un simple message WhatsApp et je te rembourse sous 72h par le même Mobile Money que ton paiement.
-        </p>
-        <p className="text-[#c8c2b8] text-[0.95rem] leading-relaxed mt-3">
-          Pas de question compliquée. Je prends ce risque parce que je sais que ça marche — <span className="text-[#e8b85c] font-semibold">60 femmes l'ont déjà fait avant toi.</span>
-        </p>
+      <div
+        className="reveal p-8 rounded-2xl text-left relative overflow-hidden"
+        style={{
+          border: "1px solid rgba(232,184,92,0.35)",
+          background: "linear-gradient(135deg, rgba(232,184,92,0.08), rgba(232,184,92,0.02))",
+        }}
+      >
+        <div
+          className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-20"
+          style={{ background: "radial-gradient(circle, #e8b85c, transparent 70%)" }}
+        />
+        <div className="relative space-y-3 text-[#c8c2b8] text-[0.98rem] leading-[1.85]">
+          <p className="font-poppins font-semibold text-paper text-[1.05rem]">Inscris-toi.</p>
+          <p>Suis les premiers modules.</p>
+          <p>
+            Si tu estimes que cette formation ne correspond pas à ce qui est présenté sur cette page, envoie simplement un message dans les{" "}
+            <span className="text-[#e8b85c] font-semibold">7 jours</span> suivant ton achat.
+          </p>
+          <p className="text-paper font-semibold pt-2">
+            Nous te remboursons intégralement, sans procédure compliquée.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 );
 
-const faqData = [
-  { q: "Je ne suis pas douée avec la technologie, est-ce pour moi ?", a: "Oui. Tout est expliqué pas à pas, avec un accompagnement personnel. Le programme est pensé pour les débutantes complètes." },
-  { q: "Est-ce que l'avatar a vraiment l'air réel ?", a: "Oui. Tu verras des exemples concrets dans la section vidéos plus haut — magasin, voiture, studio — tous générés par IA." },
-  { q: "Est-ce légal ?", a: "Oui : tu crées ton propre vendeur IA et tu clones ta propre voix. Tout t'appartient." },
-  { q: "Je n'ai qu'un téléphone, est-ce que ça suffit ?", a: "Oui, un simple smartphone suffit pour suivre tout le programme et créer ton vendeur IA." },
-  { q: "Je peux payer avec Mobile Money ?", a: "Oui : Wave, Orange Money, MTN Money." },
-  { q: "Et si je bloque pendant les 14 jours ?", a: "Tu as la Ligne d'Aide Directe et le groupe de suivi. Tu n'avances jamais seule." },
-  { q: `Combien coûte le programme ?`, a: `${PRICE}, en paiement unique, accès à vie. Plus la garantie Zéro Perte : remboursée sous 72h si tu n'as pas ton vendeur IA au bout de 14 jours en ayant suivi les 3 étapes.` },
-];
-
-const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  return (
-    <section className="section-padding">
-      <div className="max-w-[620px] mx-auto page-container">
-        <Badge>FAQ</Badge>
-        <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper mb-10">Questions fréquentes</h2>
-        {faqData.map((item, i) => (
-          <div key={i} className={`faq-item ${openIndex === i ? "open" : ""}`}
-            style={{ borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "24px 0" }}>
-            <button onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              className="w-full flex items-center justify-between text-left text-paper font-poppins font-semibold text-sm faq-question">
-              {item.q}
-              <span className="faq-icon text-gold text-xl ml-4 shrink-0">+</span>
-            </button>
-            <div className="faq-answer">
-              <p className="text-[#a09a8e] text-sm pt-4 leading-relaxed">{item.a}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
+/* ================================================================
+   FINAL CTA
+   ================================================================ */
 const FinalCTA = () => (
   <section className="section-padding text-center relative">
-    <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(232,184,92,0.06), transparent 60%)" }} />
-    <div className="max-w-xl mx-auto page-container relative">
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{ background: "radial-gradient(circle at 50% 50%, rgba(232,184,92,0.08), transparent 60%)" }}
+    />
+    <div className="max-w-2xl mx-auto page-container relative">
       <Badge>Dernière étape</Badge>
-      <div className="w-[60px] h-px bg-gold mx-auto mb-8" />
-      <h2 className="font-poppins font-bold text-3xl md:text-4xl text-paper max-w-[560px] mx-auto mb-6">
-        Tu n'as plus besoin de te montrer pour vendre. <span className="text-gold">Ton vendeur IA s'en charge.</span>
+      <h2 className="font-poppins font-bold text-[2rem] sm:text-[2.8rem] text-paper leading-[1.1] mb-8">
+        Oui, je veux créer <span className="text-gold">mon vendeur IA</span>
       </h2>
-      <p className="text-[#e8b85c] text-[0.9rem] font-semibold mb-2">
-        Seulement 5 nouvelles élèves par semaine, pour un suivi personnel de chacune.
+      <div className="mb-8">
+        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#e8b85c] mb-2">Prix unique</p>
+        <p className="font-poppins font-extrabold text-[#e8b85c] leading-none" style={{ fontSize: "clamp(2.6rem, 9vw, 4rem)" }}>
+          {PRICE}
+        </p>
+        <p className="font-poppins text-[#c8c2b8] text-[0.85rem] uppercase tracking-[0.12em] mt-3">
+          Accès immédiat · Accès à vie · Compatible téléphone
+        </p>
+      </div>
+      <a
+        href={CHECKOUT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-gold inline-block mb-6 final-cta-btn cta-pulse"
+      >
+        <span>👉 OUI, JE VEUX CRÉER MON VENDEUR IA</span>
+      </a>
+      <p className="text-[#7a7468] text-[0.78rem]">
+        ✓ Wave · Orange Money · MTN Money — Paiement 100 % sécurisé
       </p>
-      <p className="italic text-[#c8c2b8] text-[0.85rem] mb-6">
-        Chaque jour d'attente, c'est un jour de ventes en moins.
-      </p>
-      <a href={CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="btn-gold inline-block mb-4 final-cta-btn"><span>Je me lance — {PRICE} →</span></a>
-      <p className="text-[#7a7468] text-[0.78rem]">✓ Wave · Orange Money · MTN Money — Accès immédiat après paiement</p>
     </div>
   </section>
 );
 
+/* ================================================================
+   FOOTER
+   ================================================================ */
 const Footer = () => (
-  <footer className="py-8 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-    <p className="text-[#4a4840] text-[0.78rem]">© 2026 {PROGRAM_NAME} by Rosine — Tous droits réservés</p>
+  <footer className="py-10 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+    <p className="text-[#7a7468] font-poppins text-[0.85rem] mb-1">
+      {PRODUCT_TAGLINE} — {PROGRAM_NAME}
+    </p>
+    <p className="text-[#4a4840] text-[0.75rem]">© 2026 by Rosine — Tous droits réservés</p>
   </footer>
 );
 
+/* ================================================================
+   PAGE
+   ================================================================ */
 const BlueprintPage = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+      entries =>
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        }),
       { threshold: 0.1 }
     );
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
@@ -820,21 +1533,22 @@ const BlueprintPage = () => {
     <>
       <PromoBanner />
       <StickyBar />
-      <Hero />
-      <Problem />
-      <Transformation />
-      <ComparisonVideo />
-      <Benefits />
-      <RosineSection />
-      <VideoSection />
-      <Testimonials />
-      <PreuvesSection />
-      <PreuvesCASection />
-      <UrgencyBlock />
-      <Pricing />
-      <Guarantee />
-      <FAQ />
-      <FinalCTA />
+      <main>
+        <Hero />
+        <Problem />
+        <MirageMethod />
+        <ComparisonVideo />
+        <CredibilitySection />
+        <VideoSection />
+        <StudentsProofSection />
+        <PreuvesSection />
+        <PreuvesCASection />
+        <Objections />
+        <Offer />
+        <Amplifiers />
+        <Guarantee />
+        <FinalCTA />
+      </main>
       <Footer />
     </>
   );
