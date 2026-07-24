@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
+import monVendeurBanner from "@/assets/mon-vendeur-ia-banner.png.asset.json";
 
 const CHECKOUT_URL =
   "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
@@ -227,6 +228,19 @@ const Hero = () => (
       >
         Crée ton premier vendeur IA en 14 jours et publie des vidéos qui inspirent confiance, même si tu détestes être devant une caméra.
       </h2>
+
+      <div
+        className="fade-up w-full mx-auto my-12 px-6 sm:px-0"
+        style={{ animationDelay: "0.25s", animationDuration: "500ms", maxWidth: "1180px" }}
+      >
+        <img
+          src={monVendeurBanner.url}
+          alt="Mon Vendeur IA — Méthode MIRAGE™ : formation complète, avatar IA, vidéos, scripts, checklist de démarrage"
+          className="w-full h-auto block"
+          style={{ borderRadius: "20px", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(232,184,92,0.15)" }}
+          loading="lazy"
+        />
+      </div>
 
       <p
         className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.02rem] leading-[1.7] max-w-2xl mx-auto mb-8"
