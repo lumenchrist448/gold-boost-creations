@@ -5,10 +5,10 @@ import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
 import monVendeurBanner from "@/assets/mon-vendeur-ia-banner.png.asset.json";
 
 const CHECKOUT_URL =
-  "https://lunixx-hub-0.mymaketou.shop/products/cree-des-visuels-videos-et-fiches-produits-pro-avec-lia-sans-agence-sans-budget-fou/checkout";
+  "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
 const PROGRAM_NAME = "Méthode MIRAGE™";
 const PRODUCT_TAGLINE = "Mon Vendeur IA™";
-const PRICE = "14 700 FCFA";
+const PRICE = "14 900 FCFA";
 
 /* ================================================================
    AUTO VIDEO — autoplay muet, IntersectionObserver, toggle son
@@ -1081,7 +1081,7 @@ const objections = [
     ),
   },
   {
-    q: "Pourquoi la formation coûte seulement 14 700 FCFA ?",
+    q: "Pourquoi la formation coûte seulement 14 900 FCFA ?",
     a: (
       <>
         <p>J'ai volontairement choisi un prix plus accessible.</p>
