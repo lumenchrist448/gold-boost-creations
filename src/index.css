@@ -40,17 +40,17 @@ html {
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-weight: 400;
-  background-color: #0a0a0f;
-  color: #fafafa;
+  background-color: #161316;
+  color: #FFFFFF;
   margin: 0;
   overflow-x: hidden;
   padding-top: 36px;
 }
 
 h1, h2, h3, h4, h5, h6, .font-poppins {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   letter-spacing: -0.015em;
 }
 
@@ -124,9 +124,9 @@ body::before {
 .btn-gold {
   position: relative;
   overflow: hidden;
-  background: #e8b85c;
-  color: #0a0a0f;
-  font-family: 'Poppins', sans-serif;
+  background: #FF6D29;
+  color: #161316;
+  font-family: 'Hanken Grotesk', sans-serif;
   text-transform: uppercase;
   font-size: 0.78rem;
   font-weight: 700;
@@ -138,20 +138,20 @@ body::before {
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(232, 184, 92, 0.25), 0 0 0 1px rgba(232, 184, 92, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 109, 41, 0.25), 0 0 0 1px rgba(255, 109, 41, 0.4);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 .btn-gold::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: #f5d488;
+  background: #FF8A52;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   border-radius: 999px;
 }
 .btn-gold:hover {
-  box-shadow: 0 12px 32px rgba(232, 184, 92, 0.45), 0 0 0 1px rgba(232, 184, 92, 0.6);
+  box-shadow: 0 12px 32px rgba(255, 109, 41, 0.45), 0 0 0 1px rgba(255, 109, 41, 0.6);
   transform: translateY(-1px);
 }
 .btn-gold:hover::before {
@@ -169,22 +169,22 @@ body::before {
   gap: 8px;
   padding: 8px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(232, 184, 92, 0.4);
-  background: rgba(232, 184, 92, 0.06);
-  font-family: 'Poppins', sans-serif;
+  border: 1px solid rgba(255, 109, 41, 0.4);
+  background: rgba(255, 109, 41, 0.06);
+  font-family: 'Hanken Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #e8b85c;
+  color: #FF6D29;
 }
 .pill-badge::before {
   content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #e8b85c;
-  box-shadow: 0 0 8px rgba(232, 184, 92, 0.8);
+  background: #FF6D29;
+  box-shadow: 0 0 8px rgba(255, 109, 41, 0.8);
 }
 
 /* Glow card */
@@ -192,18 +192,18 @@ body::before {
   transition: box-shadow 0.4s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 .glow-card:hover {
-  box-shadow: 0 0 0 1px rgba(232, 184, 92, 0.45), 0 16px 48px rgba(232, 184, 92, 0.12);
-  border-color: rgba(232, 184, 92, 0.55) !important;
+  box-shadow: 0 0 0 1px rgba(255, 109, 41, 0.45), 0 16px 48px rgba(255, 109, 41, 0.12);
+  border-color: rgba(255, 109, 41, 0.55) !important;
   transform: translateY(-2px);
 }
 
 /* Big number Wilson 01 02 03 */
 .big-num {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Hanken Grotesk', sans-serif;
   font-weight: 800;
   font-size: clamp(3.5rem, 7vw, 5.5rem);
   line-height: 1;
-  background: linear-gradient(180deg, #f5d488 0%, #e8b85c 50%, #7a6230 100%);
+  background: linear-gradient(180deg, #FF8A52 0%, #FF6D29 50%, #453027 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -213,8 +213,8 @@ body::before {
 
 /* Soft pulse glow on CTA */
 @keyframes goldPulse {
-  0%, 100% { box-shadow: 0 8px 24px rgba(232, 184, 92, 0.25), 0 0 0 1px rgba(232, 184, 92, 0.4); }
-  50% { box-shadow: 0 12px 36px rgba(232, 184, 92, 0.5), 0 0 0 1px rgba(232, 184, 92, 0.7); }
+  0%, 100% { box-shadow: 0 8px 24px rgba(255, 109, 41, 0.25), 0 0 0 1px rgba(255, 109, 41, 0.4); }
+  50% { box-shadow: 0 12px 36px rgba(255, 109, 41, 0.5), 0 0 0 1px rgba(255, 109, 41, 0.7); }
 }
 .cta-pulse {
   animation: goldPulse 2.4s ease-in-out infinite;
@@ -232,14 +232,14 @@ body::before {
   top: 0;
   width: 3px;
   height: 0;
-  background: #c9a84c;
+  background: #FF6D29;
   transition: height 0.3s ease;
 }
 .module-card:hover::before {
   height: 100%;
 }
 .module-card:hover {
-  background: #0f0f18;
+  background: #221C1E;
 }
 
 /* Page container & section padding defaults */
