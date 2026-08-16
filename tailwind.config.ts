@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "sans-serif"],
-        poppins: ["Poppins", "sans-serif"],
+        sans: ["Hanken Grotesk", "sans-serif"],
+        poppins: ["Hanken Grotesk", "sans-serif"],
       },
       colors: {
         ink: "#161316",
