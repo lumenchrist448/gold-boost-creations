@@ -8,7 +8,7 @@ const CHECKOUT_URL =
   "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
 const PROGRAM_NAME = "Méthode MIRAGE™";
 const PRODUCT_TAGLINE = "Mon Vendeur IA™";
-const PRICE = "14 900 FCFA";
+const PRICE = "19 900 FCFA";
 
 /* ================================================================
    AUTO VIDEO — autoplay muet, IntersectionObserver, toggle son
@@ -1081,7 +1081,7 @@ const objections = [
     ),
   },
   {
-    q: "Pourquoi la formation coûte seulement 14 900 FCFA ?",
+    q: "Pourquoi la formation coûte seulement 19 900 FCFA ?",
     a: (
       <>
         <p>J'ai volontairement choisi un prix plus accessible.</p>
