@@ -70,8 +70,8 @@ const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVi
         className="absolute bottom-2 right-2 font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur transition-opacity hover:opacity-100"
         style={{
           background: "rgba(10,10,15,0.72)",
-          color: "#FF4526",
-          border: "1px solid rgba(255,69,38,0.4)",
+          color: "#2BFFF8",
+          border: "1px solid rgba(43,255,248,0.4)",
           opacity: 0.85,
         }}
       >
@@ -98,13 +98,13 @@ const SectionCTA = ({ label = "Oui, je veux créer mon vendeur IA" }: { label?: 
       rel="noopener noreferrer"
       className="inline-block font-poppins font-semibold text-[0.9rem] py-[14px] px-7 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
       style={{
-        background: "#FF4526",
+        background: "#2BFFF8",
         color: "#FFFFFF",
-        boxShadow: "0 12px 34px -14px rgba(255,69,38,0.7), inset 0 1px 0 rgba(255,255,255,0.18)",
+        boxShadow: "0 12px 34px -14px rgba(43,255,248,0.7), inset 0 1px 0 rgba(255,255,255,0.18)",
         border: "none",
       }}
-      onMouseEnter={e => (e.currentTarget.style.background = "#FF5A3D")}
-      onMouseLeave={e => (e.currentTarget.style.background = "#FF4526")}
+      onMouseEnter={e => (e.currentTarget.style.background = "#7DFFFB")}
+      onMouseLeave={e => (e.currentTarget.style.background = "#2BFFF8")}
     >
       {label}
     </a>
@@ -136,7 +136,7 @@ const PromoBanner = () => (
       fontSize: "clamp(0.55rem, 1.5vw, 0.72rem)",
     }}
   >
-    <span style={{ whiteSpace: "nowrap", color: "#FF4526" }}>5 PLACES / SEMAINE</span>
+    <span style={{ whiteSpace: "nowrap", color: "#2BFFF8" }}>5 PLACES / SEMAINE</span>
     <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
     <span className="font-semibold" style={{ whiteSpace: "nowrap", color: "#FFFFFF" }}>
       {PRICE}
@@ -188,7 +188,7 @@ const PaymentMethodsImage = () => (
     <div
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "#0E0D0D",
+        background: "#0C1512",
         border: "1px solid rgba(255,255,255,0.08)",
         boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
         maxWidth: "520px",
@@ -206,7 +206,7 @@ const Hero = () => (
       className="absolute -top-[380px] left-1/2 -translate-x-1/2 w-[1400px] h-[760px] pointer-events-none"
       style={{
         background:
-          "radial-gradient(ellipse at center, rgba(255,69,38,0.55), rgba(255,69,38,0.18) 42%, transparent 70%)",
+          "radial-gradient(ellipse at center, rgba(43,255,248,0.55), rgba(43,255,248,0.18) 42%, transparent 70%)",
         filter: "blur(60px)",
         opacity: 0.55,
       }}
@@ -215,7 +215,7 @@ const Hero = () => (
       className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[900px] h-[260px] pointer-events-none"
       style={{
         background:
-          "radial-gradient(ellipse at center, rgba(255,105,60,0.30), transparent 70%)",
+          "radial-gradient(ellipse at center, rgba(176,252,206,0.30), transparent 70%)",
         filter: "blur(80px)",
         opacity: 0.6,
       }}
@@ -231,7 +231,7 @@ const Hero = () => (
         style={{ fontSize: "clamp(2rem, 6.2vw, 3.8rem)", animationDelay: "0.1s" }}
       >
         Arrête de perdre des ventes parce que{" "}
-        <span className="text-[#FF4526]">tu refuses de te montrer.</span>
+        <span className="text-[#2BFFF8]">tu refuses de te montrer.</span>
       </h1>
 
 
@@ -250,7 +250,7 @@ const Hero = () => (
           src={monVendeurBanner.url}
           alt="Mon Vendeur IA — Méthode MIRAGE™ : formation complète, avatar IA, vidéos, scripts, checklist de démarrage"
           className="w-full h-auto block"
-          style={{ borderRadius: "20px", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.15)" }}
+          style={{ borderRadius: "20px", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(43,255,248,0.15)" }}
           loading="lazy"
         />
       </div>
@@ -273,10 +273,10 @@ const Hero = () => (
         className="fade-up flex flex-col items-center justify-center mb-6"
         style={{ animationDelay: "0.5s" }}
       >
-        <span className="font-poppins uppercase text-[0.68rem] tracking-[0.18em] text-[#FF4526] mb-1">
+        <span className="font-poppins uppercase text-[0.68rem] tracking-[0.18em] text-[#2BFFF8] mb-1">
           Prix de lancement
         </span>
-        <span className="font-poppins font-extrabold text-[2.4rem] sm:text-[3rem] text-[#FF4526] leading-none">
+        <span className="font-poppins font-extrabold text-[2.4rem] sm:text-[3rem] text-[#2BFFF8] leading-none">
           {PRICE}
         </span>
       </div>
@@ -286,9 +286,9 @@ const Hero = () => (
         target="_blank"
         rel="noopener noreferrer"
         className="cta-pulse block w-full max-w-[520px] mx-auto text-center font-poppins font-semibold text-[0.95rem] sm:text-[1.02rem] py-4 sm:py-[17px] px-6 rounded-2xl mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
-        style={{ background: "#FF4526", color: "#FFFFFF", border: "none", boxShadow: "0 16px 44px -16px rgba(255,69,38,0.8), inset 0 1px 0 rgba(255,255,255,0.2)" }}
-        onMouseEnter={e => (e.currentTarget.style.background = "#FF5A3D")}
-        onMouseLeave={e => (e.currentTarget.style.background = "#FF4526")}
+        style={{ background: "#2BFFF8", color: "#FFFFFF", border: "none", boxShadow: "0 16px 44px -16px rgba(43,255,248,0.8), inset 0 1px 0 rgba(255,255,255,0.2)" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#7DFFFB")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#2BFFF8")}
 
       >
         👉 OUI, JE VEUX CRÉER MON VENDEUR IA
@@ -327,7 +327,7 @@ const painPoints: string[] = [
 const Problem = () => (
   <section
     className="section-padding"
-    style={{ background: "linear-gradient(180deg, transparent, rgba(255,69,38,0.03) 50%, transparent)" }}
+    style={{ background: "linear-gradient(180deg, transparent, rgba(43,255,248,0.03) 50%, transparent)" }}
   >
     <div className="max-w-2xl mx-auto page-container">
       <Badge>Le vrai problème</Badge>
@@ -365,7 +365,7 @@ const Problem = () => (
         <p className="text-[#C6C6C6] italic">Puis tu te promets :</p>
         <blockquote
           className="text-paper text-[1.05rem] font-poppins italic px-6 py-4 mx-auto max-w-md rounded"
-          style={{ borderLeft: "3px solid #FF4526", background: "rgba(255,69,38,0.05)" }}
+          style={{ borderLeft: "3px solid #2BFFF8", background: "rgba(43,255,248,0.05)" }}
         >
           « Je publierai demain. »
         </blockquote>
@@ -377,13 +377,13 @@ const Problem = () => (
         className="reveal p-6 rounded-lg text-center mb-10"
         style={{
           border: "1px solid rgba(255,255,255,0.08)",
-          background: "linear-gradient(135deg, rgba(255,69,38,0.06), rgba(255,69,38,0.02))",
+          background: "linear-gradient(135deg, rgba(43,255,248,0.06), rgba(43,255,248,0.02))",
         }}
       >
         <p className="text-[#EDEDED] text-[0.98rem] leading-relaxed">
           Pendant ce temps, tes concurrents publient tous les jours.
           <br />
-          Et chaque vidéo qu'ils mettent en ligne attire des personnes qui auraient pu devenir <span className="text-[#FF4526] font-semibold">TES clients</span>.
+          Et chaque vidéo qu'ils mettent en ligne attire des personnes qui auraient pu devenir <span className="text-[#2BFFF8] font-semibold">TES clients</span>.
         </p>
       </div>
 
@@ -392,7 +392,7 @@ const Problem = () => (
         <p className="text-[#C6C6C6] text-[1rem]">Le problème n'est pas ton intelligence.</p>
         <p className="text-[#C6C6C6] text-[1rem]">Le problème n'est même pas ton manque de motivation.</p>
         <p className="text-paper font-poppins font-semibold text-[1.1rem] pt-4">
-          Le problème, c'est que tu dépends encore de <span className="text-[#FF4526]">toi-même</span> pour créer du contenu.
+          Le problème, c'est que tu dépends encore de <span className="text-[#2BFFF8]">toi-même</span> pour créer du contenu.
         </p>
         <p className="text-[#8E8E8E] text-[0.95rem] leading-relaxed max-w-xl mx-auto pt-3">
           Et tant que tu dépendras de ton humeur, de ta confiance en toi ou de ton courage pour publier, tu publieras toujours moins que ceux qui ont un système.
@@ -442,7 +442,7 @@ const MirageMethod = () => (
   <section className="section-padding relative">
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255,69,38,0.08), transparent 60%)" }}
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(43,255,248,0.08), transparent 60%)" }}
     />
     <div className="max-w-4xl mx-auto page-container relative">
       <div className="text-center mb-14">
@@ -466,7 +466,7 @@ const MirageMethod = () => (
           <div
             key={i}
             className={`reveal module-card p-6 rounded-lg ${i === 4 ? "md:col-span-2 md:max-w-[calc(50%-10px)] md:mx-auto md:w-full" : ""}`}
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)" }}
+            style={{ background: "#0C1512", border: "1px solid rgba(43,255,248,0.2)" }}
           >
             <div className="flex items-start gap-5">
               <span className="big-num shrink-0" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", minWidth: "60px" }}>
@@ -502,8 +502,8 @@ const MirageMethod = () => (
         <div
           className="p-6 rounded-xl"
           style={{
-            border: "1px solid rgba(255,69,38,0.3)",
-            background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
+            border: "1px solid rgba(43,255,248,0.3)",
+            background: "linear-gradient(135deg, rgba(43,255,248,0.08), rgba(43,255,248,0.02))",
           }}
         >
           <p className="text-paper italic text-[1.05rem] leading-relaxed">
@@ -546,15 +546,15 @@ const ComparisonVideo = () => (
             label: "Avec la méthode MIRAGE™",
             sub: "Prompts, réglages et montage enseignés",
             badge: "✓ Naturel",
-            badgeBg: "rgba(255,69,38,0.15)",
-            badgeColor: "#FF4526",
-            badgeBorder: "rgba(255,69,38,0.5)",
+            badgeBg: "rgba(43,255,248,0.15)",
+            badgeColor: "#2BFFF8",
+            badgeBorder: "rgba(43,255,248,0.5)",
           },
         ].map((v, i) => (
           <div
             key={i}
             className="reveal rounded-md overflow-hidden transition-all duration-300"
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
+            style={{ background: "#0C1512", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
               <AutoVideo src={v.src} className="w-full h-full object-contain" style={{ background: "#000" }} />
@@ -593,14 +593,14 @@ const RosinePhoto = () => {
     >
       <div
         className="w-full h-full rounded-xl overflow-hidden"
-        style={{ border: "2px solid rgba(255,69,38,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
+        style={{ border: "2px solid rgba(43,255,248,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
       >
         {imgError ? (
           <div
             className="w-full h-full flex flex-col items-center justify-center gap-3"
-            style={{ background: "linear-gradient(135deg, #0E0D0D, #0E0D0D)" }}
+            style={{ background: "linear-gradient(135deg, #0C1512, #0C1512)" }}
           >
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,69,38,0.3)" strokeWidth="1.5">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(43,255,248,0.3)" strokeWidth="1.5">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
@@ -617,7 +617,7 @@ const RosinePhoto = () => {
       </div>
       <span
         className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#FF4526", color: "#FFFFFF" }}
+        style={{ background: "#2BFFF8", color: "#FFFFFF" }}
       >
         ✓ +3 500 000 FCFA générés · sans publicité
       </span>
@@ -628,7 +628,7 @@ const RosinePhoto = () => {
 const CredibilitySection = () => (
   <section
     className="section-padding"
-    style={{ background: "linear-gradient(180deg, transparent, rgba(255,69,38,0.03) 50%, transparent)" }}
+    style={{ background: "linear-gradient(180deg, transparent, rgba(43,255,248,0.03) 50%, transparent)" }}
   >
     <div className="max-w-4xl mx-auto page-container">
       <div className="text-center mb-12">
@@ -648,7 +648,7 @@ const CredibilitySection = () => (
           <blockquote
             key={i}
             className="reveal text-paper italic px-5 py-4 rounded"
-            style={{ borderLeft: "3px solid rgba(255,69,38,0.5)", background: "rgba(255,69,38,0.04)" }}
+            style={{ borderLeft: "3px solid rgba(43,255,248,0.5)", background: "rgba(43,255,248,0.04)" }}
           >
             {q}
           </blockquote>
@@ -703,7 +703,7 @@ const CredibilitySection = () => (
             className="p-6 rounded-lg space-y-2 mt-6"
             style={{
               border: "1px solid rgba(255,255,255,0.08)",
-              background: "rgba(255,69,38,0.04)",
+              background: "rgba(43,255,248,0.04)",
             }}
           >
             <p className="text-[#8E8E8E] text-[0.9rem]">Ce n'est pas l'outil.</p>
@@ -712,7 +712,7 @@ const CredibilitySection = () => (
             </p>
             <p className="text-paper text-[0.98rem]">La manière de faire parler un avatar.</p>
             <p className="text-paper text-[0.98rem]">La manière de construire une vidéo qui donne envie d'envoyer un message.</p>
-            <p className="text-[#FF4526] font-poppins font-semibold text-[1rem] pt-3">
+            <p className="text-[#2BFFF8] font-poppins font-semibold text-[1rem] pt-3">
               C'est cette méthode que tu vas apprendre.
             </p>
           </div>
@@ -747,8 +747,8 @@ const VideoSection = () => (
         {videos.map((v, i) => (
           <div
             key={i}
-            className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,38,0.08)]"
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
+            className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(43,255,248,0.08)]"
+            style={{ background: "#0C1512", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
               <AutoVideo src={v.src} className="w-full h-full object-contain rounded" style={{ background: "#000" }} />
@@ -811,12 +811,12 @@ const StudentsProofSection = () => (
           <div
             key={i}
             className="reveal glow-card rounded-lg p-6"
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
+            style={{ background: "#0C1512", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="flex items-center gap-3 mb-5">
               <div
                 className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-ink font-poppins"
-                style={{ background: "linear-gradient(135deg, #FF4526, #FF7355)" }}
+                style={{ background: "linear-gradient(135deg, #2BFFF8, #B0FCCE)" }}
               >
                 {s.initials}
               </div>
@@ -830,12 +830,12 @@ const StudentsProofSection = () => (
               <p className="text-[#C6C6C6] text-[0.9rem] leading-snug">{s.before}</p>
             </div>
             <div className="mb-4">
-              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#FF4526] mb-1">Après</p>
+              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#2BFFF8] mb-1">Après</p>
               <p className="text-paper text-[0.92rem] leading-snug">{s.after}</p>
             </div>
             <div
-              className="mt-5 pt-3 text-center font-poppins text-[0.72rem] tracking-wider uppercase text-[#FF4526] font-semibold"
-              style={{ borderTop: "1px solid rgba(255,69,38,0.15)" }}
+              className="mt-5 pt-3 text-center font-poppins text-[0.72rem] tracking-wider uppercase text-[#2BFFF8] font-semibold"
+              style={{ borderTop: "1px solid rgba(43,255,248,0.15)" }}
             >
               ⏱ {s.days}
             </div>
@@ -847,11 +847,11 @@ const StudentsProofSection = () => (
         <div
           className="reveal p-8 rounded-xl text-center"
           style={{
-            background: "linear-gradient(135deg, rgba(255,69,38,0.1), rgba(255,69,38,0.03))",
-            border: "1px solid rgba(255,69,38,0.35)",
+            background: "linear-gradient(135deg, rgba(43,255,248,0.1), rgba(43,255,248,0.03))",
+            border: "1px solid rgba(43,255,248,0.35)",
           }}
         >
-          <p className="font-poppins uppercase text-[0.68rem] tracking-[0.15em] text-[#FF4526] mb-3">À ce jour</p>
+          <p className="font-poppins uppercase text-[0.68rem] tracking-[0.15em] text-[#2BFFF8] mb-3">À ce jour</p>
           <p className="font-poppins font-extrabold text-[2.8rem] leading-none text-paper mb-2">200+</p>
           <p className="text-[#C6C6C6] text-[0.92rem] leading-snug">
             créateurs et e-commerçants africains accompagnés
@@ -860,12 +860,12 @@ const StudentsProofSection = () => (
         <div
           className="reveal p-8 rounded-xl"
           style={{
-            background: "#0E0D0D",
-            border: "1px solid rgba(255,69,38,0.2)",
+            background: "#0C1512",
+            border: "1px solid rgba(43,255,248,0.2)",
           }}
         >
           <p className="text-[#C6C6C6] text-[0.95rem] leading-[1.8] italic">
-            « Je préfère annoncer un chiffre précis plutôt qu'un énorme chiffre impressionnant. Parce qu'il est <span className="text-[#FF4526] font-semibold not-italic">vérifiable</span>. »
+            « Je préfère annoncer un chiffre précis plutôt qu'un énorme chiffre impressionnant. Parce qu'il est <span className="text-[#2BFFF8] font-semibold not-italic">vérifiable</span>. »
           </p>
           <p className="font-poppins text-paper text-[0.85rem] font-semibold mt-4">— Rosine</p>
         </div>
@@ -893,9 +893,9 @@ const PreuvesSection = () => (
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div
             key={n}
-            className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,38,0.08)]"
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.07)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(255,69,38,0.4)")}
+            className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(43,255,248,0.08)]"
+            style={{ background: "#0C1512", border: "1px solid rgba(255,255,255,0.07)" }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(43,255,248,0.4)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}
           >
             <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
@@ -940,14 +940,14 @@ const PreuvesCASection = () => (
           <div
             key={i}
             className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)", borderRadius: 10 }}
+            style={{ background: "#0C1512", border: "1px solid rgba(43,255,248,0.2)", borderRadius: 10 }}
           >
             <img src={c.img} alt={c.label} className="w-full h-auto block" />
             <div
               style={{
                 padding: "16px 20px",
                 borderTop: "1px solid rgba(255,255,255,0.05)",
-                background: "rgba(255,69,38,0.03)",
+                background: "rgba(43,255,248,0.03)",
               }}
             >
               <p className="font-poppins font-bold" style={{ fontSize: "0.9rem", color: "#FFFFFF" }}>
@@ -961,14 +961,14 @@ const PreuvesCASection = () => (
       <div className="flex justify-center mt-5">
         <div
           className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
-          style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)", borderRadius: 10 }}
+          style={{ background: "#0C1512", border: "1px solid rgba(43,255,248,0.2)", borderRadius: 10 }}
         >
           <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
           <div
             style={{
               padding: "16px 20px",
               borderTop: "1px solid rgba(255,255,255,0.05)",
-              background: "rgba(255,69,38,0.03)",
+              background: "rgba(43,255,248,0.03)",
             }}
           >
             <p className="font-poppins font-bold" style={{ fontSize: "0.9rem", color: "#FFFFFF" }}>
@@ -989,7 +989,7 @@ const PreuvesCASection = () => (
           <p>Tu n'achètes pas une formation sur HeyGen.</p>
           <p>Tu n'achètes pas une formation sur CapCut.</p>
           <p className="text-paper font-poppins font-semibold pt-3 text-[1.05rem]">
-            Tu apprends un <span className="text-[#FF4526]">système complet</span>.
+            Tu apprends un <span className="text-[#2BFFF8]">système complet</span>.
           </p>
           <p className="text-[#8E8E8E] text-[0.92rem] pt-4">
             Les outils évolueront. Ils changeront. Certains disparaîtront. Mais la méthode restera la même. C'est exactement pour cette raison que les mises à jour de la formation sont incluses.
@@ -1170,7 +1170,7 @@ const objections = [
 const Objections = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   return (
-    <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(255,69,38,0.03), transparent)" }}>
+    <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(43,255,248,0.03), transparent)" }}>
       <div className="max-w-3xl mx-auto page-container">
         <div className="text-center mb-12">
           <Badge>Objections traitées</Badge>
@@ -1186,8 +1186,8 @@ const Objections = () => {
                 key={i}
                 className="reveal rounded-lg overflow-hidden transition-all"
                 style={{
-                  background: "#0E0D0D",
-                  border: open ? "1px solid rgba(255,69,38,0.4)" : "1px solid rgba(255,255,255,0.06)",
+                  background: "#0C1512",
+                  border: open ? "1px solid rgba(43,255,248,0.4)" : "1px solid rgba(255,255,255,0.06)",
                 }}
               >
                 <button
@@ -1248,7 +1248,7 @@ const Offer = () => (
   <section id="offre" className="section-padding relative">
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255,69,38,0.08), transparent 60%)" }}
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(43,255,248,0.08), transparent 60%)" }}
     />
     <div className="max-w-5xl mx-auto page-container relative">
       <div className="text-center mb-14">
@@ -1262,7 +1262,7 @@ const Offer = () => (
         <p className="text-[#8E8E8E] text-[0.95rem] mt-6 max-w-2xl mx-auto leading-[1.8]">
           En rejoignant la <strong className="text-paper">Méthode MIRAGE™</strong>, tu suis un parcours conçu pour t'emmener d'un simple débutant à une personne capable de créer des vidéos professionnelles qui attirent des prospects sans avoir besoin de se filmer.
         </p>
-        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF4526] mt-8">
+        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#2BFFF8] mt-8">
           Voici exactement ce que tu reçois
         </p>
       </div>
@@ -1273,7 +1273,7 @@ const Offer = () => (
           <div
             key={i}
             className="reveal module-card p-6 rounded-lg"
-            style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)" }}
+            style={{ background: "#0C1512", border: "1px solid rgba(43,255,248,0.2)" }}
           >
             <div className="flex items-start gap-4">
               <span className="big-num shrink-0" style={{ fontSize: "clamp(2.6rem, 5vw, 3.6rem)", minWidth: "55px" }}>
@@ -1284,10 +1284,10 @@ const Offer = () => (
                   Module {m.n}
                 </p>
                 <h3 className="font-poppins font-bold text-paper text-[1.05rem] mb-1 leading-tight">{m.name}</h3>
-                <p className="text-[#FF4526] italic text-[0.85rem] mb-3">{m.tagline}</p>
+                <p className="text-[#2BFFF8] italic text-[0.85rem] mb-3">{m.tagline}</p>
                 <p className="text-[#8E8E8E] text-[0.88rem] leading-[1.7]">{m.body}</p>
                 <p className="mt-4 text-[0.78rem] text-[#9C9C9C]">
-                  Valeur estimée : <span className="text-[#FF4526] font-semibold">{m.value}</span>
+                  Valeur estimée : <span className="text-[#2BFFF8] font-semibold">{m.value}</span>
                 </p>
               </div>
             </div>
@@ -1305,19 +1305,19 @@ const Offer = () => (
             key={i}
             className="reveal p-5 rounded-xl"
             style={{
-              background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
-              border: "1px solid rgba(255,69,38,0.3)",
+              background: "linear-gradient(135deg, rgba(43,255,248,0.08), rgba(43,255,248,0.02))",
+              border: "1px solid rgba(43,255,248,0.3)",
             }}
           >
             <div className="flex items-start gap-3">
               <span className="text-2xl shrink-0">🎁</span>
               <div>
-                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#FF4526] font-bold mb-1">
+                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#2BFFF8] font-bold mb-1">
                   Bonus {b.n}
                 </p>
                 <h4 className="font-poppins font-semibold text-paper text-[0.95rem] leading-snug mb-2">{b.name}</h4>
                 <p className="text-[0.75rem] text-[#9C9C9C]">
-                  Valeur : <span className="text-[#FF4526] font-semibold">{b.value}</span>
+                  Valeur : <span className="text-[#2BFFF8] font-semibold">{b.value}</span>
                 </p>
               </div>
             </div>
@@ -1329,11 +1329,11 @@ const Offer = () => (
       <div className="max-w-xl mx-auto mb-8">
         <div
           className="rounded-xl overflow-hidden"
-          style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#0E0D0D" }}
+          style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#0C1512" }}
         >
           <div
             className="px-6 py-4 font-poppins font-bold text-paper text-[0.95rem] uppercase tracking-wider"
-            style={{ background: "rgba(255,69,38,0.06)", borderBottom: "1px solid rgba(255,69,38,0.15)" }}
+            style={{ background: "rgba(43,255,248,0.06)", borderBottom: "1px solid rgba(43,255,248,0.15)" }}
           >
             Récapitulatif de la valeur
           </div>
@@ -1349,9 +1349,9 @@ const Offer = () => (
           ))}
           <div
             className="flex justify-between items-center px-6 py-5"
-            style={{ background: "linear-gradient(90deg, rgba(255,69,38,0.1), rgba(255,69,38,0.02))" }}
+            style={{ background: "linear-gradient(90deg, rgba(43,255,248,0.1), rgba(43,255,248,0.02))" }}
           >
-            <span className="font-poppins uppercase text-[0.75rem] tracking-[0.14em] text-[#FF4526] font-bold">
+            <span className="font-poppins uppercase text-[0.75rem] tracking-[0.14em] text-[#2BFFF8] font-bold">
               Valeur totale
             </span>
             <span className="font-poppins font-extrabold text-paper text-[1.4rem]">190 000 FCFA</span>
@@ -1363,9 +1363,9 @@ const Offer = () => (
       <div
         className="reveal max-w-xl mx-auto rounded-2xl text-center px-6 py-10 sm:px-10"
         style={{
-          border: "1px solid rgba(255,69,38,0.5)",
-          background: "linear-gradient(135deg, rgba(255,69,38,0.1), rgba(255,69,38,0.02))",
-          boxShadow: "0 20px 60px rgba(255,69,38,0.1)",
+          border: "1px solid rgba(43,255,248,0.5)",
+          background: "linear-gradient(135deg, rgba(43,255,248,0.1), rgba(43,255,248,0.02))",
+          boxShadow: "0 20px 60px rgba(43,255,248,0.1)",
         }}
       >
         <div className="space-y-1 mb-6">
@@ -1373,10 +1373,10 @@ const Offer = () => (
           <p className="text-[#C6C6C6] text-[0.9rem]">Tu ne paies pas <span className="line-through text-[#9C9C9C]">50 000 FCFA</span>.</p>
           <p className="text-[#C6C6C6] text-[0.9rem]">Tu ne paies même pas <span className="line-through text-[#9C9C9C]">24 700 FCFA</span>.</p>
         </div>
-        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF4526] mb-2">
+        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#2BFFF8] mb-2">
           Tu investis seulement
         </p>
-        <p className="font-poppins font-extrabold text-[#FF4526] leading-none mb-3" style={{ fontSize: "clamp(3rem, 9vw, 4.5rem)" }}>
+        <p className="font-poppins font-extrabold text-[#2BFFF8] leading-none mb-3" style={{ fontSize: "clamp(3rem, 9vw, 4.5rem)" }}>
           {PRICE}
         </p>
         <p className="text-[#C6C6C6] text-[0.88rem] mb-8">
@@ -1415,14 +1415,14 @@ const Amplifiers = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div
           className="reveal p-6 rounded-xl"
-          style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
+          style={{ background: "#0C1512", border: "1px solid rgba(255,255,255,0.08)" }}
         >
           <div className="flex items-center gap-2 mb-3">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#FF4526" }} />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#FF4526" }} />
+              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#2BFFF8" }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#2BFFF8" }} />
             </span>
-            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#FF4526] font-bold">Rareté</span>
+            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#2BFFF8] font-bold">Rareté</span>
           </div>
           <p className="text-paper font-poppins font-semibold text-[1.02rem] mb-2">
             Seulement 5 nouvelles places par semaine
@@ -1434,13 +1434,13 @@ const Amplifiers = () => (
         <div
           className="reveal p-6 rounded-xl"
           style={{
-            background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
-            border: "1px solid rgba(255,69,38,0.35)",
+            background: "linear-gradient(135deg, rgba(43,255,248,0.08), rgba(43,255,248,0.02))",
+            border: "1px solid rgba(43,255,248,0.35)",
           }}
         >
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[#FF4526]">⏳</span>
-            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#FF4526] font-bold">Urgence</span>
+            <span className="text-[#2BFFF8]">⏳</span>
+            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#2BFFF8] font-bold">Urgence</span>
           </div>
           <p className="text-paper font-poppins font-semibold text-[1.02rem] mb-2">
             Fermeture dimanche à 23h59
@@ -1467,20 +1467,20 @@ const Guarantee = () => (
       <div
         className="reveal p-8 rounded-2xl text-left relative overflow-hidden"
         style={{
-          border: "1px solid rgba(255,69,38,0.35)",
-          background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
+          border: "1px solid rgba(43,255,248,0.35)",
+          background: "linear-gradient(135deg, rgba(43,255,248,0.08), rgba(43,255,248,0.02))",
         }}
       >
         <div
           className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, #FF4526, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #2BFFF8, transparent 70%)" }}
         />
         <div className="relative space-y-3 text-[#C6C6C6] text-[0.98rem] leading-[1.85]">
           <p className="font-poppins font-semibold text-paper text-[1.05rem]">Inscris-toi.</p>
           <p>Suis les premiers modules.</p>
           <p>
             Si tu estimes que cette formation ne correspond pas à ce qui est présenté sur cette page, envoie simplement un message dans les{" "}
-            <span className="text-[#FF4526] font-semibold">7 jours</span> suivant ton achat.
+            <span className="text-[#2BFFF8] font-semibold">7 jours</span> suivant ton achat.
           </p>
           <p className="text-paper font-semibold pt-2">
             Nous te remboursons intégralement, sans procédure compliquée.
@@ -1498,7 +1498,7 @@ const FinalCTA = () => (
   <section className="section-padding text-center relative">
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(circle at 50% 50%, rgba(255,69,38,0.08), transparent 60%)" }}
+      style={{ background: "radial-gradient(circle at 50% 50%, rgba(43,255,248,0.08), transparent 60%)" }}
     />
     <div className="max-w-2xl mx-auto page-container relative">
       <Badge>Dernière étape</Badge>
@@ -1506,8 +1506,8 @@ const FinalCTA = () => (
         Oui, je veux créer <span className="text-gold">mon vendeur IA</span>
       </h2>
       <div className="mb-8">
-        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#FF4526] mb-2">Prix unique</p>
-        <p className="font-poppins font-extrabold text-[#FF4526] leading-none" style={{ fontSize: "clamp(2.6rem, 9vw, 4rem)" }}>
+        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#2BFFF8] mb-2">Prix unique</p>
+        <p className="font-poppins font-extrabold text-[#2BFFF8] leading-none" style={{ fontSize: "clamp(2.6rem, 9vw, 4rem)" }}>
           {PRICE}
         </p>
         <p className="font-poppins text-[#C6C6C6] text-[0.85rem] uppercase tracking-[0.12em] mt-3">
