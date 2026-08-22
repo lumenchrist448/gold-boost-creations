@@ -121,32 +121,31 @@ const SectionDivider = () => (
    ================================================================ */
 const PromoBanner = () => (
   <div
-    className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
+    className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-medium"
     style={{
-      background: "linear-gradient(90deg, #2A1411, #FF4526, #2A1411)",
-      backgroundSize: "200% 100%",
-      animation: "shimmer 3s linear infinite",
+      background: "rgba(10,10,10,0.85)",
+      backdropFilter: "blur(14px)",
+      borderBottom: "1px solid rgba(255,255,255,0.08)",
       height: "36px",
       minHeight: "36px",
       maxHeight: "36px",
       overflow: "hidden",
       flexWrap: "nowrap",
-      color: "#050505",
+      color: "#C6C6C6",
+      letterSpacing: "0.02em",
       fontSize: "clamp(0.55rem, 1.5vw, 0.72rem)",
     }}
   >
-    <span style={{ whiteSpace: "nowrap" }}>🔥 5 PLACES / SEMAINE</span>
-    <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span
-      className="font-extrabold"
-      style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}
-    >
+    <span style={{ whiteSpace: "nowrap", color: "#FF4526" }}>5 PLACES / SEMAINE</span>
+    <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
+    <span className="font-semibold" style={{ whiteSpace: "nowrap", color: "#FFFFFF" }}>
       {PRICE}
     </span>
-    <span style={{ whiteSpace: "nowrap" }}>|</span>
+    <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>Paiement unique · Accès à vie</span>
   </div>
 );
+
 
 const StickyBar = () => {
   const [show, setShow] = useState(false);
