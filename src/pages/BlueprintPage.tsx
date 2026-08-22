@@ -96,24 +96,25 @@ const SectionCTA = ({ label = "Oui, je veux créer mon vendeur IA" }: { label?: 
       href={CHECKOUT_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block font-poppins font-bold text-[0.82rem] sm:text-[0.9rem] uppercase tracking-[0.06em] py-[15px] px-8 rounded-full transition-transform duration-300 hover:-translate-y-0.5"
+      className="inline-block font-poppins font-semibold text-[0.9rem] py-[14px] px-7 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
       style={{
         background: "#FF4526",
-        color: "#050505",
-        boxShadow: "0 8px 24px rgba(255,255,255,0.08), 0 0 0 1px rgba(255,69,38,0.4)",
+        color: "#FFFFFF",
+        boxShadow: "0 12px 34px -14px rgba(255,69,38,0.7), inset 0 1px 0 rgba(255,255,255,0.18)",
         border: "none",
       }}
-      onMouseEnter={e => (e.currentTarget.style.background = "#FF7355")}
+      onMouseEnter={e => (e.currentTarget.style.background = "#FF5A3D")}
       onMouseLeave={e => (e.currentTarget.style.background = "#FF4526")}
     >
-      👉 {label}
+      {label}
     </a>
   </div>
 );
 
 const SectionDivider = () => (
-  <div className="max-w-[80px] mx-auto my-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,69,38,0.5), transparent)" }} />
+  <div className="max-w-[160px] mx-auto my-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent)" }} />
 );
+
 
 /* ================================================================
    PROMO BANNER + STICKY BAR
