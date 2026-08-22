@@ -70,8 +70,8 @@ const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVi
         className="absolute bottom-2 right-2 font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur transition-opacity hover:opacity-100"
         style={{
           background: "rgba(10,10,15,0.72)",
-          color: "#FF6D29",
-          border: "1px solid rgba(255, 109, 41,0.4)",
+          color: "#FF4526",
+          border: "1px solid rgba(255,69,38,0.4)",
           opacity: 0.85,
         }}
       >
@@ -96,56 +96,56 @@ const SectionCTA = ({ label = "Oui, je veux créer mon vendeur IA" }: { label?: 
       href={CHECKOUT_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block font-poppins font-bold text-[0.82rem] sm:text-[0.9rem] uppercase tracking-[0.06em] py-[15px] px-8 rounded-full transition-transform duration-300 hover:-translate-y-0.5"
+      className="inline-block font-poppins font-semibold text-[0.9rem] py-[14px] px-7 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
       style={{
-        background: "#FF6D29",
-        color: "#161316",
-        boxShadow: "0 8px 24px rgba(255, 109, 41,0.25), 0 0 0 1px rgba(255, 109, 41,0.4)",
+        background: "#FF4526",
+        color: "#FFFFFF",
+        boxShadow: "0 12px 34px -14px rgba(255,69,38,0.7), inset 0 1px 0 rgba(255,255,255,0.18)",
         border: "none",
       }}
-      onMouseEnter={e => (e.currentTarget.style.background = "#FF8A52")}
-      onMouseLeave={e => (e.currentTarget.style.background = "#FF6D29")}
+      onMouseEnter={e => (e.currentTarget.style.background = "#FF5A3D")}
+      onMouseLeave={e => (e.currentTarget.style.background = "#FF4526")}
     >
-      👉 {label}
+      {label}
     </a>
   </div>
 );
 
 const SectionDivider = () => (
-  <div className="max-w-[80px] mx-auto my-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255, 109, 41,0.5), transparent)" }} />
+  <div className="max-w-[160px] mx-auto my-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent)" }} />
 );
+
 
 /* ================================================================
    PROMO BANNER + STICKY BAR
    ================================================================ */
 const PromoBanner = () => (
   <div
-    className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-bold"
+    className="fixed top-0 left-0 right-0 z-[200] flex items-center justify-center gap-2 px-4 font-poppins font-medium"
     style={{
-      background: "linear-gradient(90deg, #453027, #FF6D29, #453027)",
-      backgroundSize: "200% 100%",
-      animation: "shimmer 3s linear infinite",
+      background: "rgba(10,10,10,0.85)",
+      backdropFilter: "blur(14px)",
+      borderBottom: "1px solid rgba(255,255,255,0.08)",
       height: "36px",
       minHeight: "36px",
       maxHeight: "36px",
       overflow: "hidden",
       flexWrap: "nowrap",
-      color: "#161316",
+      color: "#C6C6C6",
+      letterSpacing: "0.02em",
       fontSize: "clamp(0.55rem, 1.5vw, 0.72rem)",
     }}
   >
-    <span style={{ whiteSpace: "nowrap" }}>🔥 5 PLACES / SEMAINE</span>
-    <span style={{ whiteSpace: "nowrap" }}>|</span>
-    <span
-      className="font-extrabold"
-      style={{ whiteSpace: "nowrap", background: "rgba(0,0,0,0.15)", padding: "2px 6px", borderRadius: "2px" }}
-    >
+    <span style={{ whiteSpace: "nowrap", color: "#FF4526" }}>5 PLACES / SEMAINE</span>
+    <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
+    <span className="font-semibold" style={{ whiteSpace: "nowrap", color: "#FFFFFF" }}>
       {PRICE}
     </span>
-    <span style={{ whiteSpace: "nowrap" }}>|</span>
+    <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>Paiement unique · Accès à vie</span>
   </div>
 );
+
 
 const StickyBar = () => {
   const [show, setShow] = useState(false);
@@ -160,7 +160,7 @@ const StickyBar = () => {
       style={{
         background: "rgba(10,10,15,0.95)",
         backdropFilter: "blur(12px)",
-        borderTop: "1px solid rgba(255, 109, 41,0.25)",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
     >
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -188,8 +188,8 @@ const PaymentMethodsImage = () => (
     <div
       className="rounded-2xl overflow-hidden"
       style={{
-        background: "#1E191B",
-        border: "1px solid rgba(255, 109, 41,0.25)",
+        background: "#0E0D0D",
+        border: "1px solid rgba(255,255,255,0.08)",
         boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
         maxWidth: "520px",
         width: "100%",
@@ -201,29 +201,42 @@ const PaymentMethodsImage = () => (
 );
 
 const Hero = () => (
-  <section className="relative pt-[80px] sm:pt-[92px] pb-14 sm:pb-20 overflow-hidden">
+  <section className="relative pt-[80px] sm:pt-[100px] pb-14 sm:pb-24 overflow-hidden">
     <div
-      className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
+      className="absolute -top-[380px] left-1/2 -translate-x-1/2 w-[1400px] h-[760px] pointer-events-none"
       style={{
         background:
-          "radial-gradient(ellipse at center, rgba(255, 109, 41,0.18), rgba(255, 109, 41,0.06) 35%, transparent 70%)",
+          "radial-gradient(ellipse at center, rgba(255,69,38,0.55), rgba(255,69,38,0.18) 42%, transparent 70%)",
+        filter: "blur(60px)",
+        opacity: 0.55,
       }}
     />
+    <div
+      className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[900px] h-[260px] pointer-events-none"
+      style={{
+        background:
+          "radial-gradient(ellipse at center, rgba(255,105,60,0.30), transparent 70%)",
+        filter: "blur(80px)",
+        opacity: 0.6,
+      }}
+    />
+
     <div className="page-container relative max-w-3xl mx-auto">
       <div className="fade-up flex justify-center mb-6">
         <span className="pill-badge">{PRODUCT_TAGLINE} · Édition 2026</span>
       </div>
 
       <h1
-        className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#FFFFFF] text-center"
-        style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}
+        className="fade-up font-poppins font-semibold leading-[1.02] mb-6 text-[#FFFFFF] text-center"
+        style={{ fontSize: "clamp(2rem, 6.2vw, 3.8rem)", animationDelay: "0.1s" }}
       >
         Arrête de perdre des ventes parce que{" "}
-        <span className="text-[#FF6D29]">tu refuses de te montrer.</span>
+        <span className="text-[#FF4526]">tu refuses de te montrer.</span>
       </h1>
 
+
       <h2
-        className="fade-up font-poppins font-semibold text-center text-[#e6dfd0] text-[1.05rem] sm:text-[1.25rem] leading-[1.4] max-w-2xl mx-auto mb-6"
+        className="fade-up font-poppins font-semibold text-center text-[#EDEDED] text-[1.05rem] sm:text-[1.25rem] leading-[1.4] max-w-2xl mx-auto mb-6"
         style={{ animationDelay: "0.2s" }}
       >
         Crée ton premier vendeur IA en 14 jours et publie des vidéos qui inspirent confiance, même si tu détestes être devant une caméra.
@@ -237,20 +250,20 @@ const Hero = () => (
           src={monVendeurBanner.url}
           alt="Mon Vendeur IA — Méthode MIRAGE™ : formation complète, avatar IA, vidéos, scripts, checklist de démarrage"
           className="w-full h-auto block"
-          style={{ borderRadius: "20px", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255, 109, 41,0.15)" }}
+          style={{ borderRadius: "20px", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.15)" }}
           loading="lazy"
         />
       </div>
 
       <p
-        className="fade-up text-center text-[#a09a8e] text-[0.95rem] sm:text-[1.02rem] leading-[1.7] max-w-2xl mx-auto mb-8"
+        className="fade-up text-center text-[#8E8E8E] text-[0.95rem] sm:text-[1.02rem] leading-[1.7] max-w-2xl mx-auto mb-8"
         style={{ animationDelay: "0.3s" }}
       >
         Tu apprendras à créer un avatar IA qui parle naturellement, présente tes produits à ta place et publie des vidéos professionnelles pour attirer des clients sur TikTok, Facebook et WhatsApp, sans avoir besoin d'être photogénique, de savoir monter des vidéos ou de payer une agence.
       </p>
 
       <p
-        className="fade-up text-center text-[#c8c2b8] text-[0.8rem] uppercase tracking-[0.14em] font-poppins font-semibold mb-8"
+        className="fade-up text-center text-[#C6C6C6] text-[0.8rem] uppercase tracking-[0.14em] font-poppins font-semibold mb-8"
         style={{ animationDelay: "0.4s" }}
       >
         Compatible Android et iPhone · Paiement unique · Accès à vie
@@ -260,10 +273,10 @@ const Hero = () => (
         className="fade-up flex flex-col items-center justify-center mb-6"
         style={{ animationDelay: "0.5s" }}
       >
-        <span className="font-poppins uppercase text-[0.68rem] tracking-[0.18em] text-[#FF6D29] mb-1">
+        <span className="font-poppins uppercase text-[0.68rem] tracking-[0.18em] text-[#FF4526] mb-1">
           Prix de lancement
         </span>
-        <span className="font-poppins font-extrabold text-[2.4rem] sm:text-[3rem] text-[#FF6D29] leading-none">
+        <span className="font-poppins font-extrabold text-[2.4rem] sm:text-[3rem] text-[#FF4526] leading-none">
           {PRICE}
         </span>
       </div>
@@ -272,14 +285,15 @@ const Hero = () => (
         href={CHECKOUT_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
-        style={{ background: "#FF6D29", color: "#161316", border: "none" }}
-        onMouseEnter={e => (e.currentTarget.style.background = "#FF8A52")}
-        onMouseLeave={e => (e.currentTarget.style.background = "#FF6D29")}
+        className="cta-pulse block w-full max-w-[520px] mx-auto text-center font-poppins font-semibold text-[0.95rem] sm:text-[1.02rem] py-4 sm:py-[17px] px-6 rounded-2xl mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+        style={{ background: "#FF4526", color: "#FFFFFF", border: "none", boxShadow: "0 16px 44px -16px rgba(255,69,38,0.8), inset 0 1px 0 rgba(255,255,255,0.2)" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#FF5A3D")}
+        onMouseLeave={e => (e.currentTarget.style.background = "#FF4526")}
+
       >
         👉 OUI, JE VEUX CRÉER MON VENDEUR IA
       </a>
-      <p className="text-[#BABABA] text-[0.78rem] text-center mb-6">
+      <p className="text-[#9C9C9C] text-[0.78rem] text-center mb-6">
         ⭐️ Rejoint par 200+ créateurs et e-commerçants africains
       </p>
 
@@ -313,7 +327,7 @@ const painPoints: string[] = [
 const Problem = () => (
   <section
     className="section-padding"
-    style={{ background: "linear-gradient(180deg, transparent, rgba(255, 109, 41,0.03) 50%, transparent)" }}
+    style={{ background: "linear-gradient(180deg, transparent, rgba(255,69,38,0.03) 50%, transparent)" }}
   >
     <div className="max-w-2xl mx-auto page-container">
       <Badge>Le vrai problème</Badge>
@@ -323,7 +337,7 @@ const Problem = () => (
           <p
             key={i}
             className={`reveal font-poppins ${
-              i === 0 ? "text-[1.5rem] sm:text-[1.8rem] font-bold text-paper leading-tight" : "text-[#c8c2b8] text-[1rem] sm:text-[1.1rem]"
+              i === 0 ? "text-[1.5rem] sm:text-[1.8rem] font-bold text-paper leading-tight" : "text-[#C6C6C6] text-[1rem] sm:text-[1.1rem]"
             }`}
           >
             {p}
@@ -348,39 +362,39 @@ const Problem = () => (
       </div>
 
       <div className="reveal text-center space-y-4 mb-10">
-        <p className="text-[#c8c2b8] italic">Puis tu te promets :</p>
+        <p className="text-[#C6C6C6] italic">Puis tu te promets :</p>
         <blockquote
           className="text-paper text-[1.05rem] font-poppins italic px-6 py-4 mx-auto max-w-md rounded"
-          style={{ borderLeft: "3px solid #FF6D29", background: "rgba(255, 109, 41,0.05)" }}
+          style={{ borderLeft: "3px solid #FF4526", background: "rgba(255,69,38,0.05)" }}
         >
           « Je publierai demain. »
         </blockquote>
-        <p className="text-[#a09a8e] text-[0.95rem]">Mais demain devient la semaine prochaine.</p>
-        <p className="text-[#a09a8e] text-[0.95rem]">Puis le mois suivant.</p>
+        <p className="text-[#8E8E8E] text-[0.95rem]">Mais demain devient la semaine prochaine.</p>
+        <p className="text-[#8E8E8E] text-[0.95rem]">Puis le mois suivant.</p>
       </div>
 
       <div
         className="reveal p-6 rounded-lg text-center mb-10"
         style={{
-          border: "1px solid rgba(255, 109, 41,0.25)",
-          background: "linear-gradient(135deg, rgba(255, 109, 41,0.06), rgba(255, 109, 41,0.02))",
+          border: "1px solid rgba(255,255,255,0.08)",
+          background: "linear-gradient(135deg, rgba(255,69,38,0.06), rgba(255,69,38,0.02))",
         }}
       >
-        <p className="text-[#e6dfd0] text-[0.98rem] leading-relaxed">
+        <p className="text-[#EDEDED] text-[0.98rem] leading-relaxed">
           Pendant ce temps, tes concurrents publient tous les jours.
           <br />
-          Et chaque vidéo qu'ils mettent en ligne attire des personnes qui auraient pu devenir <span className="text-[#FF6D29] font-semibold">TES clients</span>.
+          Et chaque vidéo qu'ils mettent en ligne attire des personnes qui auraient pu devenir <span className="text-[#FF4526] font-semibold">TES clients</span>.
         </p>
       </div>
 
       <div className="reveal space-y-3 text-center">
-        <p className="text-[#c8c2b8] text-[1rem]">Le problème n'est donc pas ton produit.</p>
-        <p className="text-[#c8c2b8] text-[1rem]">Le problème n'est pas ton intelligence.</p>
-        <p className="text-[#c8c2b8] text-[1rem]">Le problème n'est même pas ton manque de motivation.</p>
+        <p className="text-[#C6C6C6] text-[1rem]">Le problème n'est donc pas ton produit.</p>
+        <p className="text-[#C6C6C6] text-[1rem]">Le problème n'est pas ton intelligence.</p>
+        <p className="text-[#C6C6C6] text-[1rem]">Le problème n'est même pas ton manque de motivation.</p>
         <p className="text-paper font-poppins font-semibold text-[1.1rem] pt-4">
-          Le problème, c'est que tu dépends encore de <span className="text-[#FF6D29]">toi-même</span> pour créer du contenu.
+          Le problème, c'est que tu dépends encore de <span className="text-[#FF4526]">toi-même</span> pour créer du contenu.
         </p>
-        <p className="text-[#a09a8e] text-[0.95rem] leading-relaxed max-w-xl mx-auto pt-3">
+        <p className="text-[#8E8E8E] text-[0.95rem] leading-relaxed max-w-xl mx-auto pt-3">
           Et tant que tu dépendras de ton humeur, de ta confiance en toi ou de ton courage pour publier, tu publieras toujours moins que ceux qui ont un système.
         </p>
       </div>
@@ -428,7 +442,7 @@ const MirageMethod = () => (
   <section className="section-padding relative">
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255, 109, 41,0.08), transparent 60%)" }}
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255,69,38,0.08), transparent 60%)" }}
     />
     <div className="max-w-4xl mx-auto page-container relative">
       <div className="text-center mb-14">
@@ -436,13 +450,13 @@ const MirageMethod = () => (
         <h2 className="font-poppins font-bold text-[2rem] sm:text-[2.6rem] md:text-[3rem] text-paper leading-[1.1] mb-6">
           Voici la méthode <span className="text-gold">MIRAGE™</span>
         </h2>
-        <p className="text-[#c8c2b8] text-[1.02rem] leading-[1.7] max-w-xl mx-auto mb-2">
+        <p className="text-[#C6C6C6] text-[1.02rem] leading-[1.7] max-w-xl mx-auto mb-2">
           Pourquoi ce nom ?
         </p>
-        <p className="text-[#a09a8e] text-[0.98rem] leading-[1.7] max-w-xl mx-auto">
+        <p className="text-[#8E8E8E] text-[0.98rem] leading-[1.7] max-w-xl mx-auto">
           Parce que ton client ne doit pas voir une intelligence artificielle. Il doit voir <span className="text-paper font-semibold">une personne crédible</span>.
         </p>
-        <p className="text-[#c8c2b8] text-[0.95rem] mt-4">
+        <p className="text-[#C6C6C6] text-[0.95rem] mt-4">
           La méthode MIRAGE™ repose sur cinq étapes simples.
         </p>
       </div>
@@ -452,7 +466,7 @@ const MirageMethod = () => (
           <div
             key={i}
             className={`reveal module-card p-6 rounded-lg ${i === 4 ? "md:col-span-2 md:max-w-[calc(50%-10px)] md:mx-auto md:w-full" : ""}`}
-            style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.2)" }}
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)" }}
           >
             <div className="flex items-start gap-5">
               <span className="big-num shrink-0" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", minWidth: "60px" }}>
@@ -463,7 +477,7 @@ const MirageMethod = () => (
                   {s.letter} — {s.name}
                 </h3>
                 <p className="text-paper/85 text-[0.95rem] leading-relaxed mb-2">{s.lead}</p>
-                <p className="text-[#a09a8e] text-[0.88rem] leading-relaxed">{s.detail}</p>
+                <p className="text-[#8E8E8E] text-[0.88rem] leading-relaxed">{s.detail}</p>
               </div>
             </div>
           </div>
@@ -474,22 +488,22 @@ const MirageMethod = () => (
         <h3 className="font-poppins font-bold text-paper text-[1.4rem] mb-6">
           Pourquoi cette méthode <span className="text-gold">fonctionne ?</span>
         </h3>
-        <p className="text-[#c8c2b8] text-[1rem] leading-[1.85] mb-4">
+        <p className="text-[#C6C6C6] text-[1rem] leading-[1.85] mb-4">
           Parce qu'elle ne te demande pas de devenir créateur de contenu.
         </p>
-        <p className="text-[#c8c2b8] text-[1rem] leading-[1.85] mb-8">
+        <p className="text-[#C6C6C6] text-[1rem] leading-[1.85] mb-8">
           Elle te permet de construire un système qui crée du contenu <span className="text-paper font-semibold">avec toi... ou sans toi</span>.
         </p>
         <div className="space-y-2 mb-8">
-          <p className="text-[#a09a8e] text-[0.95rem]">Tu n'as plus besoin d'attendre le bon moment.</p>
-          <p className="text-[#a09a8e] text-[0.95rem]">Tu n'as plus besoin d'attendre d'avoir confiance.</p>
-          <p className="text-[#a09a8e] text-[0.95rem]">Tu n'as plus besoin de trouver le courage de te filmer.</p>
+          <p className="text-[#8E8E8E] text-[0.95rem]">Tu n'as plus besoin d'attendre le bon moment.</p>
+          <p className="text-[#8E8E8E] text-[0.95rem]">Tu n'as plus besoin d'attendre d'avoir confiance.</p>
+          <p className="text-[#8E8E8E] text-[0.95rem]">Tu n'as plus besoin de trouver le courage de te filmer.</p>
         </div>
         <div
           className="p-6 rounded-xl"
           style={{
-            border: "1px solid rgba(255, 109, 41,0.3)",
-            background: "linear-gradient(135deg, rgba(255, 109, 41,0.08), rgba(255, 109, 41,0.02))",
+            border: "1px solid rgba(255,69,38,0.3)",
+            background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
           }}
         >
           <p className="text-paper italic text-[1.05rem] leading-relaxed">
@@ -513,7 +527,7 @@ const ComparisonVideo = () => (
       <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
         Avatar générique <span className="text-gold">vs</span> vendeur IA avec la méthode MIRAGE™
       </h2>
-      <p className="text-[#a09a8e] mb-10 text-[0.98rem] max-w-xl mx-auto">
+      <p className="text-[#8E8E8E] mb-10 text-[0.98rem] max-w-xl mx-auto">
         Regarde la différence. Ce n'est pas l'outil qui change tout, c'est la méthode.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -532,15 +546,15 @@ const ComparisonVideo = () => (
             label: "Avec la méthode MIRAGE™",
             sub: "Prompts, réglages et montage enseignés",
             badge: "✓ Naturel",
-            badgeBg: "rgba(255, 109, 41,0.15)",
-            badgeColor: "#FF6D29",
-            badgeBorder: "rgba(255, 109, 41,0.5)",
+            badgeBg: "rgba(255,69,38,0.15)",
+            badgeColor: "#FF4526",
+            badgeBorder: "rgba(255,69,38,0.5)",
           },
         ].map((v, i) => (
           <div
             key={i}
             className="reveal rounded-md overflow-hidden transition-all duration-300"
-            style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.25)" }}
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "560px" }}>
               <AutoVideo src={v.src} className="w-full h-full object-contain" style={{ background: "#000" }} />
@@ -548,7 +562,7 @@ const ComparisonVideo = () => (
             <div className="p-4 flex items-center justify-between gap-3 text-left">
               <div>
                 <p className="font-poppins text-paper text-[0.95rem] font-semibold">{v.label}</p>
-                <p className="text-[#BABABA] text-[0.75rem] mt-0.5">{v.sub}</p>
+                <p className="text-[#9C9C9C] text-[0.75rem] mt-0.5">{v.sub}</p>
               </div>
               <span
                 className="font-poppins text-[0.7rem] font-semibold px-3 py-1 rounded-full whitespace-nowrap"
@@ -560,7 +574,7 @@ const ComparisonVideo = () => (
           </div>
         ))}
       </div>
-      <p className="italic text-[#c8c2b8] text-[0.95rem] mt-10 max-w-2xl mx-auto">
+      <p className="italic text-[#C6C6C6] text-[0.95rem] mt-10 max-w-2xl mx-auto">
         La différence n'est pas l'outil. C'est la méthode. Et c'est exactement ce que tu apprends dans MIRAGE™.
       </p>
     </div>
@@ -579,18 +593,18 @@ const RosinePhoto = () => {
     >
       <div
         className="w-full h-full rounded-xl overflow-hidden"
-        style={{ border: "2px solid rgba(255, 109, 41,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
+        style={{ border: "2px solid rgba(255,69,38,0.3)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
       >
         {imgError ? (
           <div
             className="w-full h-full flex flex-col items-center justify-center gap-3"
-            style={{ background: "linear-gradient(135deg, #1a1a2e, #1E191B)" }}
+            style={{ background: "linear-gradient(135deg, #0E0D0D, #0E0D0D)" }}
           >
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 109, 41,0.3)" strokeWidth="1.5">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,69,38,0.3)" strokeWidth="1.5">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
-            <span className="text-[#BABABA] text-[0.8rem]">[ Photo Rosine ]</span>
+            <span className="text-[#9C9C9C] text-[0.8rem]">[ Photo Rosine ]</span>
           </div>
         ) : (
           <img
@@ -603,7 +617,7 @@ const RosinePhoto = () => {
       </div>
       <span
         className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#FF6D29", color: "#161316" }}
+        style={{ background: "#FF4526", color: "#FFFFFF" }}
       >
         ✓ +3 500 000 FCFA générés · sans publicité
       </span>
@@ -614,7 +628,7 @@ const RosinePhoto = () => {
 const CredibilitySection = () => (
   <section
     className="section-padding"
-    style={{ background: "linear-gradient(180deg, transparent, rgba(255, 109, 41,0.03) 50%, transparent)" }}
+    style={{ background: "linear-gradient(180deg, transparent, rgba(255,69,38,0.03) 50%, transparent)" }}
   >
     <div className="max-w-4xl mx-auto page-container">
       <div className="text-center mb-12">
@@ -625,7 +639,7 @@ const CredibilitySection = () => (
       </div>
 
       <div className="max-w-2xl mx-auto space-y-5 mb-12">
-        <p className="text-[#c8c2b8]">Tu te dis peut-être :</p>
+        <p className="text-[#C6C6C6]">Tu te dis peut-être :</p>
         {[
           "« J'ai déjà acheté une formation qui promettait monts et merveilles. »",
           "« Les captures d'écran, ça se fabrique. »",
@@ -634,19 +648,19 @@ const CredibilitySection = () => (
           <blockquote
             key={i}
             className="reveal text-paper italic px-5 py-4 rounded"
-            style={{ borderLeft: "3px solid rgba(255, 109, 41,0.5)", background: "rgba(255, 109, 41,0.04)" }}
+            style={{ borderLeft: "3px solid rgba(255,69,38,0.5)", background: "rgba(255,69,38,0.04)" }}
           >
             {q}
           </blockquote>
         ))}
-        <p className="text-[#c8c2b8] pt-2">Franchement... tu as raison d'être méfiant.</p>
-        <p className="text-[#a09a8e] text-[0.95rem] leading-[1.8]">
+        <p className="text-[#C6C6C6] pt-2">Franchement... tu as raison d'être méfiant.</p>
+        <p className="text-[#8E8E8E] text-[0.95rem] leading-[1.8]">
           Aujourd'hui, n'importe qui peut afficher un faux chiffre d'affaires ou acheter de faux commentaires.
         </p>
         <p className="text-paper font-poppins font-semibold text-[1.05rem]">
           Je ne vais donc pas te demander de me croire sur parole.
         </p>
-        <p className="text-[#c8c2b8]">Je vais simplement te montrer ce que je fais réellement.</p>
+        <p className="text-[#C6C6C6]">Je vais simplement te montrer ce que je fais réellement.</p>
       </div>
 
       <SectionDivider />
@@ -659,46 +673,46 @@ const CredibilitySection = () => (
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 mb-12">
           <RosinePhoto />
           <div className="flex-1 mt-6 md:mt-0 space-y-4">
-            <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+            <p className="text-[#C6C6C6] text-[0.98rem] leading-[1.9]">
               Je ne me suis pas réveillée un matin en décidant de vendre une formation sur l'IA.
             </p>
-            <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+            <p className="text-[#C6C6C6] text-[0.98rem] leading-[1.9]">
               J'ai commencé parce que j'avais exactement le problème que tu rencontres aujourd'hui.
             </p>
             <p className="text-paper text-[1.02rem] font-poppins font-semibold leading-[1.7]">
               Je voulais vendre davantage... mais je refusais d'être constamment devant une caméra.
             </p>
-            <p className="text-[#a09a8e] text-[0.95rem] leading-[1.9]">
+            <p className="text-[#8E8E8E] text-[0.95rem] leading-[1.9]">
               J'ai donc testé des dizaines d'outils. Des dizaines de prompts. Des dizaines de méthodes. La majorité ne fonctionnaient pas.
             </p>
           </div>
         </div>
 
         <div className="max-w-2xl mx-auto space-y-4 mb-12">
-          <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+          <p className="text-[#C6C6C6] text-[0.98rem] leading-[1.9]">
             Certaines produisaient des vidéos magnifiques... mais personne ne regardait jusqu'au bout.
           </p>
-          <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+          <p className="text-[#C6C6C6] text-[0.98rem] leading-[1.9]">
             D'autres donnaient des vidéos réalistes... mais elles ne faisaient pas vendre.
           </p>
-          <p className="text-[#c8c2b8] text-[0.98rem] leading-[1.9]">
+          <p className="text-[#C6C6C6] text-[0.98rem] leading-[1.9]">
             Il m'a fallu des mois de tests avant de comprendre ce qui faisait réellement la différence.
           </p>
 
           <div
             className="p-6 rounded-lg space-y-2 mt-6"
             style={{
-              border: "1px solid rgba(255, 109, 41,0.25)",
-              background: "rgba(255, 109, 41,0.04)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: "rgba(255,69,38,0.04)",
             }}
           >
-            <p className="text-[#a09a8e] text-[0.9rem]">Ce n'est pas l'outil.</p>
+            <p className="text-[#8E8E8E] text-[0.9rem]">Ce n'est pas l'outil.</p>
             <p className="text-paper font-poppins font-semibold text-[1.05rem]">
               C'est la manière de raconter une histoire.
             </p>
             <p className="text-paper text-[0.98rem]">La manière de faire parler un avatar.</p>
             <p className="text-paper text-[0.98rem]">La manière de construire une vidéo qui donne envie d'envoyer un message.</p>
-            <p className="text-[#FF6D29] font-poppins font-semibold text-[1rem] pt-3">
+            <p className="text-[#FF4526] font-poppins font-semibold text-[1rem] pt-3">
               C'est cette méthode que tu vas apprendre.
             </p>
           </div>
@@ -725,7 +739,7 @@ const VideoSection = () => (
         <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
           Vois par toi-même <span className="text-gold">ce que l'IA produit</span>
         </h2>
-        <p className="text-[#a09a8e] max-w-xl mx-auto text-[0.98rem]">
+        <p className="text-[#8E8E8E] max-w-xl mx-auto text-[0.98rem]">
           Ton vendeur IA peut apparaître partout — magasin, voiture, studio — sans que tu aies à t'y déplacer.
         </p>
       </div>
@@ -733,8 +747,8 @@ const VideoSection = () => (
         {videos.map((v, i) => (
           <div
             key={i}
-            className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(255, 109, 41,0.08)]"
-            style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.25)" }}
+            className="reveal rounded-md overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,38,0.08)]"
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="w-full" style={{ aspectRatio: "9/16", maxHeight: "480px" }}>
               <AutoVideo src={v.src} className="w-full h-full object-contain rounded" style={{ background: "#000" }} />
@@ -787,7 +801,7 @@ const StudentsProofSection = () => (
         <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-4 leading-tight">
           Ce que la méthode a changé pour elles
         </h2>
-        <p className="text-[#a09a8e] text-[0.95rem] max-w-xl mx-auto">
+        <p className="text-[#8E8E8E] text-[0.95rem] max-w-xl mx-auto">
           Trois profils réels — pour que tu ne penses pas <em>« oui... mais elles étaient déjà fortes. »</em> La majorité des personnes que j'accompagne commencent exactement comme toi.
         </p>
       </div>
@@ -797,31 +811,31 @@ const StudentsProofSection = () => (
           <div
             key={i}
             className="reveal glow-card rounded-lg p-6"
-            style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.25)" }}
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
           >
             <div className="flex items-center gap-3 mb-5">
               <div
                 className="w-11 h-11 rounded-full flex items-center justify-center font-bold text-ink font-poppins"
-                style={{ background: "linear-gradient(135deg, #FF6D29, #FF8A52)" }}
+                style={{ background: "linear-gradient(135deg, #FF4526, #FF7355)" }}
               >
                 {s.initials}
               </div>
               <div>
                 <p className="font-poppins font-bold text-paper text-[1rem]">{s.name}</p>
-                <p className="text-[#BABABA] text-[0.78rem]">{s.activity}</p>
+                <p className="text-[#9C9C9C] text-[0.78rem]">{s.activity}</p>
               </div>
             </div>
             <div className="mb-4">
-              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#BABABA] mb-1">Avant</p>
-              <p className="text-[#c8c2b8] text-[0.9rem] leading-snug">{s.before}</p>
+              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#9C9C9C] mb-1">Avant</p>
+              <p className="text-[#C6C6C6] text-[0.9rem] leading-snug">{s.before}</p>
             </div>
             <div className="mb-4">
-              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#FF6D29] mb-1">Après</p>
+              <p className="font-poppins uppercase text-[0.65rem] tracking-[0.14em] text-[#FF4526] mb-1">Après</p>
               <p className="text-paper text-[0.92rem] leading-snug">{s.after}</p>
             </div>
             <div
-              className="mt-5 pt-3 text-center font-poppins text-[0.72rem] tracking-wider uppercase text-[#FF6D29] font-semibold"
-              style={{ borderTop: "1px solid rgba(255, 109, 41,0.15)" }}
+              className="mt-5 pt-3 text-center font-poppins text-[0.72rem] tracking-wider uppercase text-[#FF4526] font-semibold"
+              style={{ borderTop: "1px solid rgba(255,69,38,0.15)" }}
             >
               ⏱ {s.days}
             </div>
@@ -833,25 +847,25 @@ const StudentsProofSection = () => (
         <div
           className="reveal p-8 rounded-xl text-center"
           style={{
-            background: "linear-gradient(135deg, rgba(255, 109, 41,0.1), rgba(255, 109, 41,0.03))",
-            border: "1px solid rgba(255, 109, 41,0.35)",
+            background: "linear-gradient(135deg, rgba(255,69,38,0.1), rgba(255,69,38,0.03))",
+            border: "1px solid rgba(255,69,38,0.35)",
           }}
         >
-          <p className="font-poppins uppercase text-[0.68rem] tracking-[0.15em] text-[#FF6D29] mb-3">À ce jour</p>
+          <p className="font-poppins uppercase text-[0.68rem] tracking-[0.15em] text-[#FF4526] mb-3">À ce jour</p>
           <p className="font-poppins font-extrabold text-[2.8rem] leading-none text-paper mb-2">200+</p>
-          <p className="text-[#c8c2b8] text-[0.92rem] leading-snug">
+          <p className="text-[#C6C6C6] text-[0.92rem] leading-snug">
             créateurs et e-commerçants africains accompagnés
           </p>
         </div>
         <div
           className="reveal p-8 rounded-xl"
           style={{
-            background: "#1E191B",
-            border: "1px solid rgba(255, 109, 41,0.2)",
+            background: "#0E0D0D",
+            border: "1px solid rgba(255,69,38,0.2)",
           }}
         >
-          <p className="text-[#c8c2b8] text-[0.95rem] leading-[1.8] italic">
-            « Je préfère annoncer un chiffre précis plutôt qu'un énorme chiffre impressionnant. Parce qu'il est <span className="text-[#FF6D29] font-semibold not-italic">vérifiable</span>. »
+          <p className="text-[#C6C6C6] text-[0.95rem] leading-[1.8] italic">
+            « Je préfère annoncer un chiffre précis plutôt qu'un énorme chiffre impressionnant. Parce qu'il est <span className="text-[#FF4526] font-semibold not-italic">vérifiable</span>. »
           </p>
           <p className="font-poppins text-paper text-[0.85rem] font-semibold mt-4">— Rosine</p>
         </div>
@@ -871,7 +885,7 @@ const PreuvesSection = () => (
         <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
           <span className="text-gold">Captures réelles</span> envoyées par les élèves
         </h2>
-        <p className="text-[#a09a8e] text-[0.95rem] max-w-xl mx-auto">
+        <p className="text-[#8E8E8E] text-[0.95rem] max-w-xl mx-auto">
           Non retouchées. Partagées avec leur accord. Contexte : messages WhatsApp, ventes, commandes après application des modules.
         </p>
       </div>
@@ -879,9 +893,9 @@ const PreuvesSection = () => (
         {[1, 2, 3, 4, 5, 6].map(n => (
           <div
             key={n}
-            className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(255, 109, 41,0.08)]"
-            style={{ background: "#1E191B", border: "1px solid rgba(255,255,255,0.07)" }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(255, 109, 41,0.4)")}
+            className="reveal overflow-hidden rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,69,38,0.08)]"
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.07)" }}
+            onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(255,69,38,0.4)")}
             onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)")}
           >
             <img src={`/images/preuve-${n}.jpg`} alt={`Preuve résultat apprenant ${n}`} className="w-full h-auto block" />
@@ -890,7 +904,7 @@ const PreuvesSection = () => (
       </div>
       <div className="flex justify-center mt-6">
         <span
-          className="text-[0.75rem] text-[#BABABA] px-5 py-2.5 rounded-sm"
+          className="text-[0.75rem] text-[#9C9C9C] px-5 py-2.5 rounded-sm"
           style={{ border: "1px solid rgba(255,255,255,0.06)" }}
         >
           🔒 Captures partagées avec accord des apprenants · Résultats non garantis et variables selon l'effort
@@ -917,7 +931,7 @@ const PreuvesCASection = () => (
         <h2 className="font-poppins font-bold text-[1.8rem] sm:text-[2.4rem] text-paper mb-3 leading-tight">
           Ce que la méthode m'a permis de générer <span className="text-gold">sans publicité et sans me montrer</span>
         </h2>
-        <p className="text-[#a09a8e] text-[0.92rem] max-w-lg mx-auto">
+        <p className="text-[#8E8E8E] text-[0.92rem] max-w-lg mx-auto">
           Captures volontairement non masquées. Je préfère que tu vérifies par toi-même plutôt que de me croire aveuglément.
         </p>
       </div>
@@ -926,20 +940,20 @@ const PreuvesCASection = () => (
           <div
             key={i}
             className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1"
-            style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.2)", borderRadius: 10 }}
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)", borderRadius: 10 }}
           >
             <img src={c.img} alt={c.label} className="w-full h-auto block" />
             <div
               style={{
                 padding: "16px 20px",
                 borderTop: "1px solid rgba(255,255,255,0.05)",
-                background: "rgba(255, 109, 41,0.03)",
+                background: "rgba(255,69,38,0.03)",
               }}
             >
               <p className="font-poppins font-bold" style={{ fontSize: "0.9rem", color: "#FFFFFF" }}>
                 {c.label}
               </p>
-              <p style={{ fontSize: "0.78rem", color: "#BABABA", marginTop: 4 }}>{c.sub}</p>
+              <p style={{ fontSize: "0.78rem", color: "#9C9C9C", marginTop: 4 }}>{c.sub}</p>
             </div>
           </div>
         ))}
@@ -947,20 +961,20 @@ const PreuvesCASection = () => (
       <div className="flex justify-center mt-5">
         <div
           className="reveal overflow-hidden transition-all duration-300 hover:-translate-y-1 w-full sm:max-w-[60%]"
-          style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.2)", borderRadius: 10 }}
+          style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)", borderRadius: 10 }}
         >
           <img src={caCards[2].img} alt={caCards[2].label} className="w-full h-auto block" />
           <div
             style={{
               padding: "16px 20px",
               borderTop: "1px solid rgba(255,255,255,0.05)",
-              background: "rgba(255, 109, 41,0.03)",
+              background: "rgba(255,69,38,0.03)",
             }}
           >
             <p className="font-poppins font-bold" style={{ fontSize: "0.9rem", color: "#FFFFFF" }}>
               {caCards[2].label}
             </p>
-            <p style={{ fontSize: "0.78rem", color: "#BABABA", marginTop: 4 }}>{caCards[2].sub}</p>
+            <p style={{ fontSize: "0.78rem", color: "#9C9C9C", marginTop: 4 }}>{caCards[2].sub}</p>
           </div>
         </div>
       </div>
@@ -970,14 +984,14 @@ const PreuvesCASection = () => (
         <h3 className="font-poppins font-bold text-paper text-[1.3rem] mt-6 mb-4">
           Pourquoi cette méthode est <span className="text-gold">différente ?</span>
         </h3>
-        <div className="space-y-2 text-[#c8c2b8] text-[0.98rem]">
+        <div className="space-y-2 text-[#C6C6C6] text-[0.98rem]">
           <p>Parce que tu n'achètes pas une formation sur ChatGPT.</p>
           <p>Tu n'achètes pas une formation sur HeyGen.</p>
           <p>Tu n'achètes pas une formation sur CapCut.</p>
           <p className="text-paper font-poppins font-semibold pt-3 text-[1.05rem]">
-            Tu apprends un <span className="text-[#FF6D29]">système complet</span>.
+            Tu apprends un <span className="text-[#FF4526]">système complet</span>.
           </p>
-          <p className="text-[#a09a8e] text-[0.92rem] pt-4">
+          <p className="text-[#8E8E8E] text-[0.92rem] pt-4">
             Les outils évolueront. Ils changeront. Certains disparaîtront. Mais la méthode restera la même. C'est exactement pour cette raison que les mises à jour de la formation sont incluses.
           </p>
         </div>
@@ -1156,7 +1170,7 @@ const objections = [
 const Objections = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   return (
-    <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(255, 109, 41,0.03), transparent)" }}>
+    <section className="section-padding" style={{ background: "linear-gradient(180deg, transparent, rgba(255,69,38,0.03), transparent)" }}>
       <div className="max-w-3xl mx-auto page-container">
         <div className="text-center mb-12">
           <Badge>Objections traitées</Badge>
@@ -1172,8 +1186,8 @@ const Objections = () => {
                 key={i}
                 className="reveal rounded-lg overflow-hidden transition-all"
                 style={{
-                  background: "#1E191B",
-                  border: open ? "1px solid rgba(255, 109, 41,0.4)" : "1px solid rgba(255,255,255,0.06)",
+                  background: "#0E0D0D",
+                  border: open ? "1px solid rgba(255,69,38,0.4)" : "1px solid rgba(255,255,255,0.06)",
                 }}
               >
                 <button
@@ -1189,7 +1203,7 @@ const Objections = () => {
                   </span>
                 </button>
                 {open && (
-                  <div className="px-5 pb-6 text-[#c8c2b8] text-[0.93rem] leading-[1.85]">{o.a}</div>
+                  <div className="px-5 pb-6 text-[#C6C6C6] text-[0.93rem] leading-[1.85]">{o.a}</div>
                 )}
               </div>
             );
@@ -1234,7 +1248,7 @@ const Offer = () => (
   <section id="offre" className="section-padding relative">
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255, 109, 41,0.08), transparent 60%)" }}
+      style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255,69,38,0.08), transparent 60%)" }}
     />
     <div className="max-w-5xl mx-auto page-container relative">
       <div className="text-center mb-14">
@@ -1242,13 +1256,13 @@ const Offer = () => (
         <h2 className="font-poppins font-bold text-[2rem] sm:text-[2.8rem] text-paper mb-4 leading-tight">
           Tu n'achètes pas une formation.
         </h2>
-        <p className="text-[#c8c2b8] text-[1.05rem] sm:text-[1.2rem] max-w-2xl mx-auto leading-[1.6]">
+        <p className="text-[#C6C6C6] text-[1.05rem] sm:text-[1.2rem] max-w-2xl mx-auto leading-[1.6]">
           Tu construis un <span className="text-gold font-semibold">vendeur IA qui pourra travailler pour toi pendant des années</span>.
         </p>
-        <p className="text-[#a09a8e] text-[0.95rem] mt-6 max-w-2xl mx-auto leading-[1.8]">
+        <p className="text-[#8E8E8E] text-[0.95rem] mt-6 max-w-2xl mx-auto leading-[1.8]">
           En rejoignant la <strong className="text-paper">Méthode MIRAGE™</strong>, tu suis un parcours conçu pour t'emmener d'un simple débutant à une personne capable de créer des vidéos professionnelles qui attirent des prospects sans avoir besoin de se filmer.
         </p>
-        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF6D29] mt-8">
+        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF4526] mt-8">
           Voici exactement ce que tu reçois
         </p>
       </div>
@@ -1259,21 +1273,21 @@ const Offer = () => (
           <div
             key={i}
             className="reveal module-card p-6 rounded-lg"
-            style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.2)" }}
+            style={{ background: "#0E0D0D", border: "1px solid rgba(255,69,38,0.2)" }}
           >
             <div className="flex items-start gap-4">
               <span className="big-num shrink-0" style={{ fontSize: "clamp(2.6rem, 5vw, 3.6rem)", minWidth: "55px" }}>
                 {m.n}
               </span>
               <div className="flex-1">
-                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#BABABA] mb-1">
+                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#9C9C9C] mb-1">
                   Module {m.n}
                 </p>
                 <h3 className="font-poppins font-bold text-paper text-[1.05rem] mb-1 leading-tight">{m.name}</h3>
-                <p className="text-[#FF6D29] italic text-[0.85rem] mb-3">{m.tagline}</p>
-                <p className="text-[#a09a8e] text-[0.88rem] leading-[1.7]">{m.body}</p>
-                <p className="mt-4 text-[0.78rem] text-[#BABABA]">
-                  Valeur estimée : <span className="text-[#FF6D29] font-semibold">{m.value}</span>
+                <p className="text-[#FF4526] italic text-[0.85rem] mb-3">{m.tagline}</p>
+                <p className="text-[#8E8E8E] text-[0.88rem] leading-[1.7]">{m.body}</p>
+                <p className="mt-4 text-[0.78rem] text-[#9C9C9C]">
+                  Valeur estimée : <span className="text-[#FF4526] font-semibold">{m.value}</span>
                 </p>
               </div>
             </div>
@@ -1291,19 +1305,19 @@ const Offer = () => (
             key={i}
             className="reveal p-5 rounded-xl"
             style={{
-              background: "linear-gradient(135deg, rgba(255, 109, 41,0.08), rgba(255, 109, 41,0.02))",
-              border: "1px solid rgba(255, 109, 41,0.3)",
+              background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
+              border: "1px solid rgba(255,69,38,0.3)",
             }}
           >
             <div className="flex items-start gap-3">
               <span className="text-2xl shrink-0">🎁</span>
               <div>
-                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#FF6D29] font-bold mb-1">
+                <p className="font-poppins uppercase text-[0.62rem] tracking-[0.15em] text-[#FF4526] font-bold mb-1">
                   Bonus {b.n}
                 </p>
                 <h4 className="font-poppins font-semibold text-paper text-[0.95rem] leading-snug mb-2">{b.name}</h4>
-                <p className="text-[0.75rem] text-[#BABABA]">
-                  Valeur : <span className="text-[#FF6D29] font-semibold">{b.value}</span>
+                <p className="text-[0.75rem] text-[#9C9C9C]">
+                  Valeur : <span className="text-[#FF4526] font-semibold">{b.value}</span>
                 </p>
               </div>
             </div>
@@ -1315,11 +1329,11 @@ const Offer = () => (
       <div className="max-w-xl mx-auto mb-8">
         <div
           className="rounded-xl overflow-hidden"
-          style={{ border: "1px solid rgba(255, 109, 41,0.25)", background: "#1E191B" }}
+          style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#0E0D0D" }}
         >
           <div
             className="px-6 py-4 font-poppins font-bold text-paper text-[0.95rem] uppercase tracking-wider"
-            style={{ background: "rgba(255, 109, 41,0.06)", borderBottom: "1px solid rgba(255, 109, 41,0.15)" }}
+            style={{ background: "rgba(255,69,38,0.06)", borderBottom: "1px solid rgba(255,69,38,0.15)" }}
           >
             Récapitulatif de la valeur
           </div>
@@ -1329,15 +1343,15 @@ const Offer = () => (
               className="flex justify-between items-center px-6 py-3"
               style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
             >
-              <span className="text-[#c8c2b8] text-[0.92rem]">{r.label}</span>
+              <span className="text-[#C6C6C6] text-[0.92rem]">{r.label}</span>
               <span className="font-poppins font-semibold text-paper text-[0.92rem]">{r.value}</span>
             </div>
           ))}
           <div
             className="flex justify-between items-center px-6 py-5"
-            style={{ background: "linear-gradient(90deg, rgba(255, 109, 41,0.1), rgba(255, 109, 41,0.02))" }}
+            style={{ background: "linear-gradient(90deg, rgba(255,69,38,0.1), rgba(255,69,38,0.02))" }}
           >
-            <span className="font-poppins uppercase text-[0.75rem] tracking-[0.14em] text-[#FF6D29] font-bold">
+            <span className="font-poppins uppercase text-[0.75rem] tracking-[0.14em] text-[#FF4526] font-bold">
               Valeur totale
             </span>
             <span className="font-poppins font-extrabold text-paper text-[1.4rem]">190 000 FCFA</span>
@@ -1349,23 +1363,23 @@ const Offer = () => (
       <div
         className="reveal max-w-xl mx-auto rounded-2xl text-center px-6 py-10 sm:px-10"
         style={{
-          border: "1px solid rgba(255, 109, 41,0.5)",
-          background: "linear-gradient(135deg, rgba(255, 109, 41,0.1), rgba(255, 109, 41,0.02))",
-          boxShadow: "0 20px 60px rgba(255, 109, 41,0.1)",
+          border: "1px solid rgba(255,69,38,0.5)",
+          background: "linear-gradient(135deg, rgba(255,69,38,0.1), rgba(255,69,38,0.02))",
+          boxShadow: "0 20px 60px rgba(255,69,38,0.1)",
         }}
       >
         <div className="space-y-1 mb-6">
-          <p className="text-[#c8c2b8] text-[0.9rem]">Aujourd'hui, tu ne paies pas <span className="line-through text-[#BABABA]">190 000 FCFA</span>.</p>
-          <p className="text-[#c8c2b8] text-[0.9rem]">Tu ne paies pas <span className="line-through text-[#BABABA]">50 000 FCFA</span>.</p>
-          <p className="text-[#c8c2b8] text-[0.9rem]">Tu ne paies même pas <span className="line-through text-[#BABABA]">24 700 FCFA</span>.</p>
+          <p className="text-[#C6C6C6] text-[0.9rem]">Aujourd'hui, tu ne paies pas <span className="line-through text-[#9C9C9C]">190 000 FCFA</span>.</p>
+          <p className="text-[#C6C6C6] text-[0.9rem]">Tu ne paies pas <span className="line-through text-[#9C9C9C]">50 000 FCFA</span>.</p>
+          <p className="text-[#C6C6C6] text-[0.9rem]">Tu ne paies même pas <span className="line-through text-[#9C9C9C]">24 700 FCFA</span>.</p>
         </div>
-        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF6D29] mb-2">
+        <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF4526] mb-2">
           Tu investis seulement
         </p>
-        <p className="font-poppins font-extrabold text-[#FF6D29] leading-none mb-3" style={{ fontSize: "clamp(3rem, 9vw, 4.5rem)" }}>
+        <p className="font-poppins font-extrabold text-[#FF4526] leading-none mb-3" style={{ fontSize: "clamp(3rem, 9vw, 4.5rem)" }}>
           {PRICE}
         </p>
-        <p className="text-[#c8c2b8] text-[0.88rem] mb-8">
+        <p className="text-[#C6C6C6] text-[0.88rem] mb-8">
           Paiement unique · Accès immédiat · Accès à vie
         </p>
         <a
@@ -1380,7 +1394,7 @@ const Offer = () => (
           {["Wave", "Orange Money", "MTN Money"].map(m => (
             <span
               key={m}
-              className="text-xs px-3 py-1.5 rounded-full text-[#BABABA]"
+              className="text-xs px-3 py-1.5 rounded-full text-[#9C9C9C]"
               style={{ background: "rgba(255,255,255,0.05)" }}
             >
               {m}
@@ -1401,37 +1415,37 @@ const Amplifiers = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div
           className="reveal p-6 rounded-xl"
-          style={{ background: "#1E191B", border: "1px solid rgba(255, 109, 41,0.25)" }}
+          style={{ background: "#0E0D0D", border: "1px solid rgba(255,255,255,0.08)" }}
         >
           <div className="flex items-center gap-2 mb-3">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#FF6D29" }} />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#FF6D29" }} />
+              <span className="absolute inline-flex h-full w-full rounded-full opacity-60 animate-ping" style={{ background: "#FF4526" }} />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ background: "#FF4526" }} />
             </span>
-            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#FF6D29] font-bold">Rareté</span>
+            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#FF4526] font-bold">Rareté</span>
           </div>
           <p className="text-paper font-poppins font-semibold text-[1.02rem] mb-2">
             Seulement 5 nouvelles places par semaine
           </p>
-          <p className="text-[#a09a8e] text-[0.9rem] leading-relaxed">
+          <p className="text-[#8E8E8E] text-[0.9rem] leading-relaxed">
             Nous ouvrons seulement 5 nouvelles places par semaine pour garder un accompagnement de qualité.
           </p>
         </div>
         <div
           className="reveal p-6 rounded-xl"
           style={{
-            background: "linear-gradient(135deg, rgba(255, 109, 41,0.08), rgba(255, 109, 41,0.02))",
-            border: "1px solid rgba(255, 109, 41,0.35)",
+            background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
+            border: "1px solid rgba(255,69,38,0.35)",
           }}
         >
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[#FF6D29]">⏳</span>
-            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#FF6D29] font-bold">Urgence</span>
+            <span className="text-[#FF4526]">⏳</span>
+            <span className="font-poppins uppercase text-[0.7rem] tracking-[0.15em] text-[#FF4526] font-bold">Urgence</span>
           </div>
           <p className="text-paper font-poppins font-semibold text-[1.02rem] mb-2">
             Fermeture dimanche à 23h59
           </p>
-          <p className="text-[#a09a8e] text-[0.9rem] leading-relaxed">
+          <p className="text-[#8E8E8E] text-[0.9rem] leading-relaxed">
             Les inscriptions de la semaine en cours ferment dimanche à 23h59 ou dès que les places sont remplies.
           </p>
         </div>
@@ -1453,20 +1467,20 @@ const Guarantee = () => (
       <div
         className="reveal p-8 rounded-2xl text-left relative overflow-hidden"
         style={{
-          border: "1px solid rgba(255, 109, 41,0.35)",
-          background: "linear-gradient(135deg, rgba(255, 109, 41,0.08), rgba(255, 109, 41,0.02))",
+          border: "1px solid rgba(255,69,38,0.35)",
+          background: "linear-gradient(135deg, rgba(255,69,38,0.08), rgba(255,69,38,0.02))",
         }}
       >
         <div
           className="absolute -top-8 -right-8 w-32 h-32 rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, #FF6D29, transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, #FF4526, transparent 70%)" }}
         />
-        <div className="relative space-y-3 text-[#c8c2b8] text-[0.98rem] leading-[1.85]">
+        <div className="relative space-y-3 text-[#C6C6C6] text-[0.98rem] leading-[1.85]">
           <p className="font-poppins font-semibold text-paper text-[1.05rem]">Inscris-toi.</p>
           <p>Suis les premiers modules.</p>
           <p>
             Si tu estimes que cette formation ne correspond pas à ce qui est présenté sur cette page, envoie simplement un message dans les{" "}
-            <span className="text-[#FF6D29] font-semibold">7 jours</span> suivant ton achat.
+            <span className="text-[#FF4526] font-semibold">7 jours</span> suivant ton achat.
           </p>
           <p className="text-paper font-semibold pt-2">
             Nous te remboursons intégralement, sans procédure compliquée.
@@ -1484,7 +1498,7 @@ const FinalCTA = () => (
   <section className="section-padding text-center relative">
     <div
       className="absolute inset-0 pointer-events-none"
-      style={{ background: "radial-gradient(circle at 50% 50%, rgba(255, 109, 41,0.08), transparent 60%)" }}
+      style={{ background: "radial-gradient(circle at 50% 50%, rgba(255,69,38,0.08), transparent 60%)" }}
     />
     <div className="max-w-2xl mx-auto page-container relative">
       <Badge>Dernière étape</Badge>
@@ -1492,11 +1506,11 @@ const FinalCTA = () => (
         Oui, je veux créer <span className="text-gold">mon vendeur IA</span>
       </h2>
       <div className="mb-8">
-        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#FF6D29] mb-2">Prix unique</p>
-        <p className="font-poppins font-extrabold text-[#FF6D29] leading-none" style={{ fontSize: "clamp(2.6rem, 9vw, 4rem)" }}>
+        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#FF4526] mb-2">Prix unique</p>
+        <p className="font-poppins font-extrabold text-[#FF4526] leading-none" style={{ fontSize: "clamp(2.6rem, 9vw, 4rem)" }}>
           {PRICE}
         </p>
-        <p className="font-poppins text-[#c8c2b8] text-[0.85rem] uppercase tracking-[0.12em] mt-3">
+        <p className="font-poppins text-[#C6C6C6] text-[0.85rem] uppercase tracking-[0.12em] mt-3">
           Accès immédiat · Accès à vie · Compatible téléphone
         </p>
       </div>
@@ -1508,7 +1522,7 @@ const FinalCTA = () => (
       >
         <span>👉 OUI, JE VEUX CRÉER MON VENDEUR IA</span>
       </a>
-      <p className="text-[#BABABA] text-[0.78rem]">
+      <p className="text-[#9C9C9C] text-[0.78rem]">
         ✓ Wave · Orange Money · MTN Money — Paiement 100 % sécurisé
       </p>
     </div>
@@ -1520,10 +1534,10 @@ const FinalCTA = () => (
    ================================================================ */
 const Footer = () => (
   <footer className="py-10 text-center" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-    <p className="text-[#BABABA] font-poppins text-[0.85rem] mb-1">
+    <p className="text-[#9C9C9C] font-poppins text-[0.85rem] mb-1">
       {PRODUCT_TAGLINE} — {PROGRAM_NAME}
     </p>
-    <p className="text-[#4a4840] text-[0.75rem]">© 2026 by Rosine — Tous droits réservés</p>
+    <p className="text-[#3A3A3A] text-[0.75rem]">© 2026 by Rosine — Tous droits réservés</p>
   </footer>
 );
 
