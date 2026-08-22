@@ -283,10 +283,11 @@ const Hero = () => (
         href={CHECKOUT_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="cta-pulse block w-full text-center font-poppins font-bold text-[0.9rem] sm:text-[1rem] uppercase tracking-[0.06em] py-4 sm:py-[18px] px-6 rounded-full mb-3 transition-transform duration-300 cursor-pointer hover:-translate-y-0.5"
-        style={{ background: "#FF4526", color: "#050505", border: "none" }}
-        onMouseEnter={e => (e.currentTarget.style.background = "#FF7355")}
+        className="cta-pulse block w-full max-w-[520px] mx-auto text-center font-poppins font-semibold text-[0.95rem] sm:text-[1.02rem] py-4 sm:py-[17px] px-6 rounded-2xl mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+        style={{ background: "#FF4526", color: "#FFFFFF", border: "none", boxShadow: "0 16px 44px -16px rgba(255,69,38,0.8), inset 0 1px 0 rgba(255,255,255,0.2)" }}
+        onMouseEnter={e => (e.currentTarget.style.background = "#FF5A3D")}
         onMouseLeave={e => (e.currentTarget.style.background = "#FF4526")}
+
       >
         👉 OUI, JE VEUX CRÉER MON VENDEUR IA
       </a>
