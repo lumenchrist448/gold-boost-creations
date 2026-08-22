@@ -41,7 +41,7 @@ html {
 body {
   font-family: 'Hanken Grotesk', sans-serif;
   font-weight: 400;
-  background-color: #161316;
+  background-color: #050505;
   color: #FFFFFF;
   margin: 0;
   overflow-x: hidden;
@@ -123,8 +123,8 @@ body::before {
 .btn-gold {
   position: relative;
   overflow: hidden;
-  background: #FF6D29;
-  color: #161316;
+  background: #FF4526;
+  color: #050505;
   font-family: 'Hanken Grotesk', sans-serif;
   text-transform: uppercase;
   font-size: 0.78rem;
@@ -137,20 +137,20 @@ body::before {
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(255, 109, 41, 0.25), 0 0 0 1px rgba(255, 109, 41, 0.4);
+  box-shadow: 0 8px 24px rgba(255,69,38, 0.25), 0 0 0 1px rgba(255,69,38, 0.4);
   transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 .btn-gold::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: #FF8A52;
+  background: #FF7355;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   border-radius: 999px;
 }
 .btn-gold:hover {
-  box-shadow: 0 12px 32px rgba(255, 109, 41, 0.45), 0 0 0 1px rgba(255, 109, 41, 0.6);
+  box-shadow: 0 12px 32px rgba(255,69,38, 0.45), 0 0 0 1px rgba(255,69,38, 0.6);
   transform: translateY(-1px);
 }
 .btn-gold:hover::before {
@@ -168,22 +168,22 @@ body::before {
   gap: 8px;
   padding: 8px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 109, 41, 0.4);
-  background: rgba(255, 109, 41, 0.06);
+  border: 1px solid rgba(255,69,38, 0.4);
+  background: rgba(255,69,38, 0.06);
   font-family: 'Hanken Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #FF6D29;
+  color: #FF4526;
 }
 .pill-badge::before {
   content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #FF6D29;
-  box-shadow: 0 0 8px rgba(255, 109, 41, 0.8);
+  background: #FF4526;
+  box-shadow: 0 0 8px rgba(255,69,38, 0.8);
 }
 
 /* Glow card */
@@ -191,8 +191,8 @@ body::before {
   transition: box-shadow 0.4s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 .glow-card:hover {
-  box-shadow: 0 0 0 1px rgba(255, 109, 41, 0.45), 0 16px 48px rgba(255, 109, 41, 0.12);
-  border-color: rgba(255, 109, 41, 0.55) !important;
+  box-shadow: 0 0 0 1px rgba(255,69,38, 0.45), 0 16px 48px rgba(255,69,38, 0.12);
+  border-color: rgba(255,69,38, 0.55) !important;
   transform: translateY(-2px);
 }
 
@@ -202,7 +202,7 @@ body::before {
   font-weight: 800;
   font-size: clamp(3.5rem, 7vw, 5.5rem);
   line-height: 1;
-  background: linear-gradient(180deg, #FF8A52 0%, #FF6D29 50%, #453027 100%);
+  background: linear-gradient(180deg, #FF7355 0%, #FF4526 50%, #2A1411 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -212,8 +212,8 @@ body::before {
 
 /* Soft pulse glow on CTA */
 @keyframes goldPulse {
-  0%, 100% { box-shadow: 0 8px 24px rgba(255, 109, 41, 0.25), 0 0 0 1px rgba(255, 109, 41, 0.4); }
-  50% { box-shadow: 0 12px 36px rgba(255, 109, 41, 0.5), 0 0 0 1px rgba(255, 109, 41, 0.7); }
+  0%, 100% { box-shadow: 0 8px 24px rgba(255,69,38, 0.25), 0 0 0 1px rgba(255,69,38, 0.4); }
+  50% { box-shadow: 0 12px 36px rgba(255,69,38, 0.5), 0 0 0 1px rgba(255,69,38, 0.7); }
 }
 .cta-pulse {
   animation: goldPulse 2.4s ease-in-out infinite;
@@ -231,7 +231,7 @@ body::before {
   top: 0;
   width: 3px;
   height: 0;
-  background: #FF6D29;
+  background: #FF4526;
   transition: height 0.3s ease;
 }
 .module-card:hover::before {
