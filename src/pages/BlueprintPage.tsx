@@ -615,7 +615,7 @@ const RosinePhoto = () => {
       </div>
       <span
         className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#FF4526", color: "#050505" }}
+        style={{ background: "#FF4526", color: "#FFFFFF" }}
       >
         ✓ +3 500 000 FCFA générés · sans publicité
       </span>
