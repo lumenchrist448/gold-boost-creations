@@ -42,7 +42,7 @@ body {
   font-family: 'Hanken Grotesk', sans-serif;
   font-weight: 400;
   background-color: #060B0A;
-  color: #FFFFFF;
+  color: #060B0A;
   margin: 0;
   overflow-x: hidden;
   padding-top: 36px;
@@ -130,7 +130,7 @@ body::before {
   position: relative;
   overflow: hidden;
   background: #2BFFF8;
-  color: #FFFFFF;
+  color: #060B0A;
   font-family: 'Hanken Grotesk', sans-serif;
   text-transform: none;
   font-size: 0.9rem;

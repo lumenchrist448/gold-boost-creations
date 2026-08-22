@@ -99,7 +99,7 @@ const SectionCTA = ({ label = "Oui, je veux créer mon vendeur IA" }: { label?: 
       className="inline-block font-poppins font-semibold text-[0.9rem] py-[14px] px-7 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
       style={{
         background: "#2BFFF8",
-        color: "#FFFFFF",
+        color: "#060B0A",
         boxShadow: "0 12px 34px -14px rgba(43,255,248,0.7), inset 0 1px 0 rgba(255,255,255,0.18)",
         border: "none",
       }}
@@ -286,7 +286,7 @@ const Hero = () => (
         target="_blank"
         rel="noopener noreferrer"
         className="cta-pulse block w-full max-w-[520px] mx-auto text-center font-poppins font-semibold text-[0.95rem] sm:text-[1.02rem] py-4 sm:py-[17px] px-6 rounded-2xl mb-3 transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
-        style={{ background: "#2BFFF8", color: "#FFFFFF", border: "none", boxShadow: "0 16px 44px -16px rgba(43,255,248,0.8), inset 0 1px 0 rgba(255,255,255,0.2)" }}
+        style={{ background: "#2BFFF8", color: "#060B0A", border: "none", boxShadow: "0 16px 44px -16px rgba(43,255,248,0.8), inset 0 1px 0 rgba(255,255,255,0.2)" }}
         onMouseEnter={e => (e.currentTarget.style.background = "#7DFFFB")}
         onMouseLeave={e => (e.currentTarget.style.background = "#2BFFF8")}
 
@@ -617,7 +617,7 @@ const RosinePhoto = () => {
       </div>
       <span
         className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap font-poppins font-bold text-[0.62rem] md:text-[0.7rem] px-4 md:px-5 py-2 rounded-full"
-        style={{ background: "#2BFFF8", color: "#FFFFFF" }}
+        style={{ background: "#2BFFF8", color: "#060B0A" }}
       >
         ✓ +3 500 000 FCFA générés · sans publicité
       </span>
