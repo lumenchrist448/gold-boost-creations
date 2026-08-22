@@ -212,13 +212,15 @@ const Hero = () => (
       }}
     />
     <div
-      className="absolute top-[46%] left-1/2 -translate-x-1/2 w-[820px] h-[320px] pointer-events-none"
+      className="absolute bottom-[-120px] left-1/2 -translate-x-1/2 w-[900px] h-[260px] pointer-events-none"
       style={{
         background:
-          "radial-gradient(ellipse at center, rgba(255,255,255,0.14), rgba(255,105,60,0.22) 30%, transparent 70%)",
-        filter: "blur(70px)",
+          "radial-gradient(ellipse at center, rgba(255,105,60,0.30), transparent 70%)",
+        filter: "blur(80px)",
+        opacity: 0.6,
       }}
     />
+
     <div className="page-container relative max-w-3xl mx-auto">
       <div className="fade-up flex justify-center mb-6">
         <span className="pill-badge">{PRODUCT_TAGLINE} · Édition 2026</span>
