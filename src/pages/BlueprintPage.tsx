@@ -201,12 +201,22 @@ const PaymentMethodsImage = () => (
 );
 
 const Hero = () => (
-  <section className="relative pt-[80px] sm:pt-[92px] pb-14 sm:pb-20 overflow-hidden">
+  <section className="relative pt-[80px] sm:pt-[100px] pb-14 sm:pb-24 overflow-hidden">
     <div
-      className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[700px] pointer-events-none"
+      className="absolute -top-[380px] left-1/2 -translate-x-1/2 w-[1400px] h-[760px] pointer-events-none"
       style={{
         background:
-          "radial-gradient(ellipse at center, rgba(255,69,38,0.18), rgba(255,69,38,0.06) 35%, transparent 70%)",
+          "radial-gradient(ellipse at center, rgba(255,69,38,0.55), rgba(255,69,38,0.18) 42%, transparent 70%)",
+        filter: "blur(60px)",
+        opacity: 0.55,
+      }}
+    />
+    <div
+      className="absolute top-[46%] left-1/2 -translate-x-1/2 w-[820px] h-[320px] pointer-events-none"
+      style={{
+        background:
+          "radial-gradient(ellipse at center, rgba(255,255,255,0.14), rgba(255,105,60,0.22) 30%, transparent 70%)",
+        filter: "blur(70px)",
       }}
     />
     <div className="page-container relative max-w-3xl mx-auto">
@@ -215,12 +225,13 @@ const Hero = () => (
       </div>
 
       <h1
-        className="fade-up font-poppins font-extrabold leading-[1.05] mb-6 text-[#FFFFFF] text-center"
-        style={{ fontSize: "clamp(1.9rem, 6vw, 3.6rem)", animationDelay: "0.1s" }}
+        className="fade-up font-poppins font-semibold leading-[1.02] mb-6 text-[#FFFFFF] text-center"
+        style={{ fontSize: "clamp(2rem, 6.2vw, 3.8rem)", animationDelay: "0.1s" }}
       >
         Arrête de perdre des ventes parce que{" "}
         <span className="text-[#FF4526]">tu refuses de te montrer.</span>
       </h1>
+
 
       <h2
         className="fade-up font-poppins font-semibold text-center text-[#EDEDED] text-[1.05rem] sm:text-[1.25rem] leading-[1.4] max-w-2xl mx-auto mb-6"
