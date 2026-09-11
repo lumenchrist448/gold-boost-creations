@@ -8,7 +8,8 @@ const CHECKOUT_URL =
   "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
 const PROGRAM_NAME = "Méthode MIRAGE™";
 const PRODUCT_TAGLINE = "Mon Vendeur IA™";
-const PRICE = "19 900 FCFA";
+const PRICE = "7 900 FCFA";
+const OLD_PRICE = "19 900 FCFA";
 
 /* ================================================================
    AUTO VIDEO — autoplay muet, IntersectionObserver, toggle son
@@ -136,10 +137,13 @@ const PromoBanner = () => (
       fontSize: "clamp(0.55rem, 1.5vw, 0.72rem)",
     }}
   >
-    <span style={{ whiteSpace: "nowrap", color: "#FF4526" }}>5 PLACES / SEMAINE</span>
+    <span style={{ whiteSpace: "nowrap", color: "#FF4526" }}>RÉDUCTION 72H</span>
     <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
+    <span className="line-through" style={{ whiteSpace: "nowrap", opacity: 0.5, color: "#9C9C9C" }}>
+      {OLD_PRICE}
+    </span>
     <span className="font-semibold" style={{ whiteSpace: "nowrap", color: "#FFFFFF" }}>
-      {PRICE}
+      → {PRICE}
     </span>
     <span style={{ whiteSpace: "nowrap", opacity: 0.3 }}>|</span>
     <span style={{ whiteSpace: "nowrap" }}>Paiement unique · Accès à vie</span>
@@ -165,7 +169,7 @@ const StickyBar = () => {
     >
       <div className="max-w-5xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="font-poppins text-paper text-sm">
-          {PRODUCT_TAGLINE} — <span className="text-gold font-bold">{PRICE}</span>
+          {PRODUCT_TAGLINE} — <span className="line-through text-[#9C9C9C] mr-2">{OLD_PRICE}</span><span className="text-gold font-bold">{PRICE}</span>
         </span>
         <a
           href={CHECKOUT_URL}
@@ -274,7 +278,10 @@ const Hero = () => (
         style={{ animationDelay: "0.5s" }}
       >
         <span className="font-poppins uppercase text-[0.68rem] tracking-[0.18em] text-[#FF4526] mb-1">
-          Prix de lancement
+          Réduction 72h seulement
+        </span>
+        <span className="font-poppins font-bold text-[1rem] text-[#9C9C9C] line-through mb-1">
+          {OLD_PRICE}
         </span>
         <span className="font-poppins font-extrabold text-[2.4rem] sm:text-[3rem] text-[#FF4526] leading-none">
           {PRICE}
@@ -1095,7 +1102,7 @@ const objections = [
     ),
   },
   {
-    q: "Pourquoi la formation coûte seulement 19 900 FCFA ?",
+    q: "Pourquoi la formation coûte seulement 7 900 FCFA ?",
     a: (
       <>
         <p>J'ai volontairement choisi un prix plus accessible.</p>
@@ -1374,7 +1381,10 @@ const Offer = () => (
           <p className="text-[#C6C6C6] text-[0.9rem]">Tu ne paies même pas <span className="line-through text-[#9C9C9C]">24 700 FCFA</span>.</p>
         </div>
         <p className="font-poppins uppercase text-[0.72rem] tracking-[0.18em] text-[#FF4526] mb-2">
-          Tu investis seulement
+          Réduction 72h — Tu investis seulement
+        </p>
+        <p className="font-poppins font-bold text-[#9C9C9C] line-through mb-1" style={{ fontSize: "clamp(1.3rem, 4vw, 1.8rem)" }}>
+          {OLD_PRICE}
         </p>
         <p className="font-poppins font-extrabold text-[#FF4526] leading-none mb-3" style={{ fontSize: "clamp(3rem, 9vw, 4.5rem)" }}>
           {PRICE}
@@ -1506,7 +1516,10 @@ const FinalCTA = () => (
         Oui, je veux créer <span className="text-gold">mon vendeur IA</span>
       </h2>
       <div className="mb-8">
-        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#FF4526] mb-2">Prix unique</p>
+        <p className="font-poppins uppercase text-[0.7rem] tracking-[0.18em] text-[#FF4526] mb-2">Réduction 72h — Prix unique</p>
+        <p className="font-poppins font-bold text-[#9C9C9C] line-through mb-1" style={{ fontSize: "clamp(1.2rem, 4vw, 1.6rem)" }}>
+          {OLD_PRICE}
+        </p>
         <p className="font-poppins font-extrabold text-[#FF4526] leading-none" style={{ fontSize: "clamp(2.6rem, 9vw, 4rem)" }}>
           {PRICE}
         </p>
