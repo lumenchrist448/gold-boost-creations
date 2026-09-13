@@ -210,6 +210,101 @@ const PaymentMethodsImage = () => (
   </div>
 );
 
+/* ================================================================
+   VSL VIDEO — YouTube embed (16:9), placeholder tant que l'ID est vide
+   ================================================================ */
+const VSLVideo = () => {
+  const [ready, setReady] = useState(false);
+
+  if (!YOUTUBE_VIDEO_ID) {
+    return (
+      <div
+        className="w-full mx-auto fade-up"
+        style={{ maxWidth: "1100px", animationDelay: "0.3s" }}
+      >
+        <div
+          className="relative w-full rounded-2xl overflow-hidden flex items-center justify-center"
+          style={{
+            aspectRatio: "16 / 9",
+            background:
+              "linear-gradient(135deg, #0E0D0D 0%, #1a0f0d 100%)",
+            border: "1px solid rgba(255,69,38,0.25)",
+            boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.2)",
+          }}
+        >
+          <div className="text-center px-6">
+            <div
+              className="mx-auto mb-4 flex items-center justify-center rounded-full"
+              style={{
+                width: "72px",
+                height: "72px",
+                background: "#FF4526",
+                boxShadow: "0 0 40px rgba(255,69,38,0.6)",
+              }}
+            >
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <p className="font-poppins font-semibold text-paper text-[1rem] sm:text-[1.15rem] mb-1">
+              VSL — Bientôt disponible
+            </p>
+            <p className="text-[#9C9C9C] text-[0.82rem]">
+              La vidéo sera intégrée ici dès réception du lien YouTube.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full mx-auto fade-up" style={{ maxWidth: "1100px", animationDelay: "0.3s" }}>
+      <div
+        className="relative w-full rounded-2xl overflow-hidden"
+        style={{
+          aspectRatio: "16 / 9",
+          border: "1px solid rgba(255,69,38,0.25)",
+          boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.2)",
+        }}
+      >
+        {!ready && (
+          <button
+            type="button"
+            onClick={() => setReady(true)}
+            className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+            style={{ background: "linear-gradient(135deg, #0E0D0D 0%, #1a0f0d 100%)" }}
+            aria-label="Lire la vidéo VSL"
+          >
+            <div
+              className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
+              style={{
+                width: "80px",
+                height: "80px",
+                background: "#FF4526",
+                boxShadow: "0 0 50px rgba(255,69,38,0.65)",
+              }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </button>
+        )}
+        {ready && (
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+            title="VSL — Mon Vendeur IA"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Hero = () => (
   <section className="relative pt-[80px] sm:pt-[100px] pb-14 sm:pb-24 overflow-hidden">
     <div
