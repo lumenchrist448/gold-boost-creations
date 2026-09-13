@@ -351,27 +351,25 @@ const Hero = () => (
         className="fade-up w-full mx-auto my-10 px-2 sm:px-0"
         style={{ animationDelay: "0.25s", animationDuration: "500ms", maxWidth: "1100px" }}
       >
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mb-5">
-          <h3
-            className="font-poppins font-extrabold leading-[1.1]"
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-5">
+          <span
+            className="font-poppins font-extrabold text-[#FFFFFF] leading-[1.15] px-4 py-1.5 rounded-lg"
             style={{
-              fontSize: "clamp(1.4rem, 5vw, 2.4rem)",
-              background: "linear-gradient(90deg, #FF4526, #FF7355)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              fontSize: "clamp(1.3rem, 4.5vw, 2.1rem)",
+              background: "#FF4526",
+              boxShadow: "0 8px 28px -10px rgba(255,69,38,0.6)",
             }}
           >
             Regardez cette vidéo jusqu'à la fin pour aller 5x plus vite.
-          </h3>
-          <div className="flex items-center gap-1.5">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="vsl-arrow" style={{ animationDelay: "0s" }}>
+          </span>
+          <span className="flex items-center gap-1">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="vsl-arrow" style={{ animationDelay: "0s" }}>
               <path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="#FF4526" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="vsl-arrow" style={{ animationDelay: "0.25s", opacity: 0.75 }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="vsl-arrow" style={{ animationDelay: "0.25s", opacity: 0.7 }}>
               <path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="#FF4526" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </div>
+          </span>
         </div>
 
         <VSLVideo />
