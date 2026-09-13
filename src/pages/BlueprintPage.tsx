@@ -4,6 +4,9 @@ import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
 import monVendeurBanner from "@/assets/mon-vendeur-ia-banner.png.asset.json";
 import rosinePhoto from "@/assets/rosine-photo.png.asset.json";
+import ca1 from "@/assets/ca-1.jpg.asset.json";
+import ca2 from "@/assets/ca-2.jpg.asset.json";
+import ca3 from "@/assets/ca-3.jpg.asset.json";
 
 const CHECKOUT_URL =
   "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
@@ -926,9 +929,9 @@ const PreuvesSection = () => (
    PROOF — Dashboards Rosine (CA)
    ================================================================ */
 const caCards = [
-  { img: "/images/ca-1.jpg", label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en publicité" },
-  { img: "/images/ca-2.jpg", label: "Récapitulatif revenus du mois", sub: "100 % organique · Contenu IA" },
-  { img: "/images/ca-3.jpg", label: "Statistiques sans publicité payante", sub: "Méthode enseignée dans MIRAGE™" },
+  { img: ca1.url, label: "Tableau de bord — Ventes organiques", sub: "0 FCFA dépensé en publicité" },
+  { img: ca2.url, label: "Récapitulatif revenus du mois", sub: "100 % organique · Contenu IA" },
+  { img: ca3.url, label: "Statistiques sans publicité payante", sub: "Méthode enseignée dans MIRAGE™" },
 ];
 
 const PreuvesCASection = () => (
