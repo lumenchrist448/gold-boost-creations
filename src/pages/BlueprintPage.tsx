@@ -3,6 +3,7 @@ import renduRobotique from "@/assets/rendu-robotique.mp4.asset.json";
 import renduHumain from "@/assets/rendu-humain.mp4.asset.json";
 import paymentMethods from "@/assets/payment-methods.jpeg.asset.json";
 import monVendeurBanner from "@/assets/mon-vendeur-ia-banner.png.asset.json";
+import rosinePhoto from "@/assets/rosine-photo.png.asset.json";
 
 const CHECKOUT_URL =
   "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
@@ -615,7 +616,7 @@ const RosinePhoto = () => {
           </div>
         ) : (
           <img
-            src="/images/rosine-photo.jpg"
+            src={rosinePhoto.url}
             alt="Rosine — Formatrice Méthode MIRAGE™"
             className="w-full h-full object-cover object-top"
             onError={() => setImgError(true)}
