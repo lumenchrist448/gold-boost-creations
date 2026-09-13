@@ -10,6 +10,8 @@ import ca3 from "@/assets/ca-3.jpg.asset.json";
 
 const CHECKOUT_URL =
   "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
+// Lien YouTube de la VSL — colle l'ID de la vidéo (ex: dQw4w9WgXcQ) ici quand tu l'auras.
+const YOUTUBE_VIDEO_ID = "";
 const PROGRAM_NAME = "Méthode MIRAGE™";
 const PRODUCT_TAGLINE = "Mon Vendeur IA™";
 const PRICE = "9 900 FCFA";
@@ -208,6 +210,101 @@ const PaymentMethodsImage = () => (
   </div>
 );
 
+/* ================================================================
+   VSL VIDEO — YouTube embed (16:9), placeholder tant que l'ID est vide
+   ================================================================ */
+const VSLVideo = () => {
+  const [ready, setReady] = useState(false);
+
+  if (!YOUTUBE_VIDEO_ID) {
+    return (
+      <div
+        className="w-full mx-auto fade-up"
+        style={{ maxWidth: "1100px", animationDelay: "0.3s" }}
+      >
+        <div
+          className="relative w-full rounded-2xl overflow-hidden flex items-center justify-center"
+          style={{
+            aspectRatio: "16 / 9",
+            background:
+              "linear-gradient(135deg, #0E0D0D 0%, #1a0f0d 100%)",
+            border: "1px solid rgba(255,69,38,0.25)",
+            boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.2)",
+          }}
+        >
+          <div className="text-center px-6">
+            <div
+              className="mx-auto mb-4 flex items-center justify-center rounded-full"
+              style={{
+                width: "72px",
+                height: "72px",
+                background: "#FF4526",
+                boxShadow: "0 0 40px rgba(255,69,38,0.6)",
+              }}
+            >
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="#FFFFFF">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <p className="font-poppins font-semibold text-paper text-[1rem] sm:text-[1.15rem] mb-1">
+              VSL — Bientôt disponible
+            </p>
+            <p className="text-[#9C9C9C] text-[0.82rem]">
+              La vidéo sera intégrée ici dès réception du lien YouTube.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full mx-auto fade-up" style={{ maxWidth: "1100px", animationDelay: "0.3s" }}>
+      <div
+        className="relative w-full rounded-2xl overflow-hidden"
+        style={{
+          aspectRatio: "16 / 9",
+          border: "1px solid rgba(255,69,38,0.25)",
+          boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.2)",
+        }}
+      >
+        {!ready && (
+          <button
+            type="button"
+            onClick={() => setReady(true)}
+            className="absolute inset-0 flex items-center justify-center cursor-pointer group"
+            style={{ background: "linear-gradient(135deg, #0E0D0D 0%, #1a0f0d 100%)" }}
+            aria-label="Lire la vidéo VSL"
+          >
+            <div
+              className="flex items-center justify-center rounded-full transition-transform group-hover:scale-110"
+              style={{
+                width: "80px",
+                height: "80px",
+                background: "#FF4526",
+                boxShadow: "0 0 50px rgba(255,69,38,0.65)",
+              }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="#FFFFFF">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </button>
+        )}
+        {ready && (
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
+            title="VSL — Mon Vendeur IA"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
 const Hero = () => (
   <section className="relative pt-[80px] sm:pt-[100px] pb-14 sm:pb-24 overflow-hidden">
     <div
@@ -251,16 +348,32 @@ const Hero = () => (
       </h2>
 
       <div
-        className="fade-up w-full mx-auto my-12 px-6 sm:px-0"
-        style={{ animationDelay: "0.25s", animationDuration: "500ms", maxWidth: "1180px" }}
+        className="fade-up w-full mx-auto my-10 px-2 sm:px-0"
+        style={{ animationDelay: "0.25s", animationDuration: "500ms", maxWidth: "1100px" }}
       >
-        <img
-          src={monVendeurBanner.url}
-          alt="Mon Vendeur IA — Méthode MIRAGE™ : formation complète, avatar IA, vidéos, scripts, checklist de démarrage"
-          className="w-full h-auto block"
-          style={{ borderRadius: "20px", boxShadow: "0 20px 60px -20px rgba(0,0,0,0.6), 0 8px 24px -12px rgba(255,69,38,0.15)" }}
-          loading="lazy"
-        />
+        <h3
+          className="font-poppins font-extrabold text-center mb-4 leading-[1.1]"
+          style={{
+            fontSize: "clamp(1.4rem, 5vw, 2.4rem)",
+            background: "linear-gradient(90deg, #FF4526, #FF7355)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Regardez cette vidéo jusqu'à la fin pour aller 5x plus vite
+        </h3>
+
+        <div className="flex flex-col items-center gap-1 mb-4">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" className="vsl-arrow" style={{ animationDelay: "0s" }}>
+            <path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="#FF4526" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="vsl-arrow" style={{ animationDelay: "0.25s", opacity: 0.7 }}>
+            <path d="M12 5v14M12 19l6-6M12 19l-6-6" stroke="#FF4526" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+
+        <VSLVideo />
       </div>
 
       <p

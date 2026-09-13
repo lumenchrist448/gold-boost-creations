@@ -218,6 +218,15 @@ body::before {
   animation: goldPulse 3s ease-in-out infinite;
 }
 
+/* VSL down arrows */
+@keyframes vslBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+.vsl-arrow {
+  animation: vslBounce 1.4s ease-in-out infinite;
+}
+
 /* Module card hover bar */
 .module-card {
   position: relative;
