@@ -378,13 +378,6 @@ const Hero = () => (
       </div>
 
       <p
-        className="fade-up text-center text-[#8E8E8E] text-[0.95rem] sm:text-[1.02rem] leading-[1.7] max-w-2xl mx-auto mb-8"
-        style={{ animationDelay: "0.3s" }}
-      >
-        Tu apprendras à créer un avatar IA qui parle naturellement, présente tes produits à ta place et publie des vidéos professionnelles pour attirer des clients sur TikTok, Facebook et WhatsApp, sans avoir besoin d'être photogénique, de savoir monter des vidéos ou de payer une agence.
-      </p>
-
-      <p
         className="fade-up text-center text-[#C6C6C6] text-[0.8rem] uppercase tracking-[0.14em] font-poppins font-semibold mb-8"
         style={{ animationDelay: "0.4s" }}
       >
