@@ -1696,7 +1696,7 @@ const FloatingWhatsApp = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contacter sur WhatsApp"
-      className="fixed bottom-5 right-5 z-[9999] flex items-center justify-center rounded-full transition-all duration-500"
+      className="fixed bottom-24 right-5 z-[9999] flex items-center justify-center rounded-full transition-all duration-500"
       style={{
         width: "60px",
         height: "60px",
