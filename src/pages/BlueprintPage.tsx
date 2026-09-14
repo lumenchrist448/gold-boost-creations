@@ -10,8 +10,8 @@ import ca3 from "@/assets/ca-3.jpg.asset.json";
 
 const CHECKOUT_URL =
   "https://lunixxhub.mychariow.com/prd_c10mhd8c/checkout";
-// Lien YouTube de la VSL — colle l'ID de la vidéo (ex: dQw4w9WgXcQ) ici quand tu l'auras.
-const YOUTUBE_VIDEO_ID = "";
+// Lien YouTube de la VSL — ID extrait de https://youtu.be/pxnkB2xgiuc
+const YOUTUBE_VIDEO_ID = "pxnkB2xgiuc";
 const PROGRAM_NAME = "Méthode MIRAGE™";
 const PRODUCT_TAGLINE = "Mon Vendeur IA™";
 const PRICE = "9 900 FCFA";
@@ -1700,6 +1700,7 @@ const BlueprintPage = () => {
         <FinalCTA />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 };
