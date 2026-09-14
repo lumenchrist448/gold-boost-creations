@@ -292,13 +292,23 @@ const VSLVideo = () => {
           </button>
         )}
         {ready && (
-          <iframe
-            className="absolute inset-0 w-full h-full"
-            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1`}
-            title="VSL — Mon Vendeur IA"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <>
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&controls=1`}
+              title="VSL — Mon Vendeur IA"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            {/* Overlay masquant le titre de la vidéo et le bouton "Regarder sur YouTube" */}
+            <div
+              className="absolute top-0 left-0 right-0 pointer-events-none"
+              style={{
+                height: "14%",
+                background: "linear-gradient(to bottom, #0E0D0D 35%, rgba(14,13,13,0.6) 70%, rgba(14,13,13,0) 100%)",
+              }}
+            />
+          </>
         )}
       </div>
     </div>
@@ -1767,7 +1777,6 @@ const BlueprintPage = () => {
         <FinalCTA />
       </main>
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 };
