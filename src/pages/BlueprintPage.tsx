@@ -30,29 +30,27 @@ type AutoVideoProps = {
 const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
+  const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
-    const io = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) v.play().catch(() => {});
-          else v.pause();
-        });
-      },
-      { threshold: 0.35 }
-    );
-    io.observe(v);
-    return () => io.disconnect();
-  }, []);
+    if (v.paused) v.play().catch(() => {});
+    else v.pause();
+  };
 
   const toggleSound = () => {
     const v = videoRef.current;
     if (!v) return;
     v.muted = !v.muted;
-    if (!v.muted) v.play().catch(() => {});
     setMuted(v.muted);
+  };
+
+  const btnStyle: React.CSSProperties = {
+    background: "rgba(10,10,15,0.72)",
+    color: "#FF4526",
+    border: "1px solid rgba(255,69,38,0.4)",
+    opacity: 0.9,
   };
 
   return (
@@ -62,31 +60,65 @@ const AutoVideo = ({ src, type = "video/mp4", poster, className, style }: AutoVi
         className={className}
         style={style}
         muted
-        autoPlay
         loop
         playsInline
         preload="metadata"
         poster={poster}
+        onClick={togglePlay}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
       >
         <source src={src} type={type} />
       </video>
-      <button
-        type="button"
-        onClick={toggleSound}
-        aria-label={muted ? "Activer le son" : "Couper le son"}
-        className="absolute bottom-2 right-2 font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur transition-opacity hover:opacity-100"
-        style={{
-          background: "rgba(10,10,15,0.72)",
-          color: "#FF4526",
-          border: "1px solid rgba(255,69,38,0.4)",
-          opacity: 0.85,
-        }}
-      >
-        {muted ? "🔇 Activer le son" : "🔊 Couper le son"}
-      </button>
+
+      {!playing && (
+        <button
+          type="button"
+          onClick={togglePlay}
+          aria-label="Lire la vidéo"
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ background: "rgba(0,0,0,0.35)" }}
+        >
+          <span
+            className="flex items-center justify-center rounded-full"
+            style={{
+              width: 62,
+              height: 62,
+              background: "#FF4526",
+              boxShadow: "0 10px 30px -8px rgba(255,69,38,0.7)",
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </button>
+      )}
+
+      <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between gap-2 pointer-events-none">
+        <button
+          type="button"
+          onClick={togglePlay}
+          aria-label={playing ? "Mettre en pause" : "Lire la vidéo"}
+          className="pointer-events-auto font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur"
+          style={btnStyle}
+        >
+          {playing ? "⏸ Pause" : "▶ Lire"}
+        </button>
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-label={muted ? "Activer le son" : "Couper le son"}
+          className="pointer-events-auto font-poppins text-[0.68rem] font-semibold px-2.5 py-1.5 rounded-full backdrop-blur"
+          style={btnStyle}
+        >
+          {muted ? "🔇 Activer le son" : "🔊 Couper le son"}
+        </button>
+      </div>
     </div>
   );
 };
+
 
 /* ================================================================
    UI PRIMITIVES
