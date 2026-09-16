@@ -1732,7 +1732,6 @@ const BlueprintPage = () => {
         <FinalCTA />
       </main>
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 };
